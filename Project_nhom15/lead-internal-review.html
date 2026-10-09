@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- CS-STARTUP-GUARD -->
+<script>
+(function () {
+  var missing = [];
+  window.addEventListener('error', function (event) {
+    var target = event.target;
+    if (target && target !== window && /^(SCRIPT|LINK|IMG)$/.test(target.tagName)) {
+      var path = target.getAttribute('src') || target.getAttribute('href');
+      if (path && missing.indexOf(path) < 0) missing.push(path);
+    }
+  }, true);
+  window.addEventListener('load', function () {
+    if (!missing.length) return;
+    var box = document.createElement('section');
+    box.setAttribute('role', 'alert');
+    box.setAttribute('data-startup-error', 'true');
+    box.style.cssText = 'background:#fff4df;color:#5d4018;border:2px solid #dfb666;border-radius:12px;padding:24px;margin:20px;font:16px/1.6 Arial;position:relative;z-index:100;overflow-wrap:anywhere';
+    var title = document.createElement('h2');
+    title.textContent = 'Chưa tải đủ file của CreatorStudio';
+    box.appendChild(title);
+    var explanation = document.createElement('p');
+    explanation.textContent = 'Hãy giải nén toàn bộ CreatorStudio-SV3-Website.zip và giữ các thư mục css, js, assets cạnh file HTML. Nếu gửi cho người khác, gửi nguyên ZIP; chỉ gửi HTML sẽ thiếu giao diện và chức năng. Sau đó mở index.html bằng Live Server.';
+    box.appendChild(explanation);
+    var list = document.createElement('ul');
+    missing.forEach(function (path) {var item=document.createElement('li');item.textContent=path;list.appendChild(item);});
+    box.appendChild(list);
+    document.body.insertBefore(box, document.body.firstChild);
+  });
+})();
+</script>
+<!-- /CS-STARTUP-GUARD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#635bff">
+  <meta name="description" content="CreatorStudio — Bản thực hành quản lý dự án sáng tạo của SV3.">
+  <title>Duyệt nội bộ · CreatorStudio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/pages/lead.css">
+  
+  <script defer src="js/data.js"></script><script defer src="js/store.js"></script><script defer src="js/modules/navigation.js"></script><script defer src="js/app.js"></script><script defer src="js/pages/lead-internal-review.js"></script>
+</head>
+<body><main><h1>CreatorStudio</h1><p>Đang mở không gian làm việc…</p><noscript>Bật JavaScript để sử dụng bản demo.</noscript></main></body>
+</html>

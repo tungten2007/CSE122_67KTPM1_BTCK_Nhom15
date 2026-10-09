@@ -1,0 +1,34 @@
+TASK-05 — Giao diện dùng chung — Phần SV3
+
+MÔ TẢ
+Hoàn thiện header/sidebar dùng chung trên bộ frontend SV3; tách module điều hướng và phiên demo, hiển thị trang hiện hành, avatar, chuông hoạt động và menu hamburger. Chuyển đủ 4 vai trò demo; Lead/Admin tới trang hiện có, Client/Designer tới thông báo chưa ghép. Có bảo vệ điều hướng theo vai trò và đường về an toàn ở 403/404.
+
+FILE
+- js/modules/navigation.js
+- css/navigation.css
+- js/app.js
+- js/entry.js, index.html
+- role-preview.html, js/pages/role-preview.js
+- tests/navigation.test.cjs
+- docs/TASK-05-SV3.md
+Bộ mã: CreatorStudio-SV3-Website.zip (bản cập nhật).
+
+CHECKLIST CÓ BẰNG CHỨNG
+[x] Đã lập trình header/sidebar và trang đang chọn dùng chung
+[x] Đã tách module điều hướng khỏi mã app chung
+[x] Đã lập trình và kiểm thử logic chuyển 4 vai trò, lưu phiên, đường dẫn đích
+[x] Đã kiểm thử logic chặn sai vai trò và tài khoản bị khóa
+[x] Đã lập trình avatar, chuông hoạt động, menu mobile
+[x] Đã lập trình Escape/Tab/backdrop và vô hiệu vùng nền khi menu mở
+[x] Đã ghi rõ Client/Designer chưa ghép; không đặt link hỏng
+[x] Đã chạy 5 nhóm kiểm thử điều hướng và chạy lại 12 nhóm nghiệp vụ
+[x] Đã viết hướng dẫn chạy và cách tích hợp
+
+CHECKLIST CÒN LẠI
+[ ] Chạy các luồng bằng Chrome, không lỗi Console
+[ ] Kiểm tra menu/keyboard/dialog ở desktop và mobile
+[ ] Ghép file của SV1/SV2, cập nhật sidebar và kiểm thử 4 phân hệ thật
+[ ] Nhóm review phần dùng chung; bổ sung minh chứng theo yêu cầu môn học
+
+Trạng thái: Chờ kiểm tra trên trình duyệt và tích hợp.
+Chưa có link GitHub/video/review được xác nhận. Không tick thay các mục trên.
