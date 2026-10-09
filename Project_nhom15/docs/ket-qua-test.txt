@@ -1,0 +1,5 @@
+02/10/2026 — cập nhật Task 5
+12 nhóm nghiệp vụ + 5 nhóm điều hướng đạt.
+Cú pháp JS, thứ tự tải navigation/app và tham chiếu file HTML: đạt.
+HTTP đã kiểm tra ở bản trước; các trang mới chưa mở trên browser.
+UI/console/mobile/focus/backdrop/resize: chưa xác minh trực tiếp.

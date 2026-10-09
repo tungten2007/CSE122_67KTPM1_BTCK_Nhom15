@@ -1,0 +1,17 @@
+TASK-16 – Internal Review / Duyệt nội bộ (SV3)
+Trạng thái: CHỜ DUYỆT bản triển khai; chưa đánh dấu hoàn thành toàn checklist.
+
+Mô tả: Chọn phiên bản thuộc dự án, xem thiết kế/moodboard mẫu, ghim/sửa/xử lý ghi chú, checklist và yêu cầu sửa hoặc chuyển khách hàng.
+File: Project_nhom15/lead-internal-review.html; js/pages/lead-internal-review.js; js/store.js.
+Nhánh: feature/sv3-task16
+
+[x] Có code duyệt nội bộ và validation.
+[x] Chọn phiên bản đúng dự án; ưu tiên Internal Review.
+[x] Thao tác ghi chú/duyệt áp dụng đúng phiên bản đang chọn.
+[x] Chặn duyệt sai action, sai quyền, dự án lưu trữ, checklist chưa xong.
+[x] 7 bộ kiểm thử Node/DOM giả lập đạt; bộ file đủ.
+[ ] Kiểm tra browser: ghim, dialog, bàn phím, Console.
+[ ] Nhóm review và ghép vào dev.
+[ ] OBS có mặt sinh viên, giải thích và chỉnh sửa trực tiếp.
+
+Responsive tổng thể theo TASK-21. PR/commit: lấy link bàn giao trong cuộc trò chuyện; chỉ đánh dấu đã merge sau khi GitHub xác nhận.

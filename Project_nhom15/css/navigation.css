@@ -1,0 +1,13 @@
+/* Bổ sung hành vi khung dùng chung; kiểu nền header/sidebar ở base.css. */
+.notification-button{border:1px solid var(--line);min-width:34px;min-height:34px;padding:6px}
+.sidebar{overflow-y:auto}
+.sidebar nav{flex-shrink:0}
+@media(max-width:760px){
+ body.menu-open{overflow:hidden}
+ .top-actions{flex-wrap:wrap;justify-content:flex-end;min-width:0}
+ .top-actions .notification-button{min-width:32px;min-height:32px;padding:5px}
+ .sidebar{overscroll-behavior:contain}
+}
+@media(max-width:380px){.top-actions #role-switch{max-width:134px}.top-actions #project-select{max-width:103px}.topbar{padding-inline:10px}}
+
+.panel code{overflow-wrap:anywhere}

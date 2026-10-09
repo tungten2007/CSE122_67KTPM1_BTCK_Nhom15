@@ -1,0 +1,105 @@
+CREATORSTUDIO — MÔ TẢ & CHECKLIST PHẦN CODE SV3
+Người phụ trách: SV3. Hạn/URL GitHub/video: chưa cung cấp.
+Trạng thái: bản frontend để chạy thử, chưa đủ minh chứng đánh dấu Done.
+Không thay thế thẻ TASK-04 thiết kế bằng thẻ code này; dùng mã thực tế dưới đây từ kế hoạch chi tiết.
+
+
+TASK-SV3-01 — Bảng công việc & duyệt brief
+
+MÔ TẢ
+Bảng Kanban 4 cột, tạo/sửa công việc, kéo thả hoặc chọn trạng thái, tìm kiếm/lọc và drawer dạng hộp thoại duyệt brief. Lưu dữ liệu trên trình duyệt.
+File: lead-task-board.html
+
+CHECKLIST
+[x] Đã lập trình hiển thị, tìm kiếm/lọc và thêm/sửa công việc
+[x] Đã lập trình kéo thả desktop và chọn trạng thái bằng bàn phím/mobile
+[x] Đã lập trình duyệt brief tạo việc, trả brief cần lý do
+[x] Đã kiểm thử dữ liệu tạo/sửa/đổi cột/lưu lại và chặn xử lý brief lặp
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
+
+
+TASK-SV3-02 — Duyệt nội bộ
+
+MÔ TẢ
+Xem thiết kế/moodboard, ghim/sửa/xử lý ghi chú nội bộ; checklist trước khi chuyển Client Review hoặc yêu cầu sửa có lý do.
+File: lead-internal-review.html
+
+CHECKLIST
+[x] Đã lập trình tab thiết kế/moodboard và ghi chú có tọa độ
+[x] Đã lập trình checkbox kiểm duyệt, yêu cầu sửa và xác nhận chuyển khách
+[x] Đã kiểm thử chặn Pass khi checklist/ghi chú chưa hoàn tất
+[x] Đã kiểm thử lưu trạng thái và chặn duyệt lặp
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
+
+
+TASK-SV3-03 — Tổng hợp phản hồi AI-2
+
+MÔ TẢ
+Chọn/nhập phản hồi, AI mô phỏng sinh việc kèm nguồn/lý do, sửa hoặc bỏ, xác nhận chuyển Kanban; có lỗi/thử lại/nhập thủ công.
+File: lead-feedback-summary.html
+
+CHECKLIST
+[x] Đã lập trình input → loading → output → giải thích → sửa/bỏ → tạo việc
+[x] Đã lập trình cảnh báo ý kiến mơ hồ, yêu cầu làm rõ
+[x] Đã kiểm thử giữ nội dung đã sửa khi tạo task và lưu lại
+[x] Đã kiểm thử AI lỗi/thiếu đầu vào và chặn tạo lặp đề xuất
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
+
+
+TASK-SV3-04 — Quản lý người dùng
+
+MÔ TẢ
+Danh sách phân trang, tìm tên/email, lọc vai trò/trạng thái, thêm/sửa người dùng, đổi vai trò, khóa/mở khóa.
+File: admin-user-management.html
+
+CHECKLIST
+[x] Đã lập trình danh sách, tìm kiếm/lọc và phân trang
+[x] Đã lập trình tạo/sửa/đổi vai trò/khóa và mở khóa
+[x] Đã kiểm thử email trùng và không tự khóa/đổi vai trò
+[x] Đã lập trình chặn mất Admin hoạt động cuối cùng
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
+
+
+TASK-SV3-05 — Thiết lập studio & lưu trữ
+
+MÔ TẢ
+Lưu quy tắc phiên bản/ngưỡng deadline, quản lý nhãn và xác nhận lưu trữ dự án đủ điều kiện thành chỉ xem.
+File: admin-project-settings.html
+
+CHECKLIST
+[x] Đã lập trình lưu mẫu phiên bản, ngưỡng deadline và quy tắc duyệt
+[x] Đã kiểm thử thêm/sửa/xóa nhãn và nhãn đang dùng
+[x] Đã kiểm thử điều kiện lưu trữ và chặn ghi dự án đã lưu trữ
+[x] Đã lập trình xác nhận bằng tên dự án
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
+
+
+TASK-SV3-06 — Lỗi 404/403
+
+MÔ TẢ
+Trang lỗi chung cho không tìm thấy và không đủ quyền; quay về trang phù hợp vai trò demo.
+File: 404.html
+
+CHECKLIST
+[x] Đã lập trình hai trạng thái 404/403 và đường về theo vai trò
+[x] Đã lập trình kiểm tra vai trò trước khi mở màn nghiệp vụ
+[x] Đã kiểm tra máy chủ Python đưa URL lạ về trang 404
+[ ] Chạy tương tác và kiểm tra Console trên Chrome
+[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[ ] Ghép dữ liệu/điều hướng với nhóm và review
+[ ] Bổ sung link GitHub, video OBS và duyệt môn học
