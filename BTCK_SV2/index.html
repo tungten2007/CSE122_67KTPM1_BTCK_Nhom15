@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreatorStudio · Cổng Điều hướng Dự án (Phân hệ SV2)</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <style>
+    .portal-hero {
+      background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 48px 32px;
+      border-radius: var(--radius);
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15);
+    }
+    .portal-hero h1 {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .portal-hero p {
+      font-size: 15px;
+      color: #cbd5e1;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+    .role-switcher-banner {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+    .screen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 20px;
+    }
+    .screen-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .screen-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(37, 49, 75, 0.1);
+      border-color: #cbd5e1;
+    }
+    .screen-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: #eeecff;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .screen-card h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .screen-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+  </style>
+</head>
+<body style="background: var(--bg); padding: 32px 20px;">
+
+  <div style="max-width: 1200px; margin: auto;">
+    <!-- Brand Header -->
+    <header class="row between" style="margin-bottom: 24px;">
+      <div class="row" style="gap: 12px;">
+        <span class="brand-mark" style="background: var(--primary); color: white; padding: 6px; border-radius: 8px; display: inline-flex;"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><path d="m5 12 4 4L19 6"/></svg></span>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">CreatorStudio</h2>
+          <small class="muted">Học phần Phát triển Ứng dụng Web Cơ bản · Nhóm SV2</small>
+        </div>
+      </div>
+      <div class="row">
+        <button class="button small danger" id="reset-data-btn">Đặt lại dữ liệu mẫu</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="portal-hero">
+      <span class="eyebrow" style="color: #a5b4fc;">BẢN NGUYÊN MẪU WEB FRONTEND · BTL CSE122</span>
+      <h1>Chào mừng đến với CreatorStudio (Phân hệ SV2)</h1>
+      <p>
+        Hệ thống hỗ trợ quy trình sáng tạo và kiểm soát phiên bản thiết kế khép kín. Phân hệ của Sinh viên 2 bao gồm đầy đủ 6 màn hình nghiệp vụ, tương tác CRUD sâu, trải nghiệm AI-3 Mood Keyword Assistant với các trạng thái thành công và thất bại.
+      </p>
+    </section>
+
+    <!-- Bộ chuyển đổi nhanh 1-Click Role Switcher -->
+    <section class="role-switcher-banner">
+      <div class="row between" style="margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h3>Bộ chuyển đổi vai trò Demo (1-Click Demo Role Switcher)</h3>
+          <p class="muted" style="font-size: 13px;">Nhấp vào một vai trò để kích hoạt tài khoản tương ứng và bắt đầu trải nghiệm</p>
+        </div>
+        <span class="badge green">Dữ liệu sẵn sàng trong LocalStorage</span>
+      </div>
+
+      <div class="row" style="gap: 10px; flex-wrap: wrap;">
+        <button class="button primary role-btn" data-role="Designer">
+          🎭 Nhà thiết kế (An Nguyễn)
+        </button>
+        <button class="button role-btn" data-role="Admin">
+          👑 Quản trị viên (Minh Anh)
+        </button>
+        <button class="button role-btn" data-role="Lead">
+          👔 Trưởng nhóm (Linh Hà)
+        </button>
+        <button class="button role-btn" data-role="Client">
+          💼 Khách hàng (Khánh Chi)
+        </button>
+      </div>
+    </section>
+
+    <!-- Danh sách 6 màn hình do SV2 phụ trách trong Bảng kiểm kê -->
+    <h2 style="margin-bottom: 16px; font-size: 20px;">Danh mục 6 Màn hình SV2 Phụ trách (Theo Bảng Kiểm kê Excel)</h2>
+    
+    <div class="screen-grid">
+      <!-- Màn hình 4: Designer Dashboard -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 4 · NHÀ THIẾT KẾ</span>
+          <h3>Designer Dashboard</h3>
+          <p>
+            Quản lý khối lượng công việc, KPI thống kê dự án, danh sách việc cần làm theo hạn chót, cảnh báo gấp và AI Priority Assistant gợi ý trọng tâm.
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> R (Normal, Loading, Empty, Urgent) · <strong>AI:</strong> Tham chiếu AI-3
+          </div>
+        </div>
+        <a href="designer-dashboard.html" class="button primary small" style="margin-top: auto;">Mở Designer Dashboard →</a>
+      </div>
+
+      <!-- Màn hình 5: Moodboard -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 5 · NHÀ THIẾT KẾ</span>
+          <h3>Moodboard & Bảng cảm hứng</h3>
+          <p>
+            Định hướng phong cách thị giác, bảng mã màu HEX tương tác, thẻ hình ảnh cảm hứng và module AI-3 gợi ý từ khóa thẩm mỹ & bảng màu (kèm mô phỏng AI thất bại).
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> C / R / U (Draft, Palette Ready, Shared) · <strong>AI:</strong> AI-3 Mood Keyword Assistant
+          </div>
+        </div>
+        <a href="designer-moodboard.html" class="button primary small" style="margin-top: auto;">Mở Moodboard & AI-3 →</a>
+      </div>
+
+      <!-- Màn hình 6: Version Management -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 6 · NHÀ THIẾT KẾ</span>
+          <h3>Version Management</h3>
+          <p>
+            Kiểm soát lịch sử phiên bản theo mẫu quy tắc studio, tải lên version mới, ghi changelog, tích chọn checklist nghiệm thu và nộp duyệt nội bộ.
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> C / R / U / D (Draft, Internal Review, Approved, Archived)
+          </div>
+        </div>
+        <a href="designer-version-management.html" class="button primary small" style="margin-top: auto;">Mở Quản lý phiên bản →</a>
+      </div>
+
+      <!-- Màn hình 10: Brief Template Management -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 10 · QUẢN TRỊ VIÊN</span>
+          <h3>Brief Template Management</h3>
+          <p>
+            Chuẩn hóa các biểu mẫu brief theo ngành hàng (Branding, Packaging, UI/UX, Campaign) và cấu hình System Prompt gợi ý cho AI-1 Brief Structurer.
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> R / C / U (Active Template, Inactive, Custom) · <strong>AI:</strong> Prompt Template cho AI-1
+          </div>
+        </div>
+        <a href="admin-brief-template-management.html" class="button primary small" style="margin-top: auto;">Mở Brief Template Management →</a>
+      </div>
+
+      <!-- Màn hình 15: Profile Management -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 15 · DÙNG CHUNG</span>
+          <h3>Profile Management</h3>
+          <p>
+            Cập nhật danh tính cá nhân, chức danh, ảnh đại diện avatar, đổi mật khẩu bảo mật và theo dõi thống kê năng suất dự án cá nhân.
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> R / U (View Profile, Edit Profile, Password Changed)
+          </div>
+        </div>
+        <a href="profile.html" class="button primary small" style="margin-top: auto;">Mở Hồ sơ cá nhân →</a>
+      </div>
+
+      <!-- Màn hình 16: Notifications Center -->
+      <div class="screen-card">
+        <div>
+          <span class="screen-card-tag">MÀN HÌNH 16 · DÙNG CHUNG</span>
+          <h3>Notifications Center</h3>
+          <p>
+            Cập nhật biến động thời gian thực về phiên bản mới, bình luận khách hàng, nhiệm vụ gấp; bộ lọc tab, đánh dấu đã đọc và xóa thông báo.
+          </p>
+          <div style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+            <strong>CRUD:</strong> R / U / D (Unread, Read, Empty State, Cleared)
+          </div>
+        </div>
+        <a href="notifications.html" class="button primary small" style="margin-top: auto;">Mở Trung tâm thông báo →</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/modules/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Store.load();
+      document.querySelectorAll('.screen-card a').forEach(link => {
+        link.onclick = () => Navigation.activate(link.getAttribute('href').startsWith('admin-') ? 'Admin' : 'Designer', Store.get().users);
+      });
+
+      // Nút Reset data
+      document.getElementById('reset-data-btn').onclick = () => {
+        if (confirm('Khôi phục toàn bộ dữ liệu mẫu ban đầu của CreatorStudio?')) {
+          Store.reset();
+          alert('Đã khôi phục dữ liệu mẫu thành công!');
+          location.reload();
+        }
+      };
+
+      // Role switcher buttons
+      document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.onclick = () => {
+          const role = btn.dataset.role;
+          try {
+            const dest = Navigation.activate(role, Store.get().users);
+            location.href = dest;
+          } catch (e) {
+            alert(e.message);
+          }
+        };
+      });
+    });
+  </script>
+</body>
+</html>

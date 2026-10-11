@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/pages/shared.css">
+</head>
+<body>
+  <!-- Shell được render tự động qua App.init() -->
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/modules/navigation.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let isEditing = false;
+      let passwordChangedNotice = false;
+
+      App.init('profile', renderProfile);
+
+      function renderProfile() {
+        const { $, $$, esc, icon, data, user, project, banner, toast } = App;
+        const main = $('#main');
+
+        // Thống kê cá nhân của user hiện tại
+        const myTasks = (data.tasks || []).filter(t => t.assignee === user.id);
+        const completedTasksCount = myTasks.filter(t => t.status === 'done').length;
+        const myVersionsCount = (data.versions || []).filter(v => v.author === user.id).length;
+        const myProjectIds = new Set([...myTasks.map(t => t.projectId), ...data.versions.filter(v => v.author === user.id).map(v => v.projectId)]);
+        const activeProjectsCount = (data.projects || []).filter(p => !p.archived && myProjectIds.has(p.id)).length;
+
+        main.innerHTML = `
+          ${banner()}
+
+          ${App.header(
+            'THÔNG TIN TÀI KHOẢN DÙNG CHUNG',
+            'Hồ sơ Cá nhân & Thiết lập Tài khoản',
+            'Cập nhật thông tin danh tính, chức danh chuyên môn và thay đổi mật khẩu bảo mật.',
+            `
+              <button class="button ${isEditing ? 'primary' : 'soft'}" id="toggle-edit-btn">
+                ${icon('edit')} ${isEditing ? 'Hủy chỉnh sửa' : 'Chỉnh sửa hồ sơ'}
+              </button>
+            `
+          )}
+
+          ${passwordChangedNotice ? `
+            <div class="notice success">
+              ${icon('check')}
+              <div>
+                <strong>Đã cập nhật mật khẩu demo!</strong>
+                <p>Mật khẩu mô phỏng được lưu trong trình duyệt để kiểm thử.</p>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Thẻ hồ sơ cá nhân (Profile Hero Card) -->
+          <section class="profile-hero">
+            <div class="avatar-large">${App.avatar(user)}</div>
+
+            <div class="profile-hero-info">
+              <div class="row" style="gap: 10px; margin-bottom: 6px;">
+                <h2>${esc(user.name)}</h2>
+                <span class="badge purple">Vai trò: ${esc(Navigation.roles[user.role] || user.role)}</span>
+                <span class="badge green">Đang hoạt động</span>
+              </div>
+              <p class="muted" style="font-size: 13px;">${esc(user.email)} · ${esc(user.title || 'Chưa thiết lập chức danh')}</p>
+              <p style="font-size: 13px; color: #475569; margin-top: 8px;">${esc(user.bio || 'Chưa có thông tin giới thiệu bản thân.')}</p>
+            </div>
+
+            <!-- Thống kê năng suất cá nhân -->
+            <div class="profile-stats-group">
+              <div class="profile-stat-box">
+                <strong>${activeProjectsCount}</strong>
+                <small>Dự án tham gia</small>
+              </div>
+              <div class="profile-stat-box">
+                <strong>${completedTasksCount}</strong>
+                <small>Nhiệm vụ xong</small>
+              </div>
+              <div class="profile-stat-box">
+                <strong>${myVersionsCount}</strong>
+                <small>Phiên bản nộp</small>
+              </div>
+            </div>
+          </section>
+
+          <!-- Bố cục 2 cột: Cập nhật thông tin & Đổi mật khẩu -->
+          <div class="split-layout">
+            <!-- CỘT 1: THÔNG TIN HỒ SƠ -->
+            <section class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Thông tin chi tiết tài khoản</h2>
+                  <p>Họ tên và chức danh sẽ được hiển thị trên các bản duyệt thiết kế</p>
+                </div>
+              </div>
+
+              <form id="profile-info-form">
+                ${App.field('Họ và tên *', 'name', user.name, 'text', `required minlength="2" ${!isEditing ? 'disabled' : ''}`)}
+                ${App.field('Địa chỉ Email *', 'email', user.email, 'email', `required ${!isEditing ? 'disabled' : ''}`)}
+                <div class="form-grid">
+                  ${App.field('Chức danh chuyên môn', 'title', user.title || '', 'text', !isEditing ? 'disabled' : '')}
+                  ${App.field('Ký tự Avatar (2 chữ cái)', 'avatarText', user.avatarText || App.initials(user.name), 'text', `maxlength="3" ${!isEditing ? 'disabled' : ''}`)}
+                </div>
+                ${App.textField('Giới thiệu bản thân (Bio)', 'bio', user.bio || '', !isEditing ? 'disabled' : '')}
+                ${App.field('Avatar URL (http/https, có thể để trống)', 'avatarUrl', user.avatarUrl || '', 'url', !isEditing ? 'disabled' : '')}
+
+                ${isEditing ? `
+                  <div class="row between" style="margin-top: 20px;">
+                    <button type="submit" class="button primary">${icon('check')} Lưu thay đổi hồ sơ</button>
+                    <button type="button" class="button" id="cancel-edit-btn">Hủy bỏ</button>
+                  </div>
+                ` : ''}
+              </form>
+            </section>
+
+            <!-- CỘT 2: ĐỔI MẬT KHẨU -->
+            <section class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Thay đổi mật khẩu</h2>
+                  <p>Mô phỏng frontend. Mật khẩu ban đầu: demo123. Chỉ sử dụng mật khẩu thử nghiệm.</p>
+                </div>
+              </div>
+
+              <form id="change-password-form">
+                ${App.field('Mật khẩu hiện tại *', 'currentPassword', '', 'password', 'required placeholder="Nhập mật khẩu hiện tại"')}
+                ${App.field('Mật khẩu mới *', 'newPassword', '', 'password', 'required minlength="6" placeholder="Tối thiểu 6 ký tự"')}
+                ${App.field('Xác nhận mật khẩu mới *', 'confirmPassword', '', 'password', 'required minlength="6" placeholder="Nhập lại mật khẩu mới"')}
+
+                <p id="password-error" class="form-error"></p>
+
+                <div style="margin-top: 20px;">
+                  <button type="submit" class="button primary">${icon('lock')} Cập nhật mật khẩu</button>
+                </div>
+              </form>
+
+              <!-- Thông tin quyền hạn theo vai trò -->
+              <div class="divider"></div>
+              <div>
+                <h3>Quyền hạn vai trò: ${esc(Navigation.roles[user.role] || user.role)}</h3>
+                <ul style="font-size: 12px; color: #64748b; margin: 8px 0 0 18px; line-height: 1.6;">
+                  <li>Quyền thao tác: Toàn quyền truy cập và chỉnh sửa trong các phân hệ được cấp phép.</li>
+                  <li>Mã định danh hệ thống (User ID): <code>${esc(user.id)}</code></li>
+                  <li>Trạng thái lưu trữ: Đồng bộ liên tục với LocalStorage.</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        `;
+
+        // Bật/tắt chế độ sửa
+        $('#toggle-edit-btn').onclick = () => {
+          isEditing = !isEditing;
+          renderProfile();
+        };
+
+        const cancelBtn = $('#cancel-edit-btn');
+        if (cancelBtn) {
+          cancelBtn.onclick = () => {
+            isEditing = false;
+            renderProfile();
+          };
+        }
+
+        // Xử lý lưu thông tin hồ sơ
+        $('#profile-info-form').onsubmit = e => {
+          e.preventDefault();
+          const formData = Object.fromEntries(new FormData(e.target));
+          App.action(() => {
+            Store.updateProfile(user.id, formData);
+            isEditing = false;
+          }, 'Hồ sơ cá nhân đã được cập nhật thành công!');
+        };
+
+        // Xử lý đổi mật khẩu
+        $('#change-password-form').onsubmit = e => {
+          e.preventDefault();
+          const pErr = $('#password-error');
+          pErr.textContent = '';
+
+          const { currentPassword, newPassword, confirmPassword } = Object.fromEntries(new FormData(e.target));
+
+          if (!currentPassword) {
+            pErr.textContent = 'Vui lòng nhập mật khẩu hiện tại.';
+            return;
+          }
+          if (newPassword.length < 6) {
+            pErr.textContent = 'Mật khẩu mới phải có ít nhất 6 ký tự.';
+            return;
+          }
+          if (newPassword !== confirmPassword) {
+            pErr.textContent = 'Mật khẩu xác nhận không trùng khớp.';
+            return;
+          }
+
+          App.action(() => {
+            Store.updateProfile(user.id, {
+              ...user,
+              newPassword,
+              currentPassword,
+              confirmPassword
+            });
+            passwordChangedNotice = true;
+          }, 'Đổi mật khẩu thành công!');
+          e.target.reset();
+        };
+      }
+    });
+  </script>
+</body>
+</html>
