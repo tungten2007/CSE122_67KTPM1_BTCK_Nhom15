@@ -1,6 +1,7 @@
 "use strict";
-(() => {
+(async () => {
   const { $, $$, escape, toast, pill, update, confirmAction } = CS;
+  if (!(await CS.init())) return;
   if (!CS.shell("review", "Duyệt phiên bản")) return;
   let p = CS.selectProject("#project-select", "client-review-versions");
   if (!p || !p.versionStatus) {
@@ -11,6 +12,8 @@
       $("#empty-description").textContent =
         "Dự án mới chưa có phiên bản. Hãy hoàn thiện brief; quy trình upload của Designer thuộc phần SV2.";
       $("#brief-link").href = CS.url("client-creative-brief", p.id);
+    } else if (new URLSearchParams(location.search).has("project")) {
+      $("#empty-title").textContent = "Dự án không tồn tại hoặc đã bị xóa";
     }
     $("#moodboard").hidden = true;
     return;
@@ -25,13 +28,17 @@
   $("#new-image").src = `assets/images/${p.art}-v2.svg`;
   $("#brief-link").href = CS.url("client-creative-brief", p.id);
   function locked() {
-    return p.status === "Archived" || p.versionStatus === "Approved";
+    return (
+      p.status === "Archived" ||
+      ["Approved", "Rejected"].includes(p.versionStatus)
+    );
   }
   function refresh() {
     p = CS.read().projects.find((item) => item.id === p.id);
     render();
   }
   function focusPin(id) {
+    $('[data-mode="side"]').click();
     filter = "all";
     $$("[data-comments]").forEach((button) => {
       const active = button.dataset.comments === "all";
@@ -72,28 +79,32 @@
     $("#pin-stage").classList.toggle("readonly", locked());
     $("#approve").disabled =
       $("#request-changes").disabled =
+      $("#reject-version").disabled =
       $("#add-comment").disabled =
         locked();
     $("#pin-instruction").textContent = locked()
-      ? "Phiên bản đã duyệt hoặc lưu trữ · Chỉ đọc."
+      ? "Phiên bản đã kết thúc hoặc được lưu trữ · Chỉ đọc."
       : "Nhấn vào ảnh v2.0 để ghim phản hồi tại đúng vị trí.";
     $("#decision-title").textContent =
       p.status === "Archived"
         ? "Dự án đã được lưu trữ."
         : p.versionStatus === "Approved"
           ? "Đã phê duyệt. Cùng nhau tạo nên thành quả!"
-          : p.versionStatus === "Changes Requested"
-            ? "Đã gửi yêu cầu chỉnh sửa."
-            : "Bạn cảm thấy phiên bản này thế nào?";
+          : p.versionStatus === "Rejected"
+            ? "Đã từ chối phiên bản v2.0."
+            : p.versionStatus === "Changes Requested"
+              ? "Đã gửi yêu cầu chỉnh sửa."
+              : "Bạn cảm thấy phiên bản này thế nào?";
     $("#decision-description").textContent =
       p.versionStatus === "Approved"
         ? "Trạng thái dự án đã chuyển sang Hoàn thành."
-        : p.versionStatus === "Changes Requested"
-          ? "Các phản hồi đã lưu để Creative Lead tiếp nhận trong module SV3."
-          : "Phê duyệt để hoàn tất, hoặc gửi phản hồi để đội ngũ chỉnh sửa.";
-    if (p.status === "Archived")
-      $("#project-select").innerHTML =
-        `<option>${escape(p.name)} — Đã lưu trữ</option>`;
+        : p.versionStatus === "Rejected"
+          ? "Đội ngũ cần xem lý do và gửi một phiên bản mới để bạn duyệt lại."
+          : p.versionStatus === "Changes Requested"
+            ? "Các phản hồi đã lưu để Creative Lead tiếp nhận trong module SV3."
+            : "Phê duyệt để hoàn tất, hoặc gửi phản hồi để đội ngũ chỉnh sửa.";
+    $("#rejection-detail").hidden = p.versionStatus !== "Rejected";
+    $("#rejection-reason-text").textContent = p.rejectionReason || "";
   }
   $$("[data-mode]").forEach(
     (b) =>
@@ -189,6 +200,7 @@
     ) {
       dialog.close();
       refresh();
+      CS.notify(`Có phản hồi mới cho ${p.name}.`, p.id, "comment");
       toast("Đã lưu phản hồi tại vị trí đã chọn.");
     }
   };
@@ -247,9 +259,15 @@
             project.versionStatus = "Approved";
             project.status = "Completed";
             project.progress = 100;
+            project.reviewedAt = new Date().toISOString();
           })
         ) {
           refresh();
+          CS.notify(
+            `Bạn đã phê duyệt phiên bản v2.0 của ${p.name}.`,
+            p.id,
+            "review",
+          );
           toast("Đã phê duyệt v2.0. Dự án hoàn thành!");
         }
       },
@@ -273,10 +291,47 @@
           })
         ) {
           refresh();
+          CS.notify(`Bạn đã yêu cầu chỉnh sửa ${p.name}.`, p.id, "review");
           toast("Đã lưu yêu cầu chỉnh sửa.");
         }
       },
     );
+  };
+  $("#reject-version").onclick = () => {
+    if (locked()) return;
+    $("#rejection-form").reset();
+    $("#rejection-error").textContent = "";
+    $("#rejection-dialog").showModal();
+  };
+  $("#close-rejection").onclick = $("#cancel-rejection").onclick = () =>
+    $("#rejection-dialog").close();
+  $("#rejection-form").onsubmit = (e) => {
+    e.preventDefault();
+    if (locked()) return;
+    const reason = $("#rejection-reason").value.trim();
+    if (reason.length < 10) {
+      $("#rejection-error").textContent =
+        "Hãy nêu lý do cụ thể với ít nhất 10 ký tự.";
+      $("#rejection-reason").focus();
+      return;
+    }
+    if (
+      update(p.id, (project) => {
+        project.versionStatus = "Rejected";
+        project.status = "Active";
+        project.rejectionReason = reason;
+        project.reviewedAt = new Date().toISOString();
+      })
+    ) {
+      $("#rejection-dialog").close();
+      refresh();
+      CS.notify(
+        `Phiên bản v2.0 của ${p.name} đã bị từ chối kèm lý do.`,
+        p.id,
+        "review",
+      );
+      toast("Đã lưu lý do từ chối phiên bản.");
+    }
   };
   $("#moodboard").onclick = () => $("#mood-dialog").showModal();
   $("#close-mood").onclick = () => $("#mood-dialog").close();

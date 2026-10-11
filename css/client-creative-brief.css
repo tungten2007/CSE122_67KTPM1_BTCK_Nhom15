@@ -258,3 +258,26 @@
     width: 100%;
   }
 }
+.brief-meta {
+  margin-top: 18px;
+}
+.brief-meta input {
+  font-size: 12px;
+}
+.brief-meta small {
+  font-size: 10px;
+}
+.uncertainty-note {
+  background: #fff4de;
+  color: #8b6229;
+  border: 1px solid #eddbb7;
+  padding: 13px 15px;
+  border-radius: 8px;
+  font-size: 11px;
+  margin-top: 14px;
+}
+.brief-next {
+  font-size: 11px;
+  display: inline-block;
+  margin-top: 15px;
+}

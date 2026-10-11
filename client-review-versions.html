@@ -143,11 +143,18 @@
             </p>
           </div>
           <div class="actions">
+            <button class="text-button" id="reject-version">
+              Từ chối phiên bản
+            </button>
             <button class="btn" id="request-changes">↶ Yêu cầu chỉnh sửa</button
             ><button class="btn primary" id="approve">✓ Phê duyệt v2.0</button>
           </div>
         </section>
       </div>
+      <section class="panel rejection-detail" id="rejection-detail" hidden>
+        <span class="eyebrow">Lý do từ chối v2.0</span>
+        <p id="rejection-reason-text"></p>
+      </section>
       <div class="footer-note">
         <span>✳ Phản hồi rõ ràng, thành quả tốt hơn.</span
         ><span>Phản hồi & trạng thái lưu tại trình duyệt</span>
@@ -179,6 +186,35 @@
           <div class="actions">
             <button type="button" class="btn" id="cancel-comment">Hủy</button
             ><button type="submit" class="btn primary">Lưu phản hồi →</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="rejection-dialog">
+        <div class="dialog-head">
+          <h2>Từ chối phiên bản v2.0?</h2>
+          <button class="text-button" id="close-rejection" aria-label="Đóng">
+            ✕
+          </button>
+        </div>
+        <p>
+          Hãy nêu lý do để đội ngũ hiểu định hướng cần thay đổi. Phiên bản này
+          sẽ kết thúc và chuyển sang chỉ đọc.
+        </p>
+        <form id="rejection-form">
+          <div class="field">
+            <label for="rejection-reason">Lý do từ chối *</label
+            ><textarea
+              id="rejection-reason"
+              required
+              minlength="10"
+              maxlength="1000"
+              placeholder="Ví dụ: Định hướng hiện tại chưa phù hợp với nhóm khách hàng của thương hiệu."
+            ></textarea>
+          </div>
+          <p class="error" id="rejection-error" role="alert"></p>
+          <div class="actions">
+            <button type="button" class="btn" id="cancel-rejection">Hủy</button
+            ><button type="submit" class="btn danger">Xác nhận từ chối</button>
           </div>
         </form>
       </dialog>

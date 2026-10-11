@@ -1,6 +1,7 @@
 "use strict";
-(() => {
+(async () => {
   const { $, $$, escape, read, write, toast, pill, url, confirmAction } = CS;
+  if (!(await CS.init())) return;
   if (!CS.shell("projects", "Dự án của tôi")) return;
   let filter = "all",
     editing = null;
@@ -32,7 +33,7 @@
       projects
         .map(
           (p) =>
-            `<article class="project-card"><div class="project-art"><img src="assets/images/${escape(p.art)}-v2.svg" alt="Thiết kế minh họa cho ${escape(p.name)}">${pill(p.status)}</div><div class="card-content"><span class="category-label">${escape(p.category)} / CREATIVE PROJECT</span><h3 title="${escape(p.name)}">${escape(p.name)}</h3><p>${escape(p.description)}</p><div class="card-meta"><span>Tiến độ <strong>${p.progress}%</strong></span><span>Hạn: ${escape(new Date(p.deadline + "T00:00:00").toLocaleDateString("vi-VN"))}</span></div><progress value="${p.progress}" max="100" aria-label="Tiến độ ${escape(p.name)}"></progress><div class="card-footer">${p.status === "Archived" ? `<button class="btn small" data-action="restore" data-id="${escape(p.id)}">Khôi phục ↶</button>` : `<a class="text-button" href="${url("client-creative-brief", p.id)}">${p.brief?.submitted ? "Xem brief" : "Viết brief"} →</a><a class="btn small" href="${url("client-review-versions", p.id)}">Xem phiên bản →</a>`}</div><div class="card-menu">${p.status === "Archived" ? `<button data-action="delete" data-id="${escape(p.id)}">Xóa vĩnh viễn</button>` : `<button data-action="edit" data-id="${escape(p.id)}">Chỉnh sửa</button><span class="muted">·</span><button data-action="archive" data-id="${escape(p.id)}">Lưu trữ</button>`}</div></div></article>`,
+            `<article class="project-card"><div class="project-art"><img src="assets/images/${escape(p.art)}-v2.svg" alt="Thiết kế minh họa cho ${escape(p.name)}">${pill(p.status)}</div><div class="card-content"><span class="category-label">${escape(p.category)} / CREATIVE PROJECT</span><h3 title="${escape(p.name)}">${escape(p.name)}</h3><p>${escape(p.description)}</p><div class="project-summary"><span class="brief-badge ${p.brief?.submitted ? "submitted" : ""}">${p.brief?.submitted ? "✓ Brief đã gửi" : p.brief?.accepted ? "▤ Brief đã xác nhận" : p.brief ? "▤ Brief bản nháp" : "▤ Chưa có brief"}</span>${p.versionStatus ? pill(p.versionStatus) : '<span class="pill">Chưa có phiên bản</span>'}</div><div class="card-meta"><span>Tiến độ <strong>${p.progress}%</strong></span><span>Hạn: ${escape(new Date(p.deadline + "T00:00:00").toLocaleDateString("vi-VN"))}</span></div><progress value="${p.progress}" max="100" aria-label="Tiến độ ${escape(p.name)}"></progress><div class="card-footer">${p.status === "Archived" ? `<button class="btn small" data-action="restore" data-id="${escape(p.id)}">Khôi phục ↶</button>` : `<a class="text-button" href="${url("client-creative-brief", p.id)}">${p.brief?.submitted ? "Xem brief" : "Viết brief"} →</a><a class="btn small" href="${url("client-review-versions", p.id)}">Xem phiên bản →</a>`}</div><div class="card-menu">${p.status === "Archived" ? `<button data-action="delete" data-id="${escape(p.id)}">Xóa vĩnh viễn</button>` : `<button data-action="edit" data-id="${escape(p.id)}">Chỉnh sửa</button><span class="muted">·</span><button data-action="archive" data-id="${escape(p.id)}">Lưu trữ</button>`}</div></div></article>`,
         )
         .join("") +
       (!query && filter === "all"
@@ -152,8 +153,12 @@
         const data = read();
         const p = data.projects.find((p) => p.id === id);
         if (!p) return;
-        if (action === "delete")
+        if (action === "delete") {
           data.projects = data.projects.filter((p) => p.id !== id);
+          data.notifications = data.notifications.filter(
+            (n) => n.projectId !== id,
+          );
+        }
         if (action === "archive") {
           p.previousStatus = p.status;
           p.status = "Archived";

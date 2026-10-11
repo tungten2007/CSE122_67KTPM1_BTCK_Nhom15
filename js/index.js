@@ -5,7 +5,7 @@ document.querySelector("#hero-demo").onclick = () => {
 document.querySelectorAll("[data-role]").forEach(
   (button) =>
     (button.onclick = () => {
-      location.href =
-        "login.html?role=" + encodeURIComponent(button.dataset.role);
+      if (CS.login(button.dataset.role))
+        location.href = "client-project-overview.html";
     }),
 );

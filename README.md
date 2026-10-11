@@ -1,5 +1,7 @@
 # CreatorStudio -- Quản lý dự án sáng tạo và phản hồi phiên bản
 
+> **Bộ giao diện SV1 đã có mã nguồn:** 5 trang HTML/CSS/JavaScript tách riêng. Chạy bằng VS Code Live Server hoặc `python3 -m http.server 8000` tại thư mục này. Xem [hướng dẫn SV1](docs/SV1.md), [đối chiếu nhiệm vụ mới](docs/task-map.md) và [bảng trạng thái màn hình](docs/screen-list.md).
+
 > **Học phần:** Phát triển Ứng dụng Web Cơ bản -- CSE122\
 > **Nhóm thực hiện:** 3 sinh viên\
 > **Loại sản phẩm:** Web Frontend Prototype\

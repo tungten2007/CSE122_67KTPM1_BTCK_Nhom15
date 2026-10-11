@@ -520,3 +520,30 @@
   font-size: 9px;
   padding: 4px 7px;
 }
+.rejection-detail {
+  margin-top: 20px;
+  border-color: #edd2ca;
+  background: #fff6f1;
+}
+.rejection-detail p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #974932;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.decision-panel > div:first-child {
+  min-width: 200px;
+}
+.decision-panel .actions {
+  flex-shrink: 0;
+}
+.decision-panel #reject-version {
+  font-size: 11px;
+}
+@media (max-width: 1400px) {
+  .decision-panel {
+    align-items: start;
+    flex-direction: column;
+  }
+}

@@ -46,9 +46,19 @@
           </div>
           <form id="login-form" novalidate>
             <div class="field">
+              <label for="login-role">Vai trò demo</label
+              ><select id="login-role">
+                <option value="Client">Khách hàng</option>
+                <option value="Designer">Nhà thiết kế</option>
+                <option value="Creative Lead">Creative Lead</option>
+                <option value="Admin">Quản trị viên</option>
+              </select>
+            </div>
+            <div class="field">
               <label for="email">Địa chỉ email</label
               ><input
                 id="email"
+                aria-describedby="email-error"
                 name="email"
                 type="email"
                 autocomplete="off"
@@ -61,6 +71,7 @@
               <div class="password-wrap">
                 <input
                   id="password"
+                  aria-describedby="password-error"
                   name="password"
                   type="password"
                   autocomplete="off"

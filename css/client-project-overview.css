@@ -309,3 +309,21 @@
     min-height: 230px;
   }
 }
+.project-summary {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 14px;
+}
+.project-summary .pill {
+  font-size: 9px;
+}
+.brief-badge {
+  font-size: 10px;
+  color: var(--muted);
+}
+.brief-badge.submitted {
+  color: var(--green);
+  font-weight: 600;
+}

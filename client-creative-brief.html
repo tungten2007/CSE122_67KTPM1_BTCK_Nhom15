@@ -60,6 +60,22 @@
               ><small id="char-count">0 / 5.000</small>
             </div>
           </div>
+          <div class="form-grid brief-meta">
+            <div class="field">
+              <label for="brief-budget">Ngân sách dự kiến (VNĐ)</label
+              ><input
+                id="brief-budget"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="Ví dụ: 20000000"
+              /><small>Có thể để trống nếu chưa chốt.</small>
+            </div>
+            <div class="field">
+              <label for="brief-deadline">Ngày bàn giao mong muốn *</label
+              ><input id="brief-deadline" type="date" required />
+            </div>
+          </div>
           <div class="tip-card">
             <strong>✧ Một vài gợi ý để bắt đầu</strong>
             <ul>
@@ -82,7 +98,7 @@
             gửi dữ liệu đến dịch vụ bên ngoài.</small
           >
         </section>
-        <section class="panel brief-result">
+        <section class="panel brief-result" id="brief-result" aria-busy="false">
           <div class="panel-title">
             <span class="number-tag">02</span>
             <div>
@@ -141,6 +157,12 @@
               <strong>Vì sao có định hướng này?</strong>
               <p id="explanation-text"></p>
             </div>
+            <div
+              class="uncertainty-note"
+              id="uncertainty-note"
+              role="status"
+              hidden
+            ></div>
             <div class="actions result-controls">
               <button class="btn small" type="button" id="accept">
                 ✓ Chấp nhận kết quả</button
@@ -151,6 +173,13 @@
               </button>
             </div>
             <p class="accepted-note" id="accepted-note" role="status"></p>
+            <a
+              class="text-button brief-next"
+              id="brief-next"
+              href="client-project-overview.html"
+              hidden
+              >Xem tiến độ & bước tiếp theo →</a
+            >
             <div class="submit-row">
               <small
                 >Brief sẽ được lưu với trạng thái Submitted<br />để Creative

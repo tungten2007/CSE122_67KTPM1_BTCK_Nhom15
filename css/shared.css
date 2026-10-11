@@ -574,3 +574,202 @@ progress {
 .empty-icon {
   font-size: 30px;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.role-control select {
+  max-width: 145px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  background: #edf2e6;
+  font-size: 11px;
+  font-weight: 600;
+}
+.activity-wrap {
+  position: relative;
+}
+.activity-button {
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 4px;
+  display: flex;
+}
+.activity-button svg {
+  width: 21px;
+  height: 21px;
+}
+#notification-count {
+  position: absolute;
+  top: -3px;
+  right: -6px;
+  background: var(--ink);
+  color: white;
+  border: 2px solid var(--paper);
+  border-radius: 20px;
+  min-width: 18px;
+  height: 18px;
+  font-size: 8px;
+  display: grid;
+  place-items: center;
+}
+.activity-panel {
+  position: absolute;
+  right: -25px;
+  top: 40px;
+  width: 330px;
+  background: white;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px #183c3225;
+  z-index: 40;
+}
+.activity-panel > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity-panel h3 {
+  font-size: 15px;
+}
+.activity-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.activity-panel li {
+  font-size: 12px;
+  padding: 12px 9px;
+  border-bottom: 1px solid var(--line);
+}
+.activity-panel li.unread {
+  background: #f1f6e9;
+}
+.activity-panel li small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+}
+.activity-panel .text-button {
+  font-size: 11px;
+}
+.mobile-close,
+.menu-backdrop {
+  display: none;
+}
+.pill.Rejected {
+  color: #a53f2d;
+  background: #ffe9e4;
+}
+.data-loading {
+  max-width: 950px;
+  margin: 12vh auto;
+  padding: 24px;
+  text-align: center;
+}
+.data-loading .brand-mark {
+  margin: 0 auto 20px;
+}
+.data-loading p {
+  margin-top: 10px;
+}
+.skeleton-row {
+  display: flex;
+  gap: 18px;
+  margin-top: 35px;
+}
+.skeleton-row i {
+  display: block;
+  width: 33%;
+  height: 160px;
+  background: linear-gradient(90deg, #e6edde, #f5f8f0, #e6edde);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s infinite;
+  border-radius: 12px;
+}
+@keyframes skeleton {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (max-width: 1150px) {
+  .breadcrumb {
+    display: none;
+  }
+  .topbar {
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 760px) {
+  .topbar {
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 21;
+  }
+  .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 66px 0 0;
+    border: 0;
+    background: #183c3266;
+    z-index: 19;
+  }
+  .mobile-close {
+    display: block;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+  }
+  .sidebar .brand {
+    margin-top: 18px;
+  }
+  .menu-open {
+    overflow: hidden;
+  }
+  .role-control select {
+    width: 112px;
+    padding: 7px 5px;
+    font-size: 10px;
+  }
+  .activity-panel {
+    position: fixed;
+    top: 72px;
+    right: 18px;
+    width: min(330px, calc(100vw - 36px));
+  }
+  .skeleton-row {
+    gap: 10px;
+  }
+  .skeleton-row i {
+    height: 100px;
+  }
+}
+@media (max-width: 390px) {
+  .topbar {
+    padding: 0 12px;
+  }
+  .topbar-right {
+    gap: 9px;
+  }
+  .topbar .user-chip {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-row i {
+    animation: none;
+  }
+}

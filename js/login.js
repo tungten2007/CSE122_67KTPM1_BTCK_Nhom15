@@ -1,6 +1,8 @@
 "use strict";
 const { $, $$, login, toast } = CS;
-const selected = new URLSearchParams(location.search).get("role");
+const requested = new URLSearchParams(location.search).get("role");
+const selected = CS.roles.includes(requested) ? requested : CS.preferredRole();
+$("#login-role").value = selected;
 $$("[data-role]").forEach((button) => {
   if (button.dataset.role === selected) button.classList.add("selected");
   button.onclick = () => {
@@ -39,7 +41,7 @@ $("#login-form").onsubmit = async (e) => {
   $("#login-submit").disabled = true;
   $("#login-status").textContent = "Đang tạo phiên demo…";
   await new Promise((r) => setTimeout(r, 450));
-  if (login("Client", email.value.trim())) {
+  if (login($("#login-role").value, email.value.trim())) {
     pass.value = "";
     location.href = "client-project-overview.html";
   } else {
