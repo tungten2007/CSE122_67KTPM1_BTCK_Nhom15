@@ -20,3 +20,12 @@ Theo yêu cầu người dùng, trợ lý phân công các agent Planning, UI/UX
 
 ## 09/10/2026 — TASK-16 và GitHub
 Trợ lý đọc đề cùng ba ảnh hướng dẫn, kiểm tra repo hiện có; AI bổ sung bộ chọn phiên bản và validation review action. Có kiểm thử độc lập bằng Node/DOM giả lập, chưa browser. Mã được chuẩn bị trên nhánh riêng; không giả lịch sử sinh viên hay video OBS. Phần sinh viên tự sửa/hiểu vẫn chờ xác nhận.
+
+
+## Cập nhật12/10/2026 — TASK17 và QA phần SV3
+
+AI hỗ trợ rà source, sửa form người phụ trách không hợp lệ, gắn đúng phiên bản phản hồi và đặt lại lựa chọn khi đổi dự án. AI-2 của sản phẩm vẫn là quy tắc mô phỏng, không gọi LLM/API.
+
+Agent Frontend sửa TASK17; root chạy Chromium16 nhóm và9 file regression; agent QA xem nguồn/kết quả/ảnh độc lập. Agent QA tiếp tục chạy12 nhóm Admin/403/404 và24 lượt responsive sáu màn, review ảnh desktop/mobile/tablet. Root kiểm tra kết quả và lưu trên GitHub. Các script browser là công cụ QA, không thêm thư viện vào website.
+
+Không nhận đã duyệt Figma, review nhóm/giảng viên, merge, quay OBS hoặc tích hợp mã SV1/SV2. Những phần này vẫn ghi trạng thái riêng.
