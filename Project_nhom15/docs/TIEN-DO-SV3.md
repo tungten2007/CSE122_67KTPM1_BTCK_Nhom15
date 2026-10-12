@@ -10,10 +10,10 @@ Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng
 | TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟢 Hoàn thành | lead-task-board.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; tạo/sửa/lọc, kéo thả, duyệt/trả brief và lưu sau tải lại đạt |
 | TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟢 Hoàn thành | lead-internal-review.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; ghim/sửa/xử lý ghi chú, checklist, yêu cầu sửa/chuyển khách đạt |
 | TASK-17 / SV3-03 | Tổng hợp phản hồi AI-2 | SV3 | 🟢 Hoàn thành | lead-feedback-summary.html; docs/TASK-17-QA.md | Chromium16 nhóm PASS, 9 file regression PASS; sửa/bỏ/làm rõ/chuyển task và nguồn phiên bản đúng |
-| TASK-19 / SV3-04 | Quản lý người dùng | SV3 | 🟠 Chờ duyệt | admin-user-management.html | Logic đã kiểm thử; chưa duyệt nhóm |
-| TASK-20 / SV3-05 | Thiết lập và lưu trữ | SV3 | 🟠 Chờ duyệt | admin-project-settings.html | Quy tắc cần SV2 áp dụng khi ghép |
-| TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟡 Đang làm | css/; docs/TASK-15-16-QA.md | Đã QA desktop/mobile Task15/16; còn Feedback Summary, Admin và rà responsive tổng thể |
-| TASK-26 / SV3-06 | Lỗi 403/404 | SV3 | 🟠 Chờ duyệt | 404.html | Logic/HTTP đạt; chưa QA browser |
+| TASK-19 / SV3-04 | Quản lý người dùng | SV3 | 🟢 Hoàn thành | admin-user-management.html; docs/qa-admin-errors/README.md | Chromium CRUD/validation/filter/role/lock và desktop/mobile PASS |
+| TASK-20 / SV3-05 | Thiết lập và lưu trữ | SV3 | 🟢 Hoàn thành | admin-project-settings.html; docs/qa-admin-errors/README.md | Quy tắc, nhãn, điều kiện lưu trữ/read-only và desktop/mobile PASS |
+| TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟢 Hoàn thành | tests/browser-responsive-sv3.cjs; docs/qa-responsive-sv3/ | 24/24 lượt Chromium:6 màn ×320/768/1024/1440px, dialog/menu/focus PASS |
+| TASK-26 / SV3-06 | Lỗi 403/404 | SV3 | 🟢 Hoàn thành | 404.html; docs/qa-admin-errors/ | 403/404, đường về4vai trò, HTTPURL lạ và desktop/mobile PASS |
 | TASK-27 (phần SV3) | Kiểm thử tích hợp | SV3 phối hợp nhóm | ⬜ Chưa làm | docs/tich-hop.md | Chờ code và dữ liệu SV1/SV2 |
 | TASK-28 (phần SV3) | README, tài liệu, kiểm kê | SV3 phối hợp nhóm | 🟡 Đang làm | README.md; docs/ | Có tài liệu SV3; chưa đồng bộ toàn nhóm |
 | TASK-29 (phần SV3) | OBS, minh chứng, phát hành | SV3 phối hợp nhóm | ⬜ Chưa làm | — | Chưa có OBS/review/phát hành; không giả nhận hoàn thành |
@@ -25,7 +25,7 @@ Các task thiết lập và thiết kế trước đó có tài sản trong lị
 - Yêu cầu BTL-30 và 3 ảnh hướng dẫn người dùng gửi lại đã đọc. Ảnh tư vấn tâm lý là ví dụ tổ chức bài; không thay chủ đề CreatorStudio.
 - Repo xác định: tungten2007/CSE122_67KTPM1_BTCK_Nhom15. Bản SV3 được đưa vào Project_nhom15, giữ đường dẫn nội bộ và các file cũ.
 - index.html tại đây chỉ mở demo SV3, không thay Landing/Login của SV1. Client/Designer có trang chờ ghép.
-- Task15/16 đã QA thực tế Chromium153 tại1440×1000 và390×844, 14 nhóm PASS; 8 file test Node/DOM PASS. Các màn khác vẫn cần browser QA. Minh chứng ở docs/qa-task15-16/. Không suy kết quả hai màn thành toàn website đạt.
+- Sáu màn SV3 đã QA Chromium153: Task15/16 đạt14nhóm; Task17 đạt16nhóm; Task19/20/26 đạt12nhóm; responsive6màn×4widths đạt24/24. 9file regression PASS. Minh chứng trong docs/qa-*. Không suy kết quả SV3 thành toàn website hoặc duyệt Figma.
 - Trello chưa được chỉnh trực tiếp. Dùng TASK-15-TRELLO.txt và TASK-16-TRELLO.txt để cập nhật hai thẻ hoàn thành phần triển khai/QA. Review nhóm, merge và OBS vẫn chưa được xác nhận.
 
 ## Cập nhật thiết kế ngày 12/10/2026
@@ -41,3 +41,5 @@ Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa
 ## Hoàn thành TASK-15/16 ngày12/10/2026
 
 Đã thực hiện QA Chromium và review độc lập đủ chức năng, ảnh desktop/mobile. Đánh dấu hoàn thành hai task triển khai; giữ TASK03/04 Figma có lỗi, TASK27 tích hợp và TASK29 OBS/release chưa hoàn thành. Tiếp theo TASK17. Báo cáo: docs/TASK-15-16-QA.md.
+
+Ngày12/10/2026: sau TASK17, QA độc lập chốt TASK19/20/26 PASS; tiếp tục TASK21, 24 lượt responsive PASS. Tất cả sáu màn SV3 đã QA chức năng và giao diện trong phạm vi Chromium. Figma03/04 và tích hợp/OBS27–29 vẫn theo task riêng.

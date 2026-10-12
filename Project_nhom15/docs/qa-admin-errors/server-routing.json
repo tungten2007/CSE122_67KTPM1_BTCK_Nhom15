@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "checks": [
+    "/qa-missing-page -> 302 /404.html",
+    "/qa-missing-page.html -> 302 /404.html",
+    "/nested/qa-missing-page.html -> 302 /404.html",
+    "/404.html -> 200 error page",
+    "missing JS -> HTTP404"
+  ],
+  "note": "Real server.py Handler HTTP test; browser UI separately covered by browser-admin-errors.cjs."
+}

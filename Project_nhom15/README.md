@@ -1,3 +1,5 @@
+> Cập nhật12/10/2026: sáu màn SV3 đã qua QA Chromium desktop/mobile và responsive320–1440px. Xem [tiến độ](docs/TIEN-DO-SV3.md), [QA Task17](docs/TASK-17-QA.md) và [QA Admin/responsive/lỗi](docs/TASK-19-20-21-26-QA.md). Figma, ghépSV1/SV2 và OBS vẫn còn việc riêng.
+
 # CreatorStudio — Website thực hành phần SV3
 
 Bản frontend HTML5 + CSS3 + JavaScript thuần cho 6 màn hình SV3. Không cần npm, không có framework hoặc backend. Toàn bộ CSS, JavaScript và hình SVG đều có sẵn trong thư mục, không tải CDN. Màu tím và thanh bên tối tiếp nối UI Kit đã làm.
