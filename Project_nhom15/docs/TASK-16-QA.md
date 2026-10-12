@@ -1,13 +1,9 @@
-# TASK-16 — kết quả 09/10/2026
+# TASK-16 — Duyệt nội bộ
 
-SV3 phải làm: duyệt nội bộ phiên bản, ghi chú, checklist, trả sửa/chuyển khách.
+SV3 thực hiện chọn phiên bản, tham chiếu thiết kế, ghi chú và kiểm duyệt. Đã sửa lỗi tọa độ ghim và kiểm tra thực tế trên Chromium desktop/mobile ngày12/10/2026.
 
-Đã làm: thêm chọn phiên bản theo dự án, ưu tiên Internal Review, giữ lựa chọn khi render, bỏ chế độ ghim khi đổi phiên bản; chặn action ngoài pass/rework. Không sửa phần upload của SV2, không đổi schema dữ liệu.
+QA: PASS. Xem [báo cáo và ảnh đầy đủ](TASK-15-16-QA.md).
 
-File: js/pages/lead-internal-review.js, js/store.js, tests/task16.test.cjs.
+Trạng thái triển khai: 🟢 Hoàn thành. Duyệt Figma, tích hợp toàn nhóm và OBS vẫn theo các task riêng.
 
-QA: PASS kỹ thuật. Root chạy lại node --test tests/*.test.cjs: 7 file test, 7 pass, 0 fail; python check_bundle.py đạt. Test mới bao phủ phiên bản đã duyệt đứng trước phiên bản chờ, lọc đúng dự án, giữ lựa chọn, chuyển dự án, đích action và không đổi dữ liệu khi action sai. DOM giả lập không chứng minh layout hoặc focus native browser.
-
-Trạng thái: 🟠 Chờ duyệt. Chưa QA trình duyệt và tích hợp nhóm. Ảnh demo chỉ có ở phiên bản mẫu; phiên bản khác báo thiếu ảnh, chờ tài sản thật từ SV2.
-
-Tiếp theo: TASK-17 Tổng hợp phản hồi AI-2 (đã có code, tiếp tục từ bản có sẵn), TASK-21 kiểm thử browser khi có môi trường; TASK-27 chờ mã nguồn SV1/SV2. Không xây lại chức năng đã đạt.
+Tiếp theo: TASK-17 — Tổng hợp phản hồi AI-2.

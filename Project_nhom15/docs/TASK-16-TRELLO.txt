@@ -1,17 +1,13 @@
-TASK-16 – Internal Review / Duyệt nội bộ (SV3)
-Trạng thái: CHỜ DUYỆT bản triển khai; chưa đánh dấu hoàn thành toàn checklist.
+TASK-16 — Internal Review
+Người phụ trách: SV3
+Mô tả: Chọn phiên bản đúng dự án; xem thiết kế/moodboard; ghim/sửa/xử lý ghi chú; checklist; yêu cầu sửa hoặc chuyển khách hàng.
 
-Mô tả: Chọn phiên bản thuộc dự án, xem thiết kế/moodboard mẫu, ghim/sửa/xử lý ghi chú, checklist và yêu cầu sửa hoặc chuyển khách hàng.
-File: Project_nhom15/lead-internal-review.html; js/pages/lead-internal-review.js; js/store.js.
-Nhánh: feature/sv3-task16
+Trạng thái triển khai: HOÀN THÀNH — QA frontend độc lập đạt ngày12/10/2026.
+[x] Chức năng theo checklist đã triển khai.
+[x] Lỗi QA phát hiện đã sửa.
+[x] Kiểm tra thực tế Chromium desktop/mobile.
+[x] Kiểm tra form, dữ liệu lưu sau tải lại và quyền thao tác.
+[x] Không có lỗi Console/pageerror/tài nguyên HTTP.
+[x] Có ảnh và báo cáo QA trong docs/TASK-15-16-QA.md.
 
-[x] Có code duyệt nội bộ và validation.
-[x] Chọn phiên bản đúng dự án; ưu tiên Internal Review.
-[x] Thao tác ghi chú/duyệt áp dụng đúng phiên bản đang chọn.
-[x] Chặn duyệt sai action, sai quyền, dự án lưu trữ, checklist chưa xong.
-[x] 7 bộ kiểm thử Node/DOM giả lập đạt; bộ file đủ.
-[ ] Kiểm tra browser: ghim, dialog, bàn phím, Console.
-[ ] Nhóm review và ghép vào dev.
-[ ] OBS có mặt sinh viên, giải thích và chỉnh sửa trực tiếp.
-
-Responsive tổng thể theo TASK-21. PR/commit: lấy link bàn giao trong cuộc trò chuyện; chỉ đánh dấu đã merge sau khi GitHub xác nhận.
+Duyệt Figma TASK03/04, tích hợp TASK27, OBS/review/nộp TASK29 chưa hoàn thành; theo dõi tại các thẻ đó. PR#1 vẫn draft, chưa merge.

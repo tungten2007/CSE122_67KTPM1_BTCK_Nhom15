@@ -7,12 +7,12 @@ Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng
 | TASK-03 (phần SV3) | Wireframe và UI Kit — phần SV3 | SV3 phối hợp nhóm | 🔴 Có lỗi | figma-canva/README.md; Figma root70:15 | Đã bổ sung kit; chưa QA sau sửa text sizing; chưa có wireframe SV3 riêng |
 | TASK-04 (phần SV3) | Thiết kế chi tiết màn hình SV3 | SV3 | 🔴 Có lỗi | figma-canva/README.md; docs/SV3-DESIGN-QA.md | Đã tạo 6 desktop + 6 mobile; mobile còn chồng chữ, desktop chưa QA sau sửa; thiếu AI states/prototype/export |
 | TASK-05 / CORE-03 | Khung điều hướng và chuyển vai trò demo | SV3 (phần được giao) | 🟠 Chờ duyệt | js/app.js; js/modules/navigation.js | Logic đã QA; chưa ghép Client/Designer |
-| TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟠 Chờ duyệt | lead-task-board.html | Code và QA tự động có; kéo thả/browser chưa xác minh |
-| TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟠 Chờ duyệt | lead-internal-review.html | Chọn phiên bản theo dự án, ưu tiên Internal Review; 7 bộ test PASS; chưa QA browser |
+| TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟢 Hoàn thành | lead-task-board.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; tạo/sửa/lọc, kéo thả, duyệt/trả brief và lưu sau tải lại đạt |
+| TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟢 Hoàn thành | lead-internal-review.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; ghim/sửa/xử lý ghi chú, checklist, yêu cầu sửa/chuyển khách đạt |
 | TASK-17 / SV3-03 | Tổng hợp phản hồi AI-2 | SV3 | 🟠 Chờ duyệt | lead-feedback-summary.html | AI mô phỏng, có kiểm thử logic; chưa QA browser |
 | TASK-19 / SV3-04 | Quản lý người dùng | SV3 | 🟠 Chờ duyệt | admin-user-management.html | Logic đã kiểm thử; chưa duyệt nhóm |
 | TASK-20 / SV3-05 | Thiết lập và lưu trữ | SV3 | 🟠 Chờ duyệt | admin-project-settings.html | Quy tắc cần SV2 áp dụng khi ghép |
-| TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟡 Đang làm | css/; docs/QA-SV3-2026-10-06.md | Có CSS và rà source; thiếu trình duyệt khả dụng để xác nhận |
+| TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟡 Đang làm | css/; docs/TASK-15-16-QA.md | Đã QA desktop/mobile Task15/16; còn Feedback Summary, Admin và rà responsive tổng thể |
 | TASK-26 / SV3-06 | Lỗi 403/404 | SV3 | 🟠 Chờ duyệt | 404.html | Logic/HTTP đạt; chưa QA browser |
 | TASK-27 (phần SV3) | Kiểm thử tích hợp | SV3 phối hợp nhóm | ⬜ Chưa làm | docs/tich-hop.md | Chờ code và dữ liệu SV1/SV2 |
 | TASK-28 (phần SV3) | README, tài liệu, kiểm kê | SV3 phối hợp nhóm | 🟡 Đang làm | README.md; docs/ | Có tài liệu SV3; chưa đồng bộ toàn nhóm |
@@ -25,8 +25,8 @@ Các task thiết lập và thiết kế trước đó có tài sản trong lị
 - Yêu cầu BTL-30 và 3 ảnh hướng dẫn người dùng gửi lại đã đọc. Ảnh tư vấn tâm lý là ví dụ tổ chức bài; không thay chủ đề CreatorStudio.
 - Repo xác định: tungten2007/CSE122_67KTPM1_BTCK_Nhom15. Bản SV3 được đưa vào Project_nhom15, giữ đường dẫn nội bộ và các file cũ.
 - index.html tại đây chỉ mở demo SV3, không thay Landing/Login của SV1. Client/Designer có trang chờ ghép.
-- QA Node/DOM giả lập không thay browser: native dialog, kéo thả, console và responsive còn cần xác minh. Không coi code hoàn chỉnh là đủ điều kiện nộp.
-- Trello chưa được chỉnh trực tiếp. Dùng TASK-16-TRELLO.txt để cập nhật thẻ. GitHub review và OBS vẫn do người thực hiện/nhóm xác nhận.
+- Task15/16 đã QA thực tế Chromium153 tại1440×1000 và390×844, 14 nhóm PASS; 8 file test Node/DOM PASS. Các màn khác vẫn cần browser QA. Minh chứng ở docs/qa-task15-16/. Không suy kết quả hai màn thành toàn website đạt.
+- Trello chưa được chỉnh trực tiếp. Dùng TASK-15-TRELLO.txt và TASK-16-TRELLO.txt để cập nhật hai thẻ hoàn thành phần triển khai/QA. Review nhóm, merge và OBS vẫn chưa được xác nhận.
 
 ## Cập nhật thiết kế ngày 12/10/2026
 
@@ -37,3 +37,7 @@ Các task thiết lập và thiết kế trước đó có tài sản trong lị
 - Không thay trạng thái phần SV1/SV2; Figma không thay QA browser hoặc bằng chứng OBS.
 
 Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa vẫn bị rate limit. Chưa có sửa Figma mới hoặc export; các lỗi/giới hạn QA nêu trên vẫn còn.
+
+## Hoàn thành TASK-15/16 ngày12/10/2026
+
+Đã thực hiện QA Chromium và review độc lập đủ chức năng, ảnh desktop/mobile. Đánh dấu hoàn thành hai task triển khai; giữ TASK03/04 Figma có lỗi, TASK27 tích hợp và TASK29 OBS/release chưa hoàn thành. Tiếp theo TASK17. Báo cáo: docs/TASK-15-16-QA.md.

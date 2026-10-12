@@ -1,6 +1,6 @@
 CREATORSTUDIO — MÔ TẢ & CHECKLIST PHẦN CODE SV3
 Người phụ trách: SV3. Hạn/URL GitHub/video: chưa cung cấp.
-Trạng thái: bản frontend để chạy thử, chưa đủ minh chứng đánh dấu Done.
+Trạng thái: TASK15/16 hoàn thành phần code+QA theo TASK-15-16-QA.md; các task khác theo TIEN-DO-SV3.md.
 Không thay thế thẻ TASK-04 thiết kế bằng thẻ code này; dùng mã thực tế dưới đây từ kế hoạch chi tiết.
 
 
@@ -15,8 +15,8 @@ CHECKLIST
 [x] Đã lập trình kéo thả desktop và chọn trạng thái bằng bàn phím/mobile
 [x] Đã lập trình duyệt brief tạo việc, trả brief cần lý do
 [x] Đã kiểm thử dữ liệu tạo/sửa/đổi cột/lưu lại và chặn xử lý brief lặp
-[ ] Chạy tương tác và kiểm tra Console trên Chrome
-[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[x] QA Chromium153: chức năng và Console PASS ngày12/10/2026
+[x] QA desktop1440×1000/mobile390×844, focus và Escape; tablet thuộc TASK21
 [ ] Ghép dữ liệu/điều hướng với nhóm và review
 [ ] Bổ sung link GitHub, video OBS và duyệt môn học
 
@@ -32,8 +32,8 @@ CHECKLIST
 [x] Đã lập trình checkbox kiểm duyệt, yêu cầu sửa và xác nhận chuyển khách
 [x] Đã kiểm thử chặn Pass khi checklist/ghi chú chưa hoàn tất
 [x] Đã kiểm thử lưu trạng thái và chặn duyệt lặp
-[ ] Chạy tương tác và kiểm tra Console trên Chrome
-[ ] Kiểm tra desktop/tablet/mobile và bàn phím
+[x] QA Chromium153: chức năng và Console PASS ngày12/10/2026
+[x] QA desktop1440×1000/mobile390×844, focus và Escape; tablet thuộc TASK21
 [ ] Ghép dữ liệu/điều hướng với nhóm và review
 [ ] Bổ sung link GitHub, video OBS và duyệt môn học
 

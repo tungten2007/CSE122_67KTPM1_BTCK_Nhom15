@@ -1,6 +1,10 @@
 (() => {
  const A=App;let query='',person='',priority='',mobileStatus='todo';
- function fields(t={},fromBrief=false){return A.field('Tên công việc *','title',t.title||'','text','required minlength="3" maxlength="120"')+A.textField('Mô tả','description',t.description||'','maxlength="2000"')+'<div class="form-grid">'+A.select('Người phụ trách *','assignee',A.people(),t.assignee||A.people()[0]?.[0],'required')+A.select('Ưu tiên','priority',[['high','Cao'],['medium','Vừa'],['low','Thấp']],t.priority||'medium')+A.field('Hạn hoàn thành *','due',t.due||new Date(Date.now()+604800000).toISOString().slice(0,10),'date','required')+(fromBrief?'<p class="note-small">Công việc mới sẽ được tạo ở cột Cần làm.</p>':A.select('Trạng thái','status',Object.entries(A.stateLabel),t.status||'todo'))+'</div>'}
+ function fields(t={},fromBrief=false){
+   const people=A.people(),needsReassignment=!!t.assignee&&!people.some(([id])=>id===t.assignee);
+   const options=needsReassignment?[['','Chọn lại người phụ trách đang hoạt động'],...people]:people;
+   const assignee=needsReassignment?'':t.assignee||people[0]?.[0];
+   return A.field('Tên công việc *','title',t.title||'','text','required minlength="3" maxlength="120"')+A.textField('Mô tả','description',t.description||'','maxlength="2000"')+'<div class="form-grid">'+A.select('Người phụ trách *','assignee',options,assignee,'required')+A.select('Ưu tiên','priority',[['high','Cao'],['medium','Vừa'],['low','Thấp']],t.priority||'medium')+A.field('Hạn hoàn thành *','due',t.due||new Date(Date.now()+604800000).toISOString().slice(0,10),'date','required')+(fromBrief?'<p class="note-small">Công việc mới sẽ được tạo ở cột Cần làm.</p>':A.select('Trạng thái','status',Object.entries(A.stateLabel),t.status||'todo'))+'</div>'}
  function edit(t){A.modal(t?.id?'Chi tiết công việc':'Tạo công việc',fields(t),data=>{Store.saveTask(A.user.id,{...data,id:t?.id,projectId:A.project.id});A.toast(t?.id?'Đã lưu thay đổi.':'Đã tạo công việc.')},'Lưu công việc')}
  function openBrief(b){let body=`<div class="brief-label">BRIEF TỪ KHÁCH HÀNG</div><h3>${A.esc(b.title)}</h3><p class="muted">${A.esc(b.client)} · Hạn ${A.date(b.deadline)}</p><div class="divider"></div><dl class="brief-details"><dt>Mục tiêu</dt><dd>${A.esc(b.summary)}</dd><dt>Đối tượng</dt><dd>${A.esc(b.audience)}</dd><dt>Sản phẩm bàn giao</dt><dd>${A.esc(b.deliverables)}</dd></dl>`;if(b.status==='submitted'&&!A.project.archived){body+='<div class="tool-actions"><button class="button primary" id="approve-brief" type="button">Duyệt & tạo công việc</button><button class="button" id="return-brief" type="button">Yêu cầu bổ sung</button></div>'}else body+=`<div class="notice">${b.status==='approved'?'Đã duyệt và tạo công việc.':'Đang chờ bổ sung: '+A.esc(b.reason)}</div>`;A.modal('Chi tiết brief',body,null);if(A.$('#approve-brief')){A.$('#approve-brief').onclick=()=>{A.$('#dialog').close();A.modal('Duyệt brief & giao việc',fields({title:b.title,description:b.summary,due:b.deadline},true),data=>{Store.brief(A.user.id,b.id,'approve',data);A.toast('Đã duyệt brief và tạo công việc.')} ,'Duyệt & tạo việc')};A.$('#return-brief').onclick=()=>{A.$('#dialog').close();A.modal('Yêu cầu bổ sung brief',A.textField('Nội dung cần làm rõ *','reason','','required minlength="8" maxlength="1000"'),data=>{Store.brief(A.user.id,b.id,'return',data);A.toast('Đã ghi nhận yêu cầu bổ sung.')} ,'Gửi yêu cầu')}}}
  function render(){A.preserveFocus(renderContent)}
@@ -10,7 +14,15 @@
  A.$('#search').oninput=e=>{const pos=e.target.selectionStart;query=e.target.value;render();A.$('#search').focus();A.$('#search').setSelectionRange(pos,pos)};A.$('#person').onchange=e=>{person=e.target.value;render()};A.$('#priority').onchange=e=>{priority=e.target.value;render()};
  A.$$('[data-tab]').forEach(b=>b.onclick=()=>{mobileStatus=b.dataset.tab;render()});A.$$('[data-add]').forEach(b=>b.onclick=()=>edit({status:b.dataset.add}));
  A.$$('[data-edit]').forEach(b=>b.onclick=()=>{const t=d.tasks.find(t=>t.id===b.dataset.edit);if(p.archived)A.modal(t.title,`<p>${A.esc(t.description)}</p><p>Trạng thái: ${A.stateLabel[t.status]} · Hạn ${A.date(t.due)}</p>`,null);else edit(t)});
- A.$$('[data-move]').forEach(s=>s.onchange=()=>A.action(()=>Store.moveTask(A.user.id,s.dataset.move,s.value),'Đã chuyển công việc.'));
+ A.$$('[data-move]').forEach(s=>s.onchange=()=>{
+   const previous=d.tasks.find(t=>t.id===s.dataset.move)?.status;
+   const moved=A.action(()=>{
+     Store.moveTask(A.user.id,s.dataset.move,s.value);
+     // Mobile shows one column; follow the moved card before rendering again.
+     mobileStatus=s.value;
+   },'Đã chuyển công việc.');
+   if(!moved)s.value=previous;
+ });
  A.$$('.task-card').forEach(c=>{c.ondragstart=e=>{e.dataTransfer.setData('text/plain',c.dataset.id);c.classList.add('dragging')};c.ondragend=()=>c.classList.remove('dragging')});A.$$('.kanban-column').forEach(col=>{col.ondragover=e=>{if(!p.archived){e.preventDefault();col.classList.add('drag-over')}};col.ondragleave=()=>col.classList.remove('drag-over');col.ondrop=e=>{e.preventDefault();col.classList.remove('drag-over');A.action(()=>Store.moveTask(A.user.id,e.dataTransfer.getData('text/plain'),col.dataset.status),'Đã chuyển công việc.')}});
  if(A.$('#briefs'))A.$('#briefs').onclick=()=>{if(briefs.length===1)openBrief(briefs[0]);else{A.modal('Brief dự án',briefs.map(b=>`<button class="button" type="button" data-brief="${b.id}">${A.esc(b.title)}</button>`).join(''),null);A.$$('[data-brief]').forEach(b=>b.onclick=()=>{A.$('#dialog').close();openBrief(briefs.find(x=>x.id===b.dataset.brief))})}};
  }
