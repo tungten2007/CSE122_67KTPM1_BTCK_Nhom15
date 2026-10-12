@@ -1,0 +1,39 @@
+CREATORSTUDIO — FIGMA CHUNG VÀ THIẾT KẾ SV3
+Cập nhật: 12/10/2026
+
+Figma dùng chung do người dùng cung cấp:
+https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=1-2
+
+UI Kit SV3 bổ sung, page 0:1, root 70:15:
+https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=70-15
+
+Task Board
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-10
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-397
+
+Internal Review
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-102
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-446
+
+Feedback Summary AI-2
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-179
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-511
+
+User Management
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-232
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-552
+
+Project Settings
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-308
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-617
+
+Lỗi 403/404
+Desktop: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-365
+Mobile: https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=71-664
+
+TRẠNG THÁI: CÓ LỖI, CHƯA HOÀN THÀNH/DUYỆT.
+Mobile còn lỗi chồng chữ; desktop đã sửa text sizing nhưng chưa chụp QA lại do giới hạn Figma MCP.
+Chưa có wireframe SV3 riêng, bộ trạng thái AI, prototype hoặc ảnh xuất.
+Xem README.md và ../docs/SV3-DESIGN-QA.md.
+
+Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa vẫn bị rate limit. Chưa có sửa Figma mới hoặc export; các lỗi/giới hạn QA nêu trên vẫn còn.

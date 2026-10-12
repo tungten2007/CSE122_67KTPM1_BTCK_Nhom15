@@ -1,9 +1,11 @@
-# Tiến độ SV3 — cập nhật 09/10/2026
+# Tiến độ SV3 — cập nhật 12/10/2026
 
 Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng bản 24 task cũ. TASK-06 thuộc SV1; TASK-18 Brief Template thuộc SV2 theo inventory 17 màn hình mới. README gốc và hai tài liệu Word của repo còn nội dung phân công/đề tài cũ; giữ nguyên để nhóm đối chiếu, không lấy chúng thay inventory mới.
 
 | Task | Nội dung | Người phụ trách | Trạng thái | File | Ghi chú |
 |---|---|---|---|---|---|
+| TASK-03 (phần SV3) | Wireframe và UI Kit — phần SV3 | SV3 phối hợp nhóm | 🔴 Có lỗi | figma-canva/README.md; Figma root70:15 | Đã bổ sung kit; chưa QA sau sửa text sizing; chưa có wireframe SV3 riêng |
+| TASK-04 (phần SV3) | Thiết kế chi tiết màn hình SV3 | SV3 | 🔴 Có lỗi | figma-canva/README.md; docs/SV3-DESIGN-QA.md | Đã tạo 6 desktop + 6 mobile; mobile còn chồng chữ, desktop chưa QA sau sửa; thiếu AI states/prototype/export |
 | TASK-05 / CORE-03 | Khung điều hướng và chuyển vai trò demo | SV3 (phần được giao) | 🟠 Chờ duyệt | js/app.js; js/modules/navigation.js | Logic đã QA; chưa ghép Client/Designer |
 | TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟠 Chờ duyệt | lead-task-board.html | Code và QA tự động có; kéo thả/browser chưa xác minh |
 | TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟠 Chờ duyệt | lead-internal-review.html | Chọn phiên bản theo dự án, ưu tiên Internal Review; 7 bộ test PASS; chưa QA browser |
@@ -25,3 +27,13 @@ Các task thiết lập và thiết kế trước đó có tài sản trong lị
 - index.html tại đây chỉ mở demo SV3, không thay Landing/Login của SV1. Client/Designer có trang chờ ghép.
 - QA Node/DOM giả lập không thay browser: native dialog, kéo thả, console và responsive còn cần xác minh. Không coi code hoàn chỉnh là đủ điều kiện nộp.
 - Trello chưa được chỉnh trực tiếp. Dùng TASK-16-TRELLO.txt để cập nhật thẻ. GitHub review và OBS vẫn do người thực hiện/nhóm xác nhận.
+
+## Cập nhật thiết kế ngày 12/10/2026
+
+- Đã bổ sung UI Kit và 12 frame SV3 (6 desktop, 6 mobile), giữ tài sản chung cũ. Node/link thật nằm ở `figma-canva/README.md`.
+- QA ảnh ban đầu phát hiện chồng chữ. Đã sửa text sizing desktop và kit, chưa kiểm tra ảnh sau sửa. Mobile chưa sửa được vì Figma MCP đạt giới hạn.
+- TASK-03/TASK-04 phần SV3 **🔴 Có lỗi**, không Done; thiếu wireframe SV3 riêng, trạng thái AI đầy đủ, prototype, export và phê duyệt.
+- Đồng bộ token CSS và Inter local; giữ bố cục/chức năng website. 7 bộ test kỹ thuật frontend đạt; chưa QA trực quan website.
+- Không thay trạng thái phần SV1/SV2; Figma không thay QA browser hoặc bằng chứng OBS.
+
+Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa vẫn bị rate limit. Chưa có sửa Figma mới hoặc export; các lỗi/giới hạn QA nêu trên vẫn còn.
