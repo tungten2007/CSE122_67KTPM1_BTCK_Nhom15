@@ -9,7 +9,7 @@ Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng
 | TASK-05 / CORE-03 | Khung điều hướng và chuyển vai trò demo | SV3 (phần được giao) | 🟠 Chờ duyệt | js/app.js; js/modules/navigation.js | Logic đã QA; chưa ghép Client/Designer |
 | TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟢 Hoàn thành | lead-task-board.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; tạo/sửa/lọc, kéo thả, duyệt/trả brief và lưu sau tải lại đạt |
 | TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟢 Hoàn thành | lead-internal-review.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; ghim/sửa/xử lý ghi chú, checklist, yêu cầu sửa/chuyển khách đạt |
-| TASK-17 / SV3-03 | Tổng hợp phản hồi AI-2 | SV3 | 🟠 Chờ duyệt | lead-feedback-summary.html | AI mô phỏng, có kiểm thử logic; chưa QA browser |
+| TASK-17 / SV3-03 | Tổng hợp phản hồi AI-2 | SV3 | 🟢 Hoàn thành | lead-feedback-summary.html; docs/TASK-17-QA.md | Chromium16 nhóm PASS, 9 file regression PASS; sửa/bỏ/làm rõ/chuyển task và nguồn phiên bản đúng |
 | TASK-19 / SV3-04 | Quản lý người dùng | SV3 | 🟠 Chờ duyệt | admin-user-management.html | Logic đã kiểm thử; chưa duyệt nhóm |
 | TASK-20 / SV3-05 | Thiết lập và lưu trữ | SV3 | 🟠 Chờ duyệt | admin-project-settings.html | Quy tắc cần SV2 áp dụng khi ghép |
 | TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟡 Đang làm | css/; docs/TASK-15-16-QA.md | Đã QA desktop/mobile Task15/16; còn Feedback Summary, Admin và rà responsive tổng thể |

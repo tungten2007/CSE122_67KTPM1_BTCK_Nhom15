@@ -1,0 +1,11 @@
+TASK-17 — Feedback Summary + AI-2
+Người phụ trách: SV3
+Mô tả: Chọn/nhập phản hồi, AI mô phỏng sinh gợi ý có nguồn/lý do; sửa/bỏ, làm rõ ý kiến mơ hồ và xác nhận tạo công việc.
+Trạng thái triển khai: HOÀN THÀNH (QA12/10/2026).
+[x] Input/loading/output/error/thử lại.
+[x] Nguồn và phiên bản đúng.
+[x] Sửa/bỏ/làm rõ, không tự giao ý kiến mơ hồ.
+[x] Giữ nội dung/người/hạn khi tạo task; không tạo trùng.
+[x] Lưu sau reload, link Kanban, quyền và lưu trữ.
+[x] Chromiumdesktop/mobile16nhómPASS; ảnh và report TASK-17-QA.md.
+FigmaTASK03/04, tích hợpTASK27, OBS/reviewTASK29 theo dõi riêng.
