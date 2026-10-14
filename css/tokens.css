@@ -1,9 +1,10 @@
 :root {
+  --font-sans: "CreatorStudio Inter", "Segoe UI", Arial, sans-serif;
   --ink: #183c32;
   --green: #39765a;
   --lime: #c5e78b;
   --paper: #f6f7f2;
-  --muted: #7a857b;
+  --muted: #5f6d63;
   --line: #e2e7dc;
   --cream: #f3ecd9;
 }

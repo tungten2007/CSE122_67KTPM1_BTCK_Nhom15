@@ -21,7 +21,11 @@ const executablePath =
     passed.push(label);
     console.log("PASS", label);
   };
-  const go = (route) => page.goto(new URL(route, base).href);
+  const go = async (route) => {
+    const response = await page.goto(new URL(route, base).href);
+    await page.evaluate(() => document.fonts.ready);
+    return response;
+  };
   const data = () => page.evaluate(() => CS.read());
   const confirm = () => page.locator("dialog[open] [data-yes]").click();
   await go("client-project-overview.html");

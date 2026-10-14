@@ -22,7 +22,7 @@ Website không cần npm hoặc backend để chạy. Dùng HTTP vì dữ liệu
 | Creative Brief        | `client-creative-brief.html`   | `css/client-creative-brief.css`   | `js/client-creative-brief.js`   |
 | Review Versions       | `client-review-versions.html`  | `css/client-review-versions.css`  | `js/client-review-versions.js`  |
 
-`css/tokens.css` và `css/shared.css` chứa các thành phần dùng chung. `js/shared.js` quản lý khởi tạo JSON, LocalStorage, vai trò, sidebar, toast, hoạt động và hộp xác nhận. Các hình SVG nằm trong `assets/images/`.
+`css/fonts.css` tải Inter đầy đủ từ `assets/fonts/` (thường/nghiêng, hỗ trợ tiếng Việt). `css/tokens.css` và `css/shared.css` chứa các thành phần dùng chung. `js/shared.js` quản lý khởi tạo JSON, LocalStorage, vai trò, sidebar, toast, hoạt động và hộp xác nhận. Các hình SVG nằm trong `assets/images/`.
 
 ## Luồng trình diễn Client
 
@@ -84,3 +84,7 @@ node tests/sv1.e2e.cjs
 ```
 
 Nếu dùng cổng khác, đặt biến `CS_BASE_URL`. Có thể đặt `CS_CHROMIUM_PATH` nếu đã có Chromium cài sẵn. Bài kiểm tra dùng dữ liệu trong phiên trình duyệt riêng, không sửa JSON mẫu.
+
+## Bản sửa typography
+
+Font được đóng gói tại dự án, nội dung nền 16px và nhãn nhỏ từ 13px. Xem `docs/typography.md` và `tests/typography.e2e.cjs` để kiểm tra font tiếng Việt, dấu tách rời, fallback và bố cục.

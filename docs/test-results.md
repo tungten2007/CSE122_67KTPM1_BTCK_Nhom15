@@ -89,3 +89,10 @@ Mã kiểm tra: `tests/sv1.e2e.cjs`. Hướng dẫn chạy: `docs/SV1.md`.
 73. PASS — Retry recovers JSON loading
 74. PASS — JSON loading skeleton is visible
 75. PASS — No browser JavaScript errors
+
+## Kiểm tra lại sau sửa phông chữ — 14/10/2026
+
+- 75 kiểm tra chức năng Chromium tiếp tục đạt.
+- 67 kiểm tra typography đạt: 5 trang ở 360/390/768/1440px, font tiếng Việt thường/nghiêng (NFC và NFD), cỡ chữ tối thiểu, không có tải tài nguyên bên ngoài và fallback khi WOFF2 bị chặn.
+- Đã chụp lại ảnh desktop/mobile và các trạng thái trong `design/mockups/` bằng font mới.
+- Chi tiết và lệnh chạy: `docs/typography.md`.

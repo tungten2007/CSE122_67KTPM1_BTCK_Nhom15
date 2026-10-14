@@ -20,16 +20,16 @@
 }
 .story-copy .eyebrow {
   color: #bdd99c;
-  font-size: 10px;
+  font-size: 13px;
 }
 .story-copy h1 {
   font-size: 48px;
-  letter-spacing: -1.7px;
+  letter-spacing: -0.02em;
   margin: 24px 0;
 }
 .story-copy h1 em {
   color: var(--lime);
-  font-family: Georgia, serif;
+  font-family: var(--font-sans);
   font-weight: 400;
 }
 .story-copy > p {
@@ -53,7 +53,7 @@
 }
 .art-label {
   color: var(--ink);
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 1.4px;
   padding: 12px 2px 0;
   display: flex;
@@ -61,7 +61,7 @@
 }
 .login-story > small {
   margin-top: auto;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: #b8c9c0;
 }
@@ -80,7 +80,7 @@
   margin: 11px 0 8px;
 }
 .login-card > p {
-  font-size: 12px;
+  font-size: 13px;
 }
 .demo-notice {
   background: #eaf0e2;
@@ -88,7 +88,7 @@
   border-radius: 8px;
   color: #58714f;
   padding: 10px 13px;
-  font-size: 11px;
+  font-size: 13px;
   margin: 23px 0;
 }
 .login-card form {
@@ -113,12 +113,12 @@
   border: none;
   background: none;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 .or-divider {
   margin: 22px 0 18px;
   text-align: center;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -155,24 +155,24 @@
   margin-right: 9px;
 }
 .demo-roles strong {
-  font-size: 12px;
+  font-size: 13px;
   display: block;
 }
 .demo-roles small {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--muted);
   display: block;
 }
 .login-footnote {
   text-align: center;
   margin-top: 15px;
-  font-size: 10px !important;
+  font-size: 13px !important;
   line-height: 1.8;
 }
 .bottom-note {
   margin-top: auto;
   text-align: center;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 @media (max-width: 1050px) {
@@ -222,6 +222,9 @@
     font-size: 29px;
   }
   .bottom-note {
-    font-size: 9px;
+    font-size: 13px;
   }
+}
+.story-copy h1 em {
+  font-weight: 500;
 }

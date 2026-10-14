@@ -14,7 +14,7 @@
   padding: 18px 21px;
 }
 .stats span {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,7 @@
 }
 .stats small {
   display: block;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .stat-dot {
@@ -61,7 +61,7 @@
   border: 0;
   background: none;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   padding: 8px 12px;
   border-radius: 7px;
 }
@@ -88,14 +88,14 @@
   width: 140px;
   background: none;
   border: 0;
-  font-size: 11px;
+  font-size: 13px;
   padding: 3px;
 }
 .list-caption {
   display: flex;
   justify-content: space-between;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 13px;
   margin: 20px 0 15px;
 }
 .project-grid {
@@ -133,7 +133,7 @@
   padding: 18px;
 }
 .category-label {
-  font-size: 9px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--muted);
@@ -146,16 +146,19 @@
   text-overflow: ellipsis;
 }
 .card-content > p {
-  font-size: 11px;
-  height: 36px;
+  font-size: 13px;
+  min-height: 44px;
   overflow: hidden;
   line-height: 1.7;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .card-meta {
   display: flex;
   justify-content: space-between;
   gap: 7px;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
   margin: 17px 0 7px;
 }
@@ -173,11 +176,11 @@
   gap: 8px;
 }
 .card-footer .btn {
-  font-size: 10px;
+  font-size: 13px;
   padding: 6px 9px;
 }
 .card-footer .text-button {
-  font-size: 11px;
+  font-size: 13px;
 }
 .card-menu {
   display: flex;
@@ -185,7 +188,7 @@
   margin-top: 10px;
 }
 .card-menu button {
-  font-size: 10px;
+  font-size: 13px;
   padding: 0;
   color: var(--muted);
   border: 0;
@@ -222,14 +225,14 @@
   font-size: 15px;
 }
 .new-card p {
-  font-size: 11px;
+  font-size: 13px;
   margin: 9px 0 17px;
   max-width: 170px;
 }
 .new-card .btn {
   background: none;
   border-color: #b8c9ae;
-  font-size: 11px;
+  font-size: 13px;
 }
 .project-grid > .empty {
   grid-column: 1/-1;
@@ -254,7 +257,7 @@
     padding: 16px 12px;
   }
   .stats small {
-    font-size: 9px;
+    font-size: 13px;
   }
 }
 @media (max-width: 760px) {
@@ -273,7 +276,7 @@
   }
   .tabs button {
     padding: 7px 9px;
-    font-size: 11px;
+    font-size: 13px;
   }
   .search-box,
   .search-box input {
@@ -317,10 +320,10 @@
   margin-top: 14px;
 }
 .project-summary .pill {
-  font-size: 9px;
+  font-size: 13px;
 }
 .brief-badge {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .brief-badge.submitted {
