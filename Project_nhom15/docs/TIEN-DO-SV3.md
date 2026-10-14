@@ -85,3 +85,7 @@ TASK-27: chờ review nhóm, chưa merge. TASK-28/29 và phần Figma03/04 chưa
 | 27 | Tích hợp toàn nhóm | Nhóm, SV3 tích hợp | Đã triển khai/QA kỹ thuật; chờ review/merge |
 | 28 | Tài liệu toàn nhóm | Nhóm | Đang làm: đã có hồ sơ Task27 và tài liệu các bản nộp; chưa đồng bộ mọi tài liệu |
 | 29 | OBS/Git/PR/release | Nhóm | PR các thành viên có; chưa xác nhận OBS, review chéo, merge/release |
+
+### Bổ sung menu Landing, bản v2 (14/10/2026)
+
+Theo ảnh mẫu người dùng gửi, đã đổi Cách hoạt động / Khả năng sáng tạo thành hai bảng mục con có icon, tiêu đề và mô tả. Kiểm tra 17 lượt menu trên Chromium: mở/đóng, chuyển bảng, bấm ngoài, Escape/ArrowDown/Enter, bốn chiều rộng 320–1440px và bốn đường dẫn tính năng đạt. Xuất ZIP riêng CreatorStudio-Task27-Integration-v2-Menu.zip. Checklist bổ sung trong TASK-27-INTEGRATION-v1.md; vẫn chờ review nhóm.

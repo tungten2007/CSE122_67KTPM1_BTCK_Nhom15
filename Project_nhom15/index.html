@@ -53,9 +53,53 @@
         ></a
       >
       <nav aria-label="Điều hướng">
-        <a href="#workflow">Cách hoạt động</a
-        ><a href="#features">Khả năng sáng tạo</a
-        ><a href="login.html" class="btn small">Đăng nhập →</a>
+        <div class="nav-dropdown">
+          <button class="nav-disclosure" id="nav-workflow" type="button" aria-expanded="false" aria-controls="menu-workflow">
+            Cách hoạt động<svg class="nav-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+          </button>
+          <div class="mega-panel" id="menu-workflow" aria-labelledby="nav-workflow" hidden>
+            <a class="mega-link" href="#workflow-brief" >
+              <span class="mega-icon orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z M14 3v5h5 M8 12h8 M8 16h5" /></svg></span>
+              <span class="mega-copy"><strong>Chia sẻ ý tưởng</strong><span>Bắt đầu với một brief rõ ràng về mục tiêu, phong cách và sản phẩm bàn giao.</span></span>
+            </a>
+            <a class="mega-link" href="#workflow-collaborate" >
+              <span class="mega-icon blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H9l-5 4z M8 10l3 3 5-6" /></svg></span>
+              <span class="mega-copy"><strong>Cùng nhau hoàn thiện</strong><span>Theo dõi công việc, trao đổi và phản hồi ngay trên từng phiên bản.</span></span>
+            </a>
+            <a class="mega-link" href="#workflow-approve" >
+              <span class="mega-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4 M12 3l8 4v6c0 4-5 7-8 8-3-1-8-4-8-8V7z" /></svg></span>
+              <span class="mega-copy"><strong>Tự tin phê duyệt</strong><span>Duyệt thiết kế hoặc yêu cầu chỉnh sửa để cùng tiến đến bản cuối.</span></span>
+            </a>
+            <a class="mega-link" href="#creative-roles" >
+              <span class="mega-icon purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M12 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0 M17 4a4 4 0 0 1 0 8 M22 21v-2a4 4 0 0 0-3-3.87" /></svg></span>
+              <span class="mega-copy"><strong>Không gian cho từng vai trò</strong><span>Khám phá góc nhìn của khách hàng, nhà thiết kế, trưởng nhóm và quản trị viên.</span></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button class="nav-disclosure" id="nav-features" type="button" aria-expanded="false" aria-controls="menu-features">
+            Khả năng sáng tạo<svg class="nav-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+          </button>
+          <div class="mega-panel" id="menu-features" aria-labelledby="nav-features" hidden>
+            <a class="mega-link" href="login.html?role=Client" data-demo-role="Client" data-demo-page="client-creative-brief.html">
+              <span class="mega-icon orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z M14 3v5h5 M8 12h8 M8 16h5" /></svg></span>
+              <span class="mega-copy"><strong>Creative Brief + AI</strong><span>Biến ý tưởng ban đầu thành brief có cấu trúc để đội ngũ bắt đầu thiết kế.</span></span>
+            </a>
+            <a class="mega-link" href="login.html?role=Designer" data-demo-role="Designer" data-demo-page="designer-moodboard.html">
+              <span class="mega-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h2a2 2 0 0 0 1-3.7c-.7-.5-.4-1.8.5-1.8H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z M7 9h.01 M11 6h.01 M16 8h.01" /></svg></span>
+              <span class="mega-copy"><strong>Moodboard + AI</strong><span>Khám phá từ khóa phong cách, bảng màu và hình ảnh truyền cảm hứng.</span></span>
+            </a>
+            <a class="mega-link" href="login.html?role=Designer" data-demo-role="Designer" data-demo-page="designer-version-management.html">
+              <span class="mega-icon blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 6-10 6L2 9z M3 14l9 5 9-5 M3 18l9 5 9-5" /></svg></span>
+              <span class="mega-copy"><strong>Quản lý phiên bản</strong><span>Lưu các bản thiết kế, theo dõi thay đổi và nộp phiên bản để duyệt.</span></span>
+            </a>
+            <a class="mega-link" href="login.html?role=Creative%20Lead" data-demo-role="Creative Lead" data-demo-page="lead-feedback-summary.html">
+              <span class="mega-icon purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z" /></svg></span>
+              <span class="mega-copy"><strong>Tổng hợp phản hồi + AI</strong><span>Gom nhận xét thành những công việc rõ ràng cho vòng chỉnh sửa tiếp theo.</span></span>
+            </a>
+          </div>
+        </div>
+        <a href="login.html" class="btn small login-link">Đăng nhập →</a>
       </nav>
     </header>
     <main id="main">
@@ -128,7 +172,7 @@
             những cuộc trò chuyện.
           </p>
         </div>
-        <div class="workflow-step">
+        <div class="workflow-step" id="workflow-brief" tabindex="-1">
           <span class="step-no">01 /</span>
           <h3>Chia sẻ ý tưởng</h3>
           <p>
@@ -136,14 +180,14 @@
             rõ ràng.
           </p>
         </div>
-        <div class="workflow-step">
+        <div class="workflow-step" id="workflow-collaborate" tabindex="-1">
           <span class="step-no">02 /</span>
           <h3>Cùng nhau hoàn thiện</h3>
           <p>
             Theo dõi tiến độ, so sánh phiên bản và để lại phản hồi đúng vị trí.
           </p>
         </div>
-        <div class="workflow-step">
+        <div class="workflow-step" id="workflow-approve" tabindex="-1">
           <span class="step-no">03 /</span>
           <h3>Tự tin phê duyệt</h3>
           <p>
@@ -190,7 +234,7 @@
           </article>
         </div>
       </section>
-      <section class="role-section">
+      <section class="role-section" id="creative-roles" tabindex="-1">
         <div>
           <span class="eyebrow">Chọn góc nhìn của bạn</span>
           <h2>Khám phá không gian sáng tạo.</h2>

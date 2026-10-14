@@ -64,3 +64,16 @@ Bản tích hợp khởi tạo dữ liệu mẫu trong khóa mới; không tự 
 Đây là frontend demo và AI mô phỏng, không phải hệ thống đăng nhập bảo mật/backend thật. Task03/04 Figma vẫn có phần chưa đạt theo hồ sơ cũ; Task28 tài liệu toàn nhóm và Task29 OBS/review/release chưa hoàn thành. Chưa xác minh đăng ký mới theo yêu cầu bổ sung trước đây: bản SV1 nộp hiện có Login + Demo, không có trang đăng ký riêng.
 
 Trello không được cập nhật trực tiếp theo yêu cầu mới nhất của người dùng. Checklist này dùng cho review và cập nhật thẻ khi cần.
+
+## Bổ sung bản v2 — menu Landing theo ảnh mẫu (14/10/2026)
+
+Theo yêu cầu mới của người dùng, thay hai liên kết Cách hoạt động / Khả năng sáng tạo bằng nút mở bảng mục con hai cột, gồm icon màu, tên và mô tả. Cách hoạt động dẫn tới các bước brief, phối hợp, phê duyệt và chọn vai trò; Khả năng sáng tạo mở demo Creative Brief, Moodboard, Quản lý phiên bản và Tổng hợp phản hồi.
+
+- [x] Bấm mở/đóng; chỉ mở một bảng tại một thời điểm.
+- [x] Đóng khi bấm bên ngoài; Escape đóng và trả focus về nút.
+- [x] ArrowDown mở bảng và chuyển focus tới mục đầu; các liên kết dùng Tab/Enter.
+- [x] Bố cục hai cột desktop, một cột mobile; không tràn ngang ở 320/390/768/1440px.
+- [x] Bốn mục tính năng đi tới đúng màn demo và giữ dự án đang chọn.
+- [x] 17 lượt Chromium dành riêng cho menu PASS; không lỗi JavaScript.
+
+File thay đổi: index.html, css/index.css, js/index.js. Giao diện lấy cách tổ chức từ hai ảnh mẫu người dùng gửi; nội dung được viết cho CreatorStudio. Bản ZIP mới: CreatorStudio-Task27-Integration-v2-Menu.zip. Kết quả Task27 v1 vẫn ghi riêng, không suy test menu thành kiểm thử lại toàn bộ 34 lượt tích hợp.
