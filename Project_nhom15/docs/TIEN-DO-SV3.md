@@ -93,3 +93,7 @@ Theo ảnh mẫu người dùng gửi, đã đổi Cách hoạt động / Khả 
 ### Bổ sung nội dung Landing, bản v3 (14/10/2026)
 
 Thêm mục “CreatorStudio có thể làm gì?” với sáu chức năng chính và chân trang nhiều cột theo ảnh mẫu mới. Kiểm tra bốn chiều rộng 320/390/768/1440px và liên kết nội bộ đạt; đã xem ảnh desktop/mobile. Xuất riêng CreatorStudio-Task27-Integration-v3-Landing.zip; giữ mô tả/checklist trong TASK-27-INTEGRATION-v1.md. Trạng thái review nhóm vẫn giữ nguyên.
+
+### Bổ sung kiểu chữ và màu Landing, bản v4 (14/10/2026)
+
+Dùng Inter cục bộ cho trang chủ; làm nổi bật mục chức năng bằng nền xanh đen, tiêu đề trắng/xanh sáng và mô tả có tương phản rõ. Đã xem ảnh và kiểm tra bốn chiều rộng, năm nhóm bố cục/liên kết cùng 17 lượt menu PASS sau đổi font. Xuất riêng CreatorStudio-Task27-Integration-v4-Typography.zip; chưa thay trạng thái review nhóm.

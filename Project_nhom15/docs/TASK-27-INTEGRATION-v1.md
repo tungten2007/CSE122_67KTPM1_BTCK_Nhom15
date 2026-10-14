@@ -90,3 +90,15 @@ Theo yêu cầu người dùng, thêm mục “CreatorStudio có thể làm gì?
 - [x] Đã xem ảnh desktop/màn hình 320px; năm nhóm kiểm tra bố cục/liên kết Chromium PASS, không lỗi JavaScript.
 
 File thay đổi: index.html và css/index.css. Bản ZIP mới: CreatorStudio-Task27-Integration-v3-Landing.zip. QA này dành cho nội dung Landing mới; không thay các kết quả tích hợp v1 hoặc menu v2.
+
+## Bổ sung bản v4 — kiểu chữ và màu Landing (14/10/2026)
+
+Theo ảnh mẫu mới, làm nổi bật phần giới thiệu chức năng bằng nền xanh đen, tiêu đề lớn màu trắng với dòng nhấn xanh sáng, thẻ nội dung xanh tối và mô tả sáng dễ đọc. Trang chủ dùng Inter variable cục bộ; tiêu đề hero chuyển từ chữ nghiêng serif sang chữ đậm, các tiêu đề phần có kích thước/phân cấp rõ hơn và chân trang dùng xanh sáng hơn. Nội dung vẫn mô tả các chức năng CreatorStudio đang có.
+
+- [x] Font Inter được tải cục bộ, không phụ thuộc font trên máy người xem.
+- [x] Tiêu đề, mô tả, nền và nút có phân cấp rõ ràng.
+- [x] Kiểm tra 320/390/768/1440px không tràn ngang.
+- [x] Đã xem ảnh phần chức năng desktop và menu mobile.
+- [x] Năm nhóm bố cục/liên kết và 17 lượt menu Chromium PASS sau đổi font; không lỗi JavaScript.
+
+File thay đổi: index.html và css/index.css. Bản ZIP mới: CreatorStudio-Task27-Integration-v4-Typography.zip. Đây là chỉnh sửa Landing; các kết quả dữ liệu/luồng nghiệp vụ trước đó vẫn giữ riêng.
