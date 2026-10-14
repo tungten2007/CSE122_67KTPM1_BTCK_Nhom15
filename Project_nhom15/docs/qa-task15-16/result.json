@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-12T04:47:10.780Z",
+  "browser": "153.0.8010.0",
+  "checks": [
+    "TASK15 tạo và lưu sau tải lại",
+    "TASK15 sửa, phân công, tìm kiếm, lọc và focus",
+    "TASK15 kéo thả HTML5 trên desktop",
+    "TASK15 người cũ bị khóa: không tự đổi người, Escape đóng dialog",
+    "TASK15 duyệt brief tạo đúng một việc, không duyệt lặp",
+    "TASK15 yêu cầu bổ sung có lý do và không tạo việc",
+    "TASK15 mobile đổi cột, focus, menu và không tràn ngang",
+    "TASK16 tab tham chiếu, ghim đúng tọa độ và lưu sau tải lại",
+    "TASK16 sửa/xử lý ghi chú, checklist, chuyển khách và chỉ xem sau chuyển",
+    "TASK16 yêu cầu sửa có lý do và khóa thao tác sau chuyển bước",
+    "TASK16 phiên bản theo dự án, empty và Approved chỉ xem",
+    "TASK16 mobile thêm ghi chú, dialog và không tràn ngang",
+    "Hai task chặn sửa dự án lưu trữ và truy cập sai vai trò",
+    "Không có lỗi Console, JavaScript hoặc tài nguyên HTTP"
+  ],
+  "status": "PASS",
+  "errors": [],
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ]
+}

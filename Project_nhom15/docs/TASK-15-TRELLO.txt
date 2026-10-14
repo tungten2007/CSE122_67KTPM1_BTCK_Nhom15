@@ -1,0 +1,13 @@
+TASK-15 — Lead Task Board
+Người phụ trách: SV3
+Mô tả: Bảng Kanban, tạo/sửa/phân công/lọc công việc; kéo thả desktop, đổi trạng thái mobile; duyệt hoặc trả brief.
+
+Trạng thái triển khai: HOÀN THÀNH — QA frontend độc lập đạt ngày12/10/2026.
+[x] Chức năng theo checklist đã triển khai.
+[x] Lỗi QA phát hiện đã sửa.
+[x] Kiểm tra thực tế Chromium desktop/mobile.
+[x] Kiểm tra form, dữ liệu lưu sau tải lại và quyền thao tác.
+[x] Không có lỗi Console/pageerror/tài nguyên HTTP.
+[x] Có ảnh và báo cáo QA trong docs/TASK-15-16-QA.md.
+
+Duyệt Figma TASK03/04, tích hợp TASK27, OBS/review/nộp TASK29 chưa hoàn thành; theo dõi tại các thẻ đó. PR#1 vẫn draft, chưa merge.

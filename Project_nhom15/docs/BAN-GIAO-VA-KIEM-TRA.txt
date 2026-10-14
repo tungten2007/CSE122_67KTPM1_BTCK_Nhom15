@@ -1,0 +1,22 @@
+BỔ SUNG SAU TASK 5 — KIỂM TRA VÀ BÀN GIAO PHẦN SV3
+
+MÔ TẢ
+Đóng gói đầy đủ HTML, CSS, JavaScript và ảnh để chuyển sang máy khác. Thêm trang BAT-DAU.html hướng dẫn giải nén/mở web, thông báo khi tài nguyên thiếu và công cụ kiểm tra bộ file. Máy chủ kiểm tra phụ thuộc trước khi mở; tài nguyên thiếu trả HTTP 404 đúng loại.
+
+CHECKLIST ĐÃ KIỂM TRA
+[x] Bộ file đầy đủ vượt qua check_bundle.py.
+[x] Cố tình bỏ js/app.js: phát hiện đúng file thiếu.
+[x] Các trang và tài nguyên mẫu trả HTTP 200.
+[x] URL trang không tồn tại chuyển tới 404.html.
+[x] JavaScript không tồn tại trả HTTP 404, không chuyển sang trang HTML.
+[x] Cú pháp JavaScript hợp lệ.
+[x] Kiểm thử Node: không báo lỗi khi đủ file; thông báo gộp đường dẫn trùng và hiển thị bằng textContent.
+[x] Có hướng dẫn gửi nguyên ZIP và giới hạn dữ liệu LocalStorage.
+
+CHECKLIST CẦN KIỂM TRA THỰC TẾ
+[ ] Người nhận giải nén và mở index.html bằng Live Server.
+[ ] Kiểm tra các luồng SV3, Console, desktop/mobile và kéo thả.
+[ ] Kiểm tra CHAY-WINDOWS.bat trên Windows có Python 3.9+.
+[ ] Nhóm review và ghép phần SV1/SV2.
+
+Không coi kiểm thử Node/HTTP là kiểm thử giao diện. Chưa xuất bản website hoặc xác nhận duyệt bài.

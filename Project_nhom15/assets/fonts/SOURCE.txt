@@ -1,0 +1,5 @@
+Inter variable font (normal, weights 100–900)
+Source: https://github.com/google/fonts/blob/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf
+Git blob SHA-1: 047c92f6e2212473dc436020afed689527076d44
+License: SIL Open Font License 1.1; see OFL.txt
+Font bytes are unchanged from the source.

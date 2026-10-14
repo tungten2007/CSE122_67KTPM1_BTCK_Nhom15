@@ -1,0 +1,9 @@
+TASK-20 — Project Settings
+Người phụ trách: SV3
+Mô tả: Lưu quy tắc, quản lý nhãn và xác nhận lưu trữ dự án đủ điều kiện.
+Trạng thái triển khai/QA: HOÀN THÀNH ngày12/10/2026.
+[x] Quy tắc/validation/preview; CRUDnhãn; nhãnđang dùng; xác nhận/tính read-only; mobile
+[x] QAChromium153 và ảnh minh chứng PASS.
+[x] Không lỗi Console/pageerror/tài nguyên trong các luồng hợp lệ.
+Minh chứng: docs/qa-admin-errors/ (19/20/26) hoặc docs/qa-responsive-sv3/ (21).
+FigmaTASK03/04, tích hợpTASK27 và OBS/review/mergeTASK29 theo dõi riêng.
