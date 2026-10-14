@@ -89,3 +89,7 @@ TASK-27: chờ review nhóm, chưa merge. TASK-28/29 và phần Figma03/04 chưa
 ### Bổ sung menu Landing, bản v2 (14/10/2026)
 
 Theo ảnh mẫu người dùng gửi, đã đổi Cách hoạt động / Khả năng sáng tạo thành hai bảng mục con có icon, tiêu đề và mô tả. Kiểm tra 17 lượt menu trên Chromium: mở/đóng, chuyển bảng, bấm ngoài, Escape/ArrowDown/Enter, bốn chiều rộng 320–1440px và bốn đường dẫn tính năng đạt. Xuất ZIP riêng CreatorStudio-Task27-Integration-v2-Menu.zip. Checklist bổ sung trong TASK-27-INTEGRATION-v1.md; vẫn chờ review nhóm.
+
+### Bổ sung nội dung Landing, bản v3 (14/10/2026)
+
+Thêm mục “CreatorStudio có thể làm gì?” với sáu chức năng chính và chân trang nhiều cột theo ảnh mẫu mới. Kiểm tra bốn chiều rộng 320/390/768/1440px và liên kết nội bộ đạt; đã xem ảnh desktop/mobile. Xuất riêng CreatorStudio-Task27-Integration-v3-Landing.zip; giữ mô tả/checklist trong TASK-27-INTEGRATION-v1.md. Trạng thái review nhóm vẫn giữ nguyên.

@@ -77,3 +77,16 @@ Theo yêu cầu mới của người dùng, thay hai liên kết Cách hoạt đ
 - [x] 17 lượt Chromium dành riêng cho menu PASS; không lỗi JavaScript.
 
 File thay đổi: index.html, css/index.css, js/index.js. Giao diện lấy cách tổ chức từ hai ảnh mẫu người dùng gửi; nội dung được viết cho CreatorStudio. Bản ZIP mới: CreatorStudio-Task27-Integration-v2-Menu.zip. Kết quả Task27 v1 vẫn ghi riêng, không suy test menu thành kiểm thử lại toàn bộ 34 lượt tích hợp.
+
+## Bổ sung bản v3 — giới thiệu chức năng và chân trang (14/10/2026)
+
+Theo yêu cầu người dùng, thêm mục “CreatorStudio có thể làm gì?” sau phần quy trình, gồm sáu thẻ: dự án/brief, giao công việc, moodboard, quản lý/duyệt phiên bản, tổng hợp phản hồi, quản lý nhóm/dự án. Thêm chân trang nền xanh nhạt với giới thiệu thương hiệu và bốn nhóm liên kết: Sản phẩm, Dành cho, Khám phá, Dự án; các liên kết nội bộ dẫn tới phần thật trên trang và các vai trò dùng trang đăng nhập demo.
+
+- [x] Nội dung phản ánh các chức năng đang có của CreatorStudio.
+- [x] Có liên kết GitHub/PR thật; không tạo liên kết mạng xã hội hoặc trang chính sách chưa tồn tại.
+- [x] Sáu thẻ bố cục 3/2/1 cột tùy màn hình; chân trang thu gọn trên mobile.
+- [x] Kiểm tra 320/390/768/1440px không tràn ngang.
+- [x] Kiểm tra liên kết nội bộ chân trang và điều hướng tới thẻ phiên bản.
+- [x] Đã xem ảnh desktop/màn hình 320px; năm nhóm kiểm tra bố cục/liên kết Chromium PASS, không lỗi JavaScript.
+
+File thay đổi: index.html và css/index.css. Bản ZIP mới: CreatorStudio-Task27-Integration-v3-Landing.zip. QA này dành cho nội dung Landing mới; không thay các kết quả tích hợp v1 hoặc menu v2.
