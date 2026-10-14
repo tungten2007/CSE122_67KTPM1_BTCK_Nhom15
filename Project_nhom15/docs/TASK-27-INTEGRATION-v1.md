@@ -127,3 +127,13 @@ Mô tả: liên kết đến nội dung trong index cuộn mượt theo cả hai
 - [x] Tôn trọng cài đặt giảm chuyển động của thiết bị.
 
 File: css/index.css, js/index.js. Bản giao: CreatorStudio-Task27-Integration-v6-SmoothNavigation.zip.
+
+## Navbar toàn chiều ngang v7 — 14/10/2026
+
+Mô tả: nền, đường viền và vùng navbar phủ hết chiều ngang màn hình; logo/menu căn theo nội dung trang. Giữ sticky và cuộn mượt của v6.
+
+- [x] Bỏ giới hạn chiều rộng 1260px của header.
+- [x] Giữ logo/menu và dropdown căn theo khối nội dung desktop.
+- [x] Kiểm tra navbar toàn chiều ngang và không tràn trên desktop/mobile.
+
+File: css/index.css. Gói: CreatorStudio-Task27-Integration-v7-FullWidthNavbar.zip.
