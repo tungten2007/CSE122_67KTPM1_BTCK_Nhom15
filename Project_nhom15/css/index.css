@@ -407,7 +407,12 @@
 }
 
 /* Landing navigation: click to reveal feature cards, with keyboard access. */
-.public-header { position:relative; z-index:20; }
+html { scroll-behavior:smooth; }
+.public-header {
+  position:sticky; top:0; z-index:20;
+  background:var(--paper, #f8f9f5);
+  box-shadow:0 4px 16px #183c320a;
+}
 .public-header nav { gap:12px; }
 .nav-disclosure {
   display:inline-flex; align-items:center; gap:8px; padding:12px 14px;
@@ -436,7 +441,7 @@
 .mega-copy { display:grid; gap:7px; min-width:0; }
 .mega-copy strong { font-size:15px; font-weight:600; line-height:1.4; }
 .mega-copy > span { font-size:13px; line-height:1.65; font-weight:400; color:var(--muted); }
-.workflow-step, #creative-roles { scroll-margin-top:24px; }
+main[id], main [id] { scroll-margin-top:calc(var(--landing-header-height, 140px) + 24px); }
 @media(max-width:1050px) { .mega-panel { right:30px; width:min(700px,calc(100% - 60px)); } }
 @media(max-width:760px) {
   .public-header { flex-wrap:wrap; gap:16px; }
@@ -451,7 +456,10 @@
   .mega-copy strong { font-size:14px; }
   .mega-copy > span { font-size:12px; }
 }
-@media(prefers-reduced-motion:reduce) { .nav-chevron { transition:none; } }
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .nav-chevron { transition:none; }
+}
 @media(max-width:760px) {
   .nav-dropdown { min-width:0; flex-basis:0; }
   .nav-disclosure { white-space:normal; min-height:44px; line-height:1.4; }
@@ -500,7 +508,6 @@
 .footer-bottom { display:flex; align-items:center; justify-content:space-between; gap:22px; border-top:1px solid #183c3226; margin-top:44px; padding-top:24px; font-size:11px; }
 .footer-meta { display:flex; align-items:center; flex-wrap:wrap; gap:18px; }
 .footer-language { display:inline-flex; align-items:center; gap:7px; border:1px solid #183c3226; padding:7px 10px; border-radius:20px; }
-.capability-card { scroll-margin-top:24px; }
 @media(max-width:1050px) {
   .site-footer-inner { padding:45px 30px 25px; }
   .footer-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; }

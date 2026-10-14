@@ -12,6 +12,13 @@ document.querySelectorAll("[data-role]").forEach(
 
 // Disclosure menus use normal links: Tab navigates, Escape closes and restores focus.
 const landingNav = document.querySelector('.public-header nav');
+// Account for the taller two-row navbar on phones when scrolling to a section.
+const landingHeader = document.querySelector('.public-header');
+function updateLandingHeaderHeight() {
+  document.documentElement.style.setProperty('--landing-header-height', `${landingHeader.offsetHeight}px`);
+}
+updateLandingHeaderHeight();
+new ResizeObserver(updateLandingHeaderHeight).observe(landingHeader);
 const disclosures = [...landingNav.querySelectorAll('.nav-disclosure')];
 function closeLandingMenus(restoreFocus = false) {
   const opened = disclosures.find(button => button.getAttribute('aria-expanded') === 'true');

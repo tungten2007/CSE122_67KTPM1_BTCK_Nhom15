@@ -116,3 +116,14 @@ Người dùng xác nhận cả nhóm đồng ý, yêu cầu hoàn thiện websi
 - [x] Đồng ý nhóm được ghi theo xác nhận người dùng; không tạo review cá nhân giả.
 
 Minh chứng cuối: docs/qa-final-v5/result.json và integration/result.json. Gói: CreatorStudio-Task27-Integration-v5-Complete.zip. Figma/OBS/nộp học phần tiếp tục theo hồ sơ riêng; đây là frontend demo lưu dữ liệu trên trình duyệt.
+
+## Điều hướng Landing v6 — 14/10/2026
+
+Mô tả: liên kết đến nội dung trong index cuộn mượt theo cả hai chiều; navbar giữ ở đầu màn hình khi cuộn. Khoảng cách tại điểm đến tự tính theo chiều cao navbar để không che tiêu đề trên desktop và mobile.
+
+- [x] Cuộn mượt các liên kết trong trang, gồm menu Cách hoạt động và footer.
+- [x] Navbar sticky có nền kín; menu vẫn mở/đóng bình thường.
+- [x] Chừa khoảng cách theo chiều cao navbar khi đổi kích thước màn hình.
+- [x] Tôn trọng cài đặt giảm chuyển động của thiết bị.
+
+File: css/index.css, js/index.js. Bản giao: CreatorStudio-Task27-Integration-v6-SmoothNavigation.zip.
