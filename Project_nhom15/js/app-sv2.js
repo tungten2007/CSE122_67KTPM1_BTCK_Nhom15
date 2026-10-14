@@ -177,7 +177,7 @@ window.App = (() => {
 
         <footer class="page-footer">
           <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
-          <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+          <span>CreatorStudio · Nhóm 15 · Dữ liệu lưu LocalStorage trình duyệt</span>
         </footer>
       </div>
 
@@ -242,6 +242,20 @@ window.App = (() => {
       }
       refresh();
     });
+  }
+
+  function preserveFocus(render){
+    const main=$('#main'), active=document.activeElement;
+    const inside=main?.contains(active);
+    const id=inside?active.id:'';
+    const data=inside?[...active.attributes].find(a=>a.name.startsWith('data-')):null;
+    const start=inside?active.selectionStart:null, end=inside?active.selectionEnd:null;
+    render();
+    if(!inside)return;
+    const replacement=id?document.getElementById(id):data?$$('['+data.name+']',main).find(el=>el.getAttribute(data.name)===data.value):null;
+    const target=replacement&&!replacement.disabled?replacement:main;
+    target?.focus({preventScroll:true});
+    if(target===replacement&&typeof start==='number'&&typeof target.setSelectionRange==='function')target.setSelectionRange(start,end);
   }
 
   function refresh() {
@@ -404,7 +418,7 @@ window.App = (() => {
       null
     );
 
-    $('#export-data').onclick = () => download(JSON.stringify(Store.get(), null, 2), 'creatorstudio-sv2-data.json');
+    $('#export-data').onclick = () => download(JSON.stringify(Store.get(), null, 2), 'creatorstudio-data.json');
     $('#reset-data').onclick = () => {
       if (confirm('Khôi phục toàn bộ dữ liệu mẫu ban đầu?')) {
         Store.reset();
@@ -414,7 +428,7 @@ window.App = (() => {
     };
   }
 
-  return {
+  return {preserveFocus,
     $,
     $$,
     esc,

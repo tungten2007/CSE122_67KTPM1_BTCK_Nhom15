@@ -5,15 +5,21 @@ window.TeamClient=(()=>{
  const publicStates=['Client Review','Approved','Changes Requested','Rejected'];
  function session(){try{const s=JSON.parse(sessionStorage.getItem('cs.session')||'null');if(!s)return null;Store.load();const u=Store.get().users.find(u=>u.id===s.id&&u.active);return u?{...u,role:u.role==='Lead'?'Creative Lead':u.role}:null}catch{return null}}
  function login(role){try{Store.load();Navigation.activate(role==='Creative Lead'?'Lead':role,Store.get().users);return true}catch(e){window.CS?.toast(e.message);return false}}
+ function authenticate(email,password){
+  Store.load();const user=Store.get().users.find(u=>u.email.toLowerCase()===email.trim().toLowerCase());
+  check(user&&user.active&&(user.demoPassword||'demo123')===password,'Email hoặc mật khẩu demo không đúng, hoặc tài khoản đã bị khóa.');
+  Navigation.remember(user);return user;
+ }
  function home(){const r=session()?.role;return Navigation.home(r==='Creative Lead'?'Lead':r)}
  function projectView(p,d){
   const versions=d.versions.filter(v=>v.projectId===p.id&&publicStates.includes(v.status)).sort((a,b)=>(Date.parse(a.createdAt)||0)-(Date.parse(b.createdAt)||0)||(a.versionNum||0)-(b.versionNum||0));
   const requested=new URLSearchParams(location.search).get('version');const v=versions.find(v=>v.id===requested)||versions.at(-1);
+  const previous=versions[versions.findIndex(x=>x.id===v?.id)-1];
   const b=d.briefs.filter(b=>b.projectId===p.id).at(-1),tasks=d.tasks.filter(t=>t.projectId===p.id);
   return {...p,category:p.category||p.tags?.[0]||'Branding',art:p.art||'moc',deadline:p.deadline||b?.deadline||'2026-12-01',
    status:p.archived?'Archived':p.status||(v?.status==='Approved'?'Completed':v?.status==='Client Review'?'In Review':'Active'),
-   progress:tasks.length?Math.round(tasks.filter(t=>t.status==='done').length/tasks.length*100):(p.progress||0),
-   versionId:v?.id||null,versionStatus:v?.status||null,versionImage:v?.image||'assets/coffee.svg',previousImage:versions.filter(x=>x.id!==v?.id).at(-1)?.image||v?.image||'assets/coffee.svg',
+   progress:p.status==='Completed'?100:tasks.length?Math.round(tasks.filter(t=>t.status==='done').length/tasks.length*100):(p.progress||0),
+   versionId:v?.id||null,versionStatus:v?.status||null,versionImage:v?.image||'assets/coffee.svg',previousImage:previous?.image||null,rejectionReason:[...(v?.history||[])].reverse().find(h=>h.action==='Rejected')?.reason||'',
    availableVersions:versions.map(v=>({id:v.id,name:v.name,status:v.status})),
    comments:d.comments.filter(c=>c.versionId===v?.id).map(c=>({...c,x:c.x??.5,y:c.y??.5,createdAt:c.createdAt||'2026-10-01T00:00:00Z'})),
    brief:b?{...b.clientData,sections:b.clientData?.sections||{goal:b.summary||'',audience:b.audience||'',message:'',style:'',deliverables:b.deliverables||''},deadline:b.deadline,accepted:b.clientData?.accepted??true,submitted:['submitted','approved'].includes(b.status),reviewStatus:b.status,reason:b.reason||''}:null};
@@ -39,5 +45,5 @@ window.TeamClient=(()=>{
  for(const n of value.notifications){const prev=old.notifications.find(x=>x.id===n.id);if(prev&&n.read!==prev.read){const target=d.notifications.find(x=>x.id===n.id&&x.userId===user.id);if(target)target.read=n.read}}
  });baseline=clone(value);return true}catch(e){window.CS?.toast(e.message);return false}}
  function notify(message,projectId,type){try{const user=session();Store.transaction(d=>{check(user?.role==='Client','Phiên Client không hợp lệ.');for(const u of d.users.filter(u=>u.active&&(u.role==='Lead'||u.id===user.id)))d.notifications.unshift({id:Store.id('notif'),userId:u.id,projectId,type,title:message,message,read:false,time:new Date().toISOString(),link:u.role==='Lead'?'lead-task-board.html':'client-project-overview.html?project='+encodeURIComponent(projectId)})});return true}catch(e){window.CS?.toast(e.message);return false}}
- return {read,write,session,login,home,notify};
+ return {read,write,session,login,authenticate,home,notify};
 })();

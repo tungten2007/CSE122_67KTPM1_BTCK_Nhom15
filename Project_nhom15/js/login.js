@@ -3,6 +3,11 @@ const { $, $$, login, toast } = CS;
 const requested = new URLSearchParams(location.search).get("role");
 const selected = CS.roles.includes(requested) ? requested : CS.preferredRole();
 $("#login-role").value = selected;
+Store.load();
+function fillDemoAccount(){const role=$('#login-role').value==='Creative Lead'?'Lead':$('#login-role').value;const user=Store.get().users.find(u=>u.active&&u.role===role);if(user){$('#email').value=user.email;$('#password').value=user.demoPassword||'demo123';}}
+$('#login-role').onchange=fillDemoAccount;
+const registered=new URLSearchParams(location.search).get('registered');
+if(registered){$('#email').value=registered;$('#login-status').dataset.kind='success';$('#login-status').textContent='Đăng ký thành công. Nhập mật khẩu demo vừa tạo để đăng nhập.';}else fillDemoAccount();
 $$("[data-role]").forEach((button) => {
   if (button.dataset.role === selected) button.classList.add("selected");
   button.onclick = () => {
@@ -39,14 +44,12 @@ $("#login-form").onsubmit = async (e) => {
     return;
   }
   $("#login-submit").disabled = true;
-  $("#login-status").textContent = "Đang tạo phiên demo…";
+  $("#login-status").dataset.kind="progress";$("#login-status").textContent = "Đang tạo phiên demo…";
   await new Promise((r) => setTimeout(r, 450));
-  if (login($("#login-role").value, email.value.trim())) {
-    pass.value = "";
-    location.href = CS.home();
-  } else {
-    $("#login-submit").disabled = false;
-    $("#login-status").textContent =
-      "Không thể tạo phiên. Vui lòng bật quyền lưu trữ trình duyệt.";
+  try {
+    TeamClient.authenticate(email.value.trim(),pass.value);
+    pass.value='';location.href=CS.home();
+  } catch(error) {
+    $('#login-submit').disabled=false;$('#login-status').dataset.kind='error';$('#login-status').textContent=error.message;pass.focus();
   }
 };

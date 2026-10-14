@@ -21,7 +21,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       App.init('moodboard', renderMoodboard);
 
-      function renderMoodboard() {
+      function renderMoodboard(){App.preserveFocus(renderMoodboardContent)}
+      function renderMoodboardContent() {
         const { $, $$, esc, icon, data, user, project, banner, toast } = App;
         const main = $('#main');
 

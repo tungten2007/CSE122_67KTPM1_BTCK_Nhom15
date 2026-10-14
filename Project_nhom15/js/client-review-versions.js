@@ -27,7 +27,8 @@
     editing = null,
     pending = null,
     focused = null;
-  $("#old-image").src = p.previousImage || p.versionImage;
+  if(p.previousImage)$('#old-image').src=p.previousImage;
+  else{$('.old-design').innerHTML='<p class="compare-empty">Chưa có phiên bản trước được gửi cho bạn.</p>'; $('[data-mode="slider"]').disabled=true;}
   $("#new-image").src = p.versionImage;
   $("#brief-link").href = CS.url("client-creative-brief", p.id);
   function locked() {
@@ -75,7 +76,7 @@
       ? visible
           .map(
             (c) =>
-              `<article class="comment-card ${c.resolved ? "resolved" : ""} ${focused === c.id ? "focused" : ""}" id="comment-${escape(c.id)}"><div class="comment-head"><button class="comment-number" data-focus="${escape(c.id)}" aria-label="Xem vị trí phản hồi ${comments.indexOf(c) + 1}">${comments.indexOf(c) + 1}</button><strong>Minh Anh</strong><time>${escape(new Date(c.createdAt).toLocaleDateString("vi-VN"))}</time></div><p>${escape(c.text)}</p><div class="comment-actions">${locked() ? `<span class="pill">${c.resolved ? "Đã xử lý" : "Đã ghi nhận"}</span>` : `<button data-action="resolve" data-id="${escape(c.id)}">${c.resolved ? "↶ Mở lại" : "✓ Đánh dấu đã xử lý"}</button><button data-action="edit" data-id="${escape(c.id)}">Sửa</button><button data-action="delete" data-id="${escape(c.id)}">Xóa</button>`}</div></article>`,
+              `<article class="comment-card ${c.resolved ? "resolved" : ""} ${focused === c.id ? "focused" : ""}" id="comment-${escape(c.id)}"><div class="comment-head"><button class="comment-number" data-focus="${escape(c.id)}" aria-label="Xem vị trí phản hồi ${comments.indexOf(c) + 1}">${comments.indexOf(c) + 1}</button><strong>${escape(c.author||'Khách hàng')}</strong><time>${escape(new Date(c.createdAt).toLocaleDateString("vi-VN"))}</time></div><p>${escape(c.text)}</p><div class="comment-actions">${locked() ? `<span class="pill">${c.resolved ? "Đã xử lý" : "Đã ghi nhận"}</span>` : `<button data-action="resolve" data-id="${escape(c.id)}">${c.resolved ? "↶ Mở lại" : "✓ Đánh dấu đã xử lý"}</button><button data-action="edit" data-id="${escape(c.id)}">Sửa</button><button data-action="delete" data-id="${escape(c.id)}">Xóa</button>`}</div></article>`,
           )
           .join("")
       : `<div class="feedback-empty"><span>⊕</span><h3>${comments.length ? "Không có phản hồi ở bộ lọc này" : "Chưa có phản hồi nào"}</h3><p>${locked() ? "Phiên bản này đang ở chế độ chỉ đọc." : "Nhấn vào ảnh đang chọn để ghim<br>góc nhìn đầu tiên của bạn."}</p></div>`;

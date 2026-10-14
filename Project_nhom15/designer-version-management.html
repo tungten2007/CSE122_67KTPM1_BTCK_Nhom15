@@ -22,7 +22,8 @@
 
       App.init('versions', renderVersionManagement);
 
-      function renderVersionManagement() {
+      function renderVersionManagement(){App.preserveFocus(renderVersionManagementContent)}
+      function renderVersionManagementContent() {
         const { $, $$, esc, icon, data, user, project, banner, date, toast } = App;
         const main = $('#main');
 

@@ -1,7 +1,7 @@
 # TASK-27 — Tích hợp toàn nhóm, bản v1
 
 Người phụ trách: SV3 tích hợp; SV1/SV2 review phần mình. Cập nhật: 14/10/2026.
-Trạng thái: đã triển khai và kiểm tra kỹ thuật; chờ review nhóm. Chưa merge/release.
+Trạng thái bản dùng chung v5: đã triển khai/kiểm tra và nhóm đồng ý theo xác nhận người dùng 14/10/2026. Trạng thái merge/phát hành đối chiếu PR #4 trên GitHub; các ghi chú v1–v4 bên dưới là lịch sử.
 
 ## Mô tả công việc
 
@@ -102,3 +102,17 @@ Theo ảnh mẫu mới, làm nổi bật phần giới thiệu chức năng bằ
 - [x] Năm nhóm bố cục/liên kết và 17 lượt menu Chromium PASS sau đổi font; không lỗi JavaScript.
 
 File thay đổi: index.html và css/index.css. Bản ZIP mới: CreatorStudio-Task27-Integration-v4-Typography.zip. Đây là chỉnh sửa Landing; các kết quả dữ liệu/luồng nghiệp vụ trước đó vẫn giữ riêng.
+
+
+## Hoàn thiện bản v5 — nhóm đồng ý (14/10/2026)
+
+Người dùng xác nhận cả nhóm đồng ý, yêu cầu hoàn thiện website để dùng và sửa tiếp khi có phản hồi. Bổ sung đăng ký Client/đăng nhập đúng tài khoản/đăng xuất, nối đổi mật khẩu với đăng nhập; sửa quyền cập nhật hồ sơ, giữ focus tìm kiếm, mở thông báo đúng dự án, tên người phản hồi và lý do từ chối sau tải lại. Khi chưa có bản trước để so sánh, màn review giải thích rõ thay vì lặp ảnh hiện tại.
+
+- [x] Đăng ký/đăng nhập/đăng xuất, email trùng, mật khẩu sai, tài khoản khóa.
+- [x] Hồ sơ/mật khẩu có tác dụng qua tải lại và đăng nhập lại.
+- [x] Sửa các lỗi trải nghiệm tìm được trong khi kiểm thử cuối.
+- [x] 23 kiểm tra sử dụng mới, 34 lượt tích hợp, 9 file regression và 11 nhóm dữ liệu tích hợp đạt.
+- [x] Hướng dẫn, kiểm kê18trang, phân công và báo cáoAI đã đồng bộ trong README và docs.
+- [x] Đồng ý nhóm được ghi theo xác nhận người dùng; không tạo review cá nhân giả.
+
+Minh chứng cuối: docs/qa-final-v5/result.json và integration/result.json. Gói: CreatorStudio-Task27-Integration-v5-Complete.zip. Figma/OBS/nộp học phần tiếp tục theo hồ sơ riêng; đây là frontend demo lưu dữ liệu trên trình duyệt.

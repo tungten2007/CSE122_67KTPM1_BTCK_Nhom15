@@ -25,7 +25,8 @@
 
       App.init('dashboard', renderDashboard);
 
-      function renderDashboard() {
+      function renderDashboard(){App.preserveFocus(renderDashboardContent)}
+      function renderDashboardContent() {
         const { $, $$, esc, icon, data, user, project, banner, date, priority } = App;
         const main = $('#main');
 

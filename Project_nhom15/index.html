@@ -22,7 +22,7 @@
     title.textContent = 'Chưa tải đủ file của CreatorStudio';
     box.appendChild(title);
     var explanation = document.createElement('p');
-    explanation.textContent = 'Hãy giải nén toàn bộ CreatorStudio-SV3-Website.zip và giữ các thư mục css, js, assets cạnh file HTML. Nếu gửi cho người khác, gửi nguyên ZIP; chỉ gửi HTML sẽ thiếu giao diện và chức năng. Sau đó mở index.html bằng Live Server.';
+    explanation.textContent = 'Hãy giải nén toàn bộ gói CreatorStudio và giữ các thư mục css, js, assets cạnh file HTML. Nếu gửi cho người khác, gửi nguyên ZIP; chỉ gửi HTML sẽ thiếu giao diện và chức năng. Sau đó mở index.html bằng Live Server.';
     box.appendChild(explanation);
     var list = document.createElement('ul');
     missing.forEach(function (path) {var item=document.createElement('li');item.textContent=path;list.appendChild(item);});
@@ -263,7 +263,7 @@
               Khám phá từ khóa phong cách và bảng màu cho moodboard của nhà
               thiết kế.
             </p>
-            <small>Module SV2 · Giới thiệu tính năng</small>
+            <a href="login.html?role=Designer">Khám phá không gian Nhà thiết kế →</a>
           </article>
           <article>
             <span class="feature-icon">≋</span>
@@ -272,7 +272,7 @@
               Gom phản hồi thành các việc cần làm, giúp Creative Lead định hướng
               chỉnh sửa.
             </p>
-            <small>Module SV3 · Giới thiệu tính năng</small>
+            <a href="login.html?role=Creative%20Lead">Khám phá không gian Trưởng nhóm →</a>
           </article>
         </div>
       </section>

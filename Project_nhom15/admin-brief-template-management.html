@@ -25,7 +25,8 @@
 
       App.init('briefTemplates', renderTemplateManagement);
 
-      function renderTemplateManagement() {
+      function renderTemplateManagement(){App.preserveFocus(renderTemplateManagementContent)}
+      function renderTemplateManagementContent() {
         const { $, $$, esc, icon, data, user, project, banner, toast } = App;
         const main = $('#main');
 

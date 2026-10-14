@@ -61,6 +61,7 @@
     "js/pages/lead-internal-review.js",
     "js/pages/lead-task-board.js",
     "js/pages/role-preview.js",
+    "js/register.js",
     "js/shared.js",
     "js/store.js",
     "lead-feedback-summary.html",
@@ -69,6 +70,7 @@
     "login.html",
     "notifications.html",
     "profile.html",
+    "register.html",
     "role-preview.html"
   ]
 }

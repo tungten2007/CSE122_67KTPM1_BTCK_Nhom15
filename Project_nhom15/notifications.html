@@ -23,7 +23,8 @@
 
       App.init('notifications', renderNotifications);
 
-      function renderNotifications() {
+      function renderNotifications(){App.preserveFocus(renderNotificationsContent)}
+      function renderNotificationsContent() {
         const { $, $$, esc, icon, data, user, project, banner, toast } = App;
         const main = $('#main');
 
@@ -203,9 +204,13 @@
 
         // Khi bấm "Xem chi tiết" -> tự động đánh dấu đã đọc
         $$('.view-notif-link').forEach(link => {
-          link.onclick = () => {
-            const notifId = link.dataset.id;
-            Store.markNotification(notifId, true);
+          link.onclick = event => {
+            try {
+              const notifId=link.dataset.id;
+              Store.markNotification(notifId,true);
+              const notification=Store.get().notifications.find(n=>n.id===notifId);
+              if(notification?.projectId){sessionStorage.setItem('cs-project',notification.projectId);const target=new URL(link.href,location.href);if(!target.searchParams.has('project'))target.searchParams.set('project',notification.projectId);link.href=target.href;}
+            } catch(error){event.preventDefault();App.toast(error.message);}
           };
         });
       }

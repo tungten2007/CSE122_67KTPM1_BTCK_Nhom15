@@ -23,7 +23,8 @@
 
       App.init('profile', renderProfile);
 
-      function renderProfile() {
+      function renderProfile(){App.preserveFocus(renderProfileContent)}
+      function renderProfileContent() {
         const { $, $$, esc, icon, data, user, project, banner, toast } = App;
         const main = $('#main');
 
@@ -124,7 +125,7 @@
               <div class="panel-title">
                 <div>
                   <h2>Thay đổi mật khẩu</h2>
-                  <p>Mô phỏng frontend. Mật khẩu ban đầu: demo123. Chỉ sử dụng mật khẩu thử nghiệm.</p>
+                  <p>Dùng mật khẩu demo bạn đã tạo. Tài khoản mẫu có mật khẩu ban đầu demo123; chỉ dùng thông tin thử nghiệm.</p>
                 </div>
               </div>
 

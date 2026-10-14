@@ -4,11 +4,11 @@ window.Store = (() => {
   const clone=x=>JSON.parse(JSON.stringify(x));
   const requireValue=(test,message)=>{if(!test)throw new Error(message)};
   const roles=['Client','Designer','Lead','Admin'], statuses=['todo','doing','review','done'];
-  function load(){const raw=localStorage.getItem(KEY);db=raw?JSON.parse(raw):CS_SEED();requireValue(db.schema===1&&['users','projects','tasks','briefs','versions','notes','comments','proposals','tags','activity'].every(k=>Array.isArray(db[k]))&&db.settings,'Dữ liệu lưu không hợp lệ. Hãy xuất bản sao rồi đặt lại dữ liệu mẫu.');if(!raw)localStorage.setItem(KEY,JSON.stringify(db));return clone(db)}
+  function load(){const raw=localStorage.getItem(KEY);db=raw?JSON.parse(raw):CS_SEED();requireValue(db.schema===1&&['users','projects','tasks','briefs','versions','notes','comments','proposals','tags','activity','moodboards','briefTemplates','notifications'].every(k=>Array.isArray(db[k]))&&db.settings,'Dữ liệu lưu không hợp lệ. Hãy xuất bản sao rồi đặt lại dữ liệu mẫu.');if(!raw)localStorage.setItem(KEY,JSON.stringify(db));return clone(db)}
   const get=()=>clone(db);
   const id=prefix=>prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
   function tx(fn){const latest=localStorage.getItem(KEY);if(latest){const stored=JSON.parse(latest);requireValue(stored.schema===1,"Dữ liệu đã thay đổi định dạng. Hãy tải lại trang.");db=stored}const next=clone(db);fn(next);try{localStorage.setItem(KEY,JSON.stringify(next))}catch(e){throw new Error('Không lưu được dữ liệu. Bộ nhớ trình duyệt có thể đã đầy hoặc bị chặn. Thay đổi chưa được áp dụng.')}db=next;return get()}
-  function actor(d,uid,role){const u=d.users.find(u=>u.id===uid);requireValue(u&&u.active&&(Array.isArray(role)?role.includes(u.role):u.role===role),'Bạn không có quyền thực hiện thao tác này.');return u}
+  function actor(d,uid,role){const u=d.users.find(u=>u.id===uid);requireValue(u&&u.active&&(!role||(Array.isArray(role)?role.includes(u.role):u.role===role)),'Bạn không có quyền thực hiện thao tác này.');return u}
   function writable(d,pid){const p=d.projects.find(p=>p.id===pid);requireValue(p,'Không tìm thấy dự án.');requireValue(!p.archived,'Dự án đã lưu trữ, chỉ được xem.');return p}
   function log(d,text){d.activity.unshift({id:id('a'),text,time:new Date().toISOString()});d.activity=d.activity.slice(0,80)}
   function taskData(d,t){requireValue(t.title?.trim().length>=3&&t.title.trim().length<=120,'Tên công việc cần từ 3 đến 120 ký tự.');requireValue(statuses.includes(t.status),'Trạng thái không hợp lệ.');requireValue(['high','medium','low'].includes(t.priority),'Mức ưu tiên không hợp lệ.');requireValue(d.users.some(u=>u.id===t.assignee&&u.active&&['Lead','Designer'].includes(u.role)),'Chọn người phụ trách đang hoạt động.');requireValue(/^\d{4}-\d{2}-\d{2}$/.test(t.due)&&!isNaN(Date.parse(t.due))&&new Date(t.due+'T00:00:00Z').toISOString().slice(0,10)===t.due,'Chọn hạn hoàn thành.');return {...t,title:t.title.trim(),description:(t.description||'').trim()}}
@@ -33,7 +33,20 @@ window.Store = (() => {
   function toggleUser(uid,id){tx(d=>{actor(d,uid,'Admin');const u=d.users.find(u=>u.id===id);requireValue(u,'Không tìm thấy người dùng.');requireValue(id!==uid,'Không thể tự khóa tài khoản đang dùng.');if(u.active&&u.role==='Admin')requireValue(d.users.some(x=>x.id!==id&&x.active&&x.role==='Admin'),'Cần giữ ít nhất một Admin hoạt động.');u.active=!u.active;log(d,(u.active?'Đã mở khóa: ':'Đã khóa: ')+u.name)})}
   function settings(uid,data){tx(d=>{actor(d,uid,'Admin');const n=Number(data.warningDays);requireValue(Number.isInteger(n)&&n>=0&&n<=30,'Ngưỡng cảnh báo phải từ 0 đến 30 ngày.');requireValue(data.versionPattern.length<=100&&['{project}','{asset}','{number}'].every(s=>data.versionPattern.includes(s)),'Mẫu cần đủ {project}, {asset} và {number}.');d.settings={warningDays:n,versionPattern:data.versionPattern.trim(),requireReview:!!data.requireReview};log(d,'Đã lưu quy tắc studio.')})}
   function tag(uid,name,action,newName){tx(d=>{actor(d,uid,'Admin');if(action==='delete'){requireValue(!d.projects.some(p=>p.tags.includes(name)),'Nhãn đang được dự án sử dụng.');d.tags=d.tags.filter(t=>t!==name)}else{const label=(newName||name).trim();requireValue(label.length>=2&&label.length<=30,'Nhãn cần từ 2 đến 30 ký tự.');requireValue(!d.tags.some(t=>t.toLowerCase()===label.toLowerCase()&&!(action==='edit'&&t===name)),'Nhãn đã tồn tại.');if(action==='edit'){requireValue(d.tags.includes(name),'Nhãn không tồn tại.');requireValue(!d.projects.some(p=>p.archived&&p.tags.includes(name)),'Nhãn thuộc dự án đã lưu trữ, không thể đổi.');d.tags=d.tags.map(t=>t===name?label:t);d.projects.forEach(p=>p.tags=p.tags.map(t=>t===name?label:t))}else d.tags.push(label)}log(d,'Đã cập nhật danh mục nhãn.')})}
-  function archive(uid,pid){tx(d=>{actor(d,uid,'Admin');const p=writable(d,pid);requireValue(!d.tasks.some(t=>t.projectId===pid&&t.status!=='done'),'Còn công việc chưa hoàn thành.');requireValue(!d.briefs.some(b=>b.projectId===pid&&b.status!=='approved'),'Còn brief chưa được duyệt.');requireValue(!d.versions.some(v=>v.projectId===pid&&v.status!=='Approved'),'Còn phiên bản chưa được khách hàng duyệt.');p.archived=true;log(d,'Đã lưu trữ dự án: '+p.name)})}
+  function archive(uid,pid){tx(d=>{actor(d,uid,'Admin');const p=writable(d,pid);requireValue(!d.tasks.some(t=>t.projectId===pid&&t.status!=='done'),'Còn công việc chưa hoàn thành.');requireValue(!d.briefs.some(b=>b.projectId===pid&&b.status!=='approved'),'Còn brief chưa được duyệt.');requireValue(!d.versions.some(v=>v.projectId===pid&&!['Approved','Archived'].includes(v.status)),'Còn phiên bản chưa được khách hàng duyệt.');p.archived=true;log(d,'Đã lưu trữ dự án: '+p.name)})}
+  function registerClient(data) {
+    let uid;
+    tx(d => {
+      const name=(data.name||'').trim(),email=(data.email||'').trim().toLowerCase();
+      requireValue(name.length>=2&&name.length<=80,'Họ tên cần từ 2 đến 80 ký tự.');
+      requireValue(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),'Email không hợp lệ.');
+      requireValue(!d.users.some(u=>u.email.toLowerCase()===email),'Email đã được sử dụng.');
+      requireValue(typeof data.password==='string'&&data.password.length>=6&&data.password.length<=128,'Mật khẩu demo cần từ 6 đến 128 ký tự.');
+      uid=id('u');d.users.push({id:uid,name,email,role:'Client',active:true,demoPassword:data.password,title:'Khách hàng',bio:''});
+      log(d,'Đã tạo tài khoản khách hàng: '+name);
+    });
+    return uid;
+  }
   function reset(){const next=CS_SEED();localStorage.setItem(KEY,JSON.stringify(next));db=next}
   // --- Version Methods (SV2) ---
   function computeVersionCode(d, projectId, assetType, versionNum) {
@@ -369,5 +382,5 @@ window.Store = (() => {
   }
 
 
-  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,transaction:tx,KEY,load,get,id,saveTask,moveTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,settings,tag,archive,reset};
+  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,registerClient,transaction:tx,KEY,load,get,id,saveTask,moveTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,settings,tag,archive,reset};
 })();
