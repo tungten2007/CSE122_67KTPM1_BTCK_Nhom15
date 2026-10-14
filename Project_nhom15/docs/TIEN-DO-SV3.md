@@ -1,4 +1,4 @@
-# Tiến độ SV3 — cập nhật 12/10/2026
+# Tiến độ CreatorStudio — cập nhật 14/10/2026
 
 Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng bản 24 task cũ. TASK-06 thuộc SV1; TASK-18 Brief Template thuộc SV2 theo inventory 17 màn hình mới. README gốc và hai tài liệu Word của repo còn nội dung phân công/đề tài cũ; giữ nguyên để nhóm đối chiếu, không lấy chúng thay inventory mới.
 
@@ -6,7 +6,7 @@ Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng
 |---|---|---|---|---|---|
 | TASK-03 (phần SV3) | Wireframe và UI Kit — phần SV3 | SV3 phối hợp nhóm | 🔴 Có lỗi | figma-canva/README.md; Figma root70:15 | Đã bổ sung kit; chưa QA sau sửa text sizing; chưa có wireframe SV3 riêng |
 | TASK-04 (phần SV3) | Thiết kế chi tiết màn hình SV3 | SV3 | 🔴 Có lỗi | figma-canva/README.md; docs/SV3-DESIGN-QA.md | Đã tạo 6 desktop + 6 mobile; mobile còn chồng chữ, desktop chưa QA sau sửa; thiếu AI states/prototype/export |
-| TASK-05 / CORE-03 | Khung điều hướng và chuyển vai trò demo | SV3 (phần được giao) | 🟠 Chờ duyệt | js/app.js; js/modules/navigation.js | Logic đã QA; chưa ghép Client/Designer |
+| TASK-05 / CORE-03 | Khung điều hướng và chuyển vai trò demo | SV3 (phần được giao) | 🟠 Chờ duyệt | js/app.js; js/modules/navigation.js | Đã ghép Client/Designer tại TASK-27; chờ review khung chung |
 | TASK-15 / SV3-01 | Bảng công việc, duyệt brief | SV3 | 🟢 Hoàn thành | lead-task-board.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; tạo/sửa/lọc, kéo thả, duyệt/trả brief và lưu sau tải lại đạt |
 | TASK-16 / SV3-02 | Duyệt nội bộ | SV3 | 🟢 Hoàn thành | lead-internal-review.html; docs/TASK-15-16-QA.md | QA Chromium desktop/mobile PASS; ghim/sửa/xử lý ghi chú, checklist, yêu cầu sửa/chuyển khách đạt |
 | TASK-17 / SV3-03 | Tổng hợp phản hồi AI-2 | SV3 | 🟢 Hoàn thành | lead-feedback-summary.html; docs/TASK-17-QA.md | Chromium16 nhóm PASS, 9 file regression PASS; sửa/bỏ/làm rõ/chuyển task và nguồn phiên bản đúng |
@@ -14,7 +14,7 @@ Dùng mã đánh số đơn của bảng 29 task đã khôi phục, không dùng
 | TASK-20 / SV3-05 | Thiết lập và lưu trữ | SV3 | 🟢 Hoàn thành | admin-project-settings.html; docs/qa-admin-errors/README.md | Quy tắc, nhãn, điều kiện lưu trữ/read-only và desktop/mobile PASS |
 | TASK-21 | Responsive + kiểm thử Lead/Admin | SV3 | 🟢 Hoàn thành | tests/browser-responsive-sv3.cjs; docs/qa-responsive-sv3/ | 24/24 lượt Chromium:6 màn ×320/768/1024/1440px, dialog/menu/focus PASS |
 | TASK-26 / SV3-06 | Lỗi 403/404 | SV3 | 🟢 Hoàn thành | 404.html; docs/qa-admin-errors/ | 403/404, đường về4vai trò, HTTPURL lạ và desktop/mobile PASS |
-| TASK-27 (phần SV3) | Kiểm thử tích hợp | SV3 phối hợp nhóm | ⬜ Chưa làm | docs/tich-hop.md | Chờ code và dữ liệu SV1/SV2 |
+| TASK-27 | Tích hợp toàn nhóm | SV3 phối hợp nhóm | 🟠 Chờ duyệt | docs/TASK-27-INTEGRATION-v1.md | Ghép ba bản nộp; 10 nhóm dữ liệu, 9 regression và 34 lượt Chromium PASS; chờ review/merge |
 | TASK-28 (phần SV3) | README, tài liệu, kiểm kê | SV3 phối hợp nhóm | 🟡 Đang làm | README.md; docs/ | Có tài liệu SV3; chưa đồng bộ toàn nhóm |
 | TASK-29 (phần SV3) | OBS, minh chứng, phát hành | SV3 phối hợp nhóm | ⬜ Chưa làm | — | Chưa có OBS/review/phát hành; không giả nhận hoàn thành |
 
@@ -24,7 +24,7 @@ Các task thiết lập và thiết kế trước đó có tài sản trong lị
 
 - Yêu cầu BTL-30 và 3 ảnh hướng dẫn người dùng gửi lại đã đọc. Ảnh tư vấn tâm lý là ví dụ tổ chức bài; không thay chủ đề CreatorStudio.
 - Repo xác định: tungten2007/CSE122_67KTPM1_BTCK_Nhom15. Bản SV3 được đưa vào Project_nhom15, giữ đường dẫn nội bộ và các file cũ.
-- index.html tại đây chỉ mở demo SV3, không thay Landing/Login của SV1. Client/Designer có trang chờ ghép.
+- Bản tích hợp TASK-27 dùng Landing/Login của SV1; Client/Designer đã ghép vào cùng thư mục chạy.
 - Sáu màn SV3 đã QA Chromium153: Task15/16 đạt14nhóm; Task17 đạt16nhóm; Task19/20/26 đạt12nhóm; responsive6màn×4widths đạt24/24. 9file regression PASS. Minh chứng trong docs/qa-*. Không suy kết quả SV3 thành toàn website hoặc duyệt Figma.
 - Trello chưa được chỉnh trực tiếp. Dùng TASK-15-TRELLO.txt và TASK-16-TRELLO.txt để cập nhật hai thẻ hoàn thành phần triển khai/QA. Review nhóm, merge và OBS vẫn chưa được xác nhận.
 
@@ -43,3 +43,45 @@ Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa
 Đã thực hiện QA Chromium và review độc lập đủ chức năng, ảnh desktop/mobile. Đánh dấu hoàn thành hai task triển khai; giữ TASK03/04 Figma có lỗi, TASK27 tích hợp và TASK29 OBS/release chưa hoàn thành. Tiếp theo TASK17. Báo cáo: docs/TASK-15-16-QA.md.
 
 Ngày12/10/2026: sau TASK17, QA độc lập chốt TASK19/20/26 PASS; tiếp tục TASK21, 24 lượt responsive PASS. Tất cả sáu màn SV3 đã QA chức năng và giao diện trong phạm vi Chromium. Figma03/04 và tích hợp/OBS27–29 vẫn theo task riêng.
+
+## 14/10/2026 — TASK-27 tích hợp v1
+
+Đã đọc ba PR và ghép các phân hệ vào `Project_nhom15`, thay trang mở demo SV3 bằng Landing/Login của SV1. Dùng Store chung `creatorstudio.team.v1`; nối brief, task, ảnh phiên bản, duyệt và feedback theo ID. Giữ khóa dữ liệu cũ, chưa di chuyển dữ liệu thực hành cũ. Chín file regression, mười nhóm dữ liệu tích hợp và 34 lượt Chromium đạt; đã sửa lỗi responsive SV2 tìm được. Chi tiết và checklist ở `TASK-27-INTEGRATION-v1.md`, kết quả ở `qa-task27-v1/result.json`.
+
+TASK-27: chờ review nhóm, chưa merge. TASK-28/29 và phần Figma03/04 chưa hoàn thành. Trello không chỉnh trực tiếp theo yêu cầu mới nhất. Không suy kết quả kiểm thử bản tích hợp thành duyệt thiết kế hoặc OBS.
+
+## Đối chiếu 29 task toàn nhóm sau tích hợp
+
+“Đã triển khai” ghi nhận mã nguồn hiện có; không thay cho review PR, duyệt Figma hay OBS. Bảng này được cập nhật trong repo, không ghi lên Trello. Giữ nguyên phân công theo bảng 29 task đã khôi phục.
+
+| Task | Nội dung | Phụ trách | Tiến độ có bằng chứng |
+|---|---|---|---|
+| 01 | Repo, Trello, tài liệu ban đầu | Nhóm | Repo đã có; Trello có link, chưa đọc/đổi bảng trực tiếp |
+| 02 | Sitemap, user flow, inventory | Nhóm | Có sản phẩm trong lịch sử; chưa xác minh lại phê duyệt |
+| 03 | Wireframe, UI Kit | Nhóm | Có tài sản; phần SV3 còn lỗi/thiếu theo QA thiết kế |
+| 04 | Hi-fi 17 màn, duyệt Figma | Nhóm | Có mockup; chưa xác nhận duyệt toàn nhóm; SV3 còn lỗi |
+| 05 | Navbar/sidebar/role/CSS-JS chung | SV1 + nhóm | Đã tích hợp route/session; chờ review tính nhất quán |
+| 06 | Creative Brief + AI-1 | SV1 | Đã triển khai; gửi brief qua giao diện tích hợp đạt |
+| 07 | Review Versions | SV1 | Đã triển khai; phiên bản/ảnh/duyệt Client tích hợp đạt |
+| 08 | Project Overview | SV1 | Đã triển khai; tạo dự án qua giao diện tích hợp đạt |
+| 09 | Responsive/Test Client | SV1 | Có QA trong PR #3; màn Client 390/1440px tích hợp đạt |
+| 10 | Designer Dashboard | SV2 | Đã triển khai, đọc task chung; sửa mobile khi ghép |
+| 11 | Moodboard + AI-3 | SV2 | Đã triển khai; render tích hợp và responsive đạt; AI có test SV2 gốc |
+| 12 | Version Management | SV2 | Đã triển khai; luồng nộp version/Lead/Client tích hợp đạt |
+| 13 | Mock Data/LocalStorage | SV2 + nhóm | Store chung và test lưu/atomic/concurrent đạt |
+| 14 | Responsive/Test Designer | SV2 | QA tích hợp ba màn 390/1440px đạt; chưa Firefox/Safari |
+| 15 | Lead Task Board | SV3 | QA SV3 hoàn thành; nhận brief tích hợp và giao việc đạt |
+| 16 | Internal Review | SV3 | QA SV3 hoàn thành; ảnh version và chuyển Client tích hợp đạt |
+| 17 | Feedback Summary + AI-2 | SV3 | QA SV3 hoàn thành; dùng comments/versionId chung |
+| 18 | Brief Template Management | SV2 | Đã triển khai; giao diện tích hợp đạt, chờ review |
+| 19 | User Management | SV3 | QA SV3 hoàn thành; trang tích hợp đạt |
+| 20 | Project Settings | SV3 | QA SV3 hoàn thành; dùng settings chung |
+| 21 | Responsive/Test Lead/Admin | SV3 | QA SV3 hoàn thành; kiểm tra tích hợp 390/1440px đạt |
+| 22 | Landing | SV1 | Đã ghép bản SV1; mở trang trong kiểm tra tích hợp đạt |
+| 23 | Login + Demo Role Switcher | SV1 | Đăng nhập demo và điều hướng đúng vai trò đạt; chưa có đăng ký riêng trong bản nộp |
+| 24 | Profile | SV2 | Đã ghép; sửa mobile; chờ review/QA nghiệp vụ bổ sung |
+| 25 | Notifications | SV2 | Đã ghép, dùng thông báo chung; chờ review/QA nghiệp vụ bổ sung |
+| 26 | 403/404 | SV3 | QA SV3 hoàn thành; giữ server handler và trang lỗi chung |
+| 27 | Tích hợp toàn nhóm | Nhóm, SV3 tích hợp | Đã triển khai/QA kỹ thuật; chờ review/merge |
+| 28 | Tài liệu toàn nhóm | Nhóm | Đang làm: đã có hồ sơ Task27 và tài liệu các bản nộp; chưa đồng bộ mọi tài liệu |
+| 29 | OBS/Git/PR/release | Nhóm | PR các thành viên có; chưa xác nhận OBS, review chéo, merge/release |

@@ -23,13 +23,13 @@ const App={data:context.Store.get(),project:seed.projects[0],user:seed.users.fin
 };context.App=App;
 vm.runInContext(fs.readFileSync(path.join(root,'js/pages/lead-feedback-summary.js'),'utf8'),context);
 let html=$('#main').innerHTML;
-assert.match(html,/Tất cả 2 phiên bản/);
+assert.match(html,/Tất cả 4 phiên bản/);
 assert.match(html,/SECOND COMMENT<\/p><small>Client · VERSION SECOND/);
 assert.match(html,/INVALID COMMENT<\/p><small>Client · Phiên bản không còn khả dụng/);
 assert(!html.includes('FOREIGN VERSION'));
 edit.onclick();assert.equal(selects.get('assignee').value,'');assert.equal(selects.get('assignee').options[0][0],'');assert.equal(selects.get('assignee').extra,'required');
 App.data.proposals[0].assignee='';edit.onclick();assert.equal(selects.get('assignee').value,'');
-$('#add-comment').onclick();const versions=selects.get('versionId');assert.equal(versions.value,'');assert.equal(versions.extra,'required');assert.deepEqual(Array.from(versions.options,option=>option[0]),['','v-moc-3','v-second']);
+$('#add-comment').onclick();const versions=selects.get('versionId');assert.equal(versions.value,'');assert.equal(versions.extra,'required');assert.deepEqual(Array.from(versions.options,option=>option[0]),['',...App.data.versions.filter(v=>v.projectId==='p-moc').map(v=>v.id)]);
 const before=JSON.stringify(context.Store.get());
 assert.throws(()=>modal.submit({versionId:'',text:'Nội dung hợp lệ'}));
 assert.throws(()=>modal.submit({versionId:'v-foreign',text:'Nội dung hợp lệ'}));assert.equal(JSON.stringify(context.Store.get()),before);

@@ -3,7 +3,7 @@ const storage=()=>{const m=new Map();return {getItem:k=>m.get(k)||null,setItem:(
 const ctx={window:{},localStorage:storage(),sessionStorage:storage()};ctx.window=ctx;vm.createContext(ctx);
 for(const f of ['js/data.js','js/modules/navigation.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'..',f),'utf8'),ctx);
 const N=ctx.Navigation,users=ctx.CS_SEED().users;
-for(const [role,file] of Object.entries({Lead:'lead-task-board.html',Admin:'admin-user-management.html',Client:'role-preview.html',Designer:'role-preview.html'})){
+for(const [role,file] of Object.entries({Lead:'lead-task-board.html',Admin:'admin-user-management.html',Client:'client-project-overview.html',Designer:'designer-dashboard.html'})){
  assert.equal(N.activate(role,users),file);assert.equal(N.current(users).role,role);assert.equal(JSON.parse(ctx.localStorage.getItem('currentUser')).role,role);assert(fs.existsSync(path.join(__dirname,'..',file)));
 }console.log('PASS 4 vai trò: chọn tài khoản hoạt động, lưu currentUser và URL đích tồn tại');
 ctx.sessionStorage.clear();assert.equal(N.current(users).role,'Designer');console.log('PASS khôi phục vai trò qua phiên mới');

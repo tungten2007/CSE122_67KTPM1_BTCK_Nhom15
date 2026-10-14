@@ -1,5 +1,9 @@
 # CreatorStudio – Quản lý dự án sáng tạo và phản hồi phiên bản
 
+> **Bản tích hợp TASK-27 (14/10/2026):** mã website nằm trong `Project_nhom15/`, ghép các bản nộp SV1/SV2/SV3. Từ thư mục này chạy `python server.py 8000`, mở `http://localhost:8000/index.html` và chọn vai trò demo. Bản hiện tại chờ review nhóm, chưa merge/release.
+>
+> [Mô tả và checklist TASK-27](Project_nhom15/docs/TASK-27-INTEGRATION-v1.md) · [Tiến độ 29 task](Project_nhom15/docs/TIEN-DO-SV3.md) · [Kết quả QA tích hợp](Project_nhom15/docs/qa-task27-v1/result.json)
+
 > **Học phần:** Phát triển ứng dụng Web cơ bản – CSE122
 > **Đề tài:** BTL-30
 > **Nhóm:** 3 sinh viên
