@@ -1,0 +1,67 @@
+{
+  "projects": [
+    {
+      "id": "p1",
+      "name": "Mộc — Bản sắc từ thiên nhiên",
+      "category": "Branding",
+      "description": "Bộ nhận diện cho thương hiệu chăm sóc da thuần chay. Tối giản, tự nhiên, gần gũi với người trẻ.",
+      "deadline": "2026-11-20",
+      "status": "In Review",
+      "progress": 75,
+      "art": "moc",
+      "versionStatus": "Client Review",
+      "comments": [],
+      "brief": null
+    },
+    {
+      "id": "p2",
+      "name": "Forma — Không gian sống mới",
+      "category": "UI/UX",
+      "description": "Website giới thiệu bộ sưu tập nội thất hiện đại, ưu tiên trải nghiệm trên thiết bị di động.",
+      "deadline": "2026-12-05",
+      "status": "Active",
+      "progress": 35,
+      "art": "forma",
+      "versionStatus": "Client Review",
+      "comments": [],
+      "brief": null
+    },
+    {
+      "id": "p3",
+      "name": "Sunday — Một chút rực rỡ",
+      "category": "Campaign",
+      "description": "Chiến dịch giới thiệu đồ uống mùa hè, màu sắc tươi sáng và tinh thần lạc quan.",
+      "deadline": "2026-11-28",
+      "status": "Active",
+      "progress": 50,
+      "art": "sunday",
+      "versionStatus": "Client Review",
+      "comments": [],
+      "brief": null
+    },
+    {
+      "id": "p4",
+      "name": "Élan — Cảm hứng mỗi ngày",
+      "category": "Branding",
+      "description": "Hệ thống nhận diện cho studio sáng tạo độc lập.",
+      "deadline": "2026-10-01",
+      "status": "Completed",
+      "progress": 100,
+      "art": "elan",
+      "versionStatus": "Approved",
+      "comments": [],
+      "brief": null
+    }
+  ],
+  "schemaVersion": 1,
+  "notifications": [
+    {
+      "id": "welcome-v2",
+      "message": "Phiên bản v2.0 của Mộc đang chờ bạn phản hồi.",
+      "projectId": "p1",
+      "type": "version",
+      "read": false,
+      "createdAt": "2026-10-11T08:00:00Z"
+    }
+  ]
+}
