@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-12T14:38:50.756Z",
+  "browser": "153.0.8010.0",
+  "checks": [
+    "Đầu vào mẫu, nguồn phản hồi và trạng thái chưa có đề xuất",
+    "Chặn tổng hợp khi chưa chọn phản hồi",
+    "Loading, khóa thao tác lúc xử lý và lỗi AI không tạo dữ liệu",
+    "Thử lại thành công; kết quả có nguồn/lý do và phản hồi mơ hồ không được tự giao",
+    "Chặn tổng hợp lại khi còn gợi ý chưa xử lý",
+    "Sửa gợi ý và người phụ trách bị khóa phải chọn lại rõ ràng",
+    "Phản hồi mơ hồ phải đổi thành việc cụ thể và ghi lý do làm rõ",
+    "Bỏ riêng giữ nguồn; tạo công việc giữ nội dung đã sửa, nguồn, người và hạn",
+    "Lưu sau reload, link Kanban đúng và chặn tạo trùng từ phản hồi đã xử lý",
+    "Tạo công việc thủ công vẫn hoạt động sau lỗi AI",
+    "Bỏ toàn bộ gợi ý giữ phản hồi và cho phép tổng hợp lại",
+    "Nhập phản hồi yêu cầu chọn phiên bản và hiển thị đúng nguồn phiên bản",
+    "Đổi dự án không giữ lựa chọn cũ; empty/no-version rõ ràng",
+    "Mobile: một cột, không tràn ngang, AI và form nhập thủ công",
+    "Dự án lưu trữ chỉ xem và vai trò khác không được truy cập",
+    "Không có lỗi Console, JavaScript hoặc tài nguyên HTTP"
+  ],
+  "status": "PASS",
+  "errors": [],
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ]
+}

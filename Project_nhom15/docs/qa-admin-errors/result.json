@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-12T14:38:32.100Z",
+  "browser": "153.0.8010.0",
+  "status": "PASS",
+  "checks": [
+    "TASK19 tạo, required/email/trùng email, lưu sau reload",
+    "TASK19 phân trang, sửa vai trò, khóa/mở khóa",
+    "TASK19 tìm kiếm, lọc, empty, tự khóa/đổi vai trò bị chặn",
+    "TASK19 mobile card/form không tràn ngang",
+    "TASK20 quy tắc, validation, preview và lưu reload",
+    "TASK20 thêm/sửa/xóa nhãn, trùng nhãn, nhãn đang dùng",
+    "TASK20 điều kiện lưu trữ, xác nhận tên, read-only và nhãn dự án lưu trữ",
+    "TASK20 mobile bố cục/form không tràn ngang",
+    "TASK26 404 về Admin, URL Lead sai quyền đến403",
+    "TASK26 mobile403/404 không tràn ngang",
+    "TASK26 nút về đúng4 vai trò demo",
+    "Không lỗi Console, JavaScript hoặc tài nguyên HTTP"
+  ],
+  "errors": [],
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "note": "Custom unknown-path HTTP routing belongs to server.py and is not emulated by this test server."
+}

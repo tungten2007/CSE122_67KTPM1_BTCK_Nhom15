@@ -1,0 +1,9 @@
+TASK-19 — User Management
+Người phụ trách: SV3
+Mô tả: Quản lý thành viên, tìm/lọc/phân trang, thêm/sửa, vai trò, khóa/mở khóa.
+Trạng thái triển khai/QA: HOÀN THÀNH ngày12/10/2026.
+[x] CRUD; required/email/trùng email; tự khóa/đổi vai trò; lưu reload; mobile
+[x] QAChromium153 và ảnh minh chứng PASS.
+[x] Không lỗi Console/pageerror/tài nguyên trong các luồng hợp lệ.
+Minh chứng: docs/qa-admin-errors/ (19/20/26) hoặc docs/qa-responsive-sv3/ (21).
+FigmaTASK03/04, tích hợpTASK27 và OBS/review/mergeTASK29 theo dõi riêng.
