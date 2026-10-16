@@ -45,5 +45,40 @@ window.Navigation = (() => {
     media.addEventListener('change',()=>setOpen(false));
     const bottom=q('.sidebar-bottom');if(bottom&&!q('#logout')){const out=document.createElement('button');out.type='button';out.id='logout';out.className='text-light';out.textContent='Đăng xuất';out.onclick=logout;bottom.append(out);}
   }
-  return {roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
+
+  // One shell for Designer, Lead and Admin, including their shared pages.
+  function renderShell({key,data,user,project,icon,tools}) {
+    const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const initials=esc(user.name.split(' ').slice(-2).map(s=>s[0]).join(''));
+    const menu=Object.entries(routes).filter(([,v])=>v[3]===user.role||v[3]==='*').map(([k,v])=>`<a href="${v[0]}" class="nav-link ${k===key?'active':''}" ${k===key?'aria-current="page"':''}>${icon(v[2])}<span>${esc(v[1])}</span></a>`).join('');
+    document.body.classList.add('team-shell');
+    document.body.innerHTML=`<a class="skip-link" href="#main">Đến nội dung chính</a><div class="sidebar-shade" hidden></div>
+      <aside class="sidebar" aria-label="Điều hướng chính">
+        <a class="brand" href="${home(user.role)}"><span class="brand-mark">✳</span>CreatorStudio<span class="brand-dot">.</span></a>
+        <button class="icon-button mobile-close" aria-label="Đóng menu">${icon('close')}</button>
+        <p class="nav-caption">KHÔNG GIAN ${esc(roles[user.role]).toUpperCase()}</p><nav>${menu}</nav>
+        <div class="sidebar-project"><p class="nav-caption">DỰ ÁN ĐANG CHỌN</p><strong>${esc(project.name)}</strong><small>${esc(project.description)}</small></div>
+        <div class="sidebar-bottom"><button class="text-light" id="demo-tools-btn">${icon('settings')} Công cụ demo</button><a class="profile" href="profile.html"><span class="avatar">${initials}</span><div><strong>${esc(user.name)}</strong><small>${esc(roles[user.role])}</small></div></a></div>
+      </aside>
+      <div class="workspace"><header class="topbar"><button class="icon-button menu-toggle" aria-label="Mở menu">${icon('menu')}</button><div class="breadcrumb">Không gian làm việc <span>/</span> <strong>${esc(routes[key]?.[1]||'Trang lỗi')}</strong></div><div class="top-actions">
+        <label class="sr-only" for="project-select">Dự án</label><select id="project-select" aria-label="Chọn dự án">${data.projects.map(p=>`<option value="${esc(p.id)}" ${p.id===project.id?'selected':''}>${esc(p.name)}${p.archived?' · Lưu trữ':''}</option>`).join('')}</select>
+        <label class="sr-only" for="role-switch">Vai trò demo</label><select id="role-switch" aria-label="Đổi vai trò demo">${Object.entries(roles).map(([r,label])=>`<option value="${r}" ${r===user.role?'selected':''}>${esc(label)}</option>`).join('')}</select>
+        <a href="notifications.html" class="notification-button" id="activity-bell" aria-label="Xem thông báo">${icon('bell')}</a><a class="avatar small" href="profile.html" aria-label="Hồ sơ cá nhân">${initials}</a></div></header>
+        <main id="main" tabindex="-1"></main><footer class="page-footer">CreatorStudio · Nhóm 15 · Dữ liệu minh họa lưu trên trình duyệt</footer></div>
+      <dialog id="dialog" aria-labelledby="dialog-title"></dialog><div id="toast" role="status" aria-live="polite"></div>`;
+    document.querySelector('#role-switch').onchange=e=>{try{location.href=activate(e.target.value,Store.get().users)}catch(err){e.target.value=user.role;window.App?.toast(err.message)}};
+    document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);location.reload()};
+    document.querySelector('#demo-tools-btn').onclick=tools;
+    bindMenu();
+    const sidebar=document.querySelector('.sidebar');
+    const scrollKey='cs-sidebar-scroll-'+user.role;
+    try{sidebar.scrollTop=Number(sessionStorage.getItem(scrollKey)||0)}catch{}
+    sidebar.addEventListener('scroll',()=>{try{sessionStorage.setItem(scrollKey,String(sidebar.scrollTop))}catch{}},{passive:true});
+  }
+
+  return {renderShell,roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
 })();
+
+window.addEventListener?.('pagereveal', event => {
+  if (event.viewTransition) event.viewTransition.finished.catch(() => {});
+});

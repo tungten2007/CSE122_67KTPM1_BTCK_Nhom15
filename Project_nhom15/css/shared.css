@@ -773,3 +773,11 @@ progress {
     animation: none;
   }
 }
+
+@font-face { font-family:Inter; src:url('../assets/fonts/Inter-Variable.ttf') format('truetype'); font-weight:100 900; font-style:normal; font-display:optional; }
+html { scrollbar-gutter:stable; }
+
+/* Preserve page geometry during document navigation. */
+@view-transition { navigation:auto; }
+::view-transition-group(root) { animation-duration:.12s; }
+@media(prefers-reduced-motion:reduce) { ::view-transition-group(root) { animation-duration:0s; } }

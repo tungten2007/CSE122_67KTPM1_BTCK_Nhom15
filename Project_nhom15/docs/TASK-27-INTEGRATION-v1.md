@@ -163,3 +163,18 @@ Mô tả: khi tài khoản Client mở Hồ sơ hoặc Thông báo, dùng lại 
 - [x] Chỉ đưa lên dev; main chờ nhóm thống nhất.
 
 File: profile.html, notifications.html, js/app-sv2.js, js/shared.js, css/client-account.css. Gói: CreatorStudio-Task27-Integration-v9-ClientAccountStyle.zip.
+
+## Điều hướng đồng nhất mọi vai trò v10 — 16/10/2026
+
+Mô tả: Designer, Lead, Admin cùng dùng Navigation.renderShell thay vì hai bản shell riêng. Hồ sơ/Thông báo tiếp tục hiển thị menu và dự án của vai trò hiện tại. Sidebar nền sáng xanh/kem, độ rộng 230px desktop, 195px tablet, 240px drawer mobile; menu theo đúng quyền. Client giữ khung đã đồng bộ ở v9.
+
+- [x] Một khung DOM/CSS dùng chung cho 3 vai trò và trang dùng chung.
+- [x] Cố định kích thước sidebar/topbar, đồng bộ Inter cục bộ và preload.
+- [x] Giữ chỗ thanh cuộn bằng scrollbar-gutter để hạn chế dịch ngang khi đổi trang dài/ngắn.
+- [x] Giữ vị trí cuộn sidebar; hỗ trợ chuyển tài liệu bằng View Transitions nếu trình duyệt hỗ trợ, giảm chuyển động theo cài đặt thiết bị.
+- [x] Sửa tràn ở Moodboard, hàng nút Phiên bản và lưới Mẫu Brief tại 320px.
+- [x] 69 kiểm tra trình duyệt đạt: 3 vai trò × 5 trang × 4 kích thước, chuyển vai trò, bấm menu thực và công cụ demo.
+- [x] Kiểm tra lại 16 trường hợp Client/hồ sơ/mật khẩu/thông báo; 9 file regression đạt.
+- [x] Chỉ cập nhật dev; main chờ nhóm thống nhất.
+
+Minh chứng: docs/qa-navigation-v10/result.json. Gói: CreatorStudio-Task27-Integration-v10-UnifiedNavigation.zip. Kiểm tra Chromium, không suy thành xác nhận trên mọi trình duyệt; hiệu ứng chuyển tài liệu phụ thuộc trình duyệt và nên chạy qua Live Server.
