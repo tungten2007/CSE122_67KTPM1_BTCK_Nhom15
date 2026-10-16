@@ -81,6 +81,7 @@
           <div class="version-timeline">
             ${versions.length === 0 ? App.empty('Chưa có phiên bản nào', 'Hãy tải lên phiên bản v1 đầu tiên cho dự án này.') : versions.map((v, index) => {
               const isCurrent = index === 0;
+              const canManage = v.author === user.id;
               const isDraft = v.status === 'Draft';
               const isChangesRequested = v.status === 'Changes Requested';
               const isInternalReview = v.status === 'Internal Review';
@@ -114,25 +115,25 @@
                       </div>
 
                       <div class="row">
-                        ${isDraft || isChangesRequested ? `
+                        ${canManage && (isDraft || isChangesRequested) ? `
                           <button class="button small primary submit-review-btn" data-id="${v.id}">
                             ${icon('check')} Nộp duyệt nội bộ
                           </button>
                         ` : ''}
 
-                        ${isDraft ? `
+                        ${canManage && isDraft ? `
                           <button class="button small edit-version-btn" data-id="${v.id}">${icon('edit')} Sửa</button>
                           <button class="button small danger delete-version-btn" data-id="${v.id}">${icon('trash')} Xóa nháp</button>
                         ` : ''}
 
-                        ${!isArchived ? `
+                        ${canManage && !isArchived ? `
                           <button class="button small archive-version-btn" data-id="${v.id}" title="Lưu trữ phiên bản">Lưu trữ</button>
                         ` : ''}
                       </div>
                     </div>
 
                     <p class="muted" style="font-size: 12px;">
-                      Tạo ngày: ${new Date(v.createdAt).toLocaleString('vi-VN')} · Người thực hiện: ${data.users.find(u => u.id === v.author)?.name || 'An Nguyễn'}
+                      Tạo ngày: ${new Date(v.createdAt).toLocaleString('vi-VN')} · Người thực hiện: ${esc(data.users.find(u => u.id === v.author)?.name || 'Người dùng không còn tồn tại')} ${!canManage ? ' · Chỉ xem phiên bản của thành viên khác' : ''}
                     </p>
 
                     <!-- Changelog -->
@@ -253,7 +254,7 @@
         $$('.submit-review-btn').forEach(btn => {
           btn.onclick = () => {
             const vid = btn.dataset.id;
-            if (confirm('Bạn có chắc chắn muốn nộp phiên bản này để Trưởng nhóm (Linh Hà) duyệt nội bộ?')) {
+            if (confirm('Bạn có chắc chắn muốn nộp phiên bản này để các Trưởng nhóm duyệt nội bộ?')) {
               App.action(() => {
                 Store.submitVersionForReview(user.id, vid);
               }, 'Đã nộp phiên bản để duyệt nội bộ thành công!');

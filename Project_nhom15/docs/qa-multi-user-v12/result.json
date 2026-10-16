@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Admin adds second Lead; account selector includes active users only",
+    "Multiple Designers require explicit demo account selection",
+    "An and Bảo Ngọc have distinct task dashboards",
+    "A Designer cannot edit, submit, delete or archive another Designer version",
+    "Submission notifies both active Leads, excludes locked Lead",
+    "Second Lead retains own profile and independent read status through in-page navigation",
+    "Second Lead logs in with own email/password",
+    "Account controls layout 320px",
+    "Account controls layout 390px",
+    "Account controls layout 1440px"
+  ],
+  "errors": []
+}

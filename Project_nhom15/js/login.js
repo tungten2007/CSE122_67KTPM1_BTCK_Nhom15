@@ -26,15 +26,29 @@ function destinationAfterLogin() {
   if (project) sessionStorage.setItem('cs-project', project.id);
   return nextPage + (project ? '?project=' + encodeURIComponent(project.id) : '');
 }
-function fillDemoAccount(){const role=$('#login-role').value==='Creative Lead'?'Lead':$('#login-role').value;const user=Store.get().users.find(u=>u.active&&u.role===role);if(user){$('#email').value=user.email;$('#password').value=user.demoPassword||'demo123';}}
+function fillSelectedAccount() {
+  const user=Store.get().users.find(u=>u.id===$('#login-account').value&&u.active);
+  $('#email').value=user?.email||''; $('#password').value=user?(user.demoPassword||'demo123'):'';
+}
+function fillDemoAccount() {
+  const role=$('#login-role').value==='Creative Lead'?'Lead':$('#login-role').value;
+  const users=Store.get().users.filter(u=>u.active&&u.role===role);
+  $('#login-account').innerHTML='<option value="">Chọn tài khoản mẫu</option>'+users.map(u=>`<option value="${CS.escape(u.id)}">${CS.escape(u.name)} · ${CS.escape(u.email)}</option>`).join('');
+  if(users.length===1) $('#login-account').value=users[0].id;
+  fillSelectedAccount();
+}
 $('#login-role').onchange=fillDemoAccount;
+$('#login-account').onchange=fillSelectedAccount;
+fillDemoAccount();
 const registered=new URLSearchParams(location.search).get('registered');
-if(registered){$('#email').value=registered;$('#login-status').dataset.kind='success';$('#login-status').textContent='Đăng ký thành công. Nhập mật khẩu demo vừa tạo để đăng nhập.';}else fillDemoAccount();
+if(registered){$('#email').value=registered;$('#login-status').dataset.kind='success';$('#login-status').textContent='Đăng ký thành công. Nhập mật khẩu demo vừa tạo để đăng nhập.';}
 $$("[data-role]").forEach((button) => {
   if (button.dataset.role === selected) button.classList.add("selected");
   button.onclick = () => {
-    if (login(button.dataset.role))
-      location.href = destinationAfterLogin();
+    if ($('#login-role').value !== button.dataset.role) { $('#login-role').value=button.dataset.role; fillDemoAccount(); }
+    const account=Store.get().users.find(u=>u.id===$('#login-account').value&&u.active);
+    if (!account) { $('#login-status').dataset.kind='progress'; $('#login-status').textContent='Chọn tài khoản mẫu cụ thể trước khi mở demo.'; $('#login-account').focus(); return; }
+    if (login(button.dataset.role,account.email)) location.href = destinationAfterLogin();
   };
 });
 $("#toggle-password").onclick = (e) => {

@@ -42,7 +42,7 @@
         const totalPending = myTasks.filter(t => t.status === 'todo' || t.status === 'doing').length;
         const totalUrgent = myTasks.filter(isUrgent).length;
         const activeProjectsCount = data.projects.filter(p => !p.archived && data.tasks.some(t => t.projectId === p.id && t.assignee === user.id)).length;
-        const inReviewVersionsCount = data.versions.filter(v => v.projectId === project.id && (v.status === 'Internal Review' || v.status === 'Client Review')).length;
+        const inReviewVersionsCount = data.versions.filter(v => v.projectId === project.id && v.author === user.id && (v.status === 'Internal Review' || v.status === 'Client Review')).length;
 
         // Xử lý chế độ trạng thái (State Simulation: Normal, Loading, Empty, Urgent)
         let displayTasks = [...myTasks];

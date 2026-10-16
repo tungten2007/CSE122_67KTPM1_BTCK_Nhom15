@@ -4,7 +4,7 @@ window.TeamClient=(()=>{
  const clone=x=>JSON.parse(JSON.stringify(x)),check=(v,m)=>{if(!v)throw Error(m)},equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
  const publicStates=['Client Review','Approved','Changes Requested','Rejected'];
  function session(){try{const s=JSON.parse(sessionStorage.getItem('cs.session')||'null');if(!s)return null;Store.load();const u=Store.get().users.find(u=>u.id===s.id&&u.active);return u?{...u,role:u.role==='Lead'?'Creative Lead':u.role}:null}catch{return null}}
- function login(role){try{Store.load();Navigation.activate(role==='Creative Lead'?'Lead':role,Store.get().users);return true}catch(e){window.CS?.toast(e.message);return false}}
+ function login(role,email){try{Store.load();const actualRole=role==='Creative Lead'?'Lead':role;const users=Store.get().users;const chosen=email?users.find(u=>u.email.toLowerCase()===email.trim().toLowerCase()&&u.active&&u.role===actualRole):null;check(!email||chosen,'Không tìm thấy tài khoản hoạt động đúng vai trò.');Navigation.activate(actualRole,users,chosen?.id);return true}catch(e){window.CS?.toast(e.message);return false}}
  function authenticate(email,password){
   Store.load();const user=Store.get().users.find(u=>u.email.toLowerCase()===email.trim().toLowerCase());
   check(user&&user.active&&(user.demoPassword||'demo123')===password,'Email hoặc mật khẩu demo không đúng, hoặc tài khoản đã bị khóa.');

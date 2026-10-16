@@ -193,3 +193,20 @@ Mô tả: v10 mới ổn định bố cục, vẫn tải lại tài liệu HTML 
 - [x] Chỉ cập nhật dev, không thay main.
 
 Minh chứng: docs/qa-navigation-v11/result.json. Bản giao: CreatorStudio-Task27-Integration-v11-InPageNavigation.zip. Điều hướng trong cùng trang yêu cầu HTTP/HTTPS: chạy CHAY-WINDOWS.bat hoặc Live Server; file:// giữ hành vi chuyển trang thông thường. Chưa xác minh các trình duyệt khác Chromium.
+
+
+## Nhiều tài khoản cùng vai trò v12 — 16/10/2026
+
+Mô tả: hỗ trợ chọn người cụ thể thay vì mặc định một tài khoản cho mỗi vai trò. Sử dụng ID/email riêng; không tạo thêm tài khoản giả trong dữ liệu đang dùng. Admin có thể thêm nhiều Nhà thiết kế/Trưởng nhóm qua màn Người dùng.
+
+- [x] Login có danh sách tài khoản theo vai trò; nút demo yêu cầu chọn nếu có nhiều người.
+- [x] Bộ chuyển ở topbar chọn từng ID, có tên/email và nhóm vai trò; loại tài khoản khóa.
+- [x] Các nút demo ở Landing chuyển đến đăng nhập để chọn tài khoản.
+- [x] Dashboard Designer dùng đúng người được giao; thống kê phiên bản chờ duyệt theo tác giả.
+- [x] Chặn Designer sửa/nộp/xóa/lưu trữ phiên bản của người khác ở cả giao diện và Store.
+- [x] Nộp phiên bản gửi thông báo đến tất cả Lead hoạt động của không gian chung, không chỉ người đầu tiên.
+- [x] Hồ sơ/thông báo/đã đọc theo đúng tài khoản, giữ qua điều hướng trong trang.
+- [x] 10 nhóm kiểm tra Chromium và 10 file regression đạt (gồm test nhiều tài khoản mới).
+- [x] Chỉ cập nhật dev; không thay main.
+
+Minh chứng: docs/qa-multi-user-v12/result.json; tests/multi-user.test.cjs. Gói: CreatorStudio-Task27-Integration-v12-MultiUserRoles.zip. Phạm vi hiện tại là nhiều tài khoản trong cùng dữ liệu demo cục bộ; chưa có backend/đồng bộ giữa máy hoặc chia quyền theo nhóm dự án riêng.

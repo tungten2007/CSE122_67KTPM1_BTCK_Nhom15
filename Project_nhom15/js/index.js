@@ -1,12 +1,11 @@
 "use strict";
 document.querySelector("#hero-demo").onclick = () => {
-  if (CS.login("Client")) location.href = CS.home();
+  location.href = "login.html";
 };
 document.querySelectorAll("[data-role]").forEach(
   (button) =>
     (button.onclick = () => {
-      if (CS.login(button.dataset.role))
-        location.href = CS.home();
+      location.href = 'login.html?role=' + encodeURIComponent(button.dataset.role);
     }),
 );
 

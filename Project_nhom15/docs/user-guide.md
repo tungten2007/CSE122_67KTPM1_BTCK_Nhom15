@@ -8,6 +8,14 @@ Từ v11, các mục trên menu không gian làm việc chuyển nội dung tron
 
 Muốn thử tài khoản riêng: Đăng ký → nhập tên/email/mật khẩu demo → đăng nhập. Tài khoản mới là Khách hàng. Dùng mục Hồ sơ để đổi thông tin/mật khẩu; dùng Đăng xuất để kết thúc phiên. Không dùng thông tin hoặc mật khẩu thật trong bài mô phỏng.
 
+## Nhiều tài khoản cùng vai trò
+
+Ở trang đăng nhập, chọn vai trò rồi chọn tên/email trong “Tài khoản mẫu cụ thể”, hoặc nhập email/mật khẩu riêng. Nếu có nhiều người, nút mở demo yêu cầu chọn tài khoản trước. Bộ chọn góc trên hiển thị từng tài khoản theo nhóm vai trò.
+
+Admin thêm Nhà thiết kế/Trưởng nhóm tại Người dùng → Thêm thành viên, dùng email riêng cho mỗi người. Tài khoản do Admin thêm có mật khẩu demo ban đầu `demo123`, có thể đổi trong Hồ sơ. Dashboard Nhà thiết kế chỉ hiện công việc được giao cho tài khoản đó. Phiên bản của đồng đội được xem nhưng Nhà thiết kế chỉ sửa/nộp/xóa/lưu trữ bản do mình tạo.
+
+Trong không gian dự án chung hiện tại, các Trưởng nhóm cùng phối hợp; khi nộp phiên bản, tất cả Trưởng nhóm đang hoạt động nhận thông báo riêng và trạng thái đã đọc được lưu riêng từng người. Đây vẫn là dữ liệu demo cục bộ trong trình duyệt, chưa đồng bộ giữa các máy.
+
 ## Thử một dự án từ đầu
 
 1. Vào Client → Tạo dự án. Nhập tên, mô tả, hạn và phân loại.

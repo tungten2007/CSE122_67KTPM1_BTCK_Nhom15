@@ -35,7 +35,16 @@ window.Navigation = (() => {
   function canOpen(key,user){return key==='error'||!!(user?.active&&(key==='rolePreview'?['Client','Designer'].includes(user.role):(routes[key]?.[3]===user.role||routes[key]?.[3]==='*')))}
   function remember(user){const safe={app:'creatorstudio-sv3',id:user.id,name:user.name,role:user.role};localStorage.setItem('currentUser',JSON.stringify(safe));localStorage.setItem('cs.preferredRole',user.role==='Lead'?'Creative Lead':user.role);try{sessionStorage.setItem('cs-user',user.id);sessionStorage.setItem('cs.session',JSON.stringify({id:user.id,name:user.name,email:user.email,role:user.role==='Lead'?'Creative Lead':user.role}))}catch{}}
   function current(users){let uid;try{uid=sessionStorage.getItem('cs-user')}catch{}if(!uid){try{const saved=JSON.parse(localStorage.getItem('currentUser')||'null');if(['creatorstudio-sv3','creatorstudio'].includes(saved?.app))uid=saved.id}catch{}}return users.find(u=>u.id===uid)||users.find(u=>u.active&&u.role==='Lead')||users.find(u=>u.active&&u.role==='Admin')||users.find(u=>u.active)}
-  function activate(role,users){if(!Object.hasOwn(roles,role))throw new Error('Vai trò không hợp lệ.');const user=users.find(u=>u.role===role&&u.active);if(!user)throw new Error('Không có tài khoản demo hoạt động cho vai trò này.');remember(user);return home(role)}
+  function activate(role,users,userId){if(!Object.hasOwn(roles,role))throw new Error('Vai trò không hợp lệ.');const user=users.find(u=>u.role===role&&u.active&&(!userId||u.id===userId));if(!user)throw new Error('Không có tài khoản demo hoạt động cho vai trò này.');remember(user);return home(role)}
+  function accountOptions(users, selectedId) {
+    const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    return Object.entries(roles).map(([role,label])=>`<optgroup label="${esc(label)}">${users.filter(u=>u.active&&u.role===role).map(u=>`<option value="${esc(u.id)}" ${u.id===selectedId?'selected':''}>${esc(u.name)} · ${esc(u.email)}</option>`).join('')}</optgroup>`).join('');
+  }
+  function switchAccount(id) {
+    const users=Store.get().users, user=users.find(u=>u.id===id&&u.active);
+    if (!user) throw Error('Tài khoản không hoạt động hoặc không còn tồn tại.');
+    return activate(user.role, users, user.id);
+  }
   function logout(){sessionStorage.removeItem('cs-user');sessionStorage.removeItem('cs.session');sessionStorage.removeItem('cs-project');localStorage.removeItem('currentUser');location.href='login.html'}
   function bindMenu(){const q=s=>document.querySelector(s),side=q('.sidebar'),button=q('.menu-toggle'),shade=q('.sidebar-shade'),workspace=q('.workspace');let open=false;const media=matchMedia('(max-width:760px)');
     function setOpen(value){open=!!value&&media.matches;document.body.classList.toggle('menu-open',open);shade.hidden=!open;button.setAttribute('aria-expanded',String(open));workspace.inert=open;side.inert=media.matches&&!open;if(open)q('.mobile-close').focus();else if(media.matches)button.focus()}
@@ -62,11 +71,11 @@ window.Navigation = (() => {
       </aside>
       <div class="workspace"><header class="topbar"><button class="icon-button menu-toggle" aria-label="Mở menu">${icon('menu')}</button><div class="breadcrumb">Không gian làm việc <span>/</span> <strong>${esc(routes[key]?.[1]||'Trang lỗi')}</strong></div><div class="top-actions">
         <label class="sr-only" for="project-select">Dự án</label><select id="project-select" aria-label="Chọn dự án">${data.projects.map(p=>`<option value="${esc(p.id)}" ${p.id===project.id?'selected':''}>${esc(p.name)}${p.archived?' · Lưu trữ':''}</option>`).join('')}</select>
-        <label class="sr-only" for="role-switch">Vai trò demo</label><select id="role-switch" aria-label="Đổi vai trò demo">${Object.entries(roles).map(([r,label])=>`<option value="${r}" ${r===user.role?'selected':''}>${esc(label)}</option>`).join('')}</select>
+        <label class="sr-only" for="role-switch">Tài khoản demo</label><select id="role-switch" aria-label="Chuyển tài khoản demo">${accountOptions(data.users,user.id)}</select>
         <a href="notifications.html" class="notification-button" id="activity-bell" aria-label="Xem thông báo">${icon('bell')}</a><a class="avatar small" href="profile.html" aria-label="Hồ sơ cá nhân">${initials}</a></div></header>
         <main id="main" tabindex="-1"></main><footer class="page-footer">CreatorStudio · Nhóm 15 · Dữ liệu minh họa lưu trên trình duyệt</footer></div>
       <dialog id="dialog" aria-labelledby="dialog-title"></dialog><div id="toast" role="status" aria-live="polite"></div>`;
-    document.querySelector('#role-switch').onchange=e=>{try{location.href=activate(e.target.value,Store.get().users)}catch(err){e.target.value=user.role;window.App?.toast(err.message)}};
+    document.querySelector('#role-switch').onchange=e=>{try{location.href=switchAccount(e.target.value)}catch(err){e.target.value=user.id;window.App?.toast(err.message)}};
     document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);location.reload()};
     document.querySelector('#demo-tools-btn').onclick=tools;
     bindMenu();
@@ -76,7 +85,7 @@ window.Navigation = (() => {
     sidebar.addEventListener('scroll',()=>{try{sessionStorage.setItem(scrollKey,String(sidebar.scrollTop))}catch{}},{passive:true});
   }
 
-  return {renderShell,roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
+  return {accountOptions,switchAccount,renderShell,roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
 })();
 
 window.addEventListener?.('pagereveal', event => {

@@ -75,6 +75,7 @@ window.Store = (() => {
       if (data.id) {
         const v = d.versions.find(v => v.id === data.id && v.projectId === data.projectId);
         requireValue(v, 'Không tìm thấy phiên bản.');
+        requireValue(user.role !== 'Designer' || v.author === uid, 'Chỉ được sửa phiên bản do chính mình tạo.');
         requireValue(['Draft', 'Changes Requested'].includes(v.status) || user.role === 'Lead', 'Chỉ có thể sửa bản nháp hoặc phiên bản cần sửa.');
         Object.assign(v, {
           name: data.name.trim(),
@@ -116,6 +117,7 @@ window.Store = (() => {
       const user = actor(d, uid, ['Designer', 'Lead']);
       const v = d.versions.find(v => v.id === versionId);
       requireValue(v, 'Không tìm thấy phiên bản.');
+      requireValue(user.role !== 'Designer' || v.author === uid, 'Chỉ được thao tác phiên bản do chính mình tạo.');
       writable(d, v.projectId);
       requireValue(v.status === 'Draft' || v.status === 'Changes Requested', 'Phiên bản không ở trạng thái Draft hoặc Changes Requested.');
 
@@ -129,8 +131,8 @@ window.Store = (() => {
       v.history.push({ action: 'submitted_internal', time: new Date().toISOString(), by: uid });
 
       // Tạo thông báo cho Trưởng nhóm
-      const leadUser = d.users.find(u => u.role === 'Lead' && u.active);
-      if (leadUser) {
+      const leadUsers = d.users.filter(u => u.role === 'Lead' && u.active);
+      for (const leadUser of leadUsers) {
         d.notifications.unshift({
           id: id('notif'),
           userId: leadUser.id,
@@ -153,6 +155,7 @@ window.Store = (() => {
       const user = actor(d, uid, ['Designer', 'Lead']);
       const v = d.versions.find(v => v.id === versionId);
       requireValue(v, 'Không tìm thấy phiên bản.');
+      requireValue(user.role !== 'Designer' || v.author === uid, 'Chỉ được thao tác phiên bản do chính mình tạo.');
       requireValue(v.status === 'Draft', 'Chỉ có thể xóa phiên bản nháp (Draft).');
       writable(d, v.projectId);
       d.versions = d.versions.filter(x => x.id !== versionId);
@@ -165,6 +168,7 @@ window.Store = (() => {
       const user = actor(d, uid, ['Designer', 'Lead', 'Admin']);
       const v = d.versions.find(v => v.id === versionId);
       requireValue(v, 'Không tìm thấy phiên bản.');
+      requireValue(user.role !== 'Designer' || v.author === uid, 'Chỉ được thao tác phiên bản do chính mình tạo.');
       writable(d, v.projectId);
       v.status = 'Archived';
       v.history.push({ action: 'archived', time: new Date().toISOString() });
