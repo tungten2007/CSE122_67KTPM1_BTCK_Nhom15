@@ -4,6 +4,28 @@ const requested = new URLSearchParams(location.search).get("role");
 const selected = CS.roles.includes(requested) ? requested : CS.preferredRole();
 $("#login-role").value = selected;
 Store.load();
+// Only allow known local destinations and use the authenticated account's role.
+const featureDestinations = {
+  'client-creative-brief.html': 'Client',
+  'designer-moodboard.html': 'Designer',
+  'designer-version-management.html': 'Designer',
+  'lead-feedback-summary.html': 'Creative Lead',
+};
+const nextPage = new URLSearchParams(location.search).get('next');
+const nextRole = Object.hasOwn(featureDestinations, nextPage) ? featureDestinations[nextPage] : null;
+if (nextRole) {
+  const notice = document.createElement('p');
+  notice.className = 'demo-notice';
+  notice.textContent = `Đăng nhập bằng tài khoản ${CS.roleLabels[nextRole]} để mở tính năng đã chọn. Nếu dùng vai trò khác, bạn sẽ vào trang tổng quan của tài khoản đó.`;
+  document.querySelector('#login-form').before(notice);
+}
+function destinationAfterLogin() {
+  if (!nextRole || CS.session()?.role !== nextRole) return CS.home();
+  const data = Store.get();
+  const project = data.projects.find(p => !p.archived) || data.projects[0];
+  if (project) sessionStorage.setItem('cs-project', project.id);
+  return nextPage + (project ? '?project=' + encodeURIComponent(project.id) : '');
+}
 function fillDemoAccount(){const role=$('#login-role').value==='Creative Lead'?'Lead':$('#login-role').value;const user=Store.get().users.find(u=>u.active&&u.role===role);if(user){$('#email').value=user.email;$('#password').value=user.demoPassword||'demo123';}}
 $('#login-role').onchange=fillDemoAccount;
 const registered=new URLSearchParams(location.search).get('registered');
@@ -12,7 +34,7 @@ $$("[data-role]").forEach((button) => {
   if (button.dataset.role === selected) button.classList.add("selected");
   button.onclick = () => {
     if (login(button.dataset.role))
-      location.href = CS.home();
+      location.href = destinationAfterLogin();
   };
 });
 $("#toggle-password").onclick = (e) => {
@@ -48,7 +70,7 @@ $("#login-form").onsubmit = async (e) => {
   await new Promise((r) => setTimeout(r, 450));
   try {
     TeamClient.authenticate(email.value.trim(),pass.value);
-    pass.value='';location.href=CS.home();
+    pass.value='';location.href=destinationAfterLogin();
   } catch(error) {
     $('#login-submit').disabled=false;$('#login-status').dataset.kind='error';$('#login-status').textContent=error.message;pass.focus();
   }

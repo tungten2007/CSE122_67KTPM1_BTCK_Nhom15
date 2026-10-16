@@ -57,15 +57,6 @@ landingNav.addEventListener('focusout', () => {
 landingNav.querySelectorAll('.mega-link').forEach(link => {
   link.addEventListener('click', event => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    if (link.dataset.demoPage) {
-      event.preventDefault();
-      if (CS.login(link.dataset.demoRole)) {
-        const data = Store.get();
-        const project = data.projects.find(p => !p.archived) || data.projects[0];
-        if (project) sessionStorage.setItem('cs-project', project.id);
-        location.href = link.dataset.demoPage + (project ? '?project=' + encodeURIComponent(project.id) : '');
-      }
-    }
     closeLandingMenus();
     if (link.hash) document.getElementById(link.hash.slice(1))?.focus({preventScroll:true});
   });

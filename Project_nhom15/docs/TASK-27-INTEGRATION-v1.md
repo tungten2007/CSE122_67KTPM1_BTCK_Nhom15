@@ -137,3 +137,16 @@ Mô tả: nền, đường viền và vùng navbar phủ hết chiều ngang mà
 - [x] Kiểm tra navbar toàn chiều ngang và không tràn trên desktop/mobile.
 
 File: css/index.css. Gói: CreatorStudio-Task27-Integration-v7-FullWidthNavbar.zip.
+
+## Yêu cầu đăng nhập từ menu tính năng v8 — 16/10/2026
+
+Mô tả: bốn mục trong “Khả năng sáng tạo” dẫn đến trang đăng nhập, không tự mở phiên hoặc chuyển vai trò. Sau khi đăng nhập thành công, mở đúng tính năng nếu tài khoản có vai trò tương ứng; nếu không, mở tổng quan của tài khoản. Đây vẫn là xác thực mô phỏng phía trình duyệt.
+
+- [x] Bỏ đăng nhập demo tự động khi bấm mục tính năng.
+- [x] Giữ trang đích qua tham số next trong URL đăng nhập.
+- [x] Chỉ chấp nhận bốn trang nội bộ cho phép, kiểm tra theo vai trò tài khoản thực tế.
+- [x] Mật khẩu sai không mở trang đích; vai trò khác không bị tự chuyển sang Client.
+- [x] Kiểm tra bốn liên kết, đăng nhập thường/demo, đích không hợp lệ và responsive.
+- [x] Chỉ cập nhật dev; main chờ nhóm thống nhất.
+
+File: index.html, js/index.js, js/login.js. Gói: CreatorStudio-Task27-Integration-v8-FeatureLogin.zip.
