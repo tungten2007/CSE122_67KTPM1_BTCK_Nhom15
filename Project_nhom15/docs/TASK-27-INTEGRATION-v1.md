@@ -150,3 +150,16 @@ Mô tả: bốn mục trong “Khả năng sáng tạo” dẫn đến trang đ�
 - [x] Chỉ cập nhật dev; main chờ nhóm thống nhất.
 
 File: index.html, js/index.js, js/login.js. Gói: CreatorStudio-Task27-Integration-v8-FeatureLogin.zip.
+
+## Đồng bộ Hồ sơ/Thông báo trong không gian Khách hàng v9 — 16/10/2026
+
+Mô tả: khi tài khoản Client mở Hồ sơ hoặc Thông báo, dùng lại CS.shell của ba màn Client thay vì shell tối SV2. Giữ cùng thứ tự menu, chiều rộng, logo, topbar, menu mobile; đổi các thành phần hai trang sang bảng màu xanh/kem của Client. Các vai trò khác giữ shell hiện có.
+
+- [x] Dùng chung khung Client, đánh dấu đúng mục đang xem và giữ dự án khi quay lại.
+- [x] Đồng bộ nền, nút, avatar, tab và thẻ thông báo với bảng màu Client.
+- [x] Giữ chức năng lưu hồ sơ, đổi mật khẩu, đánh dấu đã đọc và xóa thông báo.
+- [x] Header cập nhật tên tài khoản và số thông báo sau thao tác.
+- [x] 16 kiểm tra Chromium đạt: ba trang ở 320/390/1024/1440px, so sánh sidebar, menu mobile, hồ sơ/mật khẩu/thông báo và shell Designer.
+- [x] Chỉ đưa lên dev; main chờ nhóm thống nhất.
+
+File: profile.html, notifications.html, js/app-sv2.js, js/shared.js, css/client-account.css. Gói: CreatorStudio-Task27-Integration-v9-ClientAccountStyle.zip.

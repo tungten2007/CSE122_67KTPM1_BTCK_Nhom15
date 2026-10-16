@@ -51,6 +51,7 @@ window.App = (() => {
   }
 
   function toast(message) {
+    if (document.body.classList.contains("client-account")) return CS.toast(message);
     clearTimeout(toastTimer);
     let t = $('#toast');
     if (!t) return;
@@ -71,6 +72,17 @@ window.App = (() => {
   }
 
   function shell(currentKey) {
+    if (user.role === 'Client' && ['profile', 'notifications'].includes(currentKey)) {
+      document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.disabled = true);
+      const style = document.createElement('link');
+      style.rel = 'stylesheet'; style.href = 'css/client-account.css';
+      document.head.append(style);
+      document.body.innerHTML = '<main id="main" class="main-content" tabindex="-1"></main>';
+      document.body.classList.add('client-account');
+      if (!CS.shell(currentKey, Navigation.routes[currentKey][1], project)) return;
+      return;
+    }
+
     const routes = Navigation.routes;
     const roleName = Navigation.roles;
 
@@ -265,6 +277,12 @@ window.App = (() => {
     if (bell) bell.innerHTML = `${icon('bell')}${count ? `<span class="notification-badge">${count}</span>` : ''}`;
     $$('.profile strong').forEach(el => el.textContent = user.name);
     $$('.profile .avatar, .top-actions > .avatar').forEach(el => el.innerHTML = avatar(user));
+    if (document.body.classList.contains('client-account')) {
+      $('.user-chip strong').textContent = user.name;
+      $('.user-chip .avatar').textContent = user.name.split(' ').slice(-2).map(s => s[0]).join('');
+      const badge = $('#notification-count');
+      badge.textContent = count; badge.hidden = !count;
+    }
     renderPage();
   }
 
