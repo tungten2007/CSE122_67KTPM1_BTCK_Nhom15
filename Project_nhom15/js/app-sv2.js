@@ -73,10 +73,13 @@ window.App = (() => {
 
   function shell(currentKey) {
     if (user.role === 'Client' && ['profile', 'notifications'].includes(currentKey)) {
-      document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.disabled = true);
-      const style = document.createElement('link');
-      style.rel = 'stylesheet'; style.href = 'css/client-account.css';
-      document.head.append(style);
+      const accountHref = new URL('css/client-account.css', location.href).href;
+      document.querySelectorAll('link[rel="stylesheet"]').forEach(link => link.disabled = link.href !== accountHref);
+      if (![...document.querySelectorAll('link[rel="stylesheet"]')].some(link => link.href === accountHref)) {
+        const style = document.createElement('link');
+        style.rel = 'stylesheet'; style.href = accountHref;
+        document.head.append(style);
+      }
       document.body.innerHTML = '<main id="main" class="main-content" tabindex="-1"></main>';
       document.body.classList.add('client-account');
       if (!CS.shell(currentKey, Navigation.routes[currentKey][1], project)) return;
@@ -120,7 +123,7 @@ window.App = (() => {
         return;
       }
       refresh();
-    });
+    }, {signal:window.WorkspaceNavigation?.signal});
   }
 
   function preserveFocus(render){

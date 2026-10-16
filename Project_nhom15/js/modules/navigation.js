@@ -41,8 +41,8 @@ window.Navigation = (() => {
     function setOpen(value){open=!!value&&media.matches;document.body.classList.toggle('menu-open',open);shade.hidden=!open;button.setAttribute('aria-expanded',String(open));workspace.inert=open;side.inert=media.matches&&!open;if(open)q('.mobile-close').focus();else if(media.matches)button.focus()}
     button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls','global-sidebar');side.id='global-sidebar';side.inert=media.matches;
     button.onclick=()=>setOpen(true);q('.mobile-close').onclick=()=>setOpen(false);shade.onclick=()=>setOpen(false);
-    document.addEventListener('keydown',e=>{if(!open)return;if(e.key==='Escape'){e.preventDefault();setOpen(false)}if(e.key==='Tab'){const items=[...side.querySelectorAll('a[href],button:not(:disabled),select')].filter(n=>n.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
-    media.addEventListener('change',()=>setOpen(false));
+    document.addEventListener('keydown',e=>{if(!open)return;if(e.key==='Escape'){e.preventDefault();setOpen(false)}if(e.key==='Tab'){const items=[...side.querySelectorAll('a[href],button:not(:disabled),select')].filter(n=>n.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}},{signal:window.WorkspaceNavigation?.signal});
+    media.addEventListener('change',()=>setOpen(false),{signal:window.WorkspaceNavigation?.signal});
     const bottom=q('.sidebar-bottom');if(bottom&&!q('#logout')){const out=document.createElement('button');out.type='button';out.id='logout';out.className='text-light';out.textContent='Đăng xuất';out.onclick=logout;bottom.append(out);}
   }
 

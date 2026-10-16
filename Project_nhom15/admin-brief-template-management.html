@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/pages/admin-template.css">
   <link rel="stylesheet" href="css/team-shell.css">
   <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="js/workspace-navigation.js"></script>
 </head>
 <body>
   <!-- Shell được render tự động qua App.init() -->
@@ -19,7 +20,7 @@
   <script src="js/modules/navigation.js"></script>
   <script src="js/app-sv2.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    WorkspaceNavigation.ready( () => {
       let currentStatusFilter = 'all';
       let currentCategoryFilter = 'all';
       let searchQuery = '';

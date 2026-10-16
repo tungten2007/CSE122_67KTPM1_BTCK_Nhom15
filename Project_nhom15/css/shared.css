@@ -781,3 +781,9 @@ html { scrollbar-gutter:stable; }
 @view-transition { navigation:auto; }
 ::view-transition-group(root) { animation-duration:.12s; }
 @media(prefers-reduced-motion:reduce) { ::view-transition-group(root) { animation-duration:0s; } }
+
+/* Keep navigation snapshots still while only the page content changes. */
+.sidebar { view-transition-name:workspace-sidebar; }
+.topbar { view-transition-name:workspace-topbar; }
+::view-transition-group(workspace-sidebar),::view-transition-group(workspace-topbar) { animation-duration:0s; }
+::view-transition-old(workspace-sidebar),::view-transition-new(workspace-sidebar),::view-transition-old(workspace-topbar),::view-transition-new(workspace-topbar) { animation:none; }

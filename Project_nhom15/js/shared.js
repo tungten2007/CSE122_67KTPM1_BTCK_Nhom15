@@ -155,7 +155,7 @@ window.CS = (() => {
       sidebar.inert = media.matches;
     }
     syncMenu();
-    media.addEventListener("change", syncMenu);
+    media.addEventListener("change", syncMenu, {signal:window.WorkspaceNavigation?.signal});
     menuButton.onclick = () => {
       if (sidebar.classList.contains("open")) {
         closeMenu();
@@ -194,7 +194,7 @@ window.CS = (() => {
     };
     document.addEventListener("click", (e) => {
       if (!e.target.closest(".activity-wrap")) closeActivity();
-    });
+    }, {signal:window.WorkspaceNavigation?.signal});
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (sidebar.classList.contains("open")) closeMenu();
@@ -215,7 +215,7 @@ window.CS = (() => {
           first.focus();
         }
       }
-    });
+    }, {signal:window.WorkspaceNavigation?.signal});
     $("#role-switch").onchange = (e) => {
       if (login(e.target.value, user.email)) location.href = CS.home();
     };

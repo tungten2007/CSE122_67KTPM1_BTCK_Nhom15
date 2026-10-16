@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/pages/designer.css">
   <link rel="stylesheet" href="css/team-shell.css">
   <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="js/workspace-navigation.js"></script>
 </head>
 <body>
   <!-- Shell được render tự động qua App.init() -->
@@ -20,7 +21,7 @@
   <script src="js/modules/ai-mood-assistant.js"></script>
   <script src="js/app-sv2.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    WorkspaceNavigation.ready( () => {
       App.init('moodboard', renderMoodboard);
 
       function renderMoodboard(){App.preserveFocus(renderMoodboardContent)}

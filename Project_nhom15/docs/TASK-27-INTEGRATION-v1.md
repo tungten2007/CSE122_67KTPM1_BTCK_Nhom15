@@ -178,3 +178,18 @@ Mô tả: Designer, Lead, Admin cùng dùng Navigation.renderShell thay vì hai 
 - [x] Chỉ cập nhật dev; main chờ nhóm thống nhất.
 
 Minh chứng: docs/qa-navigation-v10/result.json. Gói: CreatorStudio-Task27-Integration-v10-UnifiedNavigation.zip. Kiểm tra Chromium, không suy thành xác nhận trên mọi trình duyệt; hiệu ứng chuyển tài liệu phụ thuộc trình duyệt và nên chạy qua Live Server.
+
+## Sửa tải lại khi bấm menu v11 — 16/10/2026
+
+Mô tả: v10 mới ổn định bố cục, vẫn tải lại tài liệu HTML khi chuyển mục. v11 thêm điều hướng trong cùng tài liệu cho menu của cả bốn vai trò: chuẩn bị HTML/CSS/script trước, cập nhật nội dung sau khi sẵn sàng; giữ giao diện cũ trong lúc tải. Không thay phân quyền hay dữ liệu. Back/Forward dùng History API; nếu tải lỗi, quay về điều hướng trình duyệt thông thường.
+
+- [x] Chuyển các mục sidebar và liên kết Hồ sơ/Thông báo trên topbar mà không tải lại tài liệu.
+- [x] Giữ URL, trạng thái mục đang xem và chức năng Back/Forward.
+- [x] Chỉ tải trang/script nội bộ trong danh sách cho phép.
+- [x] Hủy listener của trang cũ để không chồng xử lý khi chuyển qua lại nhiều lần.
+- [x] Chuẩn bị trước CSS Client cho Hồ sơ/Thông báo; giữ ảnh điều hướng đứng yên khi đổi nội dung.
+- [x] Bấm nhanh nhiều mục mở đúng mục được chọn cuối; có chế độ giảm chuyển động.
+- [x] 60 kiểm tra Chromium đạt, gồm 40 lần chuyển mục/4 vai trò không có document request, Back/Forward, mobile, lưu hồ sơ, bấm nhanh và giảm chuyển động; 9 file regression đạt.
+- [x] Chỉ cập nhật dev, không thay main.
+
+Minh chứng: docs/qa-navigation-v11/result.json. Bản giao: CreatorStudio-Task27-Integration-v11-InPageNavigation.zip. Điều hướng trong cùng trang yêu cầu HTTP/HTTPS: chạy CHAY-WINDOWS.bat hoặc Live Server; file:// giữ hành vi chuyển trang thông thường. Chưa xác minh các trình duyệt khác Chromium.

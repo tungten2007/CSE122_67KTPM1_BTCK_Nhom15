@@ -4,6 +4,8 @@
 
 Chạy `CHAY-WINDOWS.bat` hoặc Live Server với `index.html`. Trang chủ giới thiệu chức năng, hai menu mở mục con và liên kết tới các vai trò. Login có tài khoản mẫu (mật khẩu ban đầu `demo123`) và nút chọn nhanh vai trò.
 
+Từ v11, các mục trên menu không gian làm việc chuyển nội dung trong cùng tài liệu để tránh tải lại toàn trang. Cần chạy qua địa chỉ `http://localhost...` hoặc Live Server. Nếu mở trực tiếp HTML bằng đường dẫn `file:///...`, trình duyệt vẫn dùng chuyển trang thông thường vì không cho tải file nội bộ bằng fetch. Nút Back/Forward vẫn dùng được; khi đổi vai trò hoặc đăng xuất, ứng dụng mở trang mới như bình thường.
+
 Muốn thử tài khoản riêng: Đăng ký → nhập tên/email/mật khẩu demo → đăng nhập. Tài khoản mới là Khách hàng. Dùng mục Hồ sơ để đổi thông tin/mật khẩu; dùng Đăng xuất để kết thúc phiên. Không dùng thông tin hoặc mật khẩu thật trong bài mô phỏng.
 
 ## Thử một dự án từ đầu
