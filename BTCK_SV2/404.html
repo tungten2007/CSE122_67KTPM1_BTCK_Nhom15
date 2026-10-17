@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông báo Điều hướng · CreatorStudio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages/shared.css">
+</head>
+<body style="background: var(--bg); display: grid; place-items: center; min-height: 100vh; padding: 20px;">
+
+  <div class="error-container">
+    <div class="error-badge-code" id="err-code">404</div>
+    <h1 class="error-title" id="err-title">Không tìm thấy tài nguyên</h1>
+    <p class="error-desc" id="err-desc">
+      Đường dẫn bạn yêu cầu không tồn tại trên hệ thống hoặc đã được di chuyển sang địa chỉ mới.
+    </p>
+
+    <div class="row" style="justify-content: center; gap: 12px; margin-top: 24px;">
+      <a href="designer-dashboard.html" class="button primary" id="safe-home-btn">
+        Quay về Trang chính của bạn
+      </a>
+      <a href="index.html" class="button">Về Cổng điều hướng Demo</a>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/modules/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Store.load();
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+
+      if (code === '403') {
+        document.getElementById('err-code').textContent = '403';
+        document.getElementById('err-title').textContent = 'Không có quyền truy cập (Forbidden)';
+        document.getElementById('err-desc').textContent = 'Vai trò demo hiện tại của bạn không được phân quyền truy cập vào màn hình này. Hãy đổi vai trò phù hợp trên thanh điều hướng hoặc quay về trang an toàn.';
+      }
+
+      // Xác định trang home an toàn dựa trên role của người dùng hiện tại
+      try {
+        const u = Navigation.current(Store.get().users);
+        if (u) {
+          const homeUrl = Navigation.home(u.role);
+          document.getElementById('safe-home-btn').href = homeUrl;
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+https://www.figma.com/make/pFN0zbq56SV69UOs2bPNZT/CreatorStudio-Dashboard-UI
+
+Nguồn: README_CreatorStudio.md do người dùng cung cấp.
+Chưa xác minh mockup, quyền truy cập hoặc trạng thái duyệt.
+Đặt mockup đã duyệt trong design/mockups/ và ghi link minh chứng trong docs/team-assignment.md.

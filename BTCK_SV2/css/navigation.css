@@ -1,0 +1,122 @@
+/* Navigation & Shared Header/Sidebar Helpers */
+.avatar-image { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.notification-button {
+  position: relative;
+  border: 1px solid var(--line);
+  min-width: 36px;
+  min-height: 36px;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.notification-button:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: var(--primary-dark);
+}
+
+.notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.45);
+  animation: pulse-badge 2s infinite ease-in-out;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.sidebar {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sidebar nav {
+  flex-shrink: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-link:hover {
+  background: #1f293d;
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(99, 91, 255, 0.35);
+}
+
+.nav-link .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+@media (max-width: 760px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+  .top-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .top-actions .notification-button {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .top-actions #role-switch {
+    max-width: 130px;
+  }
+  .top-actions #project-select {
+    max-width: 100px;
+  }
+  .topbar {
+    padding-inline: 12px;
+  }
+}
