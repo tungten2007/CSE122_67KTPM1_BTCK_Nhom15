@@ -318,6 +318,10 @@ window.CS = (() => {
       sessionStorage.removeItem("cs.session");
       location.href = "login.html";
     };
+    $$(".journey-strip a").forEach((link) => {
+      const page = link.getAttribute("href").replace(".html", "");
+      link.href = url(page, project()?.id);
+    });
     renderNotifications();
     if (user.role !== "Client") {
       $("main").innerHTML =

@@ -1,10 +1,14 @@
 :root {
   --font-sans: "CreatorStudio Inter", "Segoe UI", Arial, sans-serif;
-  --ink: #183c32;
-  --green: #39765a;
-  --lime: #c5e78b;
-  --paper: #f6f7f2;
-  --muted: #5f6d63;
-  --line: #e2e7dc;
-  --cream: #f3ecd9;
+  --ink: #153d35;
+  --green: #326e54;
+  --lime: #d0ee98;
+  --paper: #f7f8f4;
+  --muted: #626f68;
+  --line: #e1e7de;
+  --cream: #f4eddc;
+  --surface: #ffffff;
+  --radius: 18px;
+  --shadow: 0 8px 30px #173b3206;
+  --shadow-raised: 0 18px 46px #173b3212;
 }

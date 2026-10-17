@@ -420,3 +420,80 @@
 .floating-card > div {
   min-width: 0;
 }
+
+/* Public site: a spacious creative studio with a framed project preview. */
+.public-header { padding-top: 24px; padding-bottom: 24px; }
+.public-header nav { gap: 30px; }
+.public-header nav > a:not(.btn):hover { color: var(--green); }
+.public-header .btn { background: var(--ink); color: white; border-color: var(--ink); }
+.hero { padding-top: 78px; padding-bottom: 90px; gap: 70px; }
+.hero h1 { font-size: clamp(46px, 4.7vw, 66px); line-height: 1.17; letter-spacing: -.05em; }
+.hero h1 span { font-weight: 450; }
+.hero-tag { letter-spacing: 1px; padding: 8px 14px; background: #edf3e3; margin-bottom: 28px; }
+.hero-copy > p { font-size: 16px; line-height: 1.85; margin-top: 25px; }
+.hero .actions { gap: 12px; }
+.hero .btn { font-size: 14px; min-height: 50px; }
+.hero-proof { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 28px; }
+.avatar-stack span { width: 37px; height: 37px; }
+.hero-visual { background: #e5ecd8; padding: 22px; border-radius: 24px; transform: rotate(1.5deg); border: 1px solid #d4e0c7; box-shadow: 0 24px 60px #153d3514; }
+.hero-visual > img { border-radius: 12px; aspect-ratio: 1.06; object-fit: cover; margin: 18px 0; }
+.visual-top { font-size: 13px; font-weight: 600; }
+.visual-top > span:last-child { background: var(--ink); color: var(--lime); border-radius: 50%; width: 28px; height: 28px; display: grid; place-items: center; }
+.floating-card { border-radius: 14px; padding: 16px 18px; box-shadow: 0 12px 35px #153d3518; transform: rotate(-1.5deg); }
+.brief-float { right: -22px; top: 86px; }
+.review-float { bottom: 85px; left: -28px; }
+.mini-icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; }
+.workflow { border: 1px solid var(--line); background: white; border-radius: 20px; padding: 32px; gap: 30px; }
+.workflow-step { border-left: 1px solid var(--line); padding-left: 23px; }
+.step-no { background: #edf3e4; color: var(--green); width: 42px; height: 36px; border-radius: 9px; display: grid; place-items: center; margin-bottom: 20px; }
+.workflow-step h3 { font-size: 16px; }
+.features { padding-top: 74px; padding-bottom: 64px; }
+.section-title h2 { font-size: 32px; }
+.feature-grid { gap: 22px; }
+.feature-grid article { border-radius: 18px; padding: 30px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+.feature-grid article:hover { transform: translateY(-4px); box-shadow: var(--shadow-raised); }
+.feature-icon { width: 50px; height: 50px; border-radius: 15px; background: #eaf1de; margin-bottom: 28px; }
+.feature-grid article:nth-child(2) .feature-icon { background: #f5ecdb; color: #8e6a30; }
+.feature-grid article:nth-child(3) .feature-icon { background: #e9eaf4; color: #686185; }
+.feature-grid h3 { font-size: 19px; }
+.feature-grid a, .feature-grid small { padding-top: 18px; border-top: 1px solid var(--line); }
+.role-section { border-radius: 22px; padding: 44px; gap: 50px; position: relative; overflow: hidden; }
+.role-section h2 { font-size: 30px; max-width: 360px; }
+.role-links button { padding: 16px 8px; transition: background .18s; }
+.role-links button:hover { background: #ffffff08; }
+.role-links strong { font-size: 15px; }
+@media (max-width: 1050px) {
+  .hero { gap: 38px; padding: 56px 30px 70px; }
+  .hero h1 { font-size: 46px; }
+  .workflow { gap: 20px; padding: 25px; grid-template-columns: 1fr 1fr; }
+  .workflow-step { padding-left: 18px; }
+  .feature-grid article { padding: 23px; }
+}
+@media (max-width: 760px) {
+  .public-header { padding: 18px; }
+  .public-header .brand { font-size: 16px; gap: 5px; }
+  .public-header .brand-mark { width: 32px; height: 32px; }
+  .public-header .btn { padding: 8px 11px; }
+  .hero { padding: 40px 22px 55px; gap: 42px; }
+  .hero h1 { font-size: clamp(38px, 10.5vw, 52px); }
+  .hero-tag { font-size: 13px; letter-spacing: .6px; }
+  .hero .actions { align-items: stretch; }
+  .hero .actions > * { flex: 1 1 180px; }
+  .hero-visual { padding: 16px; margin: 0 12px; border-radius: 18px; }
+  .floating-card { padding: 12px; gap: 8px; }
+  .brief-float { right: -12px; }
+  .review-float { left: -12px; bottom: 70px; }
+  .floating-card small { font-size: 13px; }
+  .workflow { grid-template-columns: 1fr; margin: 0 22px; padding: 24px; gap: 24px; }
+  .workflow-step { border-left: 0; border-top: 1px solid var(--line); padding: 22px 0 0; }
+  .step-no { margin-bottom: 14px; }
+  .features { padding: 44px 22px; }
+  .section-title h2 { font-size: 27px; }
+  .feature-grid article { padding: 26px; }
+  .role-section { padding: 28px; gap: 24px; margin: 0 22px 35px; }
+  .role-section h2 { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feature-grid article { transition: none; }
+  .feature-grid article:hover { transform: none; }
+}

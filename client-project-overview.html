@@ -18,16 +18,15 @@
   </head>
   <body>
     <main id="main" class="main-content">
-      <div class="page-heading">
+      <section class="studio-banner" aria-labelledby="projects-title">
         <div>
-          <span class="eyebrow">Ý tưởng hôm nay, thành quả ngày mai</span>
-          <h1 class="page-title">
-            Dự án của tôi<span class="heading-dot">.</span>
-          </h1>
-          <p>Mọi hành trình sáng tạo của bạn, trong một không gian.</p>
+          <span class="eyebrow">KHÔNG GIAN CỦA NHỮNG Ý TƯỞNG</span>
+          <h1 id="projects-title">Cùng tạo nên điều khác biệt<span class="heading-dot">.</span></h1>
+          <p>Từ nét phác đầu tiên đến phiên bản hoàn thiện. Mọi dự án, ý tưởng và phản hồi của bạn đều ở đây.</p>
+          <div class="actions"><button class="btn primary" id="new-project">＋ Tạo dự án mới</button><a class="text-button" href="client-creative-brief.html">Viết creative brief ↗</a></div>
         </div>
-        <button class="btn primary" id="new-project">＋ Tạo dự án mới</button>
-      </div>
+        <div class="studio-art" aria-hidden="true"><span>✳</span><i></i><i></i></div>
+      </section>
       <section class="stats" aria-label="Thống kê dự án">
         <div>
           <span>Tổng dự án</span><strong id="stat-total">0</strong
@@ -49,7 +48,8 @@
           ><small>Sẵn sàng cho hành trình mới</small>
         </div>
       </section>
-      <section aria-label="Danh sách dự án">
+      <section aria-label="Danh sách dự án" class="projects-section">
+        <div class="projects-section-title"><div><span class="eyebrow">TỪ Ý TƯỞNG ĐẾN THÀNH QUẢ</span><h2>Dự án của tôi</h2></div><span class="muted">Không gian sáng tạo của bạn ↙</span></div>
         <div class="project-toolbar">
           <div class="tabs" role="group" aria-label="Lọc trạng thái">
             <button data-filter="all" class="active" aria-pressed="true">
