@@ -24,15 +24,20 @@
       <nav class="journey-strip" aria-label="Các bước sáng tạo">
         <a href="client-project-overview.html"><b>01</b>Dự án</a>
         <span class="journey-arrow" aria-hidden="true">→</span>
-        <a href="client-creative-brief.html" aria-current="step"><b>02</b>Creative Brief</a>
+        <a href="client-creative-brief.html" aria-current="step"
+          ><b>02</b>Creative Brief</a
+        >
         <span class="journey-arrow" aria-hidden="true">→</span>
         <a href="client-review-versions.html"><b>03</b>Duyệt phiên bản</a>
       </nav>
       <div class="page-heading">
         <div>
-          <span class="eyebrow">01 / Đặt nền móng sáng tạo</span>
-          <h1 class="page-title">Một brief tốt. Một khởi đầu hay.</h1>
-          <p>Chia sẻ ý tưởng của bạn, chúng ta cùng làm rõ điều cần tạo ra.</p>
+          <span class="eyebrow">BƯỚC 02 / LÀM RÕ Ý TƯỞNG</span>
+          <h1 class="page-title">Viết brief sáng tạo</h1>
+          <p>
+            Mô tả mong muốn, hoàn thiện 5 phần định hướng rồi xác nhận để gửi
+            brief.
+          </p>
         </div>
         <span class="pill" id="brief-state">Bản nháp</span>
       </div>
@@ -63,14 +68,16 @@
             </div>
           </div>
           <div class="field">
-            <label for="raw-idea">Mô tả yêu cầu *</label
+            <label for="raw-idea">Mô tả ý tưởng để nhận gợi ý</label
             ><textarea
               id="raw-idea"
               maxlength="5000"
+              aria-describedby="idea-hint char-count brief-error"
               placeholder="Tôi muốn xây dựng bộ nhận diện cho một thương hiệu mỹ phẩm thiên nhiên. Khách hàng là người trẻ quan tâm đến môi trường. Phong cách tối giản, màu xanh lá và kem…"
             ></textarea>
             <div class="input-caption">
-              <small>Tối thiểu 21 ký tự để tạo gợi ý</small
+              <small id="idea-hint"
+                >Trên 20 ký tự. Có thể bỏ qua nếu tự viết brief.</small
               ><small id="char-count">0 / 5.000</small>
             </div>
           </div>
@@ -120,6 +127,17 @@
               <p>Rà soát và chỉnh sửa trước khi gửi.</p>
             </div>
             <span class="pill" id="result-source">Chưa có kết quả</span>
+          </div>
+          <div class="completion-meter" aria-label="Mức độ hoàn thiện brief">
+            <span id="completion-label" role="status"
+              >0/5 phần đã có nội dung</span
+            >
+            <progress
+              id="brief-progress"
+              max="5"
+              value="0"
+              aria-label="Số phần brief đã điền"
+            ></progress>
           </div>
           <div id="result-placeholder" class="result-placeholder">
             <span>✧</span>
@@ -196,8 +214,8 @@
             >
             <div class="submit-row">
               <small
-                >Brief sẽ được lưu với trạng thái Submitted<br />để Creative
-                Lead tiếp nhận ở bước tiếp theo.</small
+                >Kiểm tra nội dung và chọn Chấp nhận kết quả trước khi gửi.<br />Bản
+                demo ghi nhận trạng thái gửi tại trình duyệt này.</small
               ><button
                 class="btn primary"
                 type="submit"
@@ -209,6 +227,21 @@
             </div>
           </form>
         </section>
+      </div>
+      <div class="save-bar" aria-label="Lưu tiến độ brief">
+        <div>
+          <span
+            class="save-indicator"
+            id="save-indicator"
+            aria-hidden="true"
+          ></span
+          ><span id="draft-status" role="status" aria-live="polite"
+            >Nội dung đang hiển thị</span
+          ><small>Bạn có thể lưu rồi tiếp tục sau.</small>
+        </div>
+        <button type="button" class="btn" id="save-draft-bottom">
+          Lưu bản nháp <kbd>Ctrl S</kbd>
+        </button>
       </div>
       <div class="footer-note">
         <span

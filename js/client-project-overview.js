@@ -19,21 +19,39 @@
     $("#stat-done").textContent = visible.filter(
       (p) => p.status === "Completed",
     ).length;
-    const query = $("#search").value.trim().toLocaleLowerCase("vi");
+    const query = CS.searchText($("#search").value.trim());
+    const waiting = visible.filter(
+      (p) => p.status !== "Completed" && p.versionStatus === "Client Review",
+    );
+    $("#attention-card").hidden = !waiting.length;
+    if (waiting.length) {
+      $("#attention-title").textContent =
+        `${waiting.length} thiết kế đang chờ góc nhìn của bạn`;
+      $("#attention-description").textContent =
+        `${waiting[0].name} — xem phiên bản mới và chia sẻ phản hồi để dự án tiếp tục.`;
+      $("#attention-link").href = url("client-review-versions", waiting[0].id);
+    }
+    $("#clear-search").hidden = !$("#search").value;
     const projects = data.projects.filter(
       (p) =>
         (filter === "all" ? p.status !== "Archived" : p.status === filter) &&
-        `${p.name} ${p.category} ${p.description}`
-          .toLocaleLowerCase("vi")
-          .includes(query),
+        CS.searchText(`${p.name} ${p.category} ${p.description}`).includes(
+          query,
+        ),
     );
-    $("#result-count").textContent =
-      `${projects.length} dự án ${query ? "phù hợp" : ""}`;
+    const sort = $("#project-sort").value;
+    if (sort === "deadline")
+      projects.sort((a, b) => a.deadline.localeCompare(b.deadline));
+    if (sort === "name")
+      projects.sort((a, b) => a.name.localeCompare(b.name, "vi"));
+    $("#result-count").textContent = query
+      ? `${projects.length} kết quả cho “${$("#search").value.trim()}”`
+      : `${projects.length} dự án · ${filter === "all" ? "Tất cả đang hiển thị" : CS.labels[filter]}`;
     $("#project-list").innerHTML =
       projects
         .map(
           (p) =>
-            `<article class="project-card"><div class="project-art"><img src="assets/images/${escape(p.art)}-v2.svg" alt="Thiết kế minh họa cho ${escape(p.name)}">${pill(p.status)}</div><div class="card-content"><span class="category-label">${escape(p.category)} / CREATIVE PROJECT</span><h3 title="${escape(p.name)}">${escape(p.name)}</h3><p>${escape(p.description)}</p><div class="project-summary"><span class="brief-badge ${p.brief?.submitted ? "submitted" : ""}">${p.brief?.submitted ? "✓ Brief đã gửi" : p.brief?.accepted ? "▤ Brief đã xác nhận" : p.brief ? "▤ Brief bản nháp" : "▤ Chưa có brief"}</span>${p.versionStatus ? pill(p.versionStatus) : '<span class="pill">Chưa có phiên bản</span>'}</div><div class="card-meta"><span>Tiến độ <strong>${p.progress}%</strong></span><span>Hạn: ${escape(new Date(p.deadline + "T00:00:00").toLocaleDateString("vi-VN"))}</span></div><progress value="${p.progress}" max="100" aria-label="Tiến độ ${escape(p.name)}"></progress><div class="card-footer">${p.status === "Archived" ? `<button class="btn small" data-action="restore" data-id="${escape(p.id)}">Khôi phục ↶</button>` : `<a class="text-button" href="${url("client-creative-brief", p.id)}">${p.brief?.submitted ? "Xem brief" : "Viết brief"} →</a><a class="btn small" href="${url("client-review-versions", p.id)}">Xem phiên bản →</a>`}</div><div class="card-menu">${p.status === "Archived" ? `<button data-action="delete" data-id="${escape(p.id)}">Xóa vĩnh viễn</button>` : `<button data-action="edit" data-id="${escape(p.id)}">Chỉnh sửa</button><span class="muted">·</span><button data-action="archive" data-id="${escape(p.id)}">Lưu trữ</button>`}</div></div></article>`,
+            `<article class="project-card"><div class="project-art"><img src="assets/images/${escape(p.art)}-v2.svg" alt="Thiết kế minh họa cho ${escape(p.name)}">${pill(p.status)}</div><div class="card-content"><span class="category-label">${escape(p.category)} / CREATIVE PROJECT</span><h3 title="${escape(p.name)}">${escape(p.name)}</h3><p>${escape(p.description)}</p><div class="project-summary"><span class="brief-badge ${p.brief?.submitted ? "submitted" : ""}">${p.brief?.submitted ? "✓ Brief đã gửi" : p.brief?.accepted ? "▤ Brief đã xác nhận" : p.brief ? "▤ Brief bản nháp" : "▤ Chưa có brief"}</span>${p.versionStatus ? pill(p.versionStatus) : '<span class="pill">Chưa có phiên bản</span>'}</div><div class="card-meta"><span>Tiến độ <strong>${p.progress}%</strong></span><span>Hạn: ${escape(new Date(p.deadline + "T00:00:00").toLocaleDateString("vi-VN"))}</span></div><progress value="${p.progress}" max="100" aria-label="Tiến độ ${escape(p.name)}"></progress><div class="card-footer">${p.status === "Archived" ? `<button class="btn small" data-action="restore" data-id="${escape(p.id)}">Khôi phục ↶</button>` : `<a class="text-button" href="${url("client-creative-brief", p.id)}">${p.brief?.submitted ? "Xem brief" : "Viết brief"} →</a>${p.versionStatus ? `<a class="btn small" href="${url("client-review-versions", p.id)}">Xem phiên bản →</a>` : '<span class="no-version">Chưa có thiết kế</span>'}`}</div><div class="card-menu">${p.status === "Archived" ? `<button data-action="delete" data-id="${escape(p.id)}">Xóa vĩnh viễn</button>` : `<button data-action="edit" data-id="${escape(p.id)}">Chỉnh sửa</button><span class="muted">·</span><button data-action="archive" data-id="${escape(p.id)}">Lưu trữ</button>`}</div></div></article>`,
         )
         .join("") +
       (!query && filter === "all"
@@ -75,6 +93,12 @@
   $("#close-dialog").onclick = $("#cancel-project").onclick = () =>
     dialog.close();
   $("#search").oninput = render;
+  $("#project-sort").onchange = render;
+  $("#clear-search").onclick = () => {
+    $("#search").value = "";
+    render();
+    $("#search").focus();
+  };
   $$("[data-filter]").forEach(
     (b) =>
       (b.onclick = () => {

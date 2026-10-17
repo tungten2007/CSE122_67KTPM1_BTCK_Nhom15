@@ -68,7 +68,7 @@ AI Brief Structurer là mô phỏng bằng quy tắc. Có loading, lỗi đầu 
 
 ## Kiểm thử
 
-Đã đạt 75 kiểm tra trên Chromium; xem `docs/test-results.md`. Có kiểm tra trình duyệt trong `tests/sv1.e2e.cjs` và checklist thủ công trong `docs/test-client.md`. Việc chạy website không cần các dependency kiểm thử.
+Kết quả 75 kiểm tra Chromium và 67 kiểm tra typography thuộc snapshot `e8726c8`; không phải kết quả cho các commit giao diện sau đó. Bản nâng cấp trải nghiệm hiện tại đã qua 50 kiểm tra logic bằng DOM mô phỏng và 38 kiểm tra tĩnh; xem `docs/ux-polish.md`. Chưa xác minh hiển thị hoặc tương tác bằng trình duyệt thật cho bản mới. Có bộ kiểm thử trình duyệt trong `tests/sv1.e2e.cjs`, `tests/typography.e2e.cjs` và checklist thủ công trong `docs/test-client.md`. Việc chạy website không cần các dependency kiểm thử.
 
 Để chạy tự động khi muốn kiểm tra lại, cài Playwright phục vụ kiểm thử:
 

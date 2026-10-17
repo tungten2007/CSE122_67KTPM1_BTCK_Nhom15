@@ -54,6 +54,18 @@
           <span class="eyebrow">Chào mừng trở lại</span>
           <h2>Tiếp nối cảm hứng.</h2>
           <p>Đăng nhập để trở về không gian sáng tạo của bạn.</p>
+          <div class="quick-start">
+            <span class="pill">KHÔNG CẦN ĐĂNG KÝ</span>
+            <h3>Chỉ muốn xem thử?</h3>
+            <p>Mở ngay không gian Khách hàng với dữ liệu mẫu.</p>
+            <button class="btn primary" type="button" id="quick-client">
+              Trải nghiệm vai trò Khách hàng →
+            </button>
+            <small>Thay đổi của bạn chỉ lưu tại trình duyệt này.</small>
+          </div>
+          <div class="or-divider">
+            <span>hoặc tạo phiên demo bằng biểu mẫu</span>
+          </div>
           <div class="demo-notice">
             Đây là phiên đăng nhập mô phỏng. Dùng email và mật khẩu bất kỳ hợp
             lệ; không nhập mật khẩu thật.
@@ -61,12 +73,13 @@
           <form id="login-form" novalidate>
             <div class="field">
               <label for="login-role">Vai trò demo</label
-              ><select id="login-role">
+              ><select id="login-role" aria-describedby="role-help">
                 <option value="Client">Khách hàng</option>
                 <option value="Designer">Nhà thiết kế</option>
                 <option value="Creative Lead">Creative Lead</option>
                 <option value="Admin">Quản trị viên</option>
               </select>
+              <small id="role-help" role="status"></small>
             </div>
             <div class="field">
               <label for="email">Địa chỉ email</label
@@ -85,7 +98,7 @@
               <div class="password-wrap">
                 <input
                   id="password"
-                  aria-describedby="password-error"
+                  aria-describedby="password-hint password-error"
                   name="password"
                   type="password"
                   autocomplete="off"
@@ -101,6 +114,9 @@
                   Hiện
                 </button>
               </div>
+              <small id="password-hint"
+                >Từ 6 ký tự. Chỉ dùng mật khẩu thử nghiệm.</small
+              >
               <small class="error" id="password-error"></small>
             </div>
             <button class="btn primary" type="submit" id="login-submit">

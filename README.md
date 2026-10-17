@@ -2,6 +2,8 @@
 
 > **Bộ giao diện SV1 đã có mã nguồn:** 5 trang HTML/CSS/JavaScript tách riêng. Chạy bằng VS Code Live Server hoặc `python3 -m http.server 8000` tại thư mục này. Xem [hướng dẫn SV1](docs/SV1.md), [đối chiếu nhiệm vụ mới](docs/task-map.md) và [bảng trạng thái màn hình](docs/screen-list.md).
 
+> **Cập nhật trải nghiệm SV1:** tìm kiếm không dấu và sắp xếp dự án, nhắc việc cần phản hồi, bảo vệ brief chưa lưu, lưu nháp nhanh và xem thiết kế lớn. Xem [phạm vi và kết quả kiểm tra mới](docs/ux-polish.md). Bản SV1 vẫn là frontend demo chạy cục bộ.
+
 > **Học phần:** Phát triển Ứng dụng Web Cơ bản -- CSE122\
 > **Nhóm thực hiện:** 3 sinh viên\
 > **Loại sản phẩm:** Web Frontend Prototype\

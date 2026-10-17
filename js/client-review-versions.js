@@ -10,7 +10,7 @@
     if (p) {
       $("#empty-title").textContent = "Thiết kế chưa được gửi duyệt";
       $("#empty-description").textContent =
-        "Dự án mới chưa có phiên bản. Hãy hoàn thiện brief; quy trình upload của Designer thuộc phần SV2.";
+        "Dự án chưa có phiên bản thiết kế. Bạn có thể hoàn thiện brief và quay lại khi có bản gửi duyệt.";
       $("#brief-link").href = CS.url("client-creative-brief", p.id);
     } else if (new URLSearchParams(location.search).has("project")) {
       $("#empty-title").textContent = "Dự án không tồn tại hoặc đã bị xóa";
@@ -49,7 +49,9 @@
     render();
     $("#comment-" + id)?.scrollIntoView({
       block: "nearest",
-      behavior: "smooth",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
     });
   }
   function render() {
@@ -58,6 +60,10 @@
       p.status === "Archived" ? "Archived" : p.versionStatus,
     );
     $("#comment-count").textContent = comments.length;
+    const open = comments.filter((comment) => !comment.resolved).length;
+    $("#feedback-summary").textContent = comments.length
+      ? `${open} chưa xử lý · ${comments.length - open} đã xử lý`
+      : "Chưa có góp ý · Nhấn ảnh hoặc chọn + Phản hồi để bắt đầu.";
     $("#pins").innerHTML = comments
       .map(
         (c, i) =>
@@ -101,7 +107,7 @@
         : p.versionStatus === "Rejected"
           ? "Đội ngũ cần xem lý do và gửi một phiên bản mới để bạn duyệt lại."
           : p.versionStatus === "Changes Requested"
-            ? "Các phản hồi đã lưu để Creative Lead tiếp nhận trong module SV3."
+            ? "Yêu cầu chỉnh sửa và các phản hồi đã được lưu trong bản demo."
             : "Phê duyệt để hoàn tất, hoặc gửi phản hồi để đội ngũ chỉnh sửa.";
     $("#rejection-detail").hidden = p.versionStatus !== "Rejected";
     $("#rejection-reason-text").textContent = p.rejectionReason || "";
@@ -165,15 +171,44 @@
     $("#comment-form").reset();
     $("#comment-title").textContent = "Ghim phản hồi";
     $("#pin-location").textContent =
-      `Phiên bản v2.0 · Vị trí ${Math.round(x * 100)}%, ${Math.round(y * 100)}%`;
+      `Phiên bản v2.0 · Vị trí ${Math.round(pending.x * 100)}%, ${Math.round(pending.y * 100)}%`;
     $("#comment-error").textContent = "";
+    $("#pin-coordinates").hidden = false;
+    $("#pin-x").value = Math.round(pending.x * 100);
+    $("#pin-y").value = Math.round(pending.y * 100);
+    $("#pin-x").disabled = $("#pin-y").disabled = false;
     dialog.showModal();
+    $("#comment-text").focus();
   }
+  ["#pin-x", "#pin-y"].forEach((selector) => {
+    $(selector).oninput = () => {
+      $("#pin-location").textContent =
+        `Phiên bản v2.0 · Vị trí ${$("#pin-x").value}%, ${$("#pin-y").value}%`;
+    };
+  });
   $("#close-comment").onclick = $("#cancel-comment").onclick = () =>
     dialog.close();
   $("#comment-form").onsubmit = (e) => {
     e.preventDefault();
     if (locked()) return;
+    if (!editing) {
+      const x = Number($("#pin-x").value),
+        y = Number($("#pin-y").value);
+      if (
+        !$("#pin-x").validity.valid ||
+        !$("#pin-y").validity.valid ||
+        !Number.isFinite(x) ||
+        !Number.isFinite(y) ||
+        x < 2 ||
+        x > 98 ||
+        y < 2 ||
+        y > 98
+      ) {
+        $("#comment-error").textContent = "Tọa độ cần là số từ 2 đến 98%.";
+        return;
+      }
+      pending = { x: x / 100, y: y / 100 };
+    }
     const text = $("#comment-text").value.trim();
     if (!text) {
       $("#comment-error").textContent = "Vui lòng nhập nội dung phản hồi.";
@@ -220,6 +255,8 @@
       $("#comment-text").value = c.text;
       $("#comment-error").textContent = "";
       $("#pin-location").textContent = "Giữ nguyên vị trí ghim trên v2.0.";
+      $("#pin-coordinates").hidden = true;
+      $("#pin-x").disabled = $("#pin-y").disabled = true;
       dialog.showModal();
     } else if (b.dataset.action === "resolve") {
       if (
@@ -333,6 +370,26 @@
       toast("Đã lưu lý do từ chối phiên bản.");
     }
   };
+  function showPreview(version) {
+    $("#preview-image").src = `assets/images/${p.art}-v${version}.svg`;
+    $("#preview-image").alt =
+      `${p.name} — thiết kế mẫu phiên bản v${version}.0`;
+    $("#preview-title").textContent = `Phiên bản v${version}.0`;
+    $$("[data-preview]").forEach((button) =>
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.preview === version),
+      ),
+    );
+  }
+  $("#zoom-design").onclick = () => {
+    showPreview("2");
+    $("#preview-dialog").showModal();
+  };
+  $("#close-preview").onclick = () => $("#preview-dialog").close();
+  $$("[data-preview]").forEach((button) => {
+    button.onclick = () => showPreview(button.dataset.preview);
+  });
   $("#moodboard").onclick = () => $("#mood-dialog").showModal();
   $("#close-mood").onclick = () => $("#mood-dialog").close();
   render();

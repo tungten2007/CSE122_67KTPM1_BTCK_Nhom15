@@ -6,6 +6,7 @@
   if (!p) {
     $("#brief-workspace").hidden = true;
     $("#brief-empty").hidden = false;
+    $(".save-bar").hidden = true;
     if (new URLSearchParams(location.search).has("project"))
       $("#brief-empty h3").textContent = "Dự án không tồn tại hoặc đã bị xóa";
     return;
@@ -17,7 +18,37 @@
     explanation = "",
     round = 0,
     busy = false,
-    submitted = false;
+    submitted = false,
+    dirty = false;
+  const navigate = CS.guardChanges(() => dirty && !readonly);
+  $("#project-select").onchange = (event) => {
+    const href = CS.url("client-creative-brief", event.target.value);
+    // Keep the current selection while the user decides whether to leave.
+    event.target.value = p.id;
+    navigate(href);
+  };
+  $("#logout").onclick = () =>
+    navigate("login.html", () => sessionStorage.removeItem("cs.session"));
+  $("#role-switch").onchange = (event) => {
+    const role = event.target.value;
+    event.target.value = CS.session().role;
+    navigate(location.href, () => CS.login(role, CS.session().email));
+  };
+  function markDirty(value) {
+    dirty = value;
+    $("#draft-status").textContent = readonly
+      ? "Đã lưu trữ · Chỉ đọc"
+      : dirty
+        ? "Có thay đổi chưa lưu"
+        : "Đã lưu tại trình duyệt";
+    $("#save-indicator").classList.toggle("unsaved", dirty);
+    $("#save-draft-bottom").disabled = readonly || busy;
+  }
+  function completion() {
+    const filled = fields.filter((id) => $("#" + id).value.trim()).length;
+    $("#completion-label").textContent = `${filled}/5 phần đã có nội dung`;
+    $("#brief-progress").value = filled;
+  }
   $("#raw-idea").value = p.brief?.raw ?? p.description;
   $("#brief-budget").value = p.brief?.budget ?? p.budget ?? "";
   $("#brief-deadline").value = p.brief?.deadline ?? p.deadline;
@@ -32,10 +63,15 @@
         ? "Submitted · Đã gửi"
         : "Draft · Bản nháp";
     $("#brief-state").className = "pill " + (submitted ? "Completed" : "");
-    $("#submit-brief").disabled = readonly || !accepted;
-    $("#accepted-note").textContent = accepted
-      ? "✓ Nội dung đã xác nhận và lưu. Bạn có thể gửi brief cho đội ngũ."
-      : "Vui lòng rà soát và chấp nhận nội dung trước khi gửi.";
+    $("#submit-brief").disabled = readonly || !accepted || submitted || busy;
+    $("#accepted-note").textContent = readonly
+      ? "Dự án đã lưu trữ. Bạn có thể xem nội dung nhưng không thể chỉnh sửa."
+      : submitted
+        ? "✓ Brief đã gửi trong bản demo. Bạn có thể trở về dự án để theo dõi."
+        : accepted
+          ? "✓ Nội dung đã xác nhận và lưu. Bạn có thể gửi brief cho đội ngũ."
+          : "Điền đủ 5 phần và chọn Chấp nhận kết quả để mở nút Gửi brief.";
+    completion();
     $("#brief-next").hidden = !submitted;
   }
   function uncertainty() {
@@ -79,6 +115,9 @@
   function validate(requireSections = true) {
     const budget = $("#brief-budget"),
       deadline = $("#brief-deadline");
+    [budget, deadline, ...fields.map((id) => $("#" + id))].forEach((el) =>
+      el.removeAttribute("aria-invalid"),
+    );
     let target = null,
       message = "";
     if (!budget.validity.valid) {
@@ -97,6 +136,7 @@
     }
     $("#brief-error").textContent = message;
     if (target) {
+      target.setAttribute("aria-invalid", "true");
       target.focus();
       return false;
     }
@@ -113,7 +153,15 @@
   }
   count();
   state();
-  function edited() {
+  if (p.brief) markDirty(false);
+  else
+    $("#draft-status").textContent = readonly
+      ? "Đã lưu trữ · Chỉ đọc"
+      : "Chưa lưu brief · Lưu khi bạn sẵn sàng";
+  function edited(event) {
+    if (event?.target) event.target.removeAttribute("aria-invalid");
+    $("#brief-error").textContent = "";
+    markDirty(true);
     accepted = false;
     submitted = false;
     state();
@@ -121,9 +169,9 @@
     $("#save-note").textContent =
       "Có thay đổi chưa lưu. Hãy chọn Lưu bản nháp hoặc xác nhận lại.";
   }
-  $("#raw-idea").oninput = () => {
+  $("#raw-idea").oninput = (event) => {
     count();
-    edited();
+    edited(event);
   };
   [...fields, "brief-budget", "brief-deadline"].forEach(
     (id) => ($("#" + id).oninput = edited),
@@ -138,6 +186,7 @@
       return;
     }
     busy = true;
+    $("#save-draft-bottom").disabled = true;
     accepted = false;
     submitted = false;
     state();
@@ -211,27 +260,51 @@
       "#brief-workspace button, #brief-workspace input, #brief-workspace textarea",
     ).forEach((el) => (el.disabled = false));
     busy = false;
+    markDirty(true);
     showResult();
     state();
     toast("Đã tạo gợi ý. Hãy rà soát các thông tin cần xác nhận.");
   }
-  $("#generate").onclick = $("#regenerate").onclick = generate;
-  $("#manual").onclick = () => {
-    source = "manual";
-    explanation =
-      "Bạn chủ động viết 5 phần định hướng. Hãy xác nhận nội dung và phạm vi trước khi gửi.";
-    fields.forEach((id) => ($("#" + id).value = ""));
-    accepted = false;
-    submitted = false;
-    showResult();
-    state();
-    $("#goal").focus();
+  function replaceResult(action, title) {
+    if (readonly || busy) return;
+    const hasContent =
+      !$("#structured-form").hidden &&
+      fields.some((id) => $("#" + id).value.trim());
+    if (hasContent) {
+      CS.confirmAction(
+        title,
+        "Nội dung 5 phần đang hiển thị sẽ được thay thế. Mô tả ý tưởng, ngân sách và ngày bàn giao được giữ lại. Chọn Hủy nếu bạn muốn lưu bản hiện tại trước.",
+        action,
+        "Thay thế nội dung",
+      );
+    } else action();
+  }
+  $("#generate").onclick = $("#regenerate").onclick = () => {
+    if ($("#raw-idea").value.trim().length <= 20 || !validate(false)) {
+      generate();
+      return;
+    }
+    replaceResult(generate, "Tạo lại brief và thay nội dung hiện tại?");
   };
+  $("#manual").onclick = () =>
+    replaceResult(() => {
+      source = "manual";
+      explanation =
+        "Bạn chủ động viết 5 phần định hướng. Hãy xác nhận nội dung và phạm vi trước khi gửi.";
+      fields.forEach((id) => ($("#" + id).value = ""));
+      accepted = false;
+      submitted = false;
+      showResult();
+      state();
+      markDirty(true);
+      $("#goal").focus();
+    }, "Chuyển sang brief viết thủ công?");
   $("#accept").onclick = () => {
     if (!validate()) return;
     accepted = true;
     submitted = false;
     if (update(p.id, (project) => (project.brief = collect()))) {
+      markDirty(false);
       state();
       $("#save-note").textContent =
         "Đã lưu nội dung được chấp nhận vào trình duyệt.";
@@ -252,21 +325,36 @@
         $("#structured-form").hidden = true;
         $("#result-placeholder").hidden = false;
         $("#result-source").textContent = "Đã từ chối";
+        markDirty(true);
         state();
       },
     );
   $("#save-draft").onclick = () => {
-    if (!validate(false)) return;
+    if (readonly || busy || !validate(false)) return;
+    if (submitted && !dirty) {
+      toast(
+        "Brief này đã được gửi và lưu. Chỉnh sửa nội dung nếu bạn muốn tạo bản nháp mới.",
+      );
+      return;
+    }
     submitted = false;
     if (update(p.id, (project) => (project.brief = collect()))) {
       state();
+      markDirty(false);
       $("#save-note").textContent = "Đã lưu bản nháp vào trình duyệt.";
       toast("Đã lưu bản nháp.");
     }
   };
+  $("#save-draft-bottom").onclick = () => $("#save-draft").click();
+  document.addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
+      event.preventDefault();
+      if (!readonly && !busy) $("#save-draft").click();
+    }
+  });
   $("#structured-form").onsubmit = (e) => {
     e.preventDefault();
-    if (readonly || !accepted || !validate()) return;
+    if (readonly || busy || submitted || !accepted || !validate()) return;
     submitted = true;
     if (
       update(p.id, (project) => {
@@ -276,6 +364,7 @@
         project.progress = Math.max(project.progress, 20);
       })
     ) {
+      markDirty(false);
       state();
       CS.notify(`Brief của ${p.name} đã được gửi cho đội ngũ.`, p.id, "brief");
       $("#save-note").textContent =
@@ -286,8 +375,10 @@
       state();
     }
   };
-  if (readonly)
+  if (readonly) {
+    $("#save-draft-bottom").disabled = true;
     $$(
       "#brief-workspace input, #brief-workspace textarea, #brief-workspace button",
     ).forEach((el) => (el.disabled = true));
+  }
 })();

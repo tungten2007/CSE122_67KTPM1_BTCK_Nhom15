@@ -160,6 +160,12 @@ window.CS = (() => {
   };
   const pill = (status) =>
     `<span class="pill ${escape(status.replaceAll(" ", ""))}"><span class="badge-dot"></span>${escape(labels[status] || status)}</span>`;
+  const searchText = (value) =>
+    String(value)
+      .toLocaleLowerCase("vi")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d");
   const url = (page, id) =>
     `${page}.html${id ? "?project=" + encodeURIComponent(id) : ""}`;
   function project() {
@@ -345,11 +351,77 @@ window.CS = (() => {
     };
     return current;
   }
-  function confirmAction(title, description, onConfirm) {
+  function guardChanges(isDirty) {
+    let leaving = false;
+    const navigate = (href, beforeLeave = () => {}) => {
+      const leave = () => {
+        if (beforeLeave() === false) return;
+        leaving = true;
+        location.href = href;
+      };
+      if (!isDirty()) {
+        leave();
+        return;
+      }
+      confirmAction(
+        "Rời trang khi chưa lưu?",
+        "Nội dung vừa chỉnh sửa chưa được lưu. Chọn Hủy để quay lại lưu bản nháp; chọn Rời trang để bỏ những thay đổi này.",
+        () => {
+          leave();
+        },
+        "Rời trang",
+      );
+    };
+    window.addEventListener("pageshow", () => {
+      leaving = false;
+    });
+    window.addEventListener("beforeunload", (event) => {
+      if (!leaving && isDirty()) {
+        event.preventDefault();
+        event.returnValue = "";
+      }
+    });
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a[href]");
+      if (
+        !link ||
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        event.altKey ||
+        link.target === "_blank" ||
+        link.hasAttribute("download")
+      )
+        return;
+      const target = new URL(link.href, location.href);
+      if (
+        target.origin !== location.origin ||
+        (target.pathname === location.pathname &&
+          target.search === location.search)
+      )
+        return;
+      if (isDirty()) {
+        event.preventDefault();
+        navigate(target.href);
+      }
+    });
+    return navigate;
+  }
+  function confirmAction(
+    title,
+    description,
+    onConfirm,
+    confirmLabel = "Xác nhận",
+  ) {
     const dialog = document.createElement("dialog");
-    dialog.innerHTML = `<h2>${escape(title)}</h2><p>${escape(description)}</p><div class="actions dialog-actions"><button class="btn" data-no>Hủy</button><button class="btn primary" data-yes>Xác nhận</button></div>`;
+    dialog.innerHTML = `<h2>${escape(title)}</h2><p>${escape(description)}</p><div class="actions dialog-actions"><button class="btn" data-no>Hủy</button><button class="btn primary" data-yes>${escape(confirmLabel)}</button></div>`;
     document.body.append(dialog);
+    dialog.setAttribute("aria-label", title);
     dialog.showModal();
+    // Start on the safe option; users explicitly confirm destructive actions.
+    $("[data-no]", dialog).focus();
     $("[data-no]", dialog).onclick = () => dialog.close();
     $("[data-yes]", dialog).onclick = () => {
       dialog.close();
@@ -371,7 +443,10 @@ window.CS = (() => {
     login,
     toast,
     pill,
+    labels,
+    searchText,
     url,
+    guardChanges,
     project,
     update,
     notify,

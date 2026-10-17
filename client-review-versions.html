@@ -26,13 +26,18 @@
         <span class="journey-arrow" aria-hidden="true">→</span>
         <a href="client-creative-brief.html"><b>02</b>Creative Brief</a>
         <span class="journey-arrow" aria-hidden="true">→</span>
-        <a href="client-review-versions.html" aria-current="step"><b>03</b>Duyệt phiên bản</a>
+        <a href="client-review-versions.html" aria-current="step"
+          ><b>03</b>Duyệt phiên bản</a
+        >
       </nav>
       <div class="page-heading">
         <div>
-          <span class="eyebrow">02 / Cùng nhau hoàn thiện</span>
-          <h1 class="page-title">Góc nhìn của bạn tạo khác biệt.</h1>
-          <p>So sánh, chia sẻ phản hồi và cùng chọn phiên bản tốt nhất.</p>
+          <span class="eyebrow">BƯỚC 03 / PHẢN HỒI & PHÊ DUYỆT</span>
+          <h1 class="page-title">Duyệt phiên bản thiết kế</h1>
+          <p>
+            So sánh hai phiên bản, ghim góp ý trên bản mới rồi đưa ra quyết
+            định.
+          </p>
         </div>
         <span id="version-status"></span>
       </div>
@@ -76,7 +81,9 @@
                   ↔ Thanh trượt
                 </button>
               </div>
-              <span class="pill">2 phiên bản mẫu</span>
+              <button class="btn small" id="zoom-design" type="button">
+                ⤢ Xem ảnh lớn
+              </button>
             </div>
             <div class="version-caption">
               <span>v1.0 <small>Bản đầu tiên</small></span
@@ -138,6 +145,12 @@
                 Đã xử lý
               </button>
             </div>
+            <p
+              class="feedback-summary"
+              id="feedback-summary"
+              role="status"
+              aria-live="polite"
+            ></p>
             <div id="comment-list"></div>
             <div class="feedback-footer">
               <strong>Mỗi phản hồi đều có giá trị.</strong>
@@ -173,7 +186,53 @@
         <span>✳ Phản hồi rõ ràng, thành quả tốt hơn.</span
         ><span>Phản hồi & trạng thái lưu tại trình duyệt</span>
       </div>
-      <dialog id="comment-dialog">
+      <dialog
+        id="preview-dialog"
+        class="artwork-viewer"
+        aria-labelledby="preview-title"
+      >
+        <div class="dialog-head">
+          <div>
+            <span class="eyebrow">XEM CHI TIẾT THIẾT KẾ</span>
+            <h2 id="preview-title">Phiên bản v2.0</h2>
+          </div>
+          <button
+            type="button"
+            class="btn small"
+            id="close-preview"
+            aria-label="Đóng ảnh lớn"
+          >
+            ✕ Đóng
+          </button>
+        </div>
+        <div
+          class="viewer-toolbar"
+          role="group"
+          aria-label="Chọn phiên bản xem lớn"
+        >
+          <button
+            type="button"
+            class="btn small"
+            data-preview="1"
+            aria-pressed="false"
+          >
+            v1.0 · Bản đầu tiên</button
+          ><button
+            type="button"
+            class="btn small"
+            data-preview="2"
+            aria-pressed="true"
+          >
+            v2.0 · Bản mới nhất
+          </button>
+        </div>
+        <img id="preview-image" alt="" />
+        <p>
+          Đóng ảnh lớn để quay lại ghim và chỉnh sửa phản hồi. Dùng phím Escape
+          để đóng.
+        </p>
+      </dialog>
+      <dialog id="comment-dialog" aria-labelledby="comment-title">
         <div class="dialog-head">
           <h2 id="comment-title">Ghim phản hồi</h2>
           <button
@@ -196,6 +255,34 @@
               placeholder="Ví dụ: Mình muốn tên thương hiệu nổi bật hơn ở vị trí này."
             ></textarea>
           </div>
+          <div class="pin-coordinates form-grid" id="pin-coordinates">
+            <div class="field">
+              <label for="pin-x">Vị trí ngang (%)</label
+              ><input
+                id="pin-x"
+                type="number"
+                min="2"
+                max="98"
+                step="1"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="pin-y">Vị trí dọc (%)</label
+              ><input
+                id="pin-y"
+                type="number"
+                min="2"
+                max="98"
+                step="1"
+                required
+              />
+            </div>
+          </div>
+          <small class="muted"
+            >Bạn có thể chỉnh tọa độ bằng bàn phím; 0% là mép trái hoặc mép
+            trên.</small
+          >
           <p class="error" id="comment-error" role="status"></p>
           <div class="actions">
             <button type="button" class="btn" id="cancel-comment">Hủy</button
@@ -203,9 +290,9 @@
           </div>
         </form>
       </dialog>
-      <dialog id="rejection-dialog">
+      <dialog id="rejection-dialog" aria-labelledby="rejection-dialog-title">
         <div class="dialog-head">
-          <h2>Từ chối phiên bản v2.0?</h2>
+          <h2 id="rejection-dialog-title">Từ chối phiên bản v2.0?</h2>
           <button class="text-button" id="close-rejection" aria-label="Đóng">
             ✕
           </button>
@@ -232,9 +319,9 @@
           </div>
         </form>
       </dialog>
-      <dialog id="mood-dialog">
+      <dialog id="mood-dialog" aria-labelledby="mood-dialog-title">
         <div class="dialog-head">
-          <h2>Định hướng tham khảo</h2>
+          <h2 id="mood-dialog-title">Định hướng tham khảo</h2>
           <button class="text-button" id="close-mood" aria-label="Đóng">
             ✕
           </button>

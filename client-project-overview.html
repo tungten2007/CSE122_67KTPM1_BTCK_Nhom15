@@ -21,11 +21,42 @@
       <section class="studio-banner" aria-labelledby="projects-title">
         <div>
           <span class="eyebrow">KHÔNG GIAN CỦA NHỮNG Ý TƯỞNG</span>
-          <h1 id="projects-title">Cùng tạo nên điều khác biệt<span class="heading-dot">.</span></h1>
-          <p>Từ nét phác đầu tiên đến phiên bản hoàn thiện. Mọi dự án, ý tưởng và phản hồi của bạn đều ở đây.</p>
-          <div class="actions"><button class="btn primary" id="new-project">＋ Tạo dự án mới</button><a class="text-button" href="client-creative-brief.html">Viết creative brief ↗</a></div>
+          <h1 id="projects-title">
+            Cùng tạo nên điều khác biệt<span class="heading-dot">.</span>
+          </h1>
+          <p>
+            Từ nét phác đầu tiên đến phiên bản hoàn thiện. Mọi dự án, ý tưởng và
+            phản hồi của bạn đều ở đây.
+          </p>
+          <div class="actions">
+            <button class="btn primary" id="new-project">
+              ＋ Tạo dự án mới</button
+            ><a class="text-button" href="client-creative-brief.html"
+              >Viết creative brief ↗</a
+            >
+          </div>
         </div>
-        <div class="studio-art" aria-hidden="true"><span>✳</span><i></i><i></i></div>
+        <div class="studio-art" aria-hidden="true">
+          <span>✳</span><i></i><i></i>
+        </div>
+      </section>
+      <section
+        class="attention-card"
+        id="attention-card"
+        aria-labelledby="attention-title"
+        hidden
+      >
+        <span class="attention-icon" aria-hidden="true">◫</span>
+        <div>
+          <h2 id="attention-title"></h2>
+          <p id="attention-description"></p>
+        </div>
+        <a
+          class="btn small"
+          id="attention-link"
+          href="client-review-versions.html"
+          >Xem thiết kế →</a
+        >
       </section>
       <section class="stats" aria-label="Thống kê dự án">
         <div>
@@ -49,7 +80,13 @@
         </div>
       </section>
       <section aria-label="Danh sách dự án" class="projects-section">
-        <div class="projects-section-title"><div><span class="eyebrow">TỪ Ý TƯỞNG ĐẾN THÀNH QUẢ</span><h2>Dự án của tôi</h2></div><span class="muted">Không gian sáng tạo của bạn ↙</span></div>
+        <div class="projects-section-title">
+          <div>
+            <span class="eyebrow">TỪ Ý TƯỞNG ĐẾN THÀNH QUẢ</span>
+            <h2>Dự án của tôi</h2>
+          </div>
+          <span class="muted">Không gian sáng tạo của bạn ↙</span>
+        </div>
         <div class="project-toolbar">
           <div class="tabs" role="group" aria-label="Lọc trạng thái">
             <button data-filter="all" class="active" aria-pressed="true">
@@ -71,12 +108,33 @@
               aria-label="Tìm dự án"
               placeholder="Tìm dự án…"
               type="search"
-            />
+              autocomplete="off"
+            /><button
+              class="clear-search"
+              id="clear-search"
+              type="button"
+              aria-label="Xóa từ khóa tìm kiếm"
+              hidden
+            >
+              ✕
+            </button>
           </div>
         </div>
         <div class="list-caption">
-          <span id="result-count" role="status"></span
-          ><span>Sắp xếp: Mới nhất trước</span>
+          <span
+            id="result-count"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></span>
+          <label class="sort-control" for="project-sort"
+            >Sắp xếp
+            <select id="project-sort">
+              <option value="default">Thứ tự mặc định</option>
+              <option value="deadline">Hạn gần nhất</option>
+              <option value="name">Tên A–Z</option>
+            </select>
+          </label>
         </div>
         <div class="project-grid" id="project-list"></div>
       </section>
@@ -84,7 +142,7 @@
         <span>✳ Mỗi dự án đều là một câu chuyện đáng kể.</span
         ><span>CreatorStudio · Không gian khách hàng</span>
       </div>
-      <dialog id="project-dialog">
+      <dialog id="project-dialog" aria-labelledby="dialog-title">
         <div class="dialog-head">
           <div>
             <span class="eyebrow">Bắt đầu một hành trình</span>

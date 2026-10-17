@@ -3,6 +3,33 @@ const { $, $$, login, toast } = CS;
 const requested = new URLSearchParams(location.search).get("role");
 const selected = CS.roles.includes(requested) ? requested : CS.preferredRole();
 $("#login-role").value = selected;
+function describeRole() {
+  const role = $("#login-role").value;
+  $("#role-help").textContent =
+    role === "Client"
+      ? "Có đầy đủ luồng dự án, viết brief và duyệt thiết kế trong bộ SV1."
+      : "Bộ SV1 chưa có màn hình của vai trò này. Đăng nhập sẽ mở thông báo phạm vi demo và cho phép quay lại Khách hàng.";
+  $$("[data-role]").forEach((button) =>
+    button.classList.toggle("selected", button.dataset.role === role),
+  );
+}
+$("#login-role").onchange = describeRole;
+describeRole();
+$("#quick-client").onclick = () => {
+  if (login("Client")) location.href = "client-project-overview.html";
+};
+for (const id of ["email", "password"]) {
+  $("#" + id).addEventListener("input", () => {
+    const input = $("#" + id);
+    if (input.getAttribute("aria-invalid") !== "true") return;
+    const valid =
+      id === "email" ? input.validity.valid : input.value.length >= 6;
+    if (valid) {
+      input.removeAttribute("aria-invalid");
+      $("#" + id + "-error").textContent = "";
+    }
+  });
+}
 $$("[data-role]").forEach((button) => {
   if (button.dataset.role === selected) button.classList.add("selected");
   button.onclick = () => {

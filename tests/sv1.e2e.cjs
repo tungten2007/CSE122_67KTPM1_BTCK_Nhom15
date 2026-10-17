@@ -183,6 +183,7 @@ const executablePath =
   await go("client-creative-brief.html?project=" + id);
   await page.waitForSelector("#regenerate");
   await page.click("#regenerate");
+  await confirm();
   await page.waitForSelector("#structured-form:not([hidden])");
   await page.click("#reject");
   await confirm();
