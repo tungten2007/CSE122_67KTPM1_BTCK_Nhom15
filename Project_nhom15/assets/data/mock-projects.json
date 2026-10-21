@@ -1,0 +1,26 @@
+[
+  {
+    "id": "p-moc",
+    "name": "Mộc Coffee",
+    "description": "Nhận diện & bao bì cà phê",
+    "category": "Branding",
+    "deadline": "2026-10-20",
+    "status": "Active",
+    "progress": 0,
+    "revision": 1,
+    "createdAt": "2026-10-21T00:00:00Z",
+    "updatedAt": "2026-10-21T00:00:00Z"
+  },
+  {
+    "id": "p-lua",
+    "name": "Lúa Tea",
+    "description": "Bộ nhận diện trà thủ công",
+    "category": "Branding",
+    "deadline": "2026-12-20",
+    "status": "Active",
+    "progress": 0,
+    "revision": 1,
+    "createdAt": "2026-10-21T00:00:00Z",
+    "updatedAt": "2026-10-21T00:00:00Z"
+  }
+]
