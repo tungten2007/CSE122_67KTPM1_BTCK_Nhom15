@@ -2,6 +2,14 @@
 
 Website frontend quản lý dự án sáng tạo, từ brief và moodboard đến phiên bản thiết kế, phản hồi và phê duyệt. Bản dùng chung của SV1/SV2/SV3 đã được nhóm đồng ý theo xác nhận của người dùng ngày 14/10/2026.
 
+## Demo REST API dự án (bổ sung)
+
+Mở thư mục `Project_nhom15`, chạy `python server.py 8000 --open` (hoặc `CHAY-WINDOWS.bat`), rồi chọn **Demo REST API** tại trang dự án hoặc cuối trang chủ. Trang trực tiếp: `http://127.0.0.1:8000/api-demo.html`.
+
+Có GET/POST/PATCH/DELETE qua HTTP, SQLite cục bộ, loading, nhật ký request, lỗi 503 mô phỏng và bảo vệ revision khi hai tab cùng sửa. Đây là **màn demo API độc lập**, không thay Store/LocalStorage hay xác thực của các màn nhóm. Không phải dịch vụ MockAPI.io và chưa phải backend production. Live Server không chạy được các route Python API.
+
+Xem [hướng dẫn và kết quả kiểm tra API](Project_nhom15/docs/MOCK-API-DEMO.md).
+
 ## Chạy website
 
 Giải nén toàn bộ ZIP và giữ nguyên các thư mục. Mở thư mục `Project_nhom15`:
