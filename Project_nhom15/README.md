@@ -1,5 +1,3 @@
-> Bổ sung: đã có màn [Demo REST API dự án](api-demo.html), chạy bằng `python server.py 8000 --open`. Đây là khu dữ liệu thử riêng; xem [hướng dẫn mock API](docs/MOCK-API-DEMO.md).
-
 > Cập nhật12/10/2026: sáu màn SV3 đã qua QA Chromium desktop/mobile và responsive320–1440px. Xem [tiến độ](docs/TIEN-DO-SV3.md), [QA Task17](docs/TASK-17-QA.md) và [QA Admin/responsive/lỗi](docs/TASK-19-20-21-26-QA.md). Figma, ghépSV1/SV2 và OBS vẫn còn việc riêng.
 
 # CreatorStudio — Website thực hành phần SV3
