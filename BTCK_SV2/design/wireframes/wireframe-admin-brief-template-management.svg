@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1440" viewBox="0 0 1440 1440" role="img" aria-labelledby="title desc"><title id="title">Wireframe · Quản lý mẫu Brief &amp; AI-1</title><desc id="desc">Bố cục desktop của trang Quản lý mẫu Brief &amp; AI-1 trong CreatorStudio. Bản phác thảo cấu trúc đen trắng, không thể hiện thiết kế màu hoàn chỉnh.</desc><g font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1440" height="1440" rx="0" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="0" y="0" width="240" height="1440" rx="0" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<path d="M240 0V1440" fill="none" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="20" y="24" width="34" height="34" rx="6" fill="#e4e4e4" stroke="#b8b8b8" stroke-width="1"/>
+<text x="29" y="48" font-size="20" fill="#262626" font-weight="600">C</text>
+<text x="66" y="48" font-size="19" fill="#262626" font-weight="600">CreatorStudio</text>
+<rect x="20" y="88" width="200" height="64" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="36" y="114" font-size="15" fill="#262626" font-weight="600">Studio Mộc</text>
+<text x="36" y="135" font-size="12" fill="#737373" font-weight="400">Không gian làm việc</text>
+<text x="20" y="190" font-size="11" fill="#737373" font-weight="600">ĐIỀU HƯỚNG</text>
+<rect x="16" y="208" width="208" height="40" rx="6" fill="#e5e5e5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="29" y="220" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="234" font-size="14" fill="#262626" font-weight="600">Mẫu Brief &amp; AI</text>
+<rect x="29" y="268" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="282" font-size="14" fill="#262626" font-weight="400">Hồ sơ cá nhân</text>
+<rect x="29" y="316" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="330" font-size="14" fill="#262626" font-weight="400">Thông báo</text>
+<path d="M20 504H220" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="20" y="536" font-size="11" fill="#737373" font-weight="400">DỰ ÁN ĐANG CHỌN</text>
+<text x="20" y="565" font-size="15" fill="#262626" font-weight="600">Tên dự án</text>
+<rect x="20" y="581" width="155" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<text x="20" y="1346" font-size="12" fill="#737373" font-weight="400">Công cụ demo &amp; dữ liệu</text>
+<circle cx="38" cy="1392" r="18" fill="#eeeeee" stroke="#b8b8b8"/>
+<text x="70" y="1388" font-size="13" fill="#262626" font-weight="600">Người dùng</text>
+<text x="70" y="1407" font-size="12" fill="#737373" font-weight="400">Admin</text>
+<rect x="240" y="0" width="1200" height="74" rx="0" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="272" y="45" font-size="14" fill="#737373" font-weight="400">Studio Mộc  /  Quản lý mẫu Brief &amp; AI-1</text>
+<rect x="1020" y="19" width="145" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1032" y="42" font-size="13" fill="#262626" font-weight="400">Chọn dự án  ⌄</text>
+<rect x="1177" y="19" width="165" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1189" y="42" font-size="13" fill="#262626" font-weight="400">Admin  ⌄</text>
+<rect x="1354" y="19" width="38" height="36" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1367" y="43" font-size="18" fill="#262626" font-weight="400">◦</text>
+<text x="280" y="115" font-size="11" fill="#737373" font-weight="600">CREATORSTUDIO / ADMIN</text>
+<text x="280" y="153" font-size="28" fill="#262626" font-weight="600">Quản lý mẫu Brief &amp; AI-1</text>
+<rect x="280" y="174" width="650" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<path d="M240 1392H1440" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="280" y="1421" font-size="12" fill="#737373" font-weight="400">WIREFRAME · DESKTOP · Admin</text>
+<text x="1075" y="1421" font-size="12" fill="#737373" font-weight="400">CSE122 · Phân hệ SV2</text>
+<rect x="280" y="210" width="420" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="292" y="233" font-size="13" fill="#262626" font-weight="400">Tìm kiếm tên / mô tả mẫu…</text>
+<rect x="716" y="210" width="205" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="728" y="233" font-size="13" fill="#262626" font-weight="400">Trạng thái  ⌄</text>
+<rect x="937" y="210" width="205" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="949" y="233" font-size="13" fill="#262626" font-weight="400">Ngành hàng  ⌄</text>
+<rect x="1158" y="210" width="242" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1170" y="233" font-size="13" fill="#262626" font-weight="600">+ Thêm mẫu Brief</text>
+<rect x="280" y="272" width="548" height="238" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="304" font-size="19" fill="#262626" font-weight="600">Branding / Nhận diện thương hiệu</text>
+<rect x="300" y="325" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="309" y="342" font-size="11" fill="#262626" font-weight="400">Trạng thái mẫu</text>
+<rect x="300" y="370" width="460" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="300" y="386" width="390" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="300" y="408" width="508" height="40" rx="5" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="433" font-size="12" fill="#737373" font-weight="400">Danh sách các trường thông tin chuẩn hóa</text>
+<rect x="300" y="460" width="215" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="483" font-size="13" fill="#262626" font-weight="400">Xem cấu hình Prompt</text>
+<rect x="640" y="460" width="168" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="652" y="483" font-size="13" fill="#262626" font-weight="400">Bật / Tắt mẫu</text>
+<rect x="852" y="272" width="548" height="238" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="872" y="304" font-size="19" fill="#262626" font-weight="600">Packaging / Bao bì</text>
+<rect x="872" y="325" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="881" y="342" font-size="11" fill="#262626" font-weight="400">Trạng thái mẫu</text>
+<rect x="872" y="370" width="460" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="872" y="386" width="390" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="872" y="408" width="508" height="40" rx="5" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<text x="884" y="433" font-size="12" fill="#737373" font-weight="400">Danh sách các trường thông tin chuẩn hóa</text>
+<rect x="872" y="460" width="215" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="884" y="483" font-size="13" fill="#262626" font-weight="400">Xem cấu hình Prompt</text>
+<rect x="1212" y="460" width="168" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1224" y="483" font-size="13" fill="#262626" font-weight="400">Bật / Tắt mẫu</text>
+<rect x="280" y="532" width="548" height="238" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="564" font-size="19" fill="#262626" font-weight="600">UI/UX / Sản phẩm số</text>
+<rect x="300" y="585" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="309" y="602" font-size="11" fill="#262626" font-weight="400">Trạng thái mẫu</text>
+<rect x="300" y="630" width="460" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="300" y="646" width="390" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="300" y="668" width="508" height="40" rx="5" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="693" font-size="12" fill="#737373" font-weight="400">Danh sách các trường thông tin chuẩn hóa</text>
+<rect x="300" y="720" width="215" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="743" font-size="13" fill="#262626" font-weight="400">Xem cấu hình Prompt</text>
+<rect x="640" y="720" width="168" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="652" y="743" font-size="13" fill="#262626" font-weight="400">Bật / Tắt mẫu</text>
+<rect x="852" y="532" width="548" height="238" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="872" y="564" font-size="19" fill="#262626" font-weight="600">Campaign / Truyền thông</text>
+<rect x="872" y="585" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="881" y="602" font-size="11" fill="#262626" font-weight="400">Trạng thái mẫu</text>
+<rect x="872" y="630" width="460" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="872" y="646" width="390" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="872" y="668" width="508" height="40" rx="5" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<text x="884" y="693" font-size="12" fill="#737373" font-weight="400">Danh sách các trường thông tin chuẩn hóa</text>
+<rect x="872" y="720" width="215" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="884" y="743" font-size="13" fill="#262626" font-weight="400">Xem cấu hình Prompt</text>
+<rect x="1212" y="720" width="168" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1224" y="743" font-size="13" fill="#262626" font-weight="400">Bật / Tắt mẫu</text>
+<rect x="280" y="810" width="1120" height="522" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="842" font-size="19" fill="#262626" font-weight="600">Cấu hình Prompt gợi ý cho AI-1</text>
+<text x="300" y="870" font-size="13" fill="#737373" font-weight="400">Mẫu Brief đang chọn · Ngành hàng</text>
+<rect x="300" y="891" width="160" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="309" y="908" font-size="11" fill="#262626" font-weight="400">{raw_input}</text>
+<rect x="480" y="891" width="160" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="489" y="908" font-size="11" fill="#262626" font-weight="400">{category}</text>
+<rect x="660" y="891" width="160" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="669" y="908" font-size="11" fill="#262626" font-weight="400">{deliverables}</text>
+<rect x="840" y="891" width="160" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="849" y="908" font-size="11" fill="#262626" font-weight="400">{tone_voice}</text>
+<text x="300" y="949" font-size="13" fill="#262626" font-weight="600">System Prompt Template</text>
+<rect x="300" y="961" width="1080" height="105" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="987" font-size="13" fill="#737373" font-weight="400">Nội dung Prompt và các biến tham số…</text>
+<rect x="300" y="1084" width="230" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="1107" font-size="13" fill="#262626" font-weight="600">Lưu cấu hình Prompt</text>
+<rect x="548" y="1084" width="240" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="560" y="1107" font-size="13" fill="#262626" font-weight="400">Khôi phục mặc định</text>
+<path d="M300 1144H1380" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="300" y="1177" font-size="17" fill="#262626" font-weight="600">Thử nghiệm Prompt với mô tả mẫu</text>
+<text x="300" y="1210" font-size="13" fill="#262626" font-weight="600">Mô tả đầu vào</text>
+<rect x="300" y="1222" width="820" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="1248" font-size="13" fill="#737373" font-weight="400">Nhập yêu cầu của khách hàng…</text>
+<rect x="1140" y="1222" width="240" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1152" y="1245" font-size="13" fill="#262626" font-weight="400">Chạy thử AI-1</text>
+<text x="300" y="1307" font-size="12" fill="#737373" font-weight="400">Khu vực hiển thị kết quả thử nghiệm / thông báo lỗi</text>
+</g></svg>

@@ -1,5 +1,9 @@
 # Báo cáo Sử dụng AI (AI Usage Report) — Phân hệ SV2
 
+> Bản cơ bản theo yêu cầu sinh viên năm 2: Codex đã chuyển khung giao diện sang HTML trực tiếp, thay bộ App/View/Store bằng hàm và sự kiện DOM, thêm chú thích tiếng Việt, giữ HTML/CSS/JS riêng cho 8 trang. AI-3 hiện dùng hai nhóm quy tắc cà phê/kraft và trà; AI-1 hiển thị Prompt sau khi thay mô tả để thử nghiệm. Kiểm tra tự động chạy trong DOM mô phỏng; chưa xác minh giao diện trình duyệt của bản này. Nội dung triển khai trước bên dưới giữ làm lịch sử.
+
+> Cập nhật trước đó 26/10/2026: đã refactor thành 8 bộ HTML/CSS/JS độc lập. Giao diện và template nằm trong HTML; mỗi JS bọc DOMContentLoaded, không dùng innerHTML/.style; mỗi CSS tự chứa đầy đủ và không import. Các đường dẫn thư mục js/css cũ bên dưới là lịch sử triển khai trước refactor. Phần sinh viên tự sửa, review và OBS vẫn cần minh chứng thực tế.
+
 > Ghi chú rà soát: các khai báo Gemini/Antigravity, prompt lịch sử và phần sinh viên chỉnh sửa bên dưới có sẵn trong thư mục; chưa có minh chứng độc lập để xác nhận. Không dùng chúng làm bằng chứng OBS/commit/PR.
 
 ## Lần rà soát bằng Codex

@@ -1,21 +1,410 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trung tâm Thông báo (Notifications) · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/pages/notifications.css">
+  <link rel="stylesheet" href="css/notifications.css">
 </head>
-<body class="page-notifications">
-  <!-- Shell được render tự động qua App.init() -->
 
-  <script src="js/data.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/modules/navigation.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/pages/notifications.js"></script>
+<body class="page-notifications">
+  <a class="skip-link" href="#main">Chuyển đến nội dung chính</a>
+  <div class="sidebar-shade" hidden></div>
+  <aside class="sidebar" aria-label="Điều hướng chính">
+    <a class="brand" href="designer-dashboard.html">
+      <span class="brand-mark">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m5 12 4 4L19 6"></path>
+        </svg>
+      </span>
+      <span>CreatorStudio</span>
+      <span class="brand-dot">®</span>
+    </a>
+    <button class="icon-button mobile-close" aria-label="Đóng menu">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 6 12 12M6 18 18 6"></path>
+      </svg>
+    </button>
+    <div class="studio">
+      <span class="studio-avatar">M</span>
+      <div>
+        <strong>Studio Mộc</strong>
+        <small>Không gian sáng tạo</small>
+      </div>
+      <span class="studio-arrow">⌄</span>
+    </div>
+    <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
+    <nav>
+      <a class="nav-link" href="designer-dashboard.html" data-role="Designer">
+        <span>Bảng điều khiển</span>
+      </a>
+      <a class="nav-link" href="designer-moodboard.html" data-role="Designer">
+        <span>Bảng cảm hứng</span>
+      </a>
+      <a class="nav-link" href="designer-version-management.html" data-role="Designer">
+        <span>Quản lý phiên bản</span>
+      </a>
+      <a class="nav-link" href="admin-brief-template-management.html" data-role="Admin" hidden="">
+        <span>Mẫu Brief &amp; AI</span>
+      </a>
+      <a class="nav-link" href="profile.html">
+        <span>Hồ sơ cá nhân</span>
+      </a>
+      <a class="nav-link active" href="notifications.html" aria-current="page">
+        <span>Thông báo</span>
+      </a>
+    </nav>
+    <div class="sidebar-project">
+      <p class="nav-caption">DỰ ÁN ĐANG CHỌN</p>
+      <strong>
+        <span class="status-dot"></span>Mộc Coffee</strong>
+      <small>Nhận diện &amp; bao bì cà phê nguyên bản</small>
+      <span class="side-tag">MC26</span>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="text-light" id="demo-tools-btn">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+        </svg>
+        Công cụ demo &amp; Dữ liệu</button>
+      <a class="profile" href="profile.html" title="Xem và sửa hồ sơ cá nhân">
+        <span class="avatar" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </span>
+        <div>
+          <strong data-user-name="">An Nguyễn</strong>
+          <small data-user-role="">Nhà thiết kế</small>
+        </div>
+        <span class="online" title="Đang trực tuyến"></span>
+      </a>
+      <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-button menu-toggle" aria-label="Mở menu">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <div class="breadcrumb">
+        Studio Mộc <span>/</span>
+        <strong>Thông báo</strong>
+      </div>
+      <div class="top-actions">
+        <label class="sr-only" for="project-select">Dự án</label>
+        <select id="project-select" aria-label="Chọn dự án">
+          <option value="p-moc" selected>
+            Mộc Coffee
+          </option>
+          <option value="p-lua">
+            Lúa Tea
+          </option>
+        </select>
+        <label class="sr-only" for="role-switch">Vai trò demo</label>
+        <select id="role-switch" aria-label="Đổi vai trò demo">
+          <option value="Designer" selected>
+            Demo: Nhà thiết kế
+          </option>
+          <option value="Admin">
+            Demo: Quản trị viên
+          </option>
+          <option value="Lead">
+            Demo: Trưởng nhóm
+          </option>
+          <option value="Client">
+            Demo: Khách hàng
+          </option>
+        </select>
+        <a href="notifications.html" class="notification-button" id="activity-bell" title="Trung tâm thông báo"
+          aria-label="Xem thông báo">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+          </svg>
+          <span class="notification-badge" hidden>0</span>
+        </a>
+        <a href="profile.html" class="avatar" title="Hồ sơ An Nguyễn" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">TRUNG TÂM HOẠT ĐỘNG DÙNG CHUNG</p>
+          <h1>Thông báo &amp; Biến động Dự án</h1>
+          <p class="muted">Theo dõi các thay đổi về phiên bản mới, bình luận của khách hàng, nhiệm vụ gấp và cảnh báo hệ
+            thống.</p>
+        </div>
+        <div class="heading-actions">
+          <button class="button soft" id="mark-all-read-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Đánh dấu tất cả đã đọc
+          </button>
+          <button class="button danger small" id="clear-all-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Xóa tất cả
+          </button>
+        </div>
+      </section>
+      <!-- Thanh tab lọc & Bộ lọc dự án -->
+      <div class="notification-filter-bar">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-tab="all">
+            Tất cả (5)
+          </button>
+          <button class="filter-tab " data-tab="unread">
+            Chưa đọc (2)
+          </button>
+          <button class="filter-tab " data-tab="version">
+            Phiên bản
+          </button>
+          <button class="filter-tab " data-tab="comment">
+            Nhận xét
+          </button>
+          <button class="filter-tab " data-tab="task">
+            Nhiệm vụ
+          </button>
+        </div>
+        <select id="project-filter-select" aria-label="Lọc theo dự án">
+          <option value="all" selected>Tất cả dự án</option>
+          <option value="p-moc">Mộc Coffee</option>
+          <option value="p-lua">Lúa Tea</option>
+        </select>
+      </div>
+      <!-- Danh sách thông báo (CRUD: R / U / D: Unread, Read, Empty State, Cleared) -->
+      <section class="panel">
+        <div class="notification-list">
+          <div class="notification-card unread">
+            <div class="notification-icon-wrap comment">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title-row">
+                <span class="notification-title">Khánh Chi đã nhận xét trên Phiên bản 2</span>
+                <span class="notification-time">09:15:00 5/10/2026</span>
+              </div>
+              <p class="notification-msg">Tên sản phẩm hơi nhỏ. Tăng cỡ chữ để dễ đọc hơn.</p>
+              <div class="notification-actions">
+                <a href="designer-version-management.html" class="link-button view-notif-link" data-id="notif-1">
+                  Xem chi tiết →
+                </a>
+                <button class="link-button toggle-read-btn" data-id="notif-1" data-read="">
+                  Đánh dấu đã đọc
+                </button>
+                <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-1">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="notification-card unread">
+            <div class="notification-icon-wrap task">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+              </svg>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title-row">
+                <span class="notification-title">Nhiệm vụ gấp: Hoàn thiện mặt trước túi</span>
+                <span class="notification-time">08:00:00 5/10/2026</span>
+              </div>
+              <p class="notification-msg">Hạn hoàn thành hôm nay (05/10). Vui lòng cập nhật tiến độ.</p>
+              <div class="notification-actions">
+                <a href="designer-dashboard.html" class="link-button view-notif-link" data-id="notif-2">
+                  Xem chi tiết →
+                </a>
+                <button class="link-button toggle-read-btn" data-id="notif-2" data-read="">
+                  Đánh dấu đã đọc
+                </button>
+                <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-2">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="notification-card ">
+            <div class="notification-icon-wrap version">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"></path>
+              </svg>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title-row">
+                <span class="notification-title">Linh Hà (Lead) đang duyệt Phiên bản 3</span>
+                <span class="notification-time">08:35:00 2/10/2026</span>
+              </div>
+              <p class="notification-msg">Phiên bản v3 đã được gửi vào hàng đợi duyệt nội bộ.</p>
+              <div class="notification-actions">
+                <a href="designer-version-management.html" class="link-button view-notif-link" data-id="notif-3">
+                  Xem chi tiết →
+                </a>
+                <button class="link-button toggle-read-btn" data-id="notif-3" data-read="true">
+                  Đánh dấu chưa đọc
+                </button>
+                <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-3">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="notification-card ">
+            <div class="notification-icon-wrap system">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+              </svg>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title-row">
+                <span class="notification-title">Cập nhật quy tắc phiên bản studio</span>
+                <span class="notification-time">14:20:00 1/10/2026</span>
+              </div>
+              <p class="notification-msg">Quy tắc đặt tên {project}-{asset}-v{number} đã được áp dụng.</p>
+              <div class="notification-actions">
+                <a href="designer-version-management.html" class="link-button view-notif-link" data-id="notif-4">
+                  Xem chi tiết →
+                </a>
+                <button class="link-button toggle-read-btn" data-id="notif-4" data-read="true">
+                  Đánh dấu chưa đọc
+                </button>
+                <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-4">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="notification-card ">
+            <div class="notification-icon-wrap task">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+              </svg>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title-row">
+                <span class="notification-title">CS-101 Phác thảo nhãn cà phê</span>
+                <span class="notification-time">09:00:00 1/10/2026</span>
+              </div>
+              <p class="notification-msg">Bạn được phân công phụ trách nhiệm vụ này bởi Linh Hà.</p>
+              <div class="notification-actions">
+                <a href="designer-dashboard.html" class="link-button view-notif-link" data-id="notif-5">
+                  Xem chi tiết →
+                </a>
+                <button class="link-button toggle-read-btn" data-id="notif-5" data-read="true">
+                  Đánh dấu chưa đọc
+                </button>
+                <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-5">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="notification-empty" class="empty-state" hidden>Không có thông báo phù hợp.</p>
+      </section>
+    </main>
+    <footer class="page-footer">
+      <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
+      <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+    </footer>
+  </div>
+  <dialog id="dialog">
+    <div class="modal-head dialog-head">
+      <h2>Biểu mẫu</h2>
+      <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
+    </div>
+    <div class="modal-body dialog-body"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <template id="tools-form">
+    <form>
+      <p>Dữ liệu chỉ được lưu trong trình duyệt hiện tại.</p>
+      <button type="button" class="button" data-export="">Xuất dữ liệu JSON</button>
+      <button type="button" class="button danger" data-reset="">Khôi phục dữ liệu mẫu</button>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="notification-row">
+    <div class="notification-card unread">
+      <div class="notification-icon-wrap comment">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+        </svg>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title-row">
+          <span class="notification-title">Khánh Chi đã nhận xét trên Phiên bản 2</span>
+          <span class="notification-time">09:15:00 5/10/2026</span>
+        </div>
+        <p class="notification-msg">Tên sản phẩm hơi nhỏ. Tăng cỡ chữ để dễ đọc hơn.</p>
+        <div class="notification-actions">
+          <a href="designer-version-management.html" class="link-button view-notif-link" data-id="notif-1">
+            Xem chi tiết →
+          </a>
+          <button class="link-button toggle-read-btn" data-id="notif-1" data-read="">
+            Đánh dấu đã đọc
+          </button>
+          <button class="notifications-delete-button link-button delete-notif-btn" data-id="notif-1">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Xóa
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script src="js/notifications.js"></script>
 </body>
+
 </html>

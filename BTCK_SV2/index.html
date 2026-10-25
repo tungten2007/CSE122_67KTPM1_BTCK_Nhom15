@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CreatorStudio · Cổng Điều hướng Dự án</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/pages/index.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
-<body class="index-page-layout page-index">
 
+<body class="index-page-layout page-index">
   <div class="index-container">
     <!-- Brand Header -->
     <header class="index-header row between">
       <div class="index-brand-row row">
-        <span class="index-brand-mark brand-mark"><svg class="index-brand-icon icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg></span>
+        <span class="index-brand-mark brand-mark">
+          <svg class="index-brand-icon icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="m5 12 4 4L19 6"></path>
+          </svg>
+        </span>
         <div>
           <h2 class="index-brand-title">CreatorStudio</h2>
           <small class="muted">Học phần Phát triển Ứng dụng Web Cơ bản</small>
@@ -25,26 +29,26 @@
         <button class="button small danger" id="reset-data-btn">Đặt lại dữ liệu mẫu</button>
       </div>
     </header>
-
     <!-- Hero Section -->
     <section class="portal-hero">
       <span class="index-hero-eyebrow eyebrow">BẢN NGUYÊN MẪU WEB FRONTEND · BTL CSE122</span>
       <h1>Chào mừng đến với CreatorStudio</h1>
       <p>
-        Hệ thống hỗ trợ quy trình sáng tạo và kiểm soát phiên bản thiết kế khép kín.Sinh viên 2 bao gồm đầy đủ 6 màn hình nghiệp vụ, tương tác CRUD sâu, trải nghiệm AI-3 Mood Keyword Assistant với các trạng thái thành công và thất bại.
+        Hệ thống hỗ trợ quy trình sáng tạo và kiểm soát phiên bản thiết kế khép kín.Sinh viên 2 bao gồm đầy đủ 6 màn
+        hình nghiệp vụ, tương tác CRUD sâu, trải nghiệm AI-3 Mood Keyword Assistant với các trạng thái thành công và
+        thất bại.
       </p>
     </section>
-
     <!-- Bộ chuyển đổi nhanh 1-Click Role Switcher -->
     <section class="role-switcher-banner">
       <div class="index-role-heading row between">
         <div>
           <h3>Bộ chuyển đổi vai trò Demo (1-Click Demo Role Switcher)</h3>
-          <p class="index-role-description muted">Nhấp vào một vai trò để kích hoạt tài khoản tương ứng và bắt đầu trải nghiệm</p>
+          <p class="index-role-description muted">Nhấp vào một vai trò để kích hoạt tài khoản tương ứng và bắt đầu trải
+            nghiệm</p>
         </div>
         <span class="badge green">Dữ liệu sẵn sàng trong LocalStorage</span>
       </div>
-
       <div class="index-role-buttons row">
         <button class="button primary role-btn" data-role="Designer">
           🎭 Nhà thiết kế (An Nguyễn)
@@ -60,10 +64,8 @@
         </button>
       </div>
     </section>
-
     <!-- Danh sách 6 màn hình do SV2 phụ trách trong Bảng kiểm kê -->
     <h2 class="index-screen-heading">Danh mục 6 Màn hình SV2 Phụ trách</h2>
-    
     <div class="screen-grid">
       <!-- Màn hình 4: Designer Dashboard -->
       <div class="screen-card">
@@ -71,7 +73,8 @@
           <span class="screen-card-tag">MÀN HÌNH 4 · NHÀ THIẾT KẾ</span>
           <h3>Designer Dashboard</h3>
           <p>
-            Quản lý khối lượng công việc, KPI thống kê dự án, danh sách việc cần làm theo hạn chót, cảnh báo gấp và AI Priority Assistant gợi ý trọng tâm.
+            Quản lý khối lượng công việc, KPI thống kê dự án, danh sách việc cần làm theo hạn chót, cảnh báo gấp và AI
+            Priority Assistant gợi ý trọng tâm.
           </p>
           <div class="index-screen-meta">
             <strong>CRUD:</strong> R (Normal, Loading, Empty, Urgent) · <strong>AI:</strong> Tham chiếu AI-3
@@ -79,59 +82,63 @@
         </div>
         <a href="designer-dashboard.html" class="index-screen-link button primary small">Mở Designer Dashboard →</a>
       </div>
-
       <!-- Màn hình 5: Moodboard -->
       <div class="screen-card">
         <div>
           <span class="screen-card-tag">MÀN HÌNH 5 · NHÀ THIẾT KẾ</span>
-          <h3>Moodboard & Bảng cảm hứng</h3>
+          <h3>Moodboard &amp; Bảng cảm hứng</h3>
           <p>
-            Định hướng phong cách thị giác, bảng mã màu HEX tương tác, thẻ hình ảnh cảm hứng và module AI-3 gợi ý từ khóa thẩm mỹ & bảng màu (kèm mô phỏng AI thất bại).
+            Định hướng phong cách thị giác, bảng mã màu HEX tương tác, thẻ hình ảnh cảm hứng và module AI-3 gợi ý từ
+            khóa thẩm mỹ &amp; bảng màu (kèm mô phỏng AI thất bại).
           </p>
           <div class="index-screen-meta">
-            <strong>CRUD:</strong> C / R / U (Draft, Palette Ready, Shared) · <strong>AI:</strong> AI-3 Mood Keyword Assistant
+            <strong>CRUD:</strong> C / R / U (Draft, Palette Ready, Shared) · <strong>AI:</strong> AI-3 Mood Keyword
+            Assistant
           </div>
         </div>
-        <a href="designer-moodboard.html" class="index-screen-link button primary small">Mở Moodboard & AI-3 →</a>
+        <a href="designer-moodboard.html" class="index-screen-link button primary small">Mở Moodboard &amp; AI-3 →</a>
       </div>
-
       <!-- Màn hình 6: Version Management -->
       <div class="screen-card">
         <div>
           <span class="screen-card-tag">MÀN HÌNH 6 · NHÀ THIẾT KẾ</span>
           <h3>Version Management</h3>
           <p>
-            Kiểm soát lịch sử phiên bản theo mẫu quy tắc studio, tải lên version mới, ghi changelog, tích chọn checklist nghiệm thu và nộp duyệt nội bộ.
+            Kiểm soát lịch sử phiên bản theo mẫu quy tắc studio, tải lên version mới, ghi changelog, tích chọn checklist
+            nghiệm thu và nộp duyệt nội bộ.
           </p>
           <div class="index-screen-meta">
             <strong>CRUD:</strong> C / R / U / D (Draft, Internal Review, Approved, Archived)
           </div>
         </div>
-        <a href="designer-version-management.html" class="index-screen-link button primary small">Mở Quản lý phiên bản →</a>
+        <a href="designer-version-management.html" class="index-screen-link button primary small">Mở Quản lý phiên bản
+          →</a>
       </div>
-
       <!-- Màn hình 10: Brief Template Management -->
       <div class="screen-card">
         <div>
           <span class="screen-card-tag">MÀN HÌNH 10 · QUẢN TRỊ VIÊN</span>
           <h3>Brief Template Management</h3>
           <p>
-            Chuẩn hóa các biểu mẫu brief theo ngành hàng (Branding, Packaging, UI/UX, Campaign) và cấu hình System Prompt gợi ý cho AI-1 Brief Structurer.
+            Chuẩn hóa các biểu mẫu brief theo ngành hàng (Branding, Packaging, UI/UX, Campaign) và cấu hình System
+            Prompt gợi ý cho AI-1 Brief Structurer.
           </p>
           <div class="index-screen-meta">
-            <strong>CRUD:</strong> R / C / U (Active Template, Inactive, Custom) · <strong>AI:</strong> Prompt Template cho AI-1
+            <strong>CRUD:</strong> R / C / U (Active Template, Inactive, Custom) · <strong>AI:</strong> Prompt Template
+            cho AI-1
           </div>
         </div>
-        <a href="admin-brief-template-management.html" class="index-screen-link button primary small">Mở Brief Template Management →</a>
+        <a href="admin-brief-template-management.html" class="index-screen-link button primary small">Mở Brief Template
+          Management →</a>
       </div>
-
       <!-- Màn hình 15: Profile Management -->
       <div class="screen-card">
         <div>
           <span class="screen-card-tag">MÀN HÌNH 15 · DÙNG CHUNG</span>
           <h3>Profile Management</h3>
           <p>
-            Cập nhật danh tính cá nhân, chức danh, ảnh đại diện avatar, đổi mật khẩu bảo mật và theo dõi thống kê năng suất dự án cá nhân.
+            Cập nhật danh tính cá nhân, chức danh, ảnh đại diện avatar, đổi mật khẩu bảo mật và theo dõi thống kê năng
+            suất dự án cá nhân.
           </p>
           <div class="index-screen-meta">
             <strong>CRUD:</strong> R / U (View Profile, Edit Profile, Password Changed)
@@ -139,14 +146,14 @@
         </div>
         <a href="profile.html" class="index-screen-link button primary small">Mở Hồ sơ cá nhân →</a>
       </div>
-
       <!-- Màn hình 16: Notifications Center -->
       <div class="screen-card">
         <div>
           <span class="screen-card-tag">MÀN HÌNH 16 · DÙNG CHUNG</span>
           <h3>Notifications Center</h3>
           <p>
-            Cập nhật biến động thời gian thực về phiên bản mới, bình luận khách hàng, nhiệm vụ gấp; bộ lọc tab, đánh dấu đã đọc và xóa thông báo.
+            Cập nhật biến động thời gian thực về phiên bản mới, bình luận khách hàng, nhiệm vụ gấp; bộ lọc tab, đánh dấu
+            đã đọc và xóa thông báo.
           </p>
           <div class="index-screen-meta">
             <strong>CRUD:</strong> R / U / D (Unread, Read, Empty State, Cleared)
@@ -156,10 +163,7 @@
       </div>
     </div>
   </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/modules/navigation.js"></script>
-  <script src="js/pages/index.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>

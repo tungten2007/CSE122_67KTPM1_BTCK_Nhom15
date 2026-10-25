@@ -1,71 +1,98 @@
-// Chạy: node tests/verify.cjs. Kiểm thử dữ liệu dùng bộ nhớ tạm, không chạm dữ liệu trình duyệt.
+// Chạy: node tests/verify.cjs. Chỉ dùng bộ nhớ tạm, không sửa dữ liệu người dùng.
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
+const { parse, Element } = require('./dom.cjs');
 const root = path.join(__dirname, '..');
-const memory = () => { const m = new Map(); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, String(v)) }; };
-const context = vm.createContext({ window: {}, localStorage: memory(), sessionStorage: memory(), URL, setTimeout: fn => fn() });
-for (const name of ['js/data.js', 'js/store.js', 'js/modules/navigation.js', 'js/modules/ai-mood-assistant.js']) {
-  vm.runInContext(fs.readFileSync(path.join(root, name), 'utf8'), context);
-  Object.assign(context, context.window);
+const files = fs.readdirSync(root).filter(f => f.endsWith('.html'));
+function memory() { const map = new Map(); return { getItem: k => map.get(k) || null, setItem: (k,v) => map.set(k,String(v)) }; }
+function open(name, options = {}) {
+  const document = parse(fs.readFileSync(path.join(root, name+'.html'),'utf8'));
+  let ready;
+  document.addEventListener = (type,fn) => { if(type === 'DOMContentLoaded') ready = fn; };
+  const localStorage = options.storage || memory(); const sessionStorage = memory();
+  sessionStorage.setItem('cs-user', options.user || (name.startsWith('admin') ? 'u-admin' : 'u-an'));
+  if (options.project) sessionStorage.setItem('cs-project', options.project);
+  const timers = [];
+  const location = { pathname: '/'+name+'.html', search: options.search || '', replace(url) { this.redirect = url; }, reload() {} };
+  const context = vm.createContext({ document, localStorage, sessionStorage, location, console, URL, URLSearchParams, Blob,
+    Option: function(text,value){ const e=new Element('option',{value}); e.textContent=text; return e; },
+    FormData: function(form){ return Object.entries(form.elements).filter(([,e]) => !e.disabled && (e.attrs.type !== 'checkbox' || e.checked)).map(([k,e]) => [k, e.attrs.type === 'checkbox' ? 'on' : e.value]); },
+    alert(){}, confirm(){return true;}, prompt(){return null;},
+    navigator:{clipboard:{writeText:async()=>{}}}, setTimeout(fn){timers.push(fn);},
+  });
+  vm.runInContext(fs.readFileSync(path.join(root,'js',name+'.js'),'utf8'),context);
+  ready();
+  return { document, storage:localStorage, location, timers, get data(){return JSON.parse(localStorage.getItem('creatorstudio.v1'));} };
 }
-const { Store, Navigation } = context;
-Store.load();
-const newVersion = (type = 'BaoBi') => Store.saveVersion('u-an', { projectId: 'p-moc', assetType: type, name: 'Phiên bản mới', changelog: 'Thay đổi bố cục', checkFeedback: true, checkSpec: true, checkExport: true });
-const v4 = newVersion(), v5 = newVersion();
-Store.deleteVersion('u-an', v4);
-const v6 = newVersion();
-assert.equal(Store.get().versions.find(v => v.id === v6).code, 'MC26-BaoBi-v6');
-const logo = newVersion('Logo');
-assert.equal(Store.get().versions.find(v => v.id === logo).code, 'MC26-Logo-v1');
-Store.submitVersionForReview('u-an', v5);
-assert.equal(Store.get().versions.find(v => v.id === v5).status, 'Internal Review');
-assert.ok(Store.get().notifications.some(n => n.userId === 'u-lead' && n.title.includes('Phiên bản mới')));
-assert.throws(() => Store.deleteVersion('u-an', v5));
-Store.settings('u-admin', { warningDays: 2, versionPattern: '{project}-{asset}-v{number}', requireReview: true });
-Store.archive('u-admin', 'p-lua');
-assert.throws(() => Store.saveMoodboard('u-an', { projectId: 'p-lua', title: 'Bảng màu mới' }));
-const u = Store.get().users.find(u => u.id === 'u-an');
-assert.throws(() => Store.updateProfile(u.id, { ...u, avatarUrl: 'javascript:alert(1)' }));
-assert.throws(() => Store.updateProfile(u.id, { ...u, currentPassword: 'sai', newPassword: 'test123', confirmPassword: 'test123' }));
-Store.updateProfile(u.id, { ...u, name: 'Tên thử nghiệm', avatarUrl: 'https://example.com/avatar.png', currentPassword: 'demo123', newPassword: 'test123', confirmPassword: 'test123' });
-Store.load();
-assert.equal(Store.get().users.find(u => u.id === 'u-an').demoPassword, 'test123');
-Store.markAllNotifications('u-an');
-assert.equal(Store.get().notifications.filter(n => n.userId === 'u-an' && !n.read).length, 0);
-assert.ok(Store.get().notifications.some(n => n.userId === 'u-lead' && !n.read));
-context.sessionStorage.setItem('cs-user', 'u-binh');
-assert.notEqual(Navigation.current(Store.get().users).id, 'u-binh');
-for (const role of ['Designer', 'Admin', 'Lead', 'Client']) assert.ok(fs.existsSync(path.join(root, Navigation.home(role))));
-assert.equal(Navigation.canOpen('briefTemplates', u), false);
-
-let scripts = 0;
-for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
-  const html = fs.readFileSync(path.join(root, file), 'utf8');
-  const page = path.basename(file, '.html');
-  assert.ok(html.includes(`href="css/pages/${page}.css"`), `${file}: thiếu CSS riêng`);
-  assert.ok(html.includes(`src="js/pages/${page}.js"`), `${file}: thiếu JS riêng`);
-  assert.ok(!/<style\b|\sstyle=|\son\w+=/i.test(html), `${file}: còn CSS hoặc event nhúng`);
-  for (const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)) {
-    assert.equal(match[1].trim(), '', `${file}: còn JavaScript nhúng`);
-    new vm.Script(match[1], { filename: file }); scripts++;
+function submit(form){ return form.onsubmit({target:form,preventDefault(){}}); }
+function field(form,name,value){ form.elements[name].value = value; }
+async function main() {
+  assert.equal(files.length,8);
+  for (const file of files) {
+    const name = path.basename(file,'.html'); const html = fs.readFileSync(path.join(root,file),'utf8');
+    const js = fs.readFileSync(path.join(root,'js',name+'.js'),'utf8');
+    const css = fs.readFileSync(path.join(root,'css',name+'.css'),'utf8');
+    new vm.Script(js, {filename:name+'.js'});
+    assert.ok(html.includes(`href="css/${name}.css"`) && html.includes(`src="js/${name}.js"`));
+    assert.ok(!/<style\b|\sstyle=|\son\w+=/i.test(html));
+    assert.ok(!/\{\{\d+\}\}|data-view-attrs/.test(html));
+    assert.ok(!/\.style\b|innerHTML|insertAdjacentHTML|const (App|View|Store)\b/.test(js));
+    assert.ok(!/@import\b/.test(css));
+    assert.ok(js.startsWith("document.addEventListener('DOMContentLoaded'"));
+    for (const m of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
+      const target = m[1].split(/[?#]/)[0];
+      if (!target || /^https?:|^data:/.test(target)) continue;
+      assert.ok(fs.existsSync(path.join(root,target)),`${file}: missing ${target}`);
+    }
+    open(name);
   }
-  for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
-    const target = match[1].split(/[?#]/)[0];
-    if (!target || /[{}$]|^https?:|^data:/.test(target)) continue;
-    assert.ok(fs.existsSync(path.join(root, target)), `${file}: thiếu ${target}`);
-  }
+  console.log('PASS: 8 trang khởi tạo trong DOM mô phỏng; đường dẫn, HTML/CSS/JS riêng và cú pháp hợp lệ.');
+  const p = open('profile'); const d=p.document; const form=d.getElementById('profile-info-form');
+  assert.equal(form.elements.name.disabled,true);
+  d.getElementById('toggle-edit-btn').click(); assert.equal(form.elements.name.disabled,false);
+  field(form,'name','Tên kiểm thử'); field(form,'avatarUrl','javascript:alert(1)'); await submit(form); assert.equal(p.data,null);
+  field(form,'avatarUrl',''); await submit(form); assert.equal(p.data.users[0].name,'Tên kiểm thử');
+  const pass=d.getElementById('change-password-form'); field(pass,'currentPassword','sai'); field(pass,'newPassword','test123'); field(pass,'confirmPassword','test123');
+  await submit(pass); assert.ok(d.getElementById('password-error').textContent);
+  field(pass,'currentPassword','demo123'); await submit(pass); assert.equal(p.data.users[0].demoPassword,'test123');
+  assert.equal(open('profile',{storage:p.storage}).document.getElementById('profile-info-form').elements.name.value,'Tên kiểm thử');
+  const board=open('designer-dashboard'); const bd=board.document;
+  const search=bd.getElementById('task-search'); search.value='không tồn tại'; search.oninput(); assert.equal(bd.querySelector('.task-list').children.length,0);
+  search.value=''; search.oninput(); bd.querySelector('.task-item-check').checked=true; bd.querySelector('.task-item-check').onchange();
+  assert.equal(board.data.tasks[0].status,'done');
+  bd.getElementById('add-task-btn').click(); const task=bd.getElementById('dialog').querySelector('form');
+  field(task,'title','Nhiệm vụ mới'); await submit(task); assert.ok(board.data.tasks.some(t=>t.title==='Nhiệm vụ mới'));
+  const blocked=open('admin-brief-template-management',{user:'u-an'}); assert.equal(blocked.location.redirect,'404.html?code=403');
+  const versions=open('designer-version-management'); const vd=versions.document;
+  vd.getElementById('upload-version-btn').click(); let vf=vd.getElementById('dialog').querySelector('form');
+  field(vf,'name','Bản kiểm thử'); field(vf,'changelog','Đổi bố cục mới'); await submit(vf);
+  assert.equal(versions.data.versions.at(-1).code,'MC26-BaoBi-v4');
+  let current=vd.querySelector('.version-card'); current.querySelector('.submit-review-btn').click();
+  assert.equal(versions.data.versions.at(-1).status,'Draft');
+  current.querySelector('.edit-version-btn').click(); vf=vd.getElementById('dialog').querySelector('form');
+  for(const k of ['checkFeedback','checkSpec','checkExport']) vf.elements[k].checked=true;
+  await submit(vf); vd.querySelector('.version-card').querySelector('.submit-review-btn').click();
+  assert.equal(versions.data.versions.at(-1).status,'Internal Review');
+  assert.ok(versions.data.notifications.some(n=>n.userId==='u-lead'&&n.title==='Phiên bản mới cần duyệt'));
+  const notifs=open('notifications',{storage:versions.storage}); notifs.document.getElementById('mark-all-read-btn').click();
+  assert.ok(notifs.data.notifications.filter(n=>n.userId==='u-an').every(n=>n.read));
+  assert.ok(notifs.data.notifications.some(n=>n.userId==='u-lead'&&!n.read));
+  const mood=open('designer-moodboard'); const md=mood.document;
+  md.getElementById('open-ai-modal-btn').click(); md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn()); md.getElementById('ai-accept-btn').click();
+  assert.equal(mood.data.moodboards[0].palette.length,4); assert.equal(mood.data.moodboards[0].status,'Palette Ready');
+  md.getElementById('open-ai-modal-btn').click(); md.getElementById('ai-fail-checkbox').checked=true; md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn()); assert.ok(md.getElementById('ai-error-message-text').textContent);
+  md.getElementById('ai-retry-btn').click(); assert.equal(md.getElementById('ai-fail-checkbox').checked,false);
+  const admin=open('admin-brief-template-management'); const ad=admin.document;
+  ad.getElementById('prompt-editor').value='Prompt thử nghiệm {raw_input}'; ad.getElementById('save-prompt-btn').click();
+  assert.equal(admin.data.briefTemplates[0].promptTemplate,'Prompt thử nghiệm {raw_input}');
+  ad.getElementById('run-test-ai-btn').click(); admin.timers.splice(0).forEach(fn=>fn()); assert.ok(ad.getElementById('test-output-box').textContent.includes('AI mô phỏng'));
+  const archiveData=versions.data; archiveData.projects[0].archived=true;
+  const storage=memory(); storage.setItem('creatorstudio.v1',JSON.stringify(archiveData));
+  const archived=open('designer-dashboard',{storage}); archived.document.getElementById('add-task-btn').click(); assert.ok(!archived.document.getElementById('dialog').open);
+  console.log('PASS: hồ sơ/mật khẩu, tìm kiếm/thêm/đổi trạng thái công việc, phân quyền, mã phiên bản/checklist/nộp duyệt, thông báo theo user, AI success/error/retry, Prompt Admin và dự án lưu trữ.');
 }
-for (const dir of ['js', 'js/modules', 'js/pages']) for (const file of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.js'))) new vm.Script(fs.readFileSync(path.join(root, dir, file), 'utf8'), { filename: path.join(dir, file) });
-console.log(`PASS: phiên bản, checklist, archive, hồ sơ, mật khẩu demo, thông báo, phân quyền, home 4 role, liên kết cục bộ và ${scripts} script HTML.`);
-(async () => {
-  const ai = context.AIMoodAssistant;
-  const result = await ai.generateSuggestion('Cà phê mộc giấy kraft');
-  assert.equal(result.palette.length, 4);
-  await assert.rejects(ai.generateSuggestion('Không rõ ý tưởng này'));
-  await assert.rejects(ai.generateSuggestion('Cà phê kraft', true));
-  Store.applyAIPalette('u-an', 'p-moc', { ...result, reason: result.explanation });
-  assert.equal(Store.get().moodboards.find(m => m.projectId === 'p-moc').status, 'Palette Ready');
-  console.log('PASS: AI success, thiếu ngữ cảnh, lỗi mô phỏng và áp dụng bảng màu vào Store.');
-})().catch(err => { console.error(err); process.exitCode = 1; });
+main().catch(e=>{console.error(e);process.exitCode=1;});

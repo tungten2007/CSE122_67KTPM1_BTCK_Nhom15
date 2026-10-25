@@ -1,21 +1,475 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio</title>
+  <title>Quản lý Mẫu Brief &amp; Cấu hình AI-1 · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/pages/admin-brief-template-management.css">
+  <link rel="stylesheet" href="css/admin-brief-template-management.css">
 </head>
-<body class="page-admin-brief-template-management">
-  <!-- Shell được render tự động qua App.init() -->
 
-  <script src="js/data.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/modules/navigation.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/pages/admin-brief-template-management.js"></script>
+<body class="page-admin-brief-template-management">
+  <a class="skip-link" href="#main">Chuyển đến nội dung chính</a>
+  <div class="sidebar-shade" hidden></div>
+  <aside class="sidebar" aria-label="Điều hướng chính">
+    <a class="brand" href="admin-brief-template-management.html">
+      <span class="brand-mark">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m5 12 4 4L19 6"></path>
+        </svg>
+      </span>
+      <span>CreatorStudio</span>
+      <span class="brand-dot">®</span>
+    </a>
+    <button class="icon-button mobile-close" aria-label="Đóng menu">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 6 12 12M6 18 18 6"></path>
+      </svg>
+    </button>
+    <div class="studio">
+      <span class="studio-avatar">M</span>
+      <div>
+        <strong>Studio Mộc</strong>
+        <small>Không gian sáng tạo</small>
+      </div>
+      <span class="studio-arrow">⌄</span>
+    </div>
+    <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
+    <nav>
+      <a class="nav-link" href="designer-dashboard.html" data-role="Designer" hidden="">
+        <span>Bảng điều khiển</span>
+      </a>
+      <a class="nav-link" href="designer-moodboard.html" data-role="Designer" hidden="">
+        <span>Bảng cảm hứng</span>
+      </a>
+      <a class="nav-link" href="designer-version-management.html" data-role="Designer" hidden="">
+        <span>Quản lý phiên bản</span>
+      </a>
+      <a class="nav-link active" href="admin-brief-template-management.html" data-role="Admin" aria-current="page">
+        <span>Mẫu Brief &amp; AI</span>
+      </a>
+      <a class="nav-link" href="profile.html">
+        <span>Hồ sơ cá nhân</span>
+      </a>
+      <a class="nav-link" href="notifications.html">
+        <span>Thông báo</span>
+      </a>
+    </nav>
+    <div class="sidebar-project">
+      <p class="nav-caption">DỰ ÁN ĐANG CHỌN</p>
+      <strong>
+        <span class="status-dot"></span>Mộc Coffee</strong>
+      <small>Nhận diện &amp; bao bì cà phê nguyên bản</small>
+      <span class="side-tag">MC26</span>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="text-light" id="demo-tools-btn">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+        </svg>
+        Công cụ demo &amp; Dữ liệu</button>
+      <a class="profile" href="profile.html" title="Xem và sửa hồ sơ cá nhân">
+        <span class="avatar" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </span>
+        <div>
+          <strong data-user-name="">Minh Anh</strong>
+          <small data-user-role="">Quản trị viên</small>
+        </div>
+        <span class="online" title="Đang trực tuyến"></span>
+      </a>
+      <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-button menu-toggle" aria-label="Mở menu">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <div class="breadcrumb">
+        Studio Mộc <span>/</span>
+        <strong>Mẫu Brief &amp; AI</strong>
+      </div>
+      <div class="top-actions">
+        <label class="sr-only" for="project-select">Dự án</label>
+        <select id="project-select" aria-label="Chọn dự án">
+          <option value="p-moc" selected>
+            Mộc Coffee
+          </option>
+          <option value="p-lua">
+            Lúa Tea
+          </option>
+        </select>
+        <label class="sr-only" for="role-switch">Vai trò demo</label>
+        <select id="role-switch" aria-label="Đổi vai trò demo">
+          <option value="Designer">
+            Demo: Nhà thiết kế
+          </option>
+          <option value="Admin" selected>
+            Demo: Quản trị viên
+          </option>
+          <option value="Lead">
+            Demo: Trưởng nhóm
+          </option>
+          <option value="Client">
+            Demo: Khách hàng
+          </option>
+        </select>
+        <a href="notifications.html" class="notification-button" id="activity-bell" title="Trung tâm thông báo"
+          aria-label="Xem thông báo">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+          </svg>
+          <span class="notification-badge" hidden>0</span>
+        </a>
+        <a href="profile.html" class="avatar" title="Hồ sơ Minh Anh" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">QUẢN TRỊ HỆ THỐNG &amp; CHUẨN HÓA</p>
+          <h1>Quản lý Mẫu Brief &amp; Cấu hình AI-1</h1>
+          <p class="muted">Chuẩn hóa biểu mẫu yêu cầu sáng tạo theo ngành hàng và cấu hình Prompt gợi ý cho module AI
+            Brief Structurer.</p>
+        </div>
+        <div class="heading-actions">
+          <button class="button primary" id="add-template-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Thêm mẫu Brief mới
+          </button>
+        </div>
+      </section>
+      <!-- Toolbar lọc & tìm kiếm -->
+      <div class="toolbar">
+        <div class="search-box">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0"></path>
+          </svg>
+          <input type="search" id="tpl-search" placeholder="Tìm kiếm mẫu brief..." value="">
+        </div>
+        <select id="status-filter">
+          <option value="all" selected>Tất cả trạng thái</option>
+          <option value="Active Template">Đang áp dụng (Active Template)</option>
+          <option value="Inactive">Tạm ngừng (Inactive)</option>
+          <option value="Custom">Tùy biến (Custom)</option>
+        </select>
+        <select id="cat-filter">
+          <option value="all" selected>Tất cả ngành hàng</option>
+          <option value="Branding">Branding</option>
+          <option value="Packaging">Packaging</option>
+          <option value="UI/UX">UI/UX</option>
+          <option value="Campaign">Campaign</option>
+        </select>
+        <span class="toolbar-count">Tổng cộng <strong>4</strong> mẫu brief</span>
+      </div>
+      <!-- Lưới các Mẫu Brief định sẵn -->
+      <section class="template-grid">
+        <div class="template-card active-card   selected-card">
+          <div class="template-card-header">
+            <div>
+              <span class="template-category-badge">Branding</span>
+              <h3>Nhận diện thương hiệu (Branding Identity)</h3>
+            </div>
+            <span class="badge green">Active Template</span>
+          </div>
+          <p class="template-desc">Mẫu brief chuẩn hóa dự án thiết kế logo, định vị thương hiệu, hệ màu và quy chuẩn ấn
+            phẩm.</p>
+          <div class="template-sections-box">
+            <strong>Các trường thông tin chuẩn hóa:</strong>
+            <div class="template-sections-list">
+              <span class="section-pill">Mục tiêu thương hiệu</span>
+              <span class="section-pill">Khách hàng mục tiêu</span>
+              <span class="section-pill">Sản phẩm bàn giao (Deliverables)</span>
+              <span class="section-pill">Định hướng thẩm mỹ &amp; Tone of Voice</span>
+              <span class="section-pill">Ngân sách &amp; Timeline</span>
+            </div>
+          </div>
+          <div class="admin-brief-template-management-card-actions row between">
+            <button class="button small select-template-btn primary" data-id="bt-01">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+              Đang cấu hình AI
+            </button>
+            <button class="button small toggle-status-btn" data-id="bt-01" title="Đổi trạng thái">
+              Tắt mẫu
+            </button>
+          </div>
+        </div>
+        <div class="template-card active-card   ">
+          <div class="template-card-header">
+            <div>
+              <span class="template-category-badge">Packaging</span>
+              <h3>Thiết kế bao bì sản phẩm (Packaging Design)</h3>
+            </div>
+            <span class="badge green">Active Template</span>
+          </div>
+          <p class="template-desc">Quy chuẩn brief cho bao bì hộp quà, túi cà phê, nhãn chai, quy cách in ấn và kích
+            thước.</p>
+          <div class="template-sections-box">
+            <strong>Các trường thông tin chuẩn hóa:</strong>
+            <div class="template-sections-list">
+              <span class="section-pill">Quy cách &amp; Kích thước bao bì</span>
+              <span class="section-pill">Chất liệu in ấn dự kiến</span>
+              <span class="section-pill">Thông tin bắt buộc trên nhãn</span>
+              <span class="section-pill">Phong cách thị giác mong muốn</span>
+              <span class="section-pill">Hạn nộp market</span>
+            </div>
+          </div>
+          <div class="admin-brief-template-management-card-actions row between">
+            <button class="button small select-template-btn " data-id="bt-02">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+              Xem cấu hình Prompt
+            </button>
+            <button class="button small toggle-status-btn" data-id="bt-02" title="Đổi trạng thái">
+              Tắt mẫu
+            </button>
+          </div>
+        </div>
+        <div class="template-card  custom-card  ">
+          <div class="template-card-header">
+            <div>
+              <span class="template-category-badge">UI/UX</span>
+              <h3>Giao diện Web / App (UI/UX Digital Product)</h3>
+            </div>
+            <span class="badge purple">Custom</span>
+          </div>
+          <p class="template-desc">Mẫu brief cho website doanh nghiệp, ứng dụng di động, landing page sáng tạo.</p>
+          <div class="template-sections-box">
+            <strong>Các trường thông tin chuẩn hóa:</strong>
+            <div class="template-sections-list">
+              <span class="section-pill">User Persona &amp; Hành vi</span>
+              <span class="section-pill">Tính năng chính &amp; User Flow</span>
+              <span class="section-pill">Phong cách UI mong muốn</span>
+              <span class="section-pill">Deliverables (Figma, Prototype)</span>
+              <span class="section-pill">Thời gian bàn giao</span>
+            </div>
+          </div>
+          <div class="admin-brief-template-management-card-actions row between">
+            <button class="button small select-template-btn " data-id="bt-03">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+              Xem cấu hình Prompt
+            </button>
+            <button class="button small toggle-status-btn" data-id="bt-03" title="Đổi trạng thái">
+              Bật mẫu
+            </button>
+          </div>
+        </div>
+        <div class="template-card   inactive-card ">
+          <div class="template-card-header">
+            <div>
+              <span class="template-category-badge">Campaign</span>
+              <h3>Chiến dịch truyền thông (Creative Campaign)</h3>
+            </div>
+            <span class="badge gray">Inactive</span>
+          </div>
+          <p class="template-desc">Mẫu brief cho bộ ấn phẩm social media, banner quảng cáo, sự kiện ra mắt sản phẩm.</p>
+          <div class="template-sections-box">
+            <strong>Các trường thông tin chuẩn hóa:</strong>
+            <div class="template-sections-list">
+              <span class="section-pill">Thông điệp chiến dịch</span>
+              <span class="section-pill">Kênh phát hành (Facebook, TikTok...)</span>
+              <span class="section-pill">Kích thước &amp; định dạng ấn phẩm</span>
+              <span class="section-pill">Key Visual ý tưởng</span>
+              <span class="section-pill">Deadline từng giai đoạn</span>
+            </div>
+          </div>
+          <div class="admin-brief-template-management-card-actions row between">
+            <button class="button small select-template-btn " data-id="bt-04">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+              Xem cấu hình Prompt
+            </button>
+            <button class="button small toggle-status-btn" data-id="bt-04" title="Đổi trạng thái">
+              Bật mẫu
+            </button>
+          </div>
+        </div>
+      </section>
+      <p id="template-empty" class="empty-state" hidden>Không có mẫu Brief phù hợp.</p>
+      <!-- KHUNG CẤU HÌNH PROMPT CHO AI-1 (BRIEF STRUCTURER) -->
+      <section class="prompt-config-card" id="ai-prompt-config-section">
+        <div class="panel-title">
+          <div>
+            <h2>Cấu hình Prompt gợi ý cho AI-1 (Brief Structurer)</h2>
+            <p>Cấu hình System Prompt điều khiển cách AI chuyển hóa mô tả thô của khách hàng thành brief chuẩn cho mẫu
+              <strong>Nhận diện thương hiệu (Branding Identity)</strong>
+            </p>
+          </div>
+          <span class="badge purple">Branding</span>
+        </div>
+        <p class="admin-brief-template-management-prompt-help">
+          Các biến tham số hệ thống hỗ trợ chèn vào prompt:
+        </p>
+        <div class="token-pill-group">
+          <span class="token-pill" data-token="{raw_input}">{raw_input} (Mô tả thô của khách)</span>
+          <span class="token-pill" data-token="{category}">{category} (Ngành hàng)</span>
+          <span class="token-pill" data-token="{deliverables}">{deliverables} (Sản phẩm bàn giao)</span>
+          <span class="token-pill" data-token="{tone_voice}">{tone_voice} (Tone &amp; Mood)</span>
+        </div>
+        <label class="field">
+          <span>System Prompt Template cho AI-1: *</span>
+          <textarea id="prompt-editor" class="prompt-textarea"
+            rows="4">Bạn là Giám đốc Sáng tạo AI của CreatorStudio. Hãy phân tích yêu cầu sau và cấu trúc thành brief Branding: 1. Mục tiêu cốt lõi; 2. Giá trị định vị; 3. Deliverables thiết yếu; 4. Tone of Voice; 5. Rủi ro sáng tạo. Dữ liệu: {raw_input}</textarea>
+        </label>
+        <div class="admin-brief-template-management-prompt-actions row between">
+          <button class="button primary" id="save-prompt-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Lưu cấu hình Prompt</button>
+          <button class="button" id="reset-prompt-btn">Khôi phục Prompt mặc định</button>
+        </div>
+        <!-- Công cụ kiểm thử trực quan cấu hình Prompt AI -->
+        <div class="prompt-tester">
+          <h4>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+            </svg>
+            Thử nghiệm Prompt AI với mô tả mẫu
+          </h4>
+          <p class="admin-brief-template-management-test-help muted">Kiểm tra xem Prompt được cấu hình có trích xuất
+            đúng các trường thông tin không.</p>
+          <div class="admin-brief-template-management-test-form row">
+            <label class="admin-brief-template-management-test-field field">
+              <span>Mô tả thô mẫu của khách hàng:</span>
+              <input type="text" id="test-raw-input"
+                value="Chúng tôi cần thiết kế hộp quà cà phê 2 túi, phong cách mộc mạc organic, dùng giấy kraft và xanh lá trầm.">
+            </label>
+            <button class="button primary" id="run-test-ai-btn">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+              Chạy thử nghiệm AI-1</button>
+          </div>
+          <div id="test-output-box" class="is-hidden prompt-test-output"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer">
+      <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
+      <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+    </footer>
+  </div>
+  <dialog id="dialog">
+    <div class="modal-head dialog-head">
+      <h2>Biểu mẫu</h2>
+      <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
+    </div>
+    <div class="modal-body dialog-body"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <template id="tools-form">
+    <form>
+      <p>Dữ liệu chỉ được lưu trong trình duyệt hiện tại.</p>
+      <button type="button" class="button" data-export="">Xuất dữ liệu JSON</button>
+      <button type="button" class="button danger" data-reset="">Khôi phục dữ liệu mẫu</button>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="brief-row">
+    <div class="template-card active-card   selected-card">
+      <div class="template-card-header">
+        <div>
+          <span class="template-category-badge">Branding</span>
+          <h3>Nhận diện thương hiệu (Branding Identity)</h3>
+        </div>
+        <span class="badge green">Active Template</span>
+      </div>
+      <p class="template-desc">Mẫu brief chuẩn hóa dự án thiết kế logo, định vị thương hiệu, hệ màu và quy chuẩn ấn
+        phẩm.</p>
+      <div class="template-sections-box">
+        <strong>Các trường thông tin chuẩn hóa:</strong>
+        <div class="template-sections-list">
+          <span class="section-pill">Mục tiêu thương hiệu</span>
+          <span class="section-pill">Khách hàng mục tiêu</span>
+          <span class="section-pill">Sản phẩm bàn giao (Deliverables)</span>
+          <span class="section-pill">Định hướng thẩm mỹ &amp; Tone of Voice</span>
+          <span class="section-pill">Ngân sách &amp; Timeline</span>
+        </div>
+      </div>
+      <div class="admin-brief-template-management-card-actions row between">
+        <button class="button small select-template-btn primary" data-id="bt-01">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+          </svg>
+          Đang cấu hình AI
+        </button>
+        <button class="button small toggle-status-btn" data-id="bt-01" title="Đổi trạng thái">
+          Tắt mẫu
+        </button>
+      </div>
+    </div>
+  </template>
+  <template id="brief-form">
+    <form>
+      <label class="field">
+        <span>Tên mẫu *</span>
+        <input type="text" name="name" value="" required minlength="3">
+      </label>
+      <label class="field">
+        <span>Ngành hàng</span>
+        <select name="category">
+          <option value="Branding">Branding</option>
+          <option value="Packaging">Packaging</option>
+          <option value="UI/UX">UI/UX</option>
+          <option value="Campaign">Campaign</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Trạng thái</span>
+        <select name="status">
+          <option value="Active Template">Active Template</option>
+          <option value="Custom">Custom</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Mô tả</span>
+        <textarea name="description"></textarea>
+      </label>
+      <label class="field">
+        <span>Prompt *</span>
+        <textarea name="promptTemplate" required
+          minlength="10">Phân tích yêu cầu thành mục tiêu, sản phẩm bàn giao, phong cách và rủi ro: {raw_input}</textarea>
+      </label>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <script src="js/admin-brief-template-management.js"></script>
 </body>
+
 </html>

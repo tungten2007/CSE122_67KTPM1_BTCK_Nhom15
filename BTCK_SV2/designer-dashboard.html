@@ -1,21 +1,415 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng điều khiển Nhà thiết kế · CreatorStudio</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/pages/designer-dashboard.css">
-</head>
-<body class="page-designer-dashboard">
-  <!-- Shell được render tự động qua App.init() -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điều khiển Nhà thiết kế · CreatorStudio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/designer-dashboard.css">
+  </head>
+  <body class="page-designer-dashboard">
+    <a class="skip-link" href="#main">Chuyển đến nội dung chính</a>
+    <div class="sidebar-shade" hidden></div>
+    <aside class="sidebar" aria-label="Điều hướng chính">
+      <a class="brand" href="designer-dashboard.html">
+        <span class="brand-mark">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 12 4 4L19 6"></path>
+          </svg>
+        </span>
+        <span>CreatorStudio</span>
+        <span class="brand-dot">®</span>
+      </a>
+      <button class="icon-button mobile-close" aria-label="Đóng menu">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 6 12 12M6 18 18 6"></path>
+        </svg>
+      </button>
+      <div class="studio">
+        <span class="studio-avatar">M</span>
+        <div>
+          <strong>Studio Mộc</strong>
+          <small>Không gian sáng tạo</small>
+        </div>
+        <span class="studio-arrow">⌄</span>
+      </div>
+      <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
+      <nav>
+        <a class="nav-link active" href="designer-dashboard.html" data-role="Designer" aria-current="page">
+          <span>Bảng điều khiển</span>
+        </a>
+        <a class="nav-link" href="designer-moodboard.html" data-role="Designer">
+          <span>Bảng cảm hứng</span>
+        </a>
+        <a class="nav-link" href="designer-version-management.html" data-role="Designer">
+          <span>Quản lý phiên bản</span>
+        </a>
+        <a class="nav-link" href="admin-brief-template-management.html" data-role="Admin" hidden="">
+          <span>Mẫu Brief &amp; AI</span>
+        </a>
+        <a class="nav-link" href="profile.html">
+          <span>Hồ sơ cá nhân</span>
+        </a>
+        <a class="nav-link" href="notifications.html">
+          <span>Thông báo</span>
+        </a>
+      </nav>
+      <div class="sidebar-project">
+        <p class="nav-caption">DỰ ÁN ĐANG CHỌN</p>
+        <strong>
+          <span class="status-dot"></span>Mộc Coffee</strong>
+        <small>Nhận diện &amp; bao bì cà phê nguyên bản</small>
+        <span class="side-tag">MC26</span>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="text-light" id="demo-tools-btn">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+          </svg>
+   Công cụ demo &amp; Dữ liệu</button>
+        <a class="profile" href="profile.html" title="Xem và sửa hồ sơ cá nhân">
+          <span class="avatar" data-avatar="">
+            <img class="avatar-image" alt="Ảnh đại diện" hidden>
+            <span>AN</span>
+          </span>
+          <div>
+            <strong data-user-name="">An Nguyễn</strong>
+            <small data-user-role="">Nhà thiết kế</small>
+          </div>
+          <span class="online" title="Đang trực tuyến"></span>
+        </a>
+        <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" aria-label="Mở menu">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18M3 12h18M3 18h18"></path>
+          </svg>
+        </button>
+        <div class="breadcrumb">
+            Studio Mộc <span>/</span>
+          <strong>Bảng điều khiển</strong>
+        </div>
+        <div class="top-actions">
+          <label class="sr-only" for="project-select">Dự án</label>
+          <select id="project-select" aria-label="Chọn dự án">
+            <option value="p-moc" selected>
+                  Mộc Coffee
+                </option>
+            <option value="p-lua">
+                  Lúa Tea
+                </option>
+          </select>
+          <label class="sr-only" for="role-switch">Vai trò demo</label>
+          <select id="role-switch" aria-label="Đổi vai trò demo">
+            <option value="Designer" selected>
+                  Demo: Nhà thiết kế
+                </option>
+            <option value="Admin">
+                  Demo: Quản trị viên
+                </option>
+            <option value="Lead">
+                  Demo: Trưởng nhóm
+                </option>
+            <option value="Client">
+                  Demo: Khách hàng
+                </option>
+          </select>
+          <a href="notifications.html" class="notification-button" id="activity-bell" title="Trung tâm thông báo" aria-label="Xem thông báo">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+            </svg>
+            <span class="notification-badge" hidden>0</span>
+          </a>
+          <a href="profile.html" class="avatar" title="Hồ sơ An Nguyễn" data-avatar="">
+            <img class="avatar-image" alt="Ảnh đại diện" hidden>
+            <span>AN</span>
+          </a>
+        </div>
+      </header>
+      <main id="main" tabindex="-1">
+        <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">KHÔNG GIAN NHÀ THIẾT KẾ</p>
+            <h1>Bảng điều khiển &amp; Ưu tiên công việc</h1>
+            <p class="muted">Quản lý tiến độ dự án, hạn chót nhiệm vụ và nhận đề xuất thông minh từ AI.</p>
+          </div>
+          <div class="heading-actions">
+            <a href="designer-moodboard.html" class="button soft">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+              </svg>
+   Mở Moodboard</a>
+            <a href="designer-version-management.html" class="button primary">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14"></path>
+              </svg>
+   Quản lý phiên bản</a>
+          </div>
+        </section>
+        <!-- Thanh điều khiển mô phỏng trạng thái (Phù hợp CRUD R: Normal, Loading, Empty, Urgent) -->
+        <div class="state-controls">
+          <strong>Trạng thái hiển thị (Mục 8):</strong>
+          <button class="state-btn active" data-mode="normal">Bình thường (Normal)</button>
+          <button class="state-btn " data-mode="loading">Đang tải (Loading)</button>
+          <button class="state-btn " data-mode="empty">Rỗng (Empty)</button>
+          <button class="state-btn " data-mode="urgent">Cảnh báo gấp (Urgent)</button>
+        </div>
+        <!-- Lưới thống kê KPI -->
+        <section class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <strong>2</strong>
+              <p>Nhiệm vụ cần xử lý</p>
+            </div>
+            <div class="kpi-icon purple">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <strong>2</strong>
+              <p>Cảnh báo gấp / Cận hạn</p>
+            </div>
+            <div class="kpi-icon red">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <strong>1</strong>
+              <p>Phiên bản đang duyệt</p>
+            </div>
+            <div class="kpi-icon amber">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <strong>2</strong>
+              <p>Dự án đang tham gia</p>
+            </div>
+            <div class="kpi-icon green">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 12 4 4L19 6"></path>
+              </svg>
+            </div>
+          </div>
+        </section>
+        <!-- Banner Cảnh báo gấp (Urgent Notice) -->
+        <div class="urgent-banner">
+          <div class="urgent-banner-content">
+            <div class="urgent-banner-icon">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Có 2 nhiệm vụ cần ưu tiên giải quyết hôm nay!</h3>
+              <p>Hạn chót phiên bản mới cho dự án Mộc Coffee đang đến gần. Vui lòng kiểm tra và cập nhật tiến độ.</p>
+            </div>
+          </div>
+          <a href="#task-queue" class="button small danger">Xem chi tiết việc gấp</a>
+        </div>
+        <!-- AI Priority & Focus Recommendation (Tham chiếu AI-3) -->
+        <section class="ai-insight-panel">
+          <div class="ai-insight-header">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+            </svg>
+            <span>Ưu tiên theo hạn chót · Tham chiếu Moodboard AI-3</span>
+          </div>
+          <div class="ai-insight-body">
 
-  <script src="js/data.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/modules/navigation.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/pages/designer-dashboard.js"></script>
-</body>
+Ưu tiên <strong>CS-101 Phác thảo nhãn cà phê</strong>, hạn 06/10/2026.
+
+          Xem định hướng phong cách tại <a href="designer-moodboard.html">Moodboard AI-3</a>. Gợi ý ưu tiên được tính từ dữ liệu nhiệm vụ.
+        </div>
+        </section>
+        <!-- Danh sách nhiệm vụ cần làm -->
+        <section class="panel" id="task-queue">
+          <div class="panel-title">
+            <div>
+              <h2>Hàng đợi công việc (Task Queue)</h2>
+              <p>Danh sách các đầu việc thiết kế theo dự án Mộc Coffee</p>
+            </div>
+            <button class="button small primary" id="add-task-btn">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14"></path>
+              </svg>
+   Thêm nhiệm vụ</button>
+          </div>
+          <!-- Toolbar lọc và tìm kiếm -->
+          <div class="toolbar">
+            <div class="search-box">
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0"></path>
+              </svg>
+              <input type="search" id="task-search" placeholder="Tìm theo tên hoặc mô tả công việc..." value="">
+            </div>
+            <select id="status-filter">
+              <option value="all" selected>Tất cả trạng thái</option>
+              <option value="todo">Cần làm (To Do)</option>
+              <option value="doing">Đang làm (Doing)</option>
+              <option value="review">Chờ duyệt (Review)</option>
+              <option value="done">Hoàn thành (Done)</option>
+            </select>
+            <select id="priority-filter">
+              <option value="all" selected>Tất cả mức ưu tiên</option>
+              <option value="high">Ưu tiên cao</option>
+              <option value="medium">Ưu tiên vừa</option>
+              <option value="low">Ưu tiên thấp</option>
+            </select>
+            <span class="toolbar-count">Hiển thị <strong>2</strong> nhiệm vụ</span>
+          </div>
+          <!-- Danh sách công việc hoặc trạng thái -->
+          <div class="task-list">
+            <div class="task-item urgent">
+              <input type="checkbox" class="task-item-check" data-id="CS-101" title="Đánh dấu hoàn thành">
+              <div class="task-item-main">
+                <div class="task-item-title">
+                  <span class="">Phác thảo nhãn cà phê</span>
+                  <span class="badge high">Cao</span>
+                  <span class="badge gray">Thiết kế</span>
+                  <span class="badge high">Gấp</span>
+                </div>
+                <p class="task-item-desc">Phát triển 3 hướng nhãn dựa trên brief đã duyệt.</p>
+              </div>
+              <div class="task-item-meta">
+                <span class="due-badge urgent">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+                  </svg>
+   06/10/2026
+                  </span>
+                <select class="task-status-select" data-id="CS-101" aria-label="Đổi trạng thái">
+                  <option value="todo" selected>Cần làm</option>
+                  <option value="doing">Đang làm</option>
+                  <option value="review">Chờ duyệt</option>
+                  <option value="done">Hoàn thành</option>
+                </select>
+              </div>
+            </div>
+            <div class="task-item urgent">
+              <input type="checkbox" class="task-item-check" data-id="CS-103" title="Đánh dấu hoàn thành">
+              <div class="task-item-main">
+                <div class="task-item-title">
+                  <span class="">Hoàn thiện mặt trước túi</span>
+                  <span class="badge high">Cao</span>
+                  <span class="badge gray">Thiết kế</span>
+                  <span class="badge high">Gấp</span>
+                </div>
+                <p class="task-item-desc">Tối ưu khoảng trắng và phân cấp chữ, tăng cỡ font chữ MỘC theo yêu cầu.</p>
+              </div>
+              <div class="task-item-meta">
+                <span class="due-badge urgent">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+                  </svg>
+   05/10/2026
+                  </span>
+                <select class="task-status-select" data-id="CS-103" aria-label="Đổi trạng thái">
+                  <option value="todo">Cần làm</option>
+                  <option value="doing" selected>Đang làm</option>
+                  <option value="review">Chờ duyệt</option>
+                  <option value="done">Hoàn thành</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <p id="task-loading" class="empty-state" hidden>Đang tải dữ liệu mô phỏng…</p>
+          <p id="task-empty" class="empty-state" hidden>Không có công việc phù hợp.</p>
+        </section>
+      </main>
+      <footer class="page-footer">
+        <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
+        <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+      </footer>
+    </div>
+    <dialog id="dialog">
+      <div class="modal-head dialog-head">
+        <h2>Biểu mẫu</h2>
+        <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
+      </div>
+      <div class="modal-body dialog-body"></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <template id="tools-form">
+      <form>
+        <p>Dữ liệu chỉ được lưu trong trình duyệt hiện tại.</p>
+        <button type="button" class="button" data-export="">Xuất dữ liệu JSON</button>
+        <button type="button" class="button danger" data-reset="">Khôi phục dữ liệu mẫu</button>
+        <p class="form-error" role="alert"></p>
+        <button class="button primary" type="submit">Lưu</button>
+      </form>
+    </template>
+    <template id="task-row">
+      <div class="task-item urgent">
+        <input type="checkbox" class="task-item-check" data-id="CS-101" title="Đánh dấu hoàn thành">
+        <div class="task-item-main">
+          <div class="task-item-title">
+            <span class="" data-task-title="">Phác thảo nhãn cà phê</span>
+            <span class="badge high" data-task-priority="">Cao</span>
+            <span class="badge gray" data-task-type="">Thiết kế</span>
+            <span class="badge high" data-task-urgent="">Gấp</span>
+          </div>
+          <p class="task-item-desc">Phát triển 3 hướng nhãn dựa trên brief đã duyệt.</p>
+        </div>
+        <div class="task-item-meta">
+          <span class="due-badge urgent">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8v5l3 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0"></path>
+            </svg>
+   06/10/2026
+                  </span>
+          <select class="task-status-select" data-id="CS-101" aria-label="Đổi trạng thái">
+            <option value="todo" selected>Cần làm</option>
+            <option value="doing">Đang làm</option>
+            <option value="review">Chờ duyệt</option>
+            <option value="done">Hoàn thành</option>
+          </select>
+        </div>
+      </div>
+    </template>
+    <template id="task-form">
+      <form>
+        <label class="field">
+          <span>Tên nhiệm vụ *</span>
+          <input type="text" name="title" value="" required minlength="3">
+        </label>
+        <label class="field">
+          <span>Mô tả</span>
+          <textarea name="description"></textarea>
+        </label>
+        <label class="field">
+          <span>Ưu tiên</span>
+          <select name="priority">
+            <option value="high">Cao</option>
+            <option value="medium">Vừa</option>
+            <option value="low">Thấp</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Hạn hoàn thành *</span>
+          <input type="date" name="due" value="" required>
+        </label>
+        <label class="field">
+          <span>Người phụ trách</span>
+          <select name="assignee"></select>
+        </label>
+        <p class="form-error" role="alert"></p>
+        <button class="button primary" type="submit">Lưu</button>
+      </form>
+    </template>
+    <script src="js/designer-dashboard.js"></script>
+  </body>
 </html>
