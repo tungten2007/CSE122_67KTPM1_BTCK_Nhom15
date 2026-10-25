@@ -41,3 +41,14 @@ Các vai trò demo cùng dùng một kho dữ liệu trong trình duyệt này. 
 Dự án mới chưa có thiết kế nên trang review có thể rỗng. Kiểm tra vai trò, dự án đang chọn và trạng thái phiên bản: Client chỉ thấy phiên bản đã chuyển qua bước duyệt nội bộ.
 
 Nếu thiếu giao diện/file, giải nén lại toàn bộ ZIP. Nếu dữ liệu trình duyệt bị lỗi, dùng nút tải bản sao trước khi cân nhắc đặt lại. Nếu cổng 8000 bận, chạy `python server.py 8001 --open`.
+
+
+## Mở ba màn Client để quay OBS
+
+Dùng `CHAY-WINDOWS.bat` trong `Project_nhom15`, giữ server mở và dùng cùng địa chỉ `http://127.0.0.1:8000`. Đăng nhập Client, quay theo thứ tự Tổng quan dự án → Creative Brief → Review Versions. Không mở tệp từ bên trong ZIP. `file://` chỉ nên dùng xem nhanh; phiên và dữ liệu có thể khác nhau giữa các tệp. Live Server dùng được cho luồng Store; màn REST API cần `server.py`.
+
+Mã tạo dự án đã có ID dự phòng qua `Store.id` nếu trình duyệt không hỗ trợ `crypto.randomUUID`. Đây là ID bản ghi demo, không phải token đăng nhập. Banner ở các trang SV1 giải thích cách chuyển sang HTTP; banner không tự chuyển dữ liệu hay bảo đảm mọi trình duyệt hỗ trợ storage dưới `file://`.
+
+Kiểm thử sửa lỗi: `tests/project-create.dom.mjs` (Happy DOM, dependency tùy chọn) kiểm tra thiếu randomUUID, tạo/lưu, chuyển brief, đọc lại, validation và banner theo protocol. Chạy `node tests/project-create.dom.mjs` rồi `node tests/project-create.dom.mjs --file` sau khi cài Happy DOM riêng cho test. Có thể đặt `CS_HAPPY_DOM_MODULE` tới module Happy DOM đã cài. Đây là kiểm thử DOM, không thay kiểm tra Chrome/Firefox thật.
+
+Màn Review: dự án vừa tạo có thể chưa có phiên bản, đây là trạng thái đúng. Để quay so sánh và phản hồi, dùng dự án mẫu có bản Client Review, hoặc để Designer tạo phiên bản rồi Lead chuyển đến Client. Chỉ phê duyệt trên dữ liệu demo và kiểm tra trạng thái chỉ đọc sau đó. Mỗi màn quay thành một video theo bảng màn hình đã duyệt; có Figma, giải thích HTML/CSS/JS, tự sửa mã, chạy thử, commit/push và Task ID thật.

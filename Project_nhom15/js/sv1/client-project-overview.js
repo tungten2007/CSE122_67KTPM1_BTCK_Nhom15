@@ -99,7 +99,10 @@
       category: $("#project-category").value,
       deadline: $("#project-deadline").value,
     };
-    const id = editing || "p-" + crypto.randomUUID();
+    // Keep project creation usable when randomUUID is unavailable.
+    const id = editing || (typeof globalThis.crypto?.randomUUID === "function"
+      ? "p-" + globalThis.crypto.randomUUID()
+      : Store.id("p"));
     if (editing) {
       Object.assign(
         data.projects.find((p) => p.id === editing),

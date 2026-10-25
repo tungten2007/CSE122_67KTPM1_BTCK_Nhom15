@@ -784,3 +784,8 @@ html { scrollbar-gutter:stable; }
 .topbar { view-transition-name:workspace-topbar; }
 ::view-transition-group(workspace-sidebar),::view-transition-group(workspace-topbar) { animation-duration:0s; }
 ::view-transition-old(workspace-sidebar),::view-transition-new(workspace-sidebar),::view-transition-old(workspace-topbar),::view-transition-new(workspace-topbar) { animation:none; }
+
+/* File-preview guidance uses normal flow so it does not cover form controls. */
+.local-file-notice { padding: 16px 24px; background: #fff7df; color: #47360c; border-bottom: 1px solid #cbb366; font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+.local-file-notice p { margin: 6px 0 12px; max-width: 90ch; }
+@media (max-width: 480px) { .local-file-notice { padding: 14px 16px; } }

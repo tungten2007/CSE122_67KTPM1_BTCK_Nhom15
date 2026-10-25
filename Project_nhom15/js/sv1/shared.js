@@ -224,6 +224,7 @@ window.CS = (() => {
       location.href = new URL("html/sv1/login.html",document.baseURI).href;
     };
     renderNotifications();
+    CS.showLocalFileNotice?.();
     if (user.role !== "Client") {
       $("main").innerHTML =
         `<div class="panel security-notice"><span class="eyebrow">403 · Phân quyền demo</span><h1>Không gian dành cho Client</h1><p>Bộ giao diện SV1 gồm 5 trang. Các màn hình ${escape(roleLabels[user.role])} thuộc phần SV2/SV3 và cần được ghép ở bước tích hợp.</p><div class="actions dialog-actions"><button class="btn primary" id="switch-client">Trải nghiệm vai trò Client</button><a class="btn" href="html/sv1/index.html">Về trang chủ</a></div></div>`;
@@ -282,3 +283,28 @@ window.CS = (() => {
     confirmAction,
   };
 })();
+
+
+// Local files may use separate storage origins. Keep preview available and explain HTTP setup.
+if (location.protocol === 'file:') {
+  const showLocalFileNotice = () => {
+    if (document.getElementById('local-file-notice')) return;
+    const notice = document.createElement('aside');
+    notice.id = 'local-file-notice';
+    notice.className = 'local-file-notice';
+    notice.setAttribute('aria-label', 'Hướng dẫn mở website');
+    const title = document.createElement('strong');
+    title.textContent = 'Bạn đang mở HTML trực tiếp từ máy tính';
+    const message = document.createElement('p');
+    message.textContent = 'Để tạo dự án và giữ chung phiên đăng nhập giữa các trang, mở thư mục Project_nhom15, chạy CHAY-WINDOWS.bat rồi đăng nhập Client trên http://127.0.0.1:8000. Hoặc mở index.html bằng Live Server. Dữ liệu ở file:// có thể không chuyển sang địa chỉ HTTP.';
+    const link = document.createElement('a');
+    link.className = 'btn small';
+    link.href = 'http://127.0.0.1:8000/index.html';
+    link.textContent = 'Đã chạy server? Mở website';
+    notice.append(title, message, link);
+    document.body.prepend(notice);
+  };
+  CS.showLocalFileNotice = showLocalFileNotice;
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showLocalFileNotice, { once: true });
+  else showLocalFileNotice();
+}
