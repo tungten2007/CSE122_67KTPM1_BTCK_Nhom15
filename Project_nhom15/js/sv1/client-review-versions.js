@@ -20,7 +20,7 @@
   }
   const versionLabel=document.createElement('label');versionLabel.textContent='Phiên bản ';const chooser=document.createElement('select');chooser.setAttribute('aria-label','Phiên bản khách hàng');
   for(const v of p.availableVersions){const o=document.createElement('option');o.value=v.id;o.textContent=v.name+' · '+v.status;o.selected=v.id===p.versionId;chooser.append(o);}
-  chooser.onchange=()=>location.href=CS.url('client-review-versions',p.id)+'&version='+encodeURIComponent(chooser.value);versionLabel.append(chooser);$('#review-workspace').prepend(versionLabel);
+  chooser.onchange=()=>{const target=new URL(CS.url('client-review-versions',p.id)+'&version='+encodeURIComponent(chooser.value));if(window.WorkspaceNavigation?.canOpen(target))window.WorkspaceNavigation.navigate(target);else location.assign(target.href)};versionLabel.append(chooser);$('#review-workspace').prepend(versionLabel);
   const dialog = $("#comment-dialog");
   let mode = "side",
     filter = "all",

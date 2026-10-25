@@ -76,8 +76,8 @@ window.Navigation = (() => {
         <a href="html/sv2/notifications.html" class="notification-button" id="activity-bell" aria-label="Xem thông báo">${icon('bell')}</a><a class="avatar small" href="html/sv2/profile.html" aria-label="Hồ sơ cá nhân">${initials}</a></div></header>
         <main id="main" tabindex="-1"></main><footer class="page-footer">CreatorStudio · Nhóm 15 · Dữ liệu minh họa lưu trên trình duyệt</footer></div>
       <dialog id="dialog" aria-labelledby="dialog-title"></dialog><div id="toast" role="status" aria-live="polite"></div>`;
-    document.querySelector('#role-switch').onchange=e=>{try{location.href=appUrl(switchAccount(e.target.value))}catch(err){e.target.value=user.id;window.App?.toast(err.message)}};
-    document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);location.reload()};
+    document.querySelector('#role-switch').onchange=e=>{try{const target=new URL(appUrl(switchAccount(e.target.value)));if(window.WorkspaceNavigation?.canOpen(target))window.WorkspaceNavigation.navigate(target);else location.href=target.href}catch(err){e.target.value=user.id;window.App?.toast(err.message)}};
+    document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);if(window.WorkspaceNavigation)window.WorkspaceNavigation.navigate(new URL(location.href),false);else location.reload()};
     document.querySelector('#demo-tools-btn').onclick=tools;
     bindMenu();
     const sidebar=document.querySelector('.sidebar');

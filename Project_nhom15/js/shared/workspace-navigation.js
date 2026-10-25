@@ -11,10 +11,10 @@ window.WorkspaceNavigation = (() => {
   let controller = new AbortController(), busy = false, queued;
   const cache = new Map();
   const file = url => url.pathname.split('/').at(-1);
+  const route = url => url.pathname.match(/(?:^|\/)(html\/(?:sv1|sv2|sv3)\/[^/]+\.html)$/)?.[1] || '';
   const appRoot = (doc, url) => new URL(doc.querySelector('base[href]')?.getAttribute('href') || '/', url);
   const supported = /^https?:$/.test(location.protocol);
-  const canOpen = url => supported && url.origin === location.origin &&
-    url.pathname.startsWith('/html/') && pages.has(url.pathname.slice(1));
+  const canOpen = url => supported && url.origin === location.origin && pages.has(route(url));
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true, signal:controller.signal});
@@ -103,7 +103,7 @@ window.WorkspaceNavigation = (() => {
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
-    if (!link.closest('.sidebar nav') && !link.matches('#activity-bell,.top-actions > a.avatar')) return;
+    if (!link.closest('.app-shell,.team-shell')) return;
     const url = new URL(link.href);
     if (!canOpen(url)) return;
     event.preventDefault();
@@ -120,5 +120,5 @@ window.WorkspaceNavigation = (() => {
     else location.reload();
   });
   if (supported && pages.has(file(new URL(location.href)))) history.replaceState({workspace:true}, '');
-  return {ready, get signal() {return controller.signal;}};
+  return {ready, navigate, canOpen, get signal() {return controller.signal;}};
 })();

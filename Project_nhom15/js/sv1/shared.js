@@ -125,6 +125,9 @@ window.CS = (() => {
     const main = $("main"),
       content = main.outerHTML;
     document.body.classList.add("app");
+    const selectedProject = project()?.id || contextProject?.id || sessionStorage.getItem("cs-project") || "";
+    const projectOptions = Store.get().projects.map((p) => `<option value="${escape(p.id)}" ${p.id === selectedProject ? "selected" : ""}>${escape(p.name)}${p.archived ? " · Lưu trữ" : ""}</option>`).join("");
+    const initials = escape(user.name.split(" ").slice(-2).map((part) => part[0]).join(""));
     document.body.innerHTML = `<a class="skip-link" href="#main">Đến nội dung chính</a><div class="app-shell"><button class="menu-backdrop" id="menu-backdrop" aria-label="Đóng menu" hidden></button><aside class="sidebar" id="sidebar"><button class="text-button mobile-close" id="close-menu" aria-label="Đóng menu">✕</button><a class="brand" href="html/sv1/index.html"><span class="brand-mark">✳</span>CreatorStudio</a><p class="nav-label">KHÔNG GIAN KHÁCH HÀNG</p><nav aria-label="Điều hướng chính">${[
       ["projects", "▦", "Dự án của tôi", "client-project-overview"],
       ["brief", "▤", "Creative Brief", "client-creative-brief"],
@@ -136,7 +139,22 @@ window.CS = (() => {
       )
       .join(
         "",
-      )}<a class="nav-link ${active === "profile" ? "active" : ""}" ${active === "profile" ? 'aria-current="page"' : ""} href="html/sv2/profile.html">Hồ sơ cá nhân</a><a class="nav-link ${active === "notifications" ? "active" : ""}" ${active === "notifications" ? 'aria-current="page"' : ""} href="html/sv2/notifications.html">Thông báo</a></nav><div class="sidebar-note"><span class="eyebrow">Cùng nhau sáng tạo</span><h3>Ý tưởng hay bắt đầu<br>từ một brief tốt.</h3><p>Chia sẻ điều bạn mong muốn.<br>Chúng tôi giúp bạn kết nối.</p><a class="btn small" href="html/sv1/client-creative-brief.html">Viết brief mới →</a></div></aside><div class="workspace"><header class="topbar"><button class="btn mobile-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button><span class="breadcrumb">Không gian làm việc <span class="breadcrumb-separator">/</span>${escape(title)}</span><div class="topbar-right"><label class="role-control"><span class="sr-only">Tài khoản demo</span><select id="role-switch" aria-label="Chuyển tài khoản demo">${Navigation.accountOptions(Store.get().users,user.id)}</select></label><div class="activity-wrap"><button class="activity-button" id="activity-button" aria-expanded="false" aria-controls="activity-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg><span id="notification-count" hidden></span></button><section class="activity-panel" id="activity-panel" aria-label="Hoạt động dự án" hidden><div><h3>Hoạt động dự án</h3><button class="text-button" id="close-activity" aria-label="Đóng hoạt động">✕</button></div><ul id="activity-list"></ul><button class="text-button" id="mark-notifications">Đánh dấu tất cả đã đọc</button></section></div><div class="user-chip"><span class="avatar">${escape(user.name.split(' ').slice(-2).map(s=>s[0]).join(''))}</span><div><strong>${escape(user.name)}</strong><small>Phiên demo</small></div></div><button class="text-button" id="logout">Thoát</button></div></header>${content}</div></div>`;
+      )}<a class="nav-link ${active === "profile" ? "active" : ""}" ${active === "profile" ? 'aria-current="page"' : ""} href="html/sv2/profile.html">Hồ sơ cá nhân</a><a class="nav-link ${active === "notifications" ? "active" : ""}" ${active === "notifications" ? 'aria-current="page"' : ""} href="html/sv2/notifications.html">Thông báo</a></nav><button class="nav-link sidebar-logout" id="logout" type="button"><span aria-hidden="true">↪</span>Đăng xuất</button><div class="sidebar-note"><span class="eyebrow">Cùng nhau sáng tạo</span><h3>Ý tưởng hay bắt đầu<br>từ một brief tốt.</h3><p>Chia sẻ điều bạn mong muốn.<br>Chúng tôi giúp bạn kết nối.</p><a class="btn small" href="html/sv1/client-creative-brief.html">Viết brief mới →</a></div></aside><div class="workspace"><header class="topbar"><button class="btn mobile-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button><span class="breadcrumb">Không gian làm việc <span class="breadcrumb-separator">/</span>${escape(title)}</span><div class="topbar-right"><label class="project-control"><span class="sr-only">Dự án</span><select id="project-switch" aria-label="Chọn dự án">${projectOptions}</select></label><label class="role-control"><span class="sr-only">Tài khoản demo</span><select id="role-switch" aria-label="Chuyển tài khoản demo">${Navigation.accountOptions(Store.get().users,user.id)}</select></label><div class="activity-wrap"><button class="activity-button" id="activity-button" aria-expanded="false" aria-controls="activity-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg><span id="notification-count" hidden></span></button><section class="activity-panel" id="activity-panel" aria-label="Hoạt động dự án" hidden><div><h3>Hoạt động dự án</h3><button class="text-button" id="close-activity" aria-label="Đóng hoạt động">✕</button></div><ul id="activity-list"></ul><button class="text-button" id="mark-notifications">Đánh dấu tất cả đã đọc</button></section></div><a class="avatar small" href="html/sv2/profile.html" aria-label="Hồ sơ cá nhân">${initials}</a></div></header>${content}</div></div>`;
+    $("#project-switch").onchange = (e) => {
+      sessionStorage.setItem("cs-project", e.target.value);
+      const page = location.pathname.split("/").pop().replace(/\.html$/, "");
+      if (page === "client-project-overview") {
+        if (window.WorkspaceNavigation) window.WorkspaceNavigation.navigate(new URL(location.href), false);
+        else location.reload();
+        return;
+      }
+      const route = ["client-creative-brief", "client-review-versions"].includes(page)
+        ? page
+        : "client-project-overview";
+      const target = new URL(url(route, e.target.value));
+      if (window.WorkspaceNavigation?.canOpen(target)) window.WorkspaceNavigation.navigate(target);
+      else location.assign(target.href);
+    };
     const menuButton = $(".mobile-menu"),
       sidebar = $("#sidebar"),
       media = matchMedia("(max-width: 760px)");
@@ -217,7 +235,11 @@ window.CS = (() => {
       }
     }, {signal:window.WorkspaceNavigation?.signal});
     $("#role-switch").onchange = (e) => {
-      try { location.href = new URL(Navigation.switchAccount(e.target.value), document.baseURI).href; } catch (error) { e.target.value=user.id; toast(error.message); }
+      try {
+        const target = new URL(Navigation.switchAccount(e.target.value), document.baseURI);
+        if (window.WorkspaceNavigation?.canOpen(target)) window.WorkspaceNavigation.navigate(target);
+        else location.assign(target.href);
+      } catch (error) { e.target.value=user.id; toast(error.message); }
     };
     $("#logout").onclick = () => {
       sessionStorage.removeItem("cs.session"); sessionStorage.removeItem("cs-user"); localStorage.removeItem("currentUser");
