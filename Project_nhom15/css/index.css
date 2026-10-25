@@ -42,7 +42,7 @@
   letter-spacing: -2.8px;
 }
 .hero h1 span {
-  font-family: Georgia, serif;
+  font-family:var(--font);
   font-style: italic;
   font-weight: 400;
   color: var(--green);
@@ -525,14 +525,7 @@ main[id], main [id] { scroll-margin-top:calc(var(--landing-header-height, 140px)
 }
 
 /* Landing v4: local type and a strong, branded spotlight for capabilities. */
-@font-face {
-  font-family:"CreatorStudioInter";
-  src:url("../assets/fonts/Inter-Variable.ttf") format("truetype");
-  font-style:normal;
-  font-weight:100 900;
-  font-display:swap;
-}
-body { font-family:"CreatorStudioInter", "Segoe UI", Arial, sans-serif; }
+body { font-family:var(--font); }
 .hero h1 { font-weight:800; }
 .hero h1 span { font-family:inherit; font-style:normal; font-weight:800; color:#2c7452; }
 .hero-copy > p { color:#52685b; font-size:16px; line-height:1.85; }

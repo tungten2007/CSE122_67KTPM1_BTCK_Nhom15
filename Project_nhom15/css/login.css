@@ -28,8 +28,9 @@
   margin: 24px 0;
 }
 .story-copy h1 em {
+  font-style: normal;
   color: var(--lime);
-  font-family: Georgia, serif;
+  font-family:var(--font);
   font-weight: 400;
 }
 .story-copy > p {
@@ -207,6 +208,9 @@
   .story-copy h1 br:nth-child(2) {
     display: none;
   }
+  .story-copy h1 em {
+    display: block;
+  }
   .story-copy > p,
   .story-art,
   .login-story > small {
@@ -225,8 +229,7 @@
     font-size: 9px;
   }
 }
-@font-face{font-family:CreatorStudioInter;src:url('../assets/fonts/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-display:swap}
-body{font-family:CreatorStudioInter,'Segoe UI',Arial,sans-serif}
+body{font-family:var(--font)}
 .auth-switch{margin:18px 0;text-align:center;font-size:13px}
 .auth-switch a{font-weight:650;color:var(--green);text-decoration:underline;text-underline-offset:3px}
 

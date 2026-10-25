@@ -1,8 +1,8 @@
+@import url("./typography.css");
 /* Consistent workspace navigation across Designer, Lead, Admin and shared pages. */
-@font-face { font-family:Inter; src:url('../assets/fonts/Inter-Variable.ttf') format('truetype'); font-weight:100 900; font-style:normal; font-display:optional; }
 html { scrollbar-gutter:stable; }
 :root { --primary:#39765a; --primary-dark:#183c32; --primary-light:#e6eddf; --ink:#183c32; --muted:#7a857b; --line:#e2e7dc; --bg:#f6f7f2; }
-body.team-shell { font-family:Inter,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--ink); }
+body.team-shell { font-family:var(--font); background:var(--bg); color:var(--ink); }
 .team-shell .sidebar { position:fixed; inset:0 auto 0 0; width:230px; height:100dvh; margin:0; padding:28px 19px; display:flex; flex-direction:column; gap:0; background:#fcfdf9; color:var(--ink); border-right:1px solid var(--line); overflow-y:auto; z-index:30; transform:none; transition:none; }
 .team-shell .sidebar .brand { display:flex; align-items:center; gap:9px; margin:0 4px 42px; padding:0; color:var(--ink); font-size:19px; font-weight:800; line-height:1.4; letter-spacing:-.8px; white-space:nowrap; }
 .team-shell .brand-mark { display:grid; place-items:center; width:34px; height:34px; flex:0 0 34px; border-radius:11px; color:#c5e78b; background:#183c32; font-size:28px; box-shadow:none; }

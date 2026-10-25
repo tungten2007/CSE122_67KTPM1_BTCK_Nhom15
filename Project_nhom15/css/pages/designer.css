@@ -382,7 +382,7 @@
 }
 
 .swatch-hex {
-  font-family: monospace;
+  font-family:var(--font);
   font-weight: 700;
   font-size: 14px;
   color: var(--ink);
@@ -613,7 +613,7 @@
 }
 
 .version-name-tag {
-  font-family: monospace;
+  font-family:var(--font);
   font-size: 13px;
   font-weight: 700;
   color: var(--primary-dark);

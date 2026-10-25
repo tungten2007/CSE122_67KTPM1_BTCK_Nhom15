@@ -17,7 +17,7 @@
     var box = document.createElement('section');
     box.setAttribute('role', 'alert');
     box.setAttribute('data-startup-error', 'true');
-    box.style.cssText = 'background:#fff4df;color:#5d4018;border:2px solid #dfb666;border-radius:12px;padding:24px;margin:20px;font:16px/1.6 Arial;position:relative;z-index:100;overflow-wrap:anywhere';
+    box.style.cssText = 'background:#fff4df;color:#5d4018;border:2px solid #dfb666;border-radius:12px;padding:24px;margin:20px;font:16px/1.6 Inter,sans-serif;position:relative;z-index:100;overflow-wrap:anywhere';
     var title = document.createElement('h2');
     title.textContent = 'Chưa tải đủ file của CreatorStudio';
     box.appendChild(title);
@@ -43,7 +43,8 @@
     <link rel="stylesheet" href="css/index.css" />
     <script defer src="js/data.js"></script><script defer src="js/store.js"></script><script defer src="js/modules/navigation.js"></script><script defer src="js/client-store-adapter.js"></script><script src="js/shared.js" defer></script>
     <script src="js/index.js" defer></script>
-  </head>
+    <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+</head>
   <body>
     <a class="skip-link" href="#main">Đến nội dung chính</a>
     <header class="public-header">

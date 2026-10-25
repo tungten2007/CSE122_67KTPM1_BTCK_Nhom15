@@ -121,7 +121,7 @@
 }
 
 .token-pill {
-  font-family: monospace;
+  font-family:var(--font);
   font-size: 12px;
   font-weight: 600;
   background: #efedff;
@@ -138,7 +138,7 @@
 }
 
 .prompt-textarea {
-  font-family: monospace;
+  font-family:var(--font);
   font-size: 13px;
   line-height: 1.5;
   background: #1e293b;

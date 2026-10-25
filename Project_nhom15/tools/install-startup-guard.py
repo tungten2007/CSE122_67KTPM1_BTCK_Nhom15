@@ -17,7 +17,7 @@ GUARD='''<!-- CS-STARTUP-GUARD -->
     var box = document.createElement('section');
     box.setAttribute('role', 'alert');
     box.setAttribute('data-startup-error', 'true');
-    box.style.cssText = 'background:#fff4df;color:#5d4018;border:2px solid #dfb666;border-radius:12px;padding:24px;margin:20px;font:16px/1.6 Arial;position:relative;z-index:100;overflow-wrap:anywhere';
+    box.style.cssText = 'background:#fff4df;color:#5d4018;border:2px solid #dfb666;border-radius:12px;padding:24px;margin:20px;font:16px/1.6 Inter,sans-serif;position:relative;z-index:100;overflow-wrap:anywhere';
     var title = document.createElement('h2');
     title.textContent = 'Chưa tải đủ file của CreatorStudio';
     box.appendChild(title);
