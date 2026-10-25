@@ -210,3 +210,7 @@ Mô tả: hỗ trợ chọn người cụ thể thay vì mặc định một tà
 - [x] Chỉ cập nhật dev; không thay main.
 
 Minh chứng: docs/qa-multi-user-v12/result.json; tests/multi-user.test.cjs. Gói: CreatorStudio-Task27-Integration-v12-MultiUserRoles.zip. Phạm vi hiện tại là nhiều tài khoản trong cùng dữ liệu demo cục bộ; chưa có backend/đồng bộ giữa máy hoặc chia quyền theo nhóm dự án riêng.
+
+## Cập nhật giao diện — khả năng nhận biết focus bàn phím (25/10/2026)
+
+Đổi màu viền `:focus-visible` từ tím nhạt `#a8a2ff` sang chàm đậm `#4338ca` trong `css/base.css` (SV1/SV3) và `css/sv2-base.css` (SV2), để focus bàn phím dễ nhận ra hơn trên nền sáng. Chưa chạy lại sweep Chromium hoặc kiểm tra zoom 200% sau cập nhật này; Figma không nằm trong phạm vi commit mã nguồn này.
