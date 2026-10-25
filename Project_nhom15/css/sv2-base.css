@@ -164,18 +164,16 @@ small {
 }
 
 .brand-mark {
-  background: var(--primary);
-  border-radius: 8px;
-  padding: 5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-}
-
-.brand-dot {
-  font-size: 10px;
-  color: #8991a5;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  padding: 0;
+  border-radius: 11px;
+  background: #183c32;
+  color: #c5e78b;
+  font-size: 24px;
 }
 
 .studio {

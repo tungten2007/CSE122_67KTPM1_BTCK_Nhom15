@@ -218,3 +218,6 @@ Minh chứng: docs/qa-multi-user-v12/result.json; tests/multi-user.test.cjs. Gó
 ## Cập nhật — tránh báo nhầm lỗi preload font khi mở file cục bộ (25/10/2026)
 
 Bộ kiểm tra tài nguyên trong `index.html` bỏ qua lỗi thẻ preload font Inter khi trang được mở bằng `file://`, vì hạn chế bảo mật của trình duyệt có thể chặn font cục bộ dù file đã giải nén. Các lỗi tải script, stylesheet, ảnh và preload tài nguyên khác vẫn hiện cảnh báo; khi chạy qua Live Server, lỗi tải font vẫn được báo bình thường. `assets/fonts/Inter-Variable.ttf` có trong gói nguồn. Chưa kiểm tra lại trên trình duyệt người dùng.
+## Cập nhật giao diện — thống nhất logo CreatorStudio (25/10/2026)
+
+Đồng bộ biểu tượng xanh đậm/xanh sáng trong landing, footer, đăng nhập/đăng ký, demo API và thanh điều hướng các phân hệ; bỏ dấu chấm sau chữ CreatorStudio. Kích thước lockup giữ phù hợp từng vị trí (sidebar, header và footer). Các trang chính đã cập nhật: `index.html`, `login.html`, `register.html`, `api-demo.html`, `js/modules/navigation.js`, `js/shared.js` cùng CSS dùng chung. Chưa xác nhận bằng ảnh trình duyệt sau thay đổi.

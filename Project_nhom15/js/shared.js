@@ -125,7 +125,7 @@ window.CS = (() => {
     const main = $("main"),
       content = main.outerHTML;
     document.body.classList.add("app");
-    document.body.innerHTML = `<a class="skip-link" href="#main">Đến nội dung chính</a><div class="app-shell"><button class="menu-backdrop" id="menu-backdrop" aria-label="Đóng menu" hidden></button><aside class="sidebar" id="sidebar"><button class="text-button mobile-close" id="close-menu" aria-label="Đóng menu">✕</button><a class="brand" href="index.html"><span class="brand-mark">✳</span>CreatorStudio<span class="brand-dot">.</span></a><p class="nav-label">KHÔNG GIAN KHÁCH HÀNG</p><nav aria-label="Điều hướng chính">${[
+    document.body.innerHTML = `<a class="skip-link" href="#main">Đến nội dung chính</a><div class="app-shell"><button class="menu-backdrop" id="menu-backdrop" aria-label="Đóng menu" hidden></button><aside class="sidebar" id="sidebar"><button class="text-button mobile-close" id="close-menu" aria-label="Đóng menu">✕</button><a class="brand" href="index.html"><span class="brand-mark">✳</span>CreatorStudio</a><p class="nav-label">KHÔNG GIAN KHÁCH HÀNG</p><nav aria-label="Điều hướng chính">${[
       ["projects", "▦", "Dự án của tôi", "client-project-overview"],
       ["brief", "▤", "Creative Brief", "client-creative-brief"],
       ["review", "◫", "Duyệt phiên bản", "client-review-versions"],

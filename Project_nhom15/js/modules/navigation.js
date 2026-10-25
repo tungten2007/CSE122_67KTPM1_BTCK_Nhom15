@@ -63,7 +63,7 @@ window.Navigation = (() => {
     document.body.classList.add('team-shell');
     document.body.innerHTML=`<a class="skip-link" href="#main">Đến nội dung chính</a><div class="sidebar-shade" hidden></div>
       <aside class="sidebar" aria-label="Điều hướng chính">
-        <a class="brand" href="${home(user.role)}"><span class="brand-mark">✳</span>CreatorStudio<span class="brand-dot">.</span></a>
+        <a class="brand" href="${home(user.role)}"><span class="brand-mark">✳</span>CreatorStudio</a>
         <button class="icon-button mobile-close" aria-label="Đóng menu">${icon('close')}</button>
         <p class="nav-caption">KHÔNG GIAN ${esc(roles[user.role]).toUpperCase()}</p><nav>${menu}</nav>
         <div class="sidebar-project"><p class="nav-caption">DỰ ÁN ĐANG CHỌN</p><strong>${esc(project.name)}</strong><small>${esc(project.description)}</small></div>

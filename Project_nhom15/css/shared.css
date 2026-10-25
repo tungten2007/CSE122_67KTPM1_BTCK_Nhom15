@@ -563,9 +563,6 @@ progress {
 .page-title {
   margin-top: 9px;
 }
-.brand-dot {
-  color: var(--green);
-}
 .breadcrumb-separator {
   margin: 0 9px;
 }

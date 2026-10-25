@@ -11,8 +11,8 @@
   flex-direction: column;
 }
 .login-story .brand-mark {
-  background: var(--lime);
-  color: var(--ink);
+  background: #183c32;
+  color: #c5e78b;
 }
 .story-copy {
   max-width: 470px;
