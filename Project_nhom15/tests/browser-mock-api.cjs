@@ -25,7 +25,7 @@ const check = (value, name) => { assert.ok(value, name); checks.push(name); cons
     page.setDefaultTimeout(12000);
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
-    await page.goto(base + '/api-demo.html');
+    await page.goto(base + '/html/shared/api-demo.html');
     await page.locator('.api-project').first().waitFor();
     const initial = await page.locator('.api-project').count();
     check(initial >= 2 && (await page.locator('#connection').textContent()).includes('Đã kết nối'), 'GET list renders seeded projects from real HTTP');
@@ -45,7 +45,7 @@ const check = (value, name) => { assert.ok(value, name); checks.push(name); cons
     check(true, 'Created project persists after browser reload');
     const second = await context.newPage();
     second.on('pageerror', (error) => errors.push(error.message));
-    await second.goto(base + '/api-demo.html');
+    await second.goto(base + '/html/shared/api-demo.html');
     await second.locator(`[data-edit="${created.id}"]`).waitFor();
     check(true, 'Second tab sees shared server data');
     await page.locator(`[data-edit="${created.id}"]`).click();

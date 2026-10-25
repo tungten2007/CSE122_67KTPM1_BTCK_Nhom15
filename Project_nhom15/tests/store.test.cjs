@@ -1,7 +1,7 @@
 // Chạy: node tests/store.test.cjs (không cần cài npm).
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const root=path.join(__dirname,'..');const memory=new Map();let failWrite=false;
-const context={window:{},localStorage:{getItem:k=>memory.get(k)||null,setItem:(k,v)=>{if(failWrite)throw Error('Quota');memory.set(k,v)}},setTimeout,Date,Math,JSON};context.window=context;vm.createContext(context);['js/data.js','js/store.js','js/modules/ai-feedback-summarizer.js'].forEach(p=>vm.runInContext(fs.readFileSync(path.join(root,p),'utf8'),context));const S=context.Store;let count=0;
+const context={window:{},localStorage:{getItem:k=>memory.get(k)||null,setItem:(k,v)=>{if(failWrite)throw Error('Quota');memory.set(k,v)}},setTimeout,Date,Math,JSON};context.window=context;vm.createContext(context);['js/shared/data.js','js/shared/store.js','js/sv3/modules/ai-feedback-summarizer.js'].forEach(p=>vm.runInContext(fs.readFileSync(path.join(root,p),'utf8'),context));const S=context.Store;let count=0;
 function test(name,fn){S.reset();fn();count++;console.log('PASS '+name)}
 const task={projectId:'p-moc',title:'Việc kiểm thử',description:'Nội dung mới',assignee:'u-an',priority:'high',status:'todo',due:'2026-10-12'};
 (async()=>{

@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const memory=new Map(),root=path.join(__dirname,'..');
 const c={localStorage:{getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,v)},sessionStorage:{getItem:k=>memory.get('s:'+k)||null,setItem:(k,v)=>memory.set('s:'+k,v)},Date,Math,JSON};c.window=c;vm.createContext(c);
-for(const f of ['js/data.js','js/store.js','js/modules/navigation.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),c);
+for(const f of ['js/shared/data.js','js/shared/store.js','js/shared/modules/navigation.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),c);
 const S=c.Store,N=c.Navigation;S.load();
 S.saveUser('u-admin',{name:'Lead thứ hai',email:'secondlead@example.com',role:'Lead'});
 const lead=S.get().users.find(u=>u.email==='secondlead@example.com');

@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),m=new Map(),s=new Map();let fail=false;
 const c={console,Date,Math,JSON,URLSearchParams,location:{search:''},sessionStorage:{getItem:k=>s.get(k)||null,setItem:(k,v)=>s.set(k,v)},localStorage:{getItem:k=>m.get(k)||null,setItem:(k,v)=>{if(fail)throw Error('quota');m.set(k,v)}},CS:{toast:()=>{} }};c.window=c;vm.createContext(c);
-for(const f of ['data','store','modules/navigation','client-store-adapter'])vm.runInContext(fs.readFileSync(path.join(root,'js',f+'.js'),'utf8'),c);
+for(const f of ['shared/data','shared/store','shared/modules/navigation','shared/client-store-adapter'])vm.runInContext(fs.readFileSync(path.join(root,'js',f+'.js'),'utf8'),c);
 const S=c.Store,C=c.TeamClient,N=c.Navigation;S.load();let count=0;function test(name,fn){fn();console.log('PASS '+name);count++}
 let pid='integration-project',vid;
 test('Client creates project and submits brief to canonical store',()=>{C.login('Client');const d=C.read();d.projects.push({id:pid,name:'Dự án tích hợp',description:'Test xuyên vai trò',category:'Branding',status:'Active',comments:[],brief:{accepted:true,submitted:true,deadline:'2026-12-20',sections:{goal:'Bao bì sản phẩm cà phê',audience:'Người trẻ',deliverables:'Bộ nhãn'}}});assert(C.write(d));assert.equal(S.get().briefs.find(b=>b.projectId===pid).status,'submitted')});

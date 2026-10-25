@@ -126,8 +126,8 @@ class MockAPITests(unittest.TestCase):
         self.assertEqual(self.request(headers={'Origin': self.base})[0], 200)
 
     def test_static_assets_and_private_data(self):
-        self.assertEqual(self.request(path='/api-demo.html')[0], 200)
-        self.assertEqual(self.request(path='/js/project-api.js')[0], 200)
+        self.assertEqual(self.request(path='/html/shared/api-demo.html')[0], 200)
+        self.assertEqual(self.request(path='/js/shared/project-api.js')[0], 200)
         self.assertEqual(self.request(path='/.demo-data/mock-api.sqlite3')[0], 404)
         self.assertEqual(self.request('HEAD', '/.demo-data/mock-api.sqlite3')[0], 404)
 

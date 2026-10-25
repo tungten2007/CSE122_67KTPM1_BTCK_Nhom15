@@ -19,8 +19,8 @@ class Handler(MockAPIHandlerMixin, SimpleHTTPRequestHandler):
             return
         if not Path(self.translate_path(route)).exists():
             # File CSS/JS/ảnh thiếu phải trả 404, không trả HTML trang lỗi.
-            if (route.endswith('.html') or not Path(route).suffix) and route!='/404.html' and (ROOT/'404.html').is_file():
-                self.send_response(302);self.send_header('Location','/404.html');self.end_headers()
+            if (route.endswith('.html') or not Path(route).suffix) and route!='/html/sv3/404.html' and (ROOT/'html/sv3/404.html').is_file():
+                self.send_response(302);self.send_header('Location','/html/sv3/404.html');self.end_headers()
             else:self.send_error(404,'File not found')
             return
         return super().do_GET()

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <base href="../../">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo REST API dự án — CreatorStudio</title>
+  <link rel="stylesheet" href="css/shared/shared.css" />
+  <link rel="stylesheet" href="css/shared/api-demo.css" />
+  <script defer src="js/shared/project-api.js"></script>
+  <script defer src="js/shared/api-demo.js"></script>
+  <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đến nội dung chính</a>
+  <header class="api-header"><a class="brand" href="html/sv1/index.html"><span class="brand-mark" aria-hidden="true">✳</span>CreatorStudio</a><a class="btn small" href="html/sv1/client-project-overview.html">Về dự án của nhóm →</a></header>
+  <main id="main" class="api-main">
+    <div class="page-heading"><div><span class="eyebrow">CSE122 · TRÌNH DIỄN HTTP</span><h1>Demo API dự án</h1><p>Tải, tạo, sửa và xóa dự án qua REST API với phản hồi từ máy chủ.</p></div><span class="pill" id="connection" role="status">Chưa kết nối</span></div>
+    <aside class="demo-scope"><strong>Không gian dữ liệu thử riêng</strong><p>Trang này gọi mock API tại máy chủ Python và lưu vào SQLite trên máy chạy server. Các màn Client, Designer, Lead và Admin hiện có vẫn dùng Store của nhóm. Thao tác tại đây không thay dữ liệu bài đang trình diễn. Không nhập thông tin hoặc mật khẩu thật.</p></aside>
+    <div class="api-controls panel"><div class="actions"><button class="btn" id="refresh">↻ Tải từ API</button><button class="btn primary" id="create">＋ Tạo dự án qua API</button></div><div class="demo-options"><label><input type="checkbox" id="delay" checked /> Thêm độ trễ 600 ms</label><label><input type="checkbox" id="fail" /> Thử lỗi 503 ở request kế tiếp</label></div></div>
+    <p class="api-feedback" id="feedback" role="status" aria-live="polite">Đang tải dữ liệu…</p>
+    <div class="api-layout">
+      <section class="panel" aria-labelledby="projects-heading" id="project-panel" aria-busy="true"><div class="panel-heading"><h2 id="projects-heading">Dự án trên máy chủ <span id="count">0</span></h2><span class="muted">GET /api/projects</span></div><div id="project-list" class="api-project-list"></div><div id="empty" class="empty" hidden><h3>Chưa có dự án</h3><p>Tạo dự án mới để thử request POST.</p></div></section>
+      <aside class="panel api-trace" aria-labelledby="trace-heading"><div class="panel-heading"><h2 id="trace-heading">Nhật ký HTTP</h2><button class="text-button" id="clear-log">Xóa nhật ký</button></div><p>Mỗi thao tác ghi lại phương thức, mã HTTP, thời gian và JSON trả về. Mở F12 → Network để quan sát request thật.</p><ol id="request-log" aria-live="polite" aria-relevant="additions"></ol></aside>
+    </div>
+    <section class="api-guide panel"><h2>Kịch bản demo nhanh</h2><ol><li>Chọn <strong>Tải từ API</strong>: nhận danh sách với mã 200.</li><li>Tạo một dự án: POST trả 201; mở tab thứ hai để thấy cùng dữ liệu máy chủ.</li><li>Sửa dự án: PATCH trả 200. Hai tab sửa cùng bản sẽ nhận 412 ở tab dùng revision cũ.</li><li>Trong biểu mẫu, tích <strong>Thử lỗi 503 ở lần lưu này</strong> rồi lưu: hộp thoại giữ nội dung để bạn thử lại.</li><li>Xóa dự án thử: DELETE trả 204. Tải lại trang để kiểm tra.</li></ol><p>Chạy: <code>python server.py 8000 --open</code>. Live Server vẫn mở được bài frontend cũ nhưng không cung cấp các route API này. Mock API chưa có xác thực hoặc phân quyền backend; server chỉ lắng nghe trên 127.0.0.1.</p></section>
+    <dialog id="editor" aria-labelledby="editor-title"><div class="dialog-head"><h2 id="editor-title">Tạo dự án</h2><button type="button" class="text-button" id="close-editor" aria-label="Đóng biểu mẫu">✕</button></div><form id="project-form"><div class="field"><label for="name">Tên dự án *</label><input id="name" required minlength="3" maxlength="100" placeholder="Ví dụ: Bộ nhận diện cà phê mới" /></div><div class="form-grid"><div class="field"><label for="category">Loại dự án</label><select id="category"><option>Branding</option><option>UI/UX</option><option>Campaign</option></select></div><div class="field"><label for="deadline">Ngày bàn giao *</label><input type="date" id="deadline" required /></div><div class="field"><label for="status">Trạng thái</label><select id="status"><option value="Active">Đang thực hiện</option><option value="In Review">Chờ phản hồi</option><option value="Completed">Hoàn thành</option><option value="Archived">Lưu trữ</option></select></div><div class="field"><label for="progress">Tiến độ (%)</label><input type="number" id="progress" min="0" max="100" step="1" value="0" required /></div></div><div class="field"><label for="description">Mô tả</label><textarea id="description" maxlength="2000" rows="3"></textarea></div><label class="demo-options"><span><input type="checkbox" id="fail-save" /> Thử lỗi 503 ở lần lưu này (tự bỏ chọn sau khi gửi)</span></label><p class="error" id="editor-error" role="alert"></p><div class="actions"><button type="button" class="btn" id="cancel-editor">Hủy</button><button type="submit" class="btn primary" id="save">Gửi POST →</button></div></form></dialog>
+    <dialog id="delete-dialog" aria-labelledby="delete-title"><h2 id="delete-title">Xóa dự án thử?</h2><p id="delete-description"></p><p>Chỉ dữ liệu tại mock API bị xóa. Thao tác này không xóa dự án trong Store của nhóm.</p><p class="error" id="delete-error" role="alert"></p><div class="actions"><button class="btn" id="cancel-delete">Hủy</button><button class="btn danger" id="confirm-delete">Xóa qua API</button></div></dialog>
+  </main>
+</body>
+</html>

@@ -4,7 +4,7 @@ const root=path.join(__dirname,'..'),nodes=new Map(),memory=new Map();
 const $=selector=>{if(!nodes.has(selector))nodes.set(selector,{innerHTML:''});return nodes.get(selector)};
 const context={window:{},localStorage:{getItem:key=>memory.get(key)||null,setItem:(key,value)=>memory.set(key,value)}};
 context.window=context;vm.createContext(context);
-for(const file of ['js/data.js','js/store.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
+for(const file of ['js/shared/data.js','js/shared/store.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
 const seed=context.CS_SEED();
 seed.versions.push({id:'v-second',projectId:'p-moc',name:'VERSION SECOND'}, {id:'v-foreign',projectId:'p-lua',name:'FOREIGN VERSION'});
 seed.comments=[{id:'first-comment',projectId:'p-moc',versionId:'v-moc-3',text:'FIRST COMMENT',author:'Client'},
@@ -21,7 +21,7 @@ const App={data:context.Store.get(),project:seed.projects[0],user:seed.users.fin
  select:(label,name,options,value,extra)=>{selects.set(name,{options,value,extra});return `<select name="${name}"></select>`},
  modal:(title,body,submit)=>modal={title,body,submit},init:(key,fn)=>{render=fn;render()},refresh:()=>{App.data=context.Store.get();render()}
 };context.App=App;
-vm.runInContext(fs.readFileSync(path.join(root,'js/pages/lead-feedback-summary.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(root,'js/sv3/pages/lead-feedback-summary.js'),'utf8'),context);
 let html=$('#main').innerHTML;
 assert.match(html,/Tất cả 4 phiên bản/);
 assert.match(html,/SECOND COMMENT<\/p><small>Client · VERSION SECOND/);

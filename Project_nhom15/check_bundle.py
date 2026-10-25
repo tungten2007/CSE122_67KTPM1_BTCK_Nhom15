@@ -17,15 +17,19 @@ def check(root=ROOT):
         path=(root/name).resolve()
         if not path.is_relative_to(root) or not path.is_file():errors.append('Thiếu file: '+name)
     class Links(HTMLParser):
-        def __init__(self,base):super().__init__();self.base=base
+        def __init__(self,base):super().__init__();self.base=base;self.app_base=base
         def handle_starttag(self,tag,attrs):
-            for key,value in attrs:
+            attrs=dict(attrs)
+            if tag=='base' and attrs.get('href'):
+                self.app_base=(self.base/unquote(urlsplit(attrs['href']).path)).resolve()
+                return
+            for key,value in attrs.items():
                 if key not in ('href','src') or not value:continue
                 url=urlsplit(value)
                 if url.scheme or url.netloc or not url.path:continue
-                target=(self.base/unquote(url.path)).resolve()
+                target=(self.app_base/unquote(url.path)).resolve()
                 if not target.is_relative_to(root) or not target.exists():errors.append('Đường dẫn thiếu: '+value)
-    for html in root.glob('*.html'):Links(html.parent).feed(html.read_text(encoding='utf-8'))
+    for html in root.rglob('*.html'):Links(html.parent).feed(html.read_text(encoding='utf-8'))
     return sorted(set(errors))
 if __name__=='__main__':
     issues=check()

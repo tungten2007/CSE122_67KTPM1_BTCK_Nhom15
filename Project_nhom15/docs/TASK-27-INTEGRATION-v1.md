@@ -221,3 +221,11 @@ Bộ kiểm tra tài nguyên trong `index.html` bỏ qua lỗi thẻ preload fon
 ## Cập nhật giao diện — thống nhất logo CreatorStudio (25/10/2026)
 
 Đồng bộ biểu tượng xanh đậm/xanh sáng trong landing, footer, đăng nhập/đăng ký, demo API và thanh điều hướng các phân hệ; bỏ dấu chấm sau chữ CreatorStudio. Kích thước lockup giữ phù hợp từng vị trí (sidebar, header và footer). Các trang chính đã cập nhật: `index.html`, `login.html`, `register.html`, `api-demo.html`, `js/modules/navigation.js`, `js/shared.js` cùng CSS dùng chung. Chưa xác nhận bằng ảnh trình duyệt sau thay đổi.
+## Thay đổi — sắp xếp lại cấu trúc tệp (25/10/2026)
+
+- Chuyển HTML vào `html/sv1`, `html/sv2`, `html/sv3`; trang bắt đầu và demo API được xếp trong `html/shared`.
+- Chuyển CSS và JavaScript theo cùng nhóm SV; mã dùng chung đặt trong `css/shared` và `js/shared`.
+- Giữ `index.html` ở thư mục dự án làm lối vào landing SV1; cập nhật đường dẫn tài nguyên, liên kết giữa trang, điều hướng JavaScript và trang lỗi mặc định của máy chủ.
+- Cập nhật kiểm tra gói để quét HTML lồng thư mục và theo `<base href>`; làm mới `bundle-manifest.json` và hướng dẫn cấu trúc.
+- Bố cục thư mục được đối chiếu với `docs/screen-list.md` và bảng kiểm kê do người dùng cung cấp; `api-demo.html` và `BAT-DAU.html` thuộc nhóm dùng chung.
+- Chỉ thực hiện trên nhánh `dev`. Cần chạy kiểm tra và xác nhận trực quan qua URL Go Live trước khi commit/push.
