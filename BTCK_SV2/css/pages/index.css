@@ -1,0 +1,139 @@
+.portal-hero {
+  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
+  color: #ffffff;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15);
+}
+.portal-hero h1 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.portal-hero p {
+  font-size: 15px;
+  color: #cbd5e1;
+  max-width: 720px;
+  line-height: 1.6;
+}
+.role-switcher-banner {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+}
+.screen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 20px;
+}
+.screen-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.screen-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(37, 49, 75, 0.1);
+  border-color: #cbd5e1;
+}
+.screen-card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: #eeecff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.screen-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.screen-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.index-page-layout {
+  background: var(--bg);
+  padding: 32px 20px;
+}
+
+.page-index .index-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.page-index .index-header {
+  margin-bottom: 24px;
+}
+
+.page-index .index-brand-row {
+  gap: 12px;
+}
+
+.page-index .index-brand-mark {
+  background: var(--primary);
+  color: white;
+  padding: 6px;
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.page-index .index-brand-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.page-index .index-brand-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.page-index .index-hero-eyebrow {
+  color: #a5b4fc;
+}
+
+.page-index .index-role-heading {
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-index .index-role-description {
+  font-size: 13px;
+}
+
+.page-index .index-role-buttons {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.page-index .index-screen-heading {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.page-index .index-screen-meta {
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.page-index .index-screen-link {
+  margin-top: auto;
+}

@@ -1,5 +1,12 @@
 # Kế hoạch & Kịch bản Kiểm thử (Test Cases) — Phân hệ SV2
 
+## Rà soát sau khi tách file từng trang (25/10/2026)
+
+- Cả 8 trang dùng file HTML, CSS và JavaScript riêng cùng tên; bộ kiểm tra xác nhận đường dẫn, không còn style/script/event nhúng trong HTML, và kiểm tra cú pháp cả `js/pages/`.
+- Kiểm tra trình duyệt localhost: hồ sơ trước/sau có cùng kích thước bố cục, padding và display của các thành phần chính; nút chỉnh sửa/hủy vẫn hoạt động.
+- Dashboard hiển thị trạng thái Loading; Moodboard hiển thị đúng màu HEX, modal AI ẩn/hiện đúng bước và trả kết quả với bảng màu dạng grid; Version Management, Notifications, Error, Portal và Admin Template đều hiển thị nội dung.
+- Bộ kiểm tra nghiệp vụ trong `tests/verify.cjs` và mục lục README đều đạt. Chưa chạy lại toàn bộ E2E hoặc mọi kích thước mobile; các kết quả cũ phía dưới là lịch sử/kịch bản kiểm thử.
+
 ## Kết quả rà soát mã hiện tại
 
 `node tests/verify.cjs` đạt: sinh mã phiên bản sau khi xóa draft, phân tách assetType, nộp duyệt và thông báo Lead, archive read-only, avatar URL, mật khẩu demo có kiểm tra hiện tại/lưu lại, thông báo theo user, tài khoản khóa, home 4 role, phân quyền, liên kết cục bộ, cú pháp JS và luồng AI success/error/apply.

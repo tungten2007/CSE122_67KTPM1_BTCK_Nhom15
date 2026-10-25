@@ -1,0 +1,52 @@
+/* Error Page 403 / 404 */
+
+.error-container {
+  max-width: 580px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 40px 24px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+.error-badge-code {
+  display: inline-block;
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--primary);
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #635bff 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.error-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.error-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+
+.error-page-layout {
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.page-404 .error-actions {
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}

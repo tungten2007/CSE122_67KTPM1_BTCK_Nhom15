@@ -1,0 +1,267 @@
+/* Logic riêng của admin-brief-template-management.html. Các phụ thuộc dùng chung được nạp trước trong HTML. */
+document.addEventListener('DOMContentLoaded', () => {
+  let currentStatusFilter = 'all';
+  let currentCategoryFilter = 'all';
+  let searchQuery = '';
+  let selectedTemplateId = 'bt-01';
+
+  App.init('briefTemplates', renderTemplateManagement);
+
+  function renderTemplateManagement() {
+    const { $, $$, esc, icon, data, user, project, banner, toast } = App;
+    const main = $('#main');
+
+    let templates = data.briefTemplates || [];
+
+    // Lọc danh sách
+    if (currentStatusFilter !== 'all') {
+      templates = templates.filter(t => t.status === currentStatusFilter);
+    }
+    if (currentCategoryFilter !== 'all') {
+      templates = templates.filter(t => t.category === currentCategoryFilter);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      templates = templates.filter(t => t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q));
+    }
+
+    const selectedTemplate = data.briefTemplates.find(t => t.id === selectedTemplateId) || data.briefTemplates[0];
+
+    main.innerHTML = `
+      ${banner()}
+
+      ${App.header(
+        'QUẢN TRỊ HỆ THỐNG & CHUẨN HÓA',
+        'Quản lý Mẫu Brief & Cấu hình AI-1',
+        'Chuẩn hóa biểu mẫu yêu cầu sáng tạo theo ngành hàng và cấu hình Prompt gợi ý cho module AI Brief Structurer.',
+        `
+          <button class="button primary" id="add-template-btn">
+            ${icon('plus')} Thêm mẫu Brief mới
+          </button>
+        `
+      )}
+
+      <!-- Toolbar lọc & tìm kiếm -->
+      <div class="toolbar">
+        <div class="search-box">
+          ${icon('search')}
+          <input type="search" id="tpl-search" placeholder="Tìm kiếm mẫu brief..." value="${esc(searchQuery)}">
+        </div>
+
+        <select id="status-filter">
+          <option value="all" ${currentStatusFilter === 'all' ? 'selected' : ''}>Tất cả trạng thái</option>
+          <option value="Active Template" ${currentStatusFilter === 'Active Template' ? 'selected' : ''}>Đang áp dụng (Active Template)</option>
+          <option value="Inactive" ${currentStatusFilter === 'Inactive' ? 'selected' : ''}>Tạm ngừng (Inactive)</option>
+          <option value="Custom" ${currentStatusFilter === 'Custom' ? 'selected' : ''}>Tùy biến (Custom)</option>
+        </select>
+
+        <select id="cat-filter">
+          <option value="all" ${currentCategoryFilter === 'all' ? 'selected' : ''}>Tất cả ngành hàng</option>
+          <option value="Branding" ${currentCategoryFilter === 'Branding' ? 'selected' : ''}>Branding</option>
+          <option value="Packaging" ${currentCategoryFilter === 'Packaging' ? 'selected' : ''}>Packaging</option>
+          <option value="UI/UX" ${currentCategoryFilter === 'UI/UX' ? 'selected' : ''}>UI/UX</option>
+          <option value="Campaign" ${currentCategoryFilter === 'Campaign' ? 'selected' : ''}>Campaign</option>
+        </select>
+
+        <span class="toolbar-count">Tổng cộng <strong>${templates.length}</strong> mẫu brief</span>
+      </div>
+
+      <!-- Lưới các Mẫu Brief định sẵn -->
+      <section class="template-grid">
+        ${templates.map(tpl => {
+          const isActive = tpl.status === 'Active Template';
+          const isCustom = tpl.status === 'Custom';
+          let badgeColor = isActive ? 'green' : (isCustom ? 'purple' : 'gray');
+          const isSelected = tpl.id === selectedTemplateId;
+
+          return `
+            <div class="template-card ${isActive ? 'active-card' : ''} ${isCustom ? 'custom-card' : ''} ${!isActive && !isCustom ? 'inactive-card' : ''} ${isSelected ? 'selected-card' : ''}">
+              <div class="template-card-header">
+                <div>
+                  <span class="template-category-badge">${esc(tpl.category)}</span>
+                  <h3>${esc(tpl.name)}</h3>
+                </div>
+                <span class="badge ${badgeColor}">${esc(tpl.status)}</span>
+              </div>
+
+              <p class="template-desc">${esc(tpl.description)}</p>
+
+              <div class="template-sections-box">
+                <strong>Các trường thông tin chuẩn hóa:</strong>
+                <div class="template-sections-list">
+                  ${(tpl.sections || []).map(sec => `<span class="section-pill">${esc(sec)}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="admin-brief-template-management-card-actions row between">
+                <button class="button small select-template-btn ${isSelected ? 'primary' : ''}" data-id="${tpl.id}">
+                  ${icon('spark')} ${isSelected ? 'Đang cấu hình AI' : 'Xem cấu hình Prompt'}
+                </button>
+
+                <button class="button small toggle-status-btn" data-id="${tpl.id}" title="Đổi trạng thái">
+                  ${isActive ? 'Tắt mẫu' : 'Bật mẫu'}
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </section>
+
+      <!-- KHUNG CẤU HÌNH PROMPT CHO AI-1 (BRIEF STRUCTURER) -->
+      <section class="prompt-config-card" id="ai-prompt-config-section">
+        <div class="panel-title">
+          <div>
+            <h2>Cấu hình Prompt gợi ý cho AI-1 (Brief Structurer)</h2>
+            <p>Cấu hình System Prompt điều khiển cách AI chuyển hóa mô tả thô của khách hàng thành brief chuẩn cho mẫu <strong>${esc(selectedTemplate.name)}</strong></p>
+          </div>
+          <span class="badge purple">${esc(selectedTemplate.category)}</span>
+        </div>
+
+        <p class="admin-brief-template-management-prompt-help">
+          Các biến tham số hệ thống hỗ trợ chèn vào prompt:
+        </p>
+        <div class="token-pill-group">
+          <span class="token-pill" data-token="{raw_input}">{raw_input} (Mô tả thô của khách)</span>
+          <span class="token-pill" data-token="{category}">{category} (Ngành hàng)</span>
+          <span class="token-pill" data-token="{deliverables}">{deliverables} (Sản phẩm bàn giao)</span>
+          <span class="token-pill" data-token="{tone_voice}">{tone_voice} (Tone & Mood)</span>
+        </div>
+
+        <label class="field">
+          <span>System Prompt Template cho AI-1: *</span>
+          <textarea id="prompt-editor" class="prompt-textarea" rows="4">${esc(selectedTemplate.promptTemplate)}</textarea>
+        </label>
+
+        <div class="admin-brief-template-management-prompt-actions row between">
+          <button class="button primary" id="save-prompt-btn">${icon('check')} Lưu cấu hình Prompt</button>
+          <button class="button" id="reset-prompt-btn">Khôi phục Prompt mặc định</button>
+        </div>
+
+        <!-- Công cụ kiểm thử trực quan cấu hình Prompt AI -->
+        <div class="prompt-tester">
+          <h4>${icon('spark')} Thử nghiệm Prompt AI với mô tả mẫu</h4>
+          <p class="admin-brief-template-management-test-help muted">Kiểm tra xem Prompt được cấu hình có trích xuất đúng các trường thông tin không.</p>
+
+          <div class="admin-brief-template-management-test-form row">
+            <label class="admin-brief-template-management-test-field field">
+              <span>Mô tả thô mẫu của khách hàng:</span>
+              <input type="text" id="test-raw-input" value="Chúng tôi cần thiết kế hộp quà cà phê 2 túi, phong cách mộc mạc organic, dùng giấy kraft và xanh lá trầm.">
+            </label>
+            <button class="button primary" id="run-test-ai-btn">${icon('spark')} Chạy thử nghiệm AI-1</button>
+          </div>
+
+          <div id="test-output-box" class="admin-brief-template-management-test-output-hidden prompt-test-output"></div>
+        </div>
+      </section>
+    `;
+
+    // 1. Lọc và tìm kiếm
+    $('#tpl-search').oninput = e => {
+      searchQuery = e.target.value;
+      renderTemplateManagement();
+    };
+
+    $('#status-filter').onchange = e => {
+      currentStatusFilter = e.target.value;
+      renderTemplateManagement();
+    };
+
+    $('#cat-filter').onchange = e => {
+      currentCategoryFilter = e.target.value;
+      renderTemplateManagement();
+    };
+
+    // 2. Chọn template để cấu hình prompt
+    $$('.select-template-btn').forEach(btn => {
+      btn.onclick = () => {
+        selectedTemplateId = btn.dataset.id;
+        renderTemplateManagement();
+        const elem = document.getElementById('ai-prompt-config-section');
+        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+      };
+    });
+
+    // 3. Đổi trạng thái Bật/Tắt mẫu
+    $$('.toggle-status-btn').forEach(btn => {
+      btn.onclick = () => {
+        const tid = btn.dataset.id;
+        App.action(() => {
+          Store.toggleBriefTemplate(user.id, tid);
+        }, 'Đã cập nhật trạng thái áp dụng mẫu brief.');
+      };
+    });
+
+    // 4. Click token pill để chèn vào textarea
+    $$('.token-pill').forEach(pill => {
+      pill.onclick = () => {
+        const token = pill.dataset.token;
+        const editor = $('#prompt-editor');
+        if (editor) {
+          editor.value += ' ' + token;
+          toast(`Đã chèn biến ${token}`);
+        }
+      };
+    });
+
+    // 5. Lưu Prompt Template
+    $('#save-prompt-btn').onclick = () => {
+      const newPrompt = $('#prompt-editor').value;
+      App.action(() => {
+        Store.saveBriefTemplate(user.id, {
+          ...selectedTemplate,
+          promptTemplate: newPrompt
+        });
+      }, 'Đã lưu cấu hình Prompt cho AI-1 thành công!');
+    };
+
+    // 6. Chạy thử nghiệm AI-1
+    $('#run-test-ai-btn').onclick = () => {
+      const sampleInput = $('#test-raw-input').value;
+      const currentPrompt = $('#prompt-editor').value;
+      const outBox = $('#test-output-box');
+
+      outBox.style.display = 'block';
+      outBox.innerHTML = `<em>Đang chạy mô phỏng AI-1 với Prompt vừa cấu hình...</em>`;
+
+      setTimeout(() => {
+        outBox.innerHTML = `
+          <div class="admin-brief-template-management-test-result-title">[AI-1 Output Simulation] Brief có cấu trúc chuẩn hóa:</div>
+          <strong>1. Bối cảnh & Mục tiêu cốt lõi:</strong> Thiết kế hộp quà 2 túi sản phẩm, phục vụ mục đích quà tặng cao cấp mang thông điệp thiên nhiên.<br>
+          <strong>2. Giá trị định vị & Tone of Voice:</strong> Mộc mạc, gần gũi (Organic), Tự nhiên & Tin cậy.<br>
+          <strong>3. Sản phẩm bàn giao (Deliverables):</strong> 01 Hộp quà cứng kraft, 02 Nhãn túi cà phê 250g, 01 Thiệp cảm ơn đi kèm.<br>
+          <strong>4. Quy chuẩn thẩm mỹ đề xuất:</strong> Màu xanh rừng già (#24473B) phối tông kraft nâu cát (#CBBB97).<br>
+          <strong>5. Khuyến nghị rủi ro:</strong> Chú ý độ bám mực trên bề mặt giấy kraft tái chế sần.
+        `;
+      }, 800);
+    };
+
+    // 7. Thêm mẫu Brief mới
+    $('#add-template-btn').onclick = () => {
+      App.modal(
+        'Thêm mẫu Brief chuẩn hóa mới',
+        `
+          ${App.field('Tên biểu mẫu brief *', 'name', '', 'text', 'required minlength="3" placeholder="Ví dụ: Thiết kế Logo Doanh nghiệp"')}
+          <div class="form-grid">
+            ${App.select('Ngành hàng / Phân loại *', 'category', [
+              ['Branding', 'Branding (Nhận diện thương hiệu)'],
+              ['Packaging', 'Packaging (Bao bì sản phẩm)'],
+              ['UI/UX', 'UI/UX (Sản phẩm số)'],
+              ['Campaign', 'Campaign (Chiến dịch truyền thông)']
+            ], 'Branding')}
+            ${App.select('Trạng thái khởi tạo *', 'status', [
+              ['Active Template', 'Đang áp dụng (Active)'],
+              ['Custom', 'Tùy biến (Custom)'],
+              ['Inactive', 'Tạm ngừng (Inactive)']
+            ], 'Active Template')}
+          </div>
+          ${App.textField('Mô tả phạm vi ứng dụng', 'description', '', 'placeholder="Mô tả mục đích sử dụng mẫu brief này..."')}
+          ${App.textField('System Prompt cấu hình cho AI-1 *', 'promptTemplate', 'Bạn là Creative Director AI. Hãy phân tích yêu cầu thô sau và chuẩn hóa thành brief với 5 mục: 1. Mục tiêu; 2. Deliverables; 3. Tone of voice; 4. Quy chuẩn; 5. Rủi ro. Dữ liệu: {raw_input}', 'required minlength="10"')}
+        `,
+        formData => {
+          Store.saveBriefTemplate(user.id, formData);
+        },
+        'Tạo mẫu Brief'
+      );
+    };
+  }
+});

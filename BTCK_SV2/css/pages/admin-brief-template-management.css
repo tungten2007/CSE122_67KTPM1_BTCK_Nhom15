@@ -179,3 +179,48 @@
   margin-top: 12px;
   white-space: pre-line;
 }
+
+.template-card.selected-card {
+  outline: 2px solid var(--primary);
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-card-actions {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-prompt-help {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-prompt-actions {
+  margin-top: 14px;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-test-help {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-test-form {
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-test-field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-test-output-hidden {
+  display: none;
+}
+
+.page-admin-brief-template-management .admin-brief-template-management-test-result-title {
+  color: #15803d;
+  font-weight: 700;
+  margin-bottom: 6px;
+}

@@ -7,6 +7,27 @@
 
 ---
 
+**Mục lục**
+
+<!-- AUTO-TOC:START -->
+
+- [1. Hướng dẫn Mở và Chạy Website trên Windows / VS Code](#1-hướng-dẫn-mở-và-chạy-website-trên-windows--vs-code)
+  - [Cách 1: Sử dụng VS Code Live Server (Khuyến nghị)](#cách-1-sử-dụng-vs-code-live-server-khuyến-nghị)
+  - [Cách 2: Mở trực tiếp bằng Trình duyệt](#cách-2-mở-trực-tiếp-bằng-trình-duyệt)
+- [2. Bảng Kiểm kê Màn hình SV2 Phụ trách](#2-bảng-kiểm-kê-màn-hình-sv2-phụ-trách)
+- [3. Các Trải nghiệm AI Nổi bật của SV2](#3-các-trải-nghiệm-ai-nổi-bật-của-sv2)
+  - [Trải nghiệm AI-3 — Mood Keyword Assistant (designer-moodboard.html)](#trải-nghiệm-ai-3--mood-keyword-assistant-designer-moodboardhtml)
+  - [Cấu hình System Prompt cho AI-1 (admin-brief-template-management.html)](#cấu-hình-system-prompt-cho-ai-1-admin-brief-template-managementhtml)
+- [4. Cấu trúc Thư mục Dự án](#4-cấu-trúc-thư-mục-dự-án)
+- [5. Dữ liệu & Lưu trữ LocalStorage](#5-dữ-liệu--lưu-trữ-localstorage)
+- [6. Kết quả rà soát với tài liệu nhóm](#6-kết-quả-rà-soát-với-tài-liệu-nhóm)
+
+<!-- AUTO-TOC:END -->
+
+Mục lục được sinh từ các tiêu đề cấp 2 và 3. Sau khi thêm, đổi tên hoặc sắp xếp tiêu đề, chạy `python scripts/update_readme_toc.py` để cập nhật liên kết; chạy thêm `--check` để kiểm tra mà không sửa file.
+
+---
+
 ## 1. Hướng dẫn Mở và Chạy Website trên Windows / VS Code
 
 ### Cách 1: Sử dụng VS Code Live Server (Khuyến nghị)
@@ -81,13 +102,27 @@ c:\BTCK_SV2\
 │   ├── base.css                         # UI Kit, Design Tokens, Sidebar, Topbar, Dialog, Toast
 │   ├── navigation.css                   # Menu drawer responsive, huy hiệu chuông thông báo
 │   └── pages/
-│       ├── designer.css                 # Phong cách riêng của Dashboard, Moodboard, Version
-│       ├── admin-template.css           # Phong cách riêng của Brief Template Management
-│       └── shared.css                   # Phong cách riêng của Profile, Notifications, Error
+│       ├── index.css
+│       ├── designer-dashboard.css
+│       ├── designer-moodboard.css
+│       ├── designer-version-management.css
+│       ├── admin-brief-template-management.css
+│       ├── profile.css
+│       ├── notifications.css
+│       └── 404.css
 ├── js/
 │   ├── data.js                          # Dữ liệu mẫu tập trung (Seed Data)
 │   ├── store.js                         # Lớp dữ liệu CRUD, kiểm tra nghiệp vụ & LocalStorage
 │   ├── app.js                           # Khung giao diện dùng chung, modal, toast, render shell
+│   ├── pages/                           # Logic riêng từng trang, cùng tên với HTML
+│   │   ├── index.js
+│   │   ├── designer-dashboard.js
+│   │   ├── designer-moodboard.js
+│   │   ├── designer-version-management.js
+│   │   ├── admin-brief-template-management.js
+│   │   ├── profile.js
+│   │   ├── notifications.js
+│   │   └── 404.js
 │   └── modules/
 │       ├── navigation.js                # Điều hướng đa vai trò (Designer, Admin, Lead, Client)
 │       └── ai-mood-assistant.js         # Logic mô phỏng AI-3 Mood Keyword Assistant
@@ -98,6 +133,14 @@ c:\BTCK_SV2\
 ```
 
 ---
+
+Mỗi trang có bộ ba file cùng tên: `<trang>.html`, `css/pages/<trang>.css`, `js/pages/<trang>.js`. Ví dụ hồ sơ cá nhân:
+
+- `profile.html`: khung HTML, tiêu đề và các liên kết tải CSS/JS.
+- `css/pages/profile.css`: giao diện hồ sơ và responsive.
+- `js/pages/profile.js`: hiển thị dữ liệu, bật/tắt chỉnh sửa, lưu hồ sơ và xử lý mật khẩu demo.
+
+HTML không nhúng khối `<style>`, JavaScript hoặc event handler. Các kiểu trình bày cố định, kể cả trong template tạo giao diện, nằm trong CSS. JavaScript chỉ đặt màu hoặc đổi trạng thái hiển thị khi dữ liệu thay đổi. `css/base.css`, `css/navigation.css`, `js/app.js`, `js/store.js`, `js/data.js` và `js/modules/` tiếp tục dùng chung. Không đổi thứ tự các thẻ script trong HTML: dữ liệu → Store → Navigation → App → script trang (Moodboard nạp thêm AI Assistant trước App).
 
 ## 5. Dữ liệu & Lưu trữ LocalStorage
 

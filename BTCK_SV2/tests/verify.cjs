@@ -43,7 +43,12 @@ assert.equal(Navigation.canOpen('briefTemplates', u), false);
 let scripts = 0;
 for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const page = path.basename(file, '.html');
+  assert.ok(html.includes(`href="css/pages/${page}.css"`), `${file}: thiếu CSS riêng`);
+  assert.ok(html.includes(`src="js/pages/${page}.js"`), `${file}: thiếu JS riêng`);
+  assert.ok(!/<style\b|\sstyle=|\son\w+=/i.test(html), `${file}: còn CSS hoặc event nhúng`);
   for (const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)) {
+    assert.equal(match[1].trim(), '', `${file}: còn JavaScript nhúng`);
     new vm.Script(match[1], { filename: file }); scripts++;
   }
   for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
@@ -52,7 +57,7 @@ for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     assert.ok(fs.existsSync(path.join(root, target)), `${file}: thiếu ${target}`);
   }
 }
-for (const dir of ['js', 'js/modules']) for (const file of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.js'))) new vm.Script(fs.readFileSync(path.join(root, dir, file), 'utf8'), { filename: file });
+for (const dir of ['js', 'js/modules', 'js/pages']) for (const file of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.js'))) new vm.Script(fs.readFileSync(path.join(root, dir, file), 'utf8'), { filename: path.join(dir, file) });
 console.log(`PASS: phiên bản, checklist, archive, hồ sơ, mật khẩu demo, thông báo, phân quyền, home 4 role, liên kết cục bộ và ${scripts} script HTML.`);
 (async () => {
   const ai = context.AIMoodAssistant;

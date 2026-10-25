@@ -2,6 +2,18 @@
 window.App = (() => {
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+  document.addEventListener('error', event => {
+    const img = event.target;
+    if (!(img instanceof HTMLImageElement)) return;
+    if (img.dataset.fallback) {
+      const fallback = img.dataset.fallback;
+      delete img.dataset.fallback;
+      img.src = fallback;
+    } else if (img.classList.contains('avatar-image')) {
+      img.hidden = true;
+      if (img.nextElementSibling) img.nextElementSibling.hidden = false;
+    }
+  }, true);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   const icons = {
@@ -213,14 +225,15 @@ window.App = (() => {
       sync();
     } catch (e) {
       document.body.innerHTML = `
-        <main class="panel" style="max-width:560px; margin:40px auto; text-align:center;">
+        <main class="panel app-load-error">
           <h1>Không thể nạp dữ liệu</h1>
           <p class="muted">${esc(e.message)}</p>
-          <div style="margin-top:20px; display:flex; gap:10px; justify-content:center;">
-            <button class="button primary" onclick="Store.reset(); location.reload();">Khôi phục dữ liệu mẫu</button>
+          <div class="app-load-error-actions">
+            <button class="button primary" id="recover-data-btn">Khôi phục dữ liệu mẫu</button>
           </div>
         </main>
       `;
+      $('#recover-data-btn').onclick = () => { Store.reset(); location.reload(); };
       return;
     }
 
@@ -256,7 +269,7 @@ window.App = (() => {
 
   function avatar(u) {
     return u.avatarUrl
-      ? `<img class="avatar-image" src="${esc(u.avatarUrl)}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>${initials(u.name)}</span>`
+      ? `<img class="avatar-image" src="${esc(u.avatarUrl)}" alt=""><span hidden>${initials(u.name)}</span>`
       : esc(u.avatarText || u.name.split(' ').slice(-2).map(s => s[0]).join(''));
   }
 
@@ -393,7 +406,7 @@ window.App = (() => {
       'Công cụ Demo & Quản trị Dữ liệu',
       `
         <p>Bạn đang làm việc trong môi trường CreatorStudio (Phân hệ SV2). Dữ liệu được lưu trữ tự động trong LocalStorage của trình duyệt.</p>
-        <div class="stack" style="margin: 16px 0;">
+        <div class="stack demo-data-actions">
           <button type="button" id="export-data" class="button">${icon('download')} Xuất dữ liệu JSON sao lưu</button>
           <a class="button" href="404.html" target="_blank">Kiểm tra Trang 404 (Không tìm thấy)</a>
           <a class="button" href="404.html?code=403" target="_blank">Kiểm tra Trang 403 (Cấm truy cập)</a>
