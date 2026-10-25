@@ -9,7 +9,8 @@
     var target = event.target;
     if (target && target !== window && /^(SCRIPT|LINK|IMG)$/.test(target.tagName)) {
       var path = target.getAttribute('src') || target.getAttribute('href');
-      if (path && missing.indexOf(path) < 0) missing.push(path);
+      var localFontPreload = target.tagName === 'LINK' && target.rel === 'preload' && target.as === 'font' && location.protocol === 'file:' && /(^|\/)assets\/fonts\/Inter-Variable\.ttf(?:$|\?)/.test(path || '');
+      if (path && !localFontPreload && missing.indexOf(path) < 0) missing.push(path);
     }
   }, true);
   window.addEventListener('load', function () {

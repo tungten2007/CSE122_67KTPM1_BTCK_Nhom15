@@ -214,3 +214,7 @@ Minh chứng: docs/qa-multi-user-v12/result.json; tests/multi-user.test.cjs. Gó
 ## Cập nhật giao diện — khả năng nhận biết focus bàn phím (25/10/2026)
 
 Đổi màu viền `:focus-visible` từ tím nhạt `#a8a2ff` sang chàm đậm `#4338ca` trong `css/base.css` (SV1/SV3) và `css/sv2-base.css` (SV2), để focus bàn phím dễ nhận ra hơn trên nền sáng. Chưa chạy lại sweep Chromium hoặc kiểm tra zoom 200% sau cập nhật này; Figma không nằm trong phạm vi commit mã nguồn này.
+
+## Cập nhật — tránh báo nhầm lỗi preload font khi mở file cục bộ (25/10/2026)
+
+Bộ kiểm tra tài nguyên trong `index.html` bỏ qua lỗi thẻ preload font Inter khi trang được mở bằng `file://`, vì hạn chế bảo mật của trình duyệt có thể chặn font cục bộ dù file đã giải nén. Các lỗi tải script, stylesheet, ảnh và preload tài nguyên khác vẫn hiện cảnh báo; khi chạy qua Live Server, lỗi tải font vẫn được báo bình thường. `assets/fonts/Inter-Variable.ttf` có trong gói nguồn. Chưa kiểm tra lại trên trình duyệt người dùng.
