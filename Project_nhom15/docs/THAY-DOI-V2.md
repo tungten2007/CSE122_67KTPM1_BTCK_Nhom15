@@ -36,3 +36,9 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm: `tests/brief-regression.test.cjs`
 - Thêm: `tests/focus-regression.test.cjs`
 - Thêm: `tests/review-status.test.cjs`
+
+## Tích hợp phần hủy công việc — 26/10/2026
+
+- Đưa luồng hủy công việc từ `feature/sv3` vào cấu trúc đã sắp xếp của `dev`: `js/shared/store.js`, `js/sv3/app.js`, `js/sv3/pages/lead-task-board.js`, `css/sv3/pages/lead.css`.
+- Yêu cầu lý do, hiển thị cột Đã hủy, chặn chuyển/chỉnh sửa công việc đã hủy và tính trạng thái hủy là trạng thái kết thúc khi lưu trữ dự án.
+- Không chạy kiểm thử; người dùng sẽ kiểm tra thủ công.
