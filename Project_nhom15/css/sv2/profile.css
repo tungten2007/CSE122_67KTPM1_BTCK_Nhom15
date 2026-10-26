@@ -1,0 +1,107 @@
+/* Định dạng riêng của profile.html; định dạng chung ở share.css. */
+
+.profile-hero {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.avatar-large {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #eeecff 0%, #e0dbff 100%);
+  color: var(--primary-dark);
+  font-size: 28px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 16px rgba(99, 91, 255, 0.2);
+  flex-shrink: 0;
+  border: 3px solid #ffffff;
+}
+
+.profile-hero-info {
+  flex: 1;
+  min-width: 220px;
+}
+
+.profile-hero-info h2 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.profile-stats-group {
+  display: flex;
+  gap: 24px;
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+}
+
+.profile-stat-box strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.profile-stat-box small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .profile-hero {
+    padding: 24px 20px;
+  }
+  .profile-hero-info {
+    min-width: 0;
+    flex-basis: 100%;
+    overflow-wrap: anywhere;
+  }
+  .page-profile .profile-identity-row {
+    flex-wrap: wrap;
+  }
+  .profile-stats-group {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    border-left: 0;
+    padding-left: 0;
+    width: 100%;
+    margin-top: 14px;
+  }
+}
+
+.page-profile .profile-identity-row {
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.page-profile .profile-contact {
+  font-size: 13px;
+}
+
+.page-profile .profile-bio {
+  font-size: 13px;
+  color: #475569;
+  margin-top: 8px;
+}
+
+.page-profile .profile-form-actions {
+  margin-top: 20px;
+}
+
+.page-profile .profile-permissions {
+  font-size: 12px;
+  color: #64748b;
+  margin: 8px 0 0 18px;
+  line-height: 1.6;
+}

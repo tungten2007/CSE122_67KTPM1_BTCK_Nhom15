@@ -14,7 +14,7 @@ window.WorkspaceNavigation = (() => {
   const route = url => url.pathname.match(/(?:^|\/)(html\/(?:sv1|sv2|sv3)\/[^/]+\.html)$/)?.[1] || '';
   const appRoot = (doc, url) => new URL(doc.querySelector('base[href]')?.getAttribute('href') || '/', url);
   const supported = /^https?:$/.test(location.protocol);
-  const canOpen = url => supported && url.origin === location.origin && pages.has(route(url));
+  const canOpen = url => supported && url.origin === location.origin && pages.has(route(url)) && !route(url).startsWith('html/sv2/');
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true, signal:controller.signal});

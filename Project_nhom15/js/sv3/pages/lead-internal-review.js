@@ -2,7 +2,7 @@
   const A = App;
   let tab = "design",
     pinMode = false,
-    selectedVersionId = null;
+    selectedVersionId = new URLSearchParams(location.search).get("version");
   function statusNotice(v) {
     const notices = {
       "Client Review": [

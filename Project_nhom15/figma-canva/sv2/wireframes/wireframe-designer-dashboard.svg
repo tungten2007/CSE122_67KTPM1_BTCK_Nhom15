@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1200" viewBox="0 0 1440 1200" role="img" aria-labelledby="title desc"><title id="title">Wireframe · Bảng điều khiển</title><desc id="desc">Bố cục desktop của trang Bảng điều khiển trong CreatorStudio. Bản phác thảo cấu trúc đen trắng, không thể hiện thiết kế màu hoàn chỉnh.</desc><g font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1440" height="1200" rx="0" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="0" y="0" width="240" height="1200" rx="0" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<path d="M240 0V1200" fill="none" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="20" y="24" width="34" height="34" rx="6" fill="#e4e4e4" stroke="#b8b8b8" stroke-width="1"/>
+<text x="29" y="48" font-size="20" fill="#262626" font-weight="600">C</text>
+<text x="66" y="48" font-size="19" fill="#262626" font-weight="600">CreatorStudio</text>
+<rect x="20" y="88" width="200" height="64" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="36" y="114" font-size="15" fill="#262626" font-weight="600">Studio Mộc</text>
+<text x="36" y="135" font-size="12" fill="#737373" font-weight="400">Không gian làm việc</text>
+<text x="20" y="190" font-size="11" fill="#737373" font-weight="600">ĐIỀU HƯỚNG</text>
+<rect x="16" y="208" width="208" height="40" rx="6" fill="#e5e5e5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="29" y="220" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="234" font-size="14" fill="#262626" font-weight="600">Bảng điều khiển</text>
+<rect x="29" y="268" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="282" font-size="14" fill="#262626" font-weight="400">Bảng cảm hứng</text>
+<rect x="29" y="316" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="330" font-size="14" fill="#262626" font-weight="400">Quản lý phiên bản</text>
+<rect x="29" y="364" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="378" font-size="14" fill="#262626" font-weight="400">Hồ sơ cá nhân</text>
+<rect x="29" y="412" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="426" font-size="14" fill="#262626" font-weight="400">Thông báo</text>
+<path d="M20 504H220" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="20" y="536" font-size="11" fill="#737373" font-weight="400">DỰ ÁN ĐANG CHỌN</text>
+<text x="20" y="565" font-size="15" fill="#262626" font-weight="600">Tên dự án</text>
+<rect x="20" y="581" width="155" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<text x="20" y="1106" font-size="12" fill="#737373" font-weight="400">Công cụ demo &amp; dữ liệu</text>
+<circle cx="38" cy="1152" r="18" fill="#eeeeee" stroke="#b8b8b8"/>
+<text x="70" y="1148" font-size="13" fill="#262626" font-weight="600">Người dùng</text>
+<text x="70" y="1167" font-size="12" fill="#737373" font-weight="400">Designer</text>
+<rect x="240" y="0" width="1200" height="74" rx="0" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="272" y="45" font-size="14" fill="#737373" font-weight="400">Studio Mộc  /  Bảng điều khiển</text>
+<rect x="1020" y="19" width="145" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1032" y="42" font-size="13" fill="#262626" font-weight="400">Chọn dự án  ⌄</text>
+<rect x="1177" y="19" width="165" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1189" y="42" font-size="13" fill="#262626" font-weight="400">Designer  ⌄</text>
+<rect x="1354" y="19" width="38" height="36" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1367" y="43" font-size="18" fill="#262626" font-weight="400">◦</text>
+<text x="280" y="115" font-size="11" fill="#737373" font-weight="600">CREATORSTUDIO / DESIGNER</text>
+<text x="280" y="153" font-size="28" fill="#262626" font-weight="600">Bảng điều khiển</text>
+<rect x="280" y="174" width="650" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<path d="M240 1152H1440" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="280" y="1181" font-size="12" fill="#737373" font-weight="400">WIREFRAME · DESKTOP · Designer</text>
+<text x="1075" y="1181" font-size="12" fill="#737373" font-weight="400">CSE122 · Phân hệ SV2</text>
+<rect x="280" y="210" width="1120" height="46" rx="8" fill="#fafafa" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="296" y="238" font-size="12" fill="#262626" font-weight="600">Trạng thái hiển thị</text>
+<rect x="455" y="215" width="130" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="467" y="238" font-size="13" fill="#262626" font-weight="400">Bình thường</text>
+<rect x="605" y="215" width="130" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="617" y="238" font-size="13" fill="#262626" font-weight="400">Đang tải</text>
+<rect x="735" y="215" width="130" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="747" y="238" font-size="13" fill="#262626" font-weight="400">Rỗng</text>
+<rect x="845" y="215" width="130" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="857" y="238" font-size="13" fill="#262626" font-weight="400">Cảnh báo gấp</text>
+<rect x="280" y="278" width="259" height="110" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="320" font-size="28" fill="#262626" font-weight="600">02</text>
+<text x="300" y="355" font-size="13" fill="#737373" font-weight="400">Nhiệm vụ cần xử lý</text>
+<rect x="567" y="278" width="259" height="110" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="587" y="320" font-size="28" fill="#262626" font-weight="600">02</text>
+<text x="587" y="355" font-size="13" fill="#737373" font-weight="400">Cảnh báo gần hạn</text>
+<rect x="854" y="278" width="259" height="110" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="874" y="320" font-size="28" fill="#262626" font-weight="600">01</text>
+<text x="874" y="355" font-size="13" fill="#737373" font-weight="400">Phiên bản đang duyệt</text>
+<rect x="1141" y="278" width="259" height="110" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1161" y="320" font-size="28" fill="#262626" font-weight="600">02</text>
+<text x="1161" y="355" font-size="13" fill="#737373" font-weight="400">Dự án tham gia</text>
+<rect x="280" y="414" width="1120" height="84" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="446" font-size="19" fill="#262626" font-weight="600">Cảnh báo công việc cần ưu tiên</text>
+<text x="300" y="476" font-size="13" fill="#737373" font-weight="400">Thông tin hạn chót và tình trạng nhiệm vụ của dự án đang chọn.</text>
+<rect x="1205" y="438" width="175" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1217" y="461" font-size="13" fill="#262626" font-weight="400">Xem công việc gấp</text>
+<rect x="280" y="520" width="1120" height="84" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="552" font-size="19" fill="#262626" font-weight="600">Gợi ý ưu tiên / Liên kết Moodboard</text>
+<rect x="300" y="572" width="730" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="280" y="626" width="1120" height="462" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="658" font-size="19" fill="#262626" font-weight="600">Hàng đợi công việc</text>
+<rect x="1205" y="643" width="175" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1217" y="666" font-size="13" fill="#262626" font-weight="600">+ Thêm nhiệm vụ</text>
+<text x="300" y="705" font-size="13" fill="#262626" font-weight="600">Tìm kiếm</text>
+<rect x="300" y="717" width="470" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="743" font-size="13" fill="#737373" font-weight="400">Tìm theo tên / mô tả…</text>
+<rect x="788" y="717" width="170" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="800" y="740" font-size="13" fill="#262626" font-weight="400">Trạng thái  ⌄</text>
+<rect x="974" y="717" width="170" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="986" y="740" font-size="13" fill="#262626" font-weight="400">Ưu tiên  ⌄</text>
+<text x="1195" y="741" font-size="12" fill="#737373" font-weight="400">Số lượng kết quả</text>
+<rect x="300" y="780" width="1080" height="78" rx="8" fill="#fdfdfd" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="316" y="800" width="18" height="18" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="352" y="808" font-size="14" fill="#262626" font-weight="600">Tên nhiệm vụ thiết kế</text>
+<rect x="352" y="825" width="420" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="915" y="802" width="80" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="924" y="819" font-size="11" fill="#262626" font-weight="400">Ưu tiên</text>
+<rect x="1012" y="802" width="135" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1021" y="819" font-size="11" fill="#262626" font-weight="400">Hạn hoàn thành</text>
+<rect x="1165" y="798" width="190" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1177" y="821" font-size="13" fill="#262626" font-weight="400">Đổi trạng thái  ⌄</text>
+<rect x="300" y="873" width="1080" height="78" rx="8" fill="#fdfdfd" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="316" y="893" width="18" height="18" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="352" y="901" font-size="14" fill="#262626" font-weight="600">Tên nhiệm vụ thiết kế</text>
+<rect x="352" y="918" width="420" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="915" y="895" width="80" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="924" y="912" font-size="11" fill="#262626" font-weight="400">Ưu tiên</text>
+<rect x="1012" y="895" width="135" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1021" y="912" font-size="11" fill="#262626" font-weight="400">Hạn hoàn thành</text>
+<rect x="1165" y="891" width="190" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1177" y="914" font-size="13" fill="#262626" font-weight="400">Đổi trạng thái  ⌄</text>
+<rect x="300" y="966" width="1080" height="78" rx="8" fill="#fdfdfd" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="316" y="986" width="18" height="18" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="352" y="994" font-size="14" fill="#262626" font-weight="600">Tên nhiệm vụ thiết kế</text>
+<rect x="352" y="1011" width="420" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="915" y="988" width="80" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="924" y="1005" font-size="11" fill="#262626" font-weight="400">Ưu tiên</text>
+<rect x="1012" y="988" width="135" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1021" y="1005" font-size="11" fill="#262626" font-weight="400">Hạn hoàn thành</text>
+<rect x="1165" y="984" width="190" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1177" y="1007" font-size="13" fill="#262626" font-weight="400">Đổi trạng thái  ⌄</text>
+</g></svg>

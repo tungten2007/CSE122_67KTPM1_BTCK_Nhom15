@@ -32,6 +32,7 @@ def check(root=ROOT):
     for html in root.rglob('*.html'):Links(html.parent).feed(html.read_text(encoding='utf-8'))
     return sorted(set(errors))
 if __name__=='__main__':
+    if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
     issues=check()
     if issues:
         print('THIEU FILE — khong gui rieng HTML. Giai nen lai ca ZIP:')

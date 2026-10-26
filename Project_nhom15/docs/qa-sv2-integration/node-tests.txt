@@ -1,0 +1,59 @@
+PASS inactive assignee requires explicit selection; mobile column follows successful move and retains previous state after failed save (DOM stub).
+PASS task dialog retains status; brief approval states Todo and has no ignored dropdown. Stub DOM only.
+PASS template permissions, Inactive-only deletion, invalid data rollback, persistence and referenced brief preservation.
+PASS focus helper 6 cases: id, data identity, removed, disabled, text selection, outside. Stub DOM only.
+PASS multiple accounts, explicit identity, version ownership and independent Lead notifications.
+PASS 4 vai trò: chọn tài khoản hoạt động, lưu currentUser và URL đích tồn tại
+PASS khôi phục vai trò qua phiên mới
+PASS bảo vệ điều hướng đúng vai trò và tài khoản hoạt động
+PASS vai trò thiếu/tài khoản bị khóa và trang chờ ghép
+PASS cấu hình ghép phân hệ (URL thật chỉ bật khi ready)
+5 nhóm kiểm thử điều hướng đạt. Không thay thế test DOM/trình duyệt.
+PASS review HTML render states: Internal Review, Client Review, Changes Requested, Approved. Stub DOM only, not browser.
+PASS: healthy startup has no warning; missing files are deduplicated and rendered as text.
+PASS Hủy và xóa task: lý do, quyền, trạng thái và lưu qua tải lại
+PASS Xóa user giữ nguyên dữ liệu khi bị chặn và xóa được user mới chưa liên kết
+PASS Tạo, sửa, chuyển cột và tải lại vẫn giữ dữ liệu
+PASS Validation và phân quyền chặn ghi sai
+PASS Duyệt brief tạo đúng một việc; không duyệt lặp
+PASS Yêu cầu bổ sung có lý do và không tự tạo việc
+PASS Thao tác brief không hợp lệ giữ nguyên brief, công việc và lịch sử
+PASS Duyệt chỉ qua khi checklist xong và mọi ghi chú đã xử lý
+PASS Tọa độ ghim giữ số 0 ở mép ảnh, giới hạn biên và mặc định giá trị không hợp lệ
+PASS Công việc có người phụ trách đã khóa phải chọn lại rõ ràng
+PASS Tạo, sửa, giải quyết ghi chú và yêu cầu sửa phiên bản
+PASS Người dùng: tạo, sửa, email trùng, khóa/mở khóa, tự khóa
+PASS Quy tắc studio và CRUD nhãn bảo toàn dự án
+PASS Lưu trữ chặn dự án đang mở và khóa mọi sửa liên quan
+PASS Không giả lưu khi LocalStorage đầy
+PASS AI → sửa → tạo task, chặn mơ hồ và trùng, từ chối giữ nguồn, lưu qua tải lại
+PASS AI thiếu dữ liệu và lỗi mô phỏng
+
+17 nhóm kiểm thử nghiệp vụ đạt.
+PASS SV2 and SV3 share one canonical data key
+PASS Designer creates Draft; Client cannot see unsubmitted version
+PASS Checklist blocks submission and leaves persisted data unchanged
+PASS Submission reaches every active Lead, with exact project/version URL
+PASS Lead receives after reload, resolves deep-link project, requests changes back to author
+PASS Different Designer cannot edit or submit another author version
+PASS Author resubmits, Lead passes, Client sees same version
+PASS Moodboard preserves cards and full existing AI details through reload
+PASS Stale page refuses to erase data saved by another role
+PASS Notification actions are scoped to the current account
+PASS Write failure and corrupt data do not produce success or reset data
+PASS Six pages load external JS after shared data and link to existing files
+12 SV2 linked groups passed
+PASS TASK16: pending default, scoped selector, retained selection, project switch, selected action target, read-only controls, invalid action rollback (DOM stub).
+PASS TASK17 page: scoped version labels/header/options, required explicit assignee, correct saved version, invalid version rollback, project selection reset, single-version fallback (DOM stub).
+PASS Client creates project and submits brief to canonical store
+PASS Lead accepts same brief and assigns Designer
+PASS Designer submits real version; draft invisible to Client
+PASS Lead passes version; Client sees same ID and image
+PASS Client feedback preserves other versions and becomes Lead input
+PASS Designer resubmits, Lead passes, Client approves and reload persists
+PASS Role homes resolve to actual files
+PASS Concurrent update does not erase unrelated tasks
+PASS Storage failure is atomic
+PASS Linked project deletion rejected
+PASS Review history and previous-version display remain correct after reload
+11 integration groups passed

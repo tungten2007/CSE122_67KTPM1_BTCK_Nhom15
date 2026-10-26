@@ -1,0 +1,258 @@
+[
+  {
+    "page": "index",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "designer-version-management",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "profile",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "notifications",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "404",
+    "client": 320,
+    "h1": 1,
+    "main": 1,
+    "scroll": 320,
+    "width": 320
+  },
+  {
+    "page": "admin",
+    "client": 305,
+    "h1": 1,
+    "main": 1,
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "page": "index",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "designer-version-management",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "profile",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "notifications",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "404",
+    "client": 375,
+    "h1": 1,
+    "main": 1,
+    "scroll": 375,
+    "width": 375
+  },
+  {
+    "page": "admin",
+    "client": 360,
+    "h1": 1,
+    "main": 1,
+    "scroll": 360,
+    "width": 375
+  },
+  {
+    "page": "index",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "designer-version-management",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "profile",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "notifications",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "404",
+    "client": 768,
+    "h1": 1,
+    "main": 1,
+    "scroll": 768,
+    "width": 768
+  },
+  {
+    "page": "admin",
+    "client": 753,
+    "h1": 1,
+    "main": 1,
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "page": "index",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "designer-version-management",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "profile",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "notifications",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "page": "404",
+    "client": 1280,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1280,
+    "width": 1280
+  },
+  {
+    "page": "admin",
+    "client": 1265,
+    "h1": 1,
+    "main": 1,
+    "scroll": 1265,
+    "width": 1280
+  }
+]

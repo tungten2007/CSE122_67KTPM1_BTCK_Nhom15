@@ -1,0 +1,1077 @@
+{
+  "date": "2026-10-27",
+  "note": "Null-src images in Client Review were inspected and confirmed hidden placeholders (getClientRects().length === 0).",
+  "checks": [
+    {
+      "label": "Admin: Brief templates",
+      "url": "http://127.0.0.1:8016/html/sv2/admin-brief-template-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Quản lý Mẫu Brief & Cấu hình AI-1"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Admin: Project settings",
+      "url": "http://127.0.0.1:8016/html/sv3/admin-project-settings.html",
+      "brokenImages": [],
+      "h1": [
+        "Thiết lập dự án"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Thiết lập dự án · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Admin: Users",
+      "url": "http://127.0.0.1:8016/html/sv3/admin-user-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Quản lý người dùng"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Quản lý người dùng · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Client: Project overview",
+      "url": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+      "brokenImages": [],
+      "h1": [
+        "Dự án của tôi."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Dự án của tôi — CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Client: Creative brief",
+      "url": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+      "brokenImages": [],
+      "h1": [
+        "Một brief tốt. Một khởi đầu hay."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Creative Brief — CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Client: Review versions",
+      "url": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+      "brokenImages": [],
+      "h1": [
+        "Góc nhìn của bạn tạo khác biệt."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Duyệt phiên bản — CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 2
+    },
+    {
+      "label": "Lead: Task board",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-task-board.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng công việc"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Bảng công việc · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Lead: Internal review",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-internal-review.html",
+      "brokenImages": [],
+      "h1": [
+        "Duyệt nội bộ"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Duyệt nội bộ · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Lead: Feedback summary",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-feedback-summary.html",
+      "brokenImages": [],
+      "h1": [
+        "Tổng hợp phản hồi"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Tổng hợp phản hồi · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Designer: Dashboard / selected project retained",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-dashboard.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng điều khiển & Ưu tiên công việc"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Designer: Moodboard",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-moodboard.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng cảm hứng Trà Thủ công Lúa Tea"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Designer: Version management",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-version-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Kiểm soát Phiên bản Thiết kế"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1280,
+      "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+      "width": 1280,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv2/designer-dashboard.html",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-dashboard.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng điều khiển & Ưu tiên công việc"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv2/designer-moodboard.html",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-moodboard.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng cảm hứng Trà Thủ công Lúa Tea"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv2/designer-version-management.html",
+      "url": "http://127.0.0.1:8016/html/sv2/designer-version-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Kiểm soát Phiên bản Thiết kế"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 320,
+      "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+      "width": 320,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv2/profile.html",
+      "url": "http://127.0.0.1:8016/html/sv2/profile.html",
+      "brokenImages": [],
+      "h1": [
+        "Hồ sơ Cá nhân & Thiết lập Tài khoản"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv2/notifications.html",
+      "url": "http://127.0.0.1:8016/html/sv2/notifications.html",
+      "brokenImages": [],
+      "h1": [
+        "Thông báo & Biến động Dự án"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/designer-dashboard.html",
+          "text": "Bảng điều khiển"
+        },
+        {
+          "href": "html/sv2/designer-moodboard.html",
+          "text": "Bảng cảm hứng"
+        },
+        {
+          "href": "html/sv2/designer-version-management.html",
+          "text": "Quản lý phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: Admin users",
+      "url": "http://127.0.0.1:8016/html/sv3/admin-user-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Quản lý người dùng"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Quản lý người dùng · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: Admin templates",
+      "url": "http://127.0.0.1:8016/html/sv2/admin-brief-template-management.html",
+      "brokenImages": [],
+      "h1": [
+        "Quản lý Mẫu Brief & Cấu hình AI-1"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: Admin settings",
+      "url": "http://127.0.0.1:8016/html/sv3/admin-project-settings.html",
+      "brokenImages": [],
+      "h1": [
+        "Thiết lập dự án"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv2/admin-brief-template-management.html",
+          "text": "Mẫu Brief & AI"
+        },
+        {
+          "href": "html/sv3/admin-user-management.html",
+          "text": "Người dùng"
+        },
+        {
+          "href": "html/sv3/admin-project-settings.html",
+          "text": "Thiết lập dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Thiết lập dự án · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv3/lead-task-board.html",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-task-board.html",
+      "brokenImages": [],
+      "h1": [
+        "Bảng công việc"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Bảng công việc · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv3/lead-internal-review.html",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-internal-review.html",
+      "brokenImages": [],
+      "h1": [
+        "Duyệt nội bộ"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Duyệt nội bộ · CreatorStudio",
+      "width": 320,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv3/lead-feedback-summary.html",
+      "url": "http://127.0.0.1:8016/html/sv3/lead-feedback-summary.html",
+      "brokenImages": [],
+      "h1": [
+        "Tổng hợp phản hồi"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv3/lead-task-board.html",
+          "text": "Bảng công việc"
+        },
+        {
+          "href": "html/sv3/lead-internal-review.html",
+          "text": "Duyệt nội bộ"
+        },
+        {
+          "href": "html/sv3/lead-feedback-summary.html",
+          "text": "Tổng hợp phản hồi"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Tổng hợp phản hồi · CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv1/client-project-overview.html",
+      "url": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+      "brokenImages": [],
+      "h1": [
+        "Dự án của tôi."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Dự án của tôi — CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv1/client-creative-brief.html",
+      "url": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+      "brokenImages": [],
+      "h1": [
+        "Một brief tốt. Một khởi đầu hay."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Creative Brief — CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv1/client-review-versions.html",
+      "url": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+      "brokenImages": [],
+      "h1": [
+        "Góc nhìn của bạn tạo khác biệt."
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-project-overview.html",
+          "text": "▦Dự án của tôi"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-creative-brief.html",
+          "text": "▤Creative Brief"
+        },
+        {
+          "href": "http://127.0.0.1:8016/html/sv1/client-review-versions.html",
+          "text": "◫Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "Duyệt phiên bản — CreatorStudio",
+      "width": 320,
+      "hiddenImagePlaceholders": 2
+    },
+    {
+      "label": "Mobile 320: html/sv1/index.html",
+      "url": "http://127.0.0.1:8016/html/sv1/index.html",
+      "brokenImages": [],
+      "h1": [
+        "Từ ý tưởng nhỏ.Đến điều khác biệt."
+      ],
+      "main": 1,
+      "nav": [],
+      "scrollWidth": 305,
+      "title": "CreatorStudio — Cùng nhau tạo điều khác biệt",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv1/login.html",
+      "url": "http://127.0.0.1:8016/html/sv1/login.html",
+      "brokenImages": [],
+      "h1": [
+        "Mọi sáng tạo hayđều bắt đầu bằngmột kết nối."
+      ],
+      "main": 1,
+      "nav": [],
+      "scrollWidth": 305,
+      "title": "Đăng nhập — CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv1/register.html",
+      "url": "http://127.0.0.1:8016/html/sv1/register.html",
+      "brokenImages": [],
+      "h1": [
+        "Mọi sáng tạo hayđều bắt đầu bằngmột kết nối."
+      ],
+      "main": 1,
+      "nav": [],
+      "scrollWidth": 305,
+      "title": "Đăng ký — CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/sv3/404.html",
+      "url": "http://127.0.0.1:8016/html/sv3/404.html",
+      "brokenImages": [],
+      "h1": [
+        "Có vẻ bạn đã đi lạc một chút"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv1/client-creative-brief.html",
+          "text": "Creative Brief"
+        },
+        {
+          "href": "html/sv1/client-review-versions.html",
+          "text": "Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv1/client-project-overview.html",
+          "text": "Tổng quan dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 305,
+      "title": "404 · CreatorStudio",
+      "width": 320,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Mobile 320: html/shared/api-demo.html",
+      "url": "http://127.0.0.1:8016/html/shared/api-demo.html",
+      "brokenImages": [],
+      "h1": [
+        "Demo API dự án"
+      ],
+      "main": 1,
+      "nav": [],
+      "scrollWidth": 305,
+      "title": "Demo REST API dự án — CreatorStudio",
+      "width": 305,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Client: Shared profile",
+      "url": "http://127.0.0.1:8016/html/sv2/profile.html",
+      "brokenImages": [],
+      "h1": [
+        "Hồ sơ Cá nhân & Thiết lập Tài khoản"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv1/client-creative-brief.html",
+          "text": "Creative Brief"
+        },
+        {
+          "href": "html/sv1/client-review-versions.html",
+          "text": "Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv1/client-project-overview.html",
+          "text": "Tổng quan dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1265,
+      "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+      "width": 1265,
+      "hiddenImagePlaceholders": 0
+    },
+    {
+      "label": "Client: Shared notifications",
+      "url": "http://127.0.0.1:8016/html/sv2/notifications.html",
+      "brokenImages": [],
+      "h1": [
+        "Thông báo & Biến động Dự án"
+      ],
+      "main": 1,
+      "nav": [
+        {
+          "href": "html/sv1/client-creative-brief.html",
+          "text": "Creative Brief"
+        },
+        {
+          "href": "html/sv1/client-review-versions.html",
+          "text": "Duyệt phiên bản"
+        },
+        {
+          "href": "html/sv1/client-project-overview.html",
+          "text": "Tổng quan dự án"
+        },
+        {
+          "href": "html/sv2/profile.html",
+          "text": "Hồ sơ cá nhân"
+        },
+        {
+          "href": "html/sv2/notifications.html",
+          "text": "Thông báo"
+        }
+      ],
+      "scrollWidth": 1280,
+      "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+      "width": 1280,
+      "hiddenImagePlaceholders": 0
+    }
+  ]
+}

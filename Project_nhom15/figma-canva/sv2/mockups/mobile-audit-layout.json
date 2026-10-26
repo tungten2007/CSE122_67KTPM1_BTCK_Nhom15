@@ -1,0 +1,146 @@
+[
+  {
+    "page": "index",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "designer-version-management",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "profile",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "notifications",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "404",
+    "client": 360,
+    "scroll": 360,
+    "width": 360
+  },
+  {
+    "page": "admin",
+    "client": 345,
+    "scroll": 345,
+    "width": 360
+  },
+  {
+    "page": "index",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "designer-version-management",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "profile",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "notifications",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "404",
+    "client": 390,
+    "scroll": 390,
+    "width": 390
+  },
+  {
+    "page": "admin",
+    "client": 375,
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "page": "index",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "designer-dashboard",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "designer-moodboard",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "designer-version-management",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "profile",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "notifications",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  },
+  {
+    "page": "404",
+    "client": 430,
+    "scroll": 430,
+    "width": 430
+  },
+  {
+    "page": "admin",
+    "client": 415,
+    "scroll": 415,
+    "width": 430
+  }
+]

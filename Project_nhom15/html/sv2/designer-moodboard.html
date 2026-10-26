@@ -1,581 +1,637 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <base href="../../">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/sv2/sv2-base.css">
-  <link rel="stylesheet" href="css/sv2/sv2-navigation.css">
-  <link rel="stylesheet" href="css/sv2/pages/designer.css">
-  <link rel="stylesheet" href="css/sv3/team-shell.css">
-  <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
-  <script src="js/shared/workspace-navigation.js"></script>
+  <link rel="stylesheet" href="css/sv2/share.css">
+  <link rel="stylesheet" href="css/sv2/designer-moodboard.css">
 </head>
-<body>
-  <!-- Shell được render tự động qua App.init() -->
 
+<body class="page-designer-moodboard">
+  <a class="skip-link" href="html/sv2/designer-moodboard.html#main">Chuyển đến nội dung chính</a>
+  <div class="sidebar-shade" hidden></div>
+  <aside class="sidebar" aria-label="Điều hướng chính">
+    <a class="brand" href="html/sv2/designer-dashboard.html">
+      <span class="brand-mark">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m5 12 4 4L19 6"></path>
+        </svg>
+      </span>
+      <span>CreatorStudio</span>
+      <span class="brand-dot">®</span>
+    </a>
+    <button class="icon-button mobile-close" aria-label="Đóng menu">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 6 12 12M6 18 18 6"></path>
+      </svg>
+    </button>
+    <div class="studio">
+      <span class="studio-avatar">M</span>
+      <div>
+        <strong>Studio Mộc</strong>
+        <small>Không gian sáng tạo</small>
+      </div>
+      <span class="studio-arrow">⌄</span>
+    </div>
+    <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
+    <nav>
+      <a class="nav-link" href="html/sv2/designer-dashboard.html" data-role="Designer">
+        <span>Bảng điều khiển</span>
+      </a>
+      <a class="nav-link active" href="html/sv2/designer-moodboard.html" data-role="Designer" aria-current="page">
+        <span>Bảng cảm hứng</span>
+      </a>
+      <a class="nav-link" href="html/sv2/designer-version-management.html" data-role="Designer">
+        <span>Quản lý phiên bản</span>
+      </a>
+      <a class="nav-link" href="html/sv2/admin-brief-template-management.html" data-role="Admin" hidden="">
+        <span>Mẫu Brief &amp; AI</span>
+      </a>
+      <a class="nav-link" href="html/sv2/profile.html">
+        <span>Hồ sơ cá nhân</span>
+      </a>
+      <a class="nav-link" href="html/sv2/notifications.html">
+        <span>Thông báo</span>
+      </a>
+    </nav>
+    <div class="sidebar-project">
+      <p class="nav-caption">DỰ ÁN ĐANG CHỌN</p>
+      <strong>
+        <span class="status-dot"></span>Mộc Coffee</strong>
+      <small>Nhận diện &amp; bao bì cà phê nguyên bản</small>
+      <span class="side-tag">MC26</span>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="text-light" id="demo-tools-btn">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+        </svg>
+        Công cụ demo &amp; Dữ liệu</button>
+      <a class="profile" href="html/sv2/profile.html" title="Xem và sửa hồ sơ cá nhân">
+        <span class="avatar" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </span>
+        <div>
+          <strong data-user-name="">An Nguyễn</strong>
+          <small data-user-role="">Nhà thiết kế</small>
+        </div>
+        <span class="online" title="Đang trực tuyến"></span>
+      </a>
+      <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-button menu-toggle" aria-label="Mở menu">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <div class="breadcrumb">
+        Studio Mộc <span>/</span>
+        <strong>Bảng cảm hứng</strong>
+      </div>
+      <div class="top-actions">
+        <label class="sr-only" for="project-select">Dự án</label>
+        <select id="project-select" aria-label="Chọn dự án">
+          <option value="p-moc" selected>
+            Mộc Coffee
+          </option>
+          <option value="p-lua">
+            Lúa Tea
+          </option>
+        </select>
+        <label class="sr-only" for="role-switch">Tài khoản demo</label>
+        <select id="role-switch" aria-label="Đổi vai trò demo">
+          <option value="Designer" selected>
+            Demo: Nhà thiết kế
+          </option>
+          <option value="Admin">
+            Demo: Quản trị viên
+          </option>
+          <option value="Lead">
+            Demo: Trưởng nhóm
+          </option>
+          <option value="Client">
+            Demo: Khách hàng
+          </option>
+        </select>
+        <a href="html/sv2/notifications.html" class="notification-button" id="activity-bell" title="Trung tâm thông báo"
+          aria-label="Xem thông báo">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+          </svg>
+          <span class="notification-badge" hidden>0</span>
+        </a>
+        <a href="html/sv2/profile.html" class="avatar" title="Hồ sơ An Nguyễn" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
+      <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">ĐỊNH HƯỚNG THỊ GIÁC &amp; MÀU SẮC</p>
+          <h1>Định hướng Thẩm mỹ Bao bì Mộc Coffee 2026</h1>
+          <p class="muted">Phong cách hữu cơ, mộc mạc, tôn vinh chất liệu kraft và sắc xanh trầm của cao nguyên.</p>
+        </div>
+        <div class="heading-actions">
+          <button class="button primary" id="open-ai-modal-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
+            </svg>
+            AI-3 Gợi ý phong cách &amp; Bảng màu
+          </button>
+          <button class="button soft" id="add-card-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Thêm thẻ ảnh</button>
+          <button class="button" id="share-moodboard-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Chia sẻ Moodboard
+          </button>
+        </div>
+      </section>
+      <!-- Thanh tiến trình trạng thái nghiệp vụ (Draft -> Palette Ready -> Shared) -->
+      <div class="moodboard-header-bar">
+        <div class="status-stepper">
+          <div class="status-step completed">
+            <span class="step-num">1</span>
+            <span>Bản nháp (Draft)</span>
+          </div>
+          <span class="muted">→</span>
+          <div class="status-step active">
+            <span class="step-num">2</span>
+            <span>Bảng màu hoàn thiện (Palette Ready)</span>
+          </div>
+          <span class="muted">→</span>
+          <div class="status-step ">
+            <span class="step-num">3</span>
+            <span>Đã chia sẻ (Shared)</span>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge purple">
+            Trạng thái: Palette Ready
+          </span>
+          <button class="button small" id="edit-mb-title-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+              </path>
+            </svg>
+            Sửa tiêu đề</button>
+        </div>
+      </div>
+      <!-- PHẦN 1: BẢNG MÃ MÀU HEX CHUẨN HOÁ (PALETTE MANAGER) -->
+      <section class="designer-moodboard-palette-panel panel">
+        <div class="panel-title">
+          <div>
+            <h2>Bảng mã màu thương hiệu (HEX Palette)</h2>
+            <p>Mã màu chính thức được trích xuất cho dự án Mộc Coffee. Nhấp để sao chép mã HEX.</p>
+          </div>
+          <button class="button small soft" id="add-color-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Thêm ô màu</button>
+        </div>
+        <div class="palette-container">
+          <div class="swatch-card">
+            <div class="swatch-preview">
+              <svg class="palette-color-fill" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <rect width="100" height="100" fill="#24473b"></rect>
+              </svg>
+              <button class="copy-hex-btn" data-hex="#24473b" title="Sao chép #24473b">
+                Copy HEX
+              </button>
+            </div>
+            <div class="swatch-info">
+              <div class="row between">
+                <span class="swatch-hex">#24473B</span>
+                <button class="designer-moodboard-remove-color icon-button small remove-color-btn" data-index="0"
+                  title="Xóa màu">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12M6 18 18 6"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="swatch-name">Xanh rừng già (Forest)</div>
+              <span class="swatch-role">Màu chủ đạo</span>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview">
+              <svg class="palette-color-fill" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <rect width="100" height="100" fill="#cbbb97"></rect>
+              </svg>
+              <button class="copy-hex-btn" data-hex="#cbbb97" title="Sao chép #cbbb97">
+                Copy HEX
+              </button>
+            </div>
+            <div class="swatch-info">
+              <div class="row between">
+                <span class="swatch-hex">#CBBB97</span>
+                <button class="designer-moodboard-remove-color icon-button small remove-color-btn" data-index="1"
+                  title="Xóa màu">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12M6 18 18 6"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="swatch-name">Giấy Kraft (Warm Kraft)</div>
+              <span class="swatch-role">Màu nền / Bao bì</span>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview">
+              <svg class="palette-color-fill" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <rect width="100" height="100" fill="#f6f1e5"></rect>
+              </svg>
+              <button class="copy-hex-btn" data-hex="#f6f1e5" title="Sao chép #f6f1e5">
+                Copy HEX
+              </button>
+            </div>
+            <div class="swatch-info">
+              <div class="row between">
+                <span class="swatch-hex">#F6F1E5</span>
+                <button class="designer-moodboard-remove-color icon-button small remove-color-btn" data-index="2"
+                  title="Xóa màu">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12M6 18 18 6"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="swatch-name">Trắng kem mộc (Cream)</div>
+              <span class="swatch-role">Màu tương phản phụ</span>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-preview">
+              <svg class="palette-color-fill" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <rect width="100" height="100" fill="#5a4434"></rect>
+              </svg>
+              <button class="copy-hex-btn" data-hex="#5a4434" title="Sao chép #5a4434">
+                Copy HEX
+              </button>
+            </div>
+            <div class="swatch-info">
+              <div class="row between">
+                <span class="swatch-hex">#5A4434</span>
+                <button class="designer-moodboard-remove-color icon-button small remove-color-btn" data-index="3"
+                  title="Xóa màu">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12M6 18 18 6"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="swatch-name">Nâu hạt rang (Espresso Roast)</div>
+              <span class="swatch-role">Màu chữ &amp; Nhấn</span>
+            </div>
+          </div>
+        </div>
+        <!-- PHẦN 2: TỪ KHÓA THẨM MỸ (AESTHETIC KEYWORDS) -->
+        <div class="divider"></div>
+        <div class="row between">
+          <div>
+            <h3>Từ khóa thẩm mỹ &amp; Cảm xúc (Aesthetic Keywords)</h3>
+            <p class="designer-moodboard-keywords-help muted">Các từ khóa định vị phong cách thiết kế do Designer và AI
+              thiết lập.</p>
+          </div>
+          <button class="button small" id="add-keyword-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Thêm từ khóa</button>
+        </div>
+        <div class="keyword-cloud">
+          <span class="keyword-tag removable">
+            Nguyên bản
+            <button type="button" class="remove-keyword-btn" data-index="0" title="Xóa từ khóa">×</button>
+          </span>
+          <span class="keyword-tag removable">
+            Organic / Tự nhiên
+            <button type="button" class="remove-keyword-btn" data-index="1" title="Xóa từ khóa">×</button>
+          </span>
+          <span class="keyword-tag removable">
+            Thủ công mỹ nghệ
+            <button type="button" class="remove-keyword-btn" data-index="2" title="Xóa từ khóa">×</button>
+          </span>
+          <span class="keyword-tag removable">
+            Tối giản Bắc Âu
+            <button type="button" class="remove-keyword-btn" data-index="3" title="Xóa từ khóa">×</button>
+          </span>
+          <span class="keyword-tag removable">
+            Ấm áp &amp; Tin cậy
+            <button type="button" class="remove-keyword-btn" data-index="4" title="Xóa từ khóa">×</button>
+          </span>
+        </div>
+        <p id="ai-reason" class="notice" hidden></p>
+      </section>
+      <!-- PHẦN 3: CANVAS THẺ HÌNH ẢNH CẢM HỨNG (VISUAL CARDS) -->
+      <section class="panel">
+        <div class="panel-title">
+          <div>
+            <h2>Bảng thẻ cảm hứng trực quan (Inspiration Cards)</h2>
+            <p>Các tài liệu tham chiếu về chất liệu, kiểu chữ và bố cục.</p>
+          </div>
+          <span class="designer-moodboard-card-count muted">Tổng cộng <strong>3</strong> thẻ cảm hứng</span>
+        </div>
+        <div class="canvas-grid">
+          <div class="canvas-card">
+            <div class="canvas-card-media">
+              <img src="assets/moodboard.svg" alt="Chất liệu túi giấy Kraft có vân sần"
+                data-fallback="assets/moodboard.svg">
+            </div>
+            <div class="canvas-card-body">
+              <div class="row between">
+                <span class="badge purple">Chất liệu</span>
+                <button class="designer-moodboard-remove-card icon-button small remove-card-btn" data-id="card-1"
+                  title="Xóa thẻ">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+              <h3>Chất liệu túi giấy Kraft có vân sần</h3>
+              <p>Bề mặt sần nhẹ tạo cảm giác mộc mạc, thân thiện với môi trường.</p>
+            </div>
+          </div>
+          <div class="canvas-card">
+            <div class="canvas-card-media">
+              <img src="assets/coffee.svg" alt="Typography Serif cổ điển vững chãi"
+                data-fallback="assets/moodboard.svg">
+            </div>
+            <div class="canvas-card-body">
+              <div class="row between">
+                <span class="badge purple">Typography</span>
+                <button class="designer-moodboard-remove-card icon-button small remove-card-btn" data-id="card-2"
+                  title="Xóa thẻ">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+              <h3>Typography Serif cổ điển vững chãi</h3>
+              <p>Font chữ MỘC với đường nét dày dặn, sang trọng nhưng gần gũi.</p>
+            </div>
+          </div>
+          <div class="canvas-card">
+            <div class="canvas-card-media">
+              <img src="assets/moodboard.svg" alt="Họa tiết lá chè &amp; hạt cà phê cách điệu"
+                data-fallback="assets/moodboard.svg">
+            </div>
+            <div class="canvas-card-body">
+              <div class="row between">
+                <span class="badge purple">Graphic Motif</span>
+                <button class="designer-moodboard-remove-card icon-button small remove-card-btn" data-id="card-3"
+                  title="Xóa thẻ">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+              <h3>Họa tiết lá chè &amp; hạt cà phê cách điệu</h3>
+              <p>Nét vẽ line-art màu vàng cát trên nền xanh sẫm tối giản.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer">
+      <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
+      <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+    </footer>
+  </div>
+  <dialog id="dialog">
+    <div class="modal-head dialog-head">
+      <h2>Biểu mẫu</h2>
+      <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
+    </div>
+    <div class="modal-body dialog-body"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <template id="tools-form">
+    <form>
+      <p>Dữ liệu chỉ được lưu trong trình duyệt hiện tại.</p>
+      <button type="button" class="button" data-export="">Xuất dữ liệu JSON</button>
+      <button type="button" class="button danger" data-reset="">Khôi phục dữ liệu mẫu</button>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="color-row">
+    <div class="swatch-card">
+      <div class="swatch-preview">
+        <svg class="palette-color-fill" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <rect width="100" height="100" fill="#24473b"></rect>
+        </svg>
+        <button class="copy-hex-btn" data-hex="#24473b" title="Sao chép #24473b">
+          Copy HEX
+        </button>
+      </div>
+      <div class="swatch-info">
+        <div class="row between">
+          <span class="swatch-hex">#24473B</span>
+          <button class="designer-moodboard-remove-color icon-button small remove-color-btn" data-index="0"
+            title="Xóa màu">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 6 12 12M6 18 18 6"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="swatch-name">Xanh rừng già (Forest)</div>
+        <span class="swatch-role">Màu chủ đạo</span>
+      </div>
+    </div>
+  </template>
+  <template id="image-row">
+    <div class="canvas-card">
+      <div class="canvas-card-media">
+        <img src="assets/moodboard.svg" alt="Chất liệu túi giấy Kraft có vân sần" data-fallback="assets/moodboard.svg">
+      </div>
+      <div class="canvas-card-body">
+        <div class="row between">
+          <span class="badge purple">Chất liệu</span>
+          <button class="designer-moodboard-remove-card icon-button small remove-card-btn" data-id="card-1"
+            title="Xóa thẻ">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
+        <h3>Chất liệu túi giấy Kraft có vân sần</h3>
+        <p>Bề mặt sần nhẹ tạo cảm giác mộc mạc, thân thiện với môi trường.</p>
+      </div>
+    </div>
+  </template>
+  <template id="keyword-row">
+    <span class="keyword-tag removable">
+      <span>Từ khóa</span>
+      <button type="button" title="Xóa từ khóa">×</button>
+    </span>
+  </template>
+  <template id="color-form">
+    <form>
+      <label class="field">
+        <span>Mã HEX *</span>
+        <input type="text" name="hex" value="#24473b" required pattern="#[0-9A-Fa-f]{6}">
+      </label>
+      <label class="field">
+        <span>Chọn màu</span>
+        <input type="color" name="colorPicker" value="#24473b">
+      </label>
+      <label class="field">
+        <span>Tên màu *</span>
+        <input type="text" name="name" value="" required>
+      </label>
+      <label class="field">
+        <span>Vai trò</span>
+        <select name="role">
+          <option value="Màu chủ đạo">Màu chủ đạo</option>
+          <option value="Màu nền">Màu nền</option>
+          <option value="Màu phối">Màu phối</option>
+          <option value="Màu chữ">Màu chữ</option>
+        </select>
+      </label>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="image-form">
+    <form>
+      <label class="field">
+        <span>Tên thẻ ảnh *</span>
+        <input type="text" name="title" value="" required minlength="2">
+      </label>
+      <label class="field">
+        <span>Phân loại</span>
+        <select name="category">
+          <option value="Chất liệu">Chất liệu</option>
+          <option value="Typography">Typography</option>
+          <option value="Graphic Motif">Graphic Motif</option>
+          <option value="Bố cục">Bố cục</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Ảnh minh họa</span>
+        <select name="image">
+          <option value="assets/moodboard.svg">Moodboard</option>
+          <option value="assets/coffee.svg">Bao bì cà phê</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Ghi chú</span>
+        <textarea name="notes"></textarea>
+      </label>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <dialog id="ai-dialog" aria-labelledby="ai-dialog-title" aria-describedby="ai-dialog-description">
+    <header class="ai-dialog-header">
+      <div>
+        <p class="ai-dialog-eyebrow">CREATORSTUDIO AI ASSISTANT</p>
+        <h2 id="ai-dialog-title">AI-3 · Mood Keyword &amp; Palette Assistant</h2>
+        <p id="ai-dialog-description">Chuyển ý tưởng và brief thành bộ từ khóa thẩm mỹ &amp; bảng màu HEX gợi ý.</p>
+      </div>
+      <button type="button" class="ai-dialog-close" data-ai-close aria-label="Đóng trợ lý AI">×</button>
+    </header>
+    <div class="ai-dialog-body">
+      <section data-ai-step="input">
+        <label class="field" for="ai-prompt-input">
+          <span>Mô tả ý tưởng thẩm mỹ hoặc chọn từ ngữ cảnh brief: *</span>
+          <textarea id="ai-prompt-input" rows="4" aria-describedby="ai-prompt-help ai-input-error"></textarea>
+        </label>
+        <p id="ai-prompt-help" class="ai-help">Gợi ý: “Cà phê mộc, giấy kraft, xanh rừng”, “Trà xanh thanh mát” hoặc “Sang trọng, cao cấp, đen vàng”.</p>
+        <label class="ai-fail-option">
+          <input type="checkbox" id="ai-fail-checkbox">
+          <span><strong>Mô phỏng tình huống AI thất bại (Fail State / Thiếu dữ liệu)</strong><small>Dùng để kiểm thử trạng thái lỗi, thử lại và chuyển sang nhập thủ công.</small></span>
+        </label>
+        <p id="ai-input-error" class="form-error" role="alert"></p>
+      </section>
+      <section data-ai-step="processing" hidden aria-live="polite" aria-busy="true">
+        <div class="ai-processing-box">
+          <div class="ai-spinner" aria-hidden="true"></div>
+          <strong id="ai-progress-text">Đang phân tích ngữ cảnh thương hiệu…</strong>
+          <p>Đang đối chiếu bảng màu và trích xuất từ khóa cảm xúc.</p>
+        </div>
+        <div class="ai-skeleton ai-skeleton-block" aria-hidden="true"></div>
+        <div class="ai-skeleton ai-skeleton-line" aria-hidden="true"></div>
+        <div class="ai-skeleton ai-skeleton-short" aria-hidden="true"></div>
+      </section>
+      <section data-ai-step="result" hidden>
+        <div class="ai-success" role="status"><strong>✓ Đã hoàn thành phân tích thẩm mỹ!</strong><p>Mô phỏng theo từ khóa; không phải độ tin cậy từ mô hình AI.</p></div>
+        <h3 class="ai-theme-title">Chủ đề phong cách: <span id="ai-res-theme"></span></h3>
+        <h4 class="ai-section-label">Bảng màu HEX đề xuất:</h4>
+        <div id="ai-res-palette" class="ai-result-palette"></div>
+        <h4 class="ai-section-label">Bộ từ khóa thẩm mỹ gợi ý:</h4>
+        <div id="ai-res-keywords" class="ai-keywords"></div>
+        <div class="ai-explanation"><h4>Vì sao AI đề xuất phong cách này? (Explanation)</h4><p id="ai-res-explanation"></p></div>
+        <div class="ai-design-details"><p><strong>Gợi ý chất liệu in:</strong> <span id="ai-res-materials"></span></p><p><strong>Gợi ý Typography:</strong> <span id="ai-res-typography"></span></p></div>
+        <p id="ai-save-error" class="form-error" role="alert"></p>
+        <form id="ai-edit-form" hidden>
+          <h4>Chỉnh sửa trước khi áp dụng</h4>
+          <p>Chỉ lưu thay đổi vào Moodboard khi bấm Chấp nhận &amp; Áp dụng.</p>
+          <div id="ai-edit-colors" class="ai-edit-colors"></div>
+          <label class="field"><span>Từ khóa (mỗi dòng một từ khóa, tối đa 10) *</span><textarea name="keywords" rows="5" required maxlength="500"></textarea></label>
+          <label class="field"><span>Giải thích phong cách *</span><textarea name="reason" rows="4" required maxlength="1500"></textarea></label>
+        </form>
+      </section>
+      <section data-ai-step="error" hidden>
+        <div class="ai-error-box"><h3>Chưa thể tạo gợi ý phù hợp</h3><p id="ai-error-message-text" role="alert"></p><p>Bạn có thể bổ sung mô tả, thử lại hoặc chọn bảng màu thủ công.</p></div>
+      </section>
+    </div>
+    <footer class="ai-dialog-footer">
+      <div class="ai-footer-group" data-ai-footer="input"><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-generate-btn" class="button ai-submit">✧ Bắt đầu sinh gợi ý</button></div>
+      <div class="ai-footer-group" data-ai-footer="processing" hidden><button type="button" class="button" disabled>AI đang tính toán…</button></div>
+      <div class="ai-footer-group" data-ai-footer="result" hidden><button type="button" id="ai-reject-btn" class="button">Từ chối (Reject)</button><button type="button" id="ai-edit-btn" class="button">Chỉnh sửa gợi ý</button><button type="button" id="ai-regen-btn" class="button">✧ Tạo lại (Regenerate)</button><button type="button" id="ai-accept-btn" class="button ai-submit">✓ Chấp nhận &amp; Áp dụng</button></div>
+      <div class="ai-footer-group" data-ai-footer="error" hidden><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-manual-btn" class="button">Nhập thủ công</button><button type="button" id="ai-retry-btn" class="button ai-submit">Thử lại (Retry)</button></div>
+    </footer>
+  </dialog>
+  <template id="ai-color-row"><div class="ai-color-item"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><rect width="100" height="60" fill="#ffffff"></rect></svg><span class="ai-color-hex">#FFFFFF</span></div></template>
+  <template id="ai-keyword-row"><span class="ai-keyword-pill"></span></template>
   <script src="js/shared/data.js"></script>
   <script src="js/shared/store.js"></script>
   <script src="js/shared/modules/navigation.js"></script>
-  <script src="js/sv2/modules/ai-mood-assistant.js"></script>
-  <script src="js/sv2/app-sv2.js"></script>
-  <script>
-    WorkspaceNavigation.ready( () => {
-      App.init('moodboard', renderMoodboard);
-
-      function renderMoodboard(){App.preserveFocus(renderMoodboardContent)}
-      function renderMoodboardContent() {
-        const { $, $$, esc, icon, data, user, project, banner, toast } = App;
-        const main = $('#main');
-
-        // Tìm hoặc khởi tạo moodboard cho dự án hiện tại
-        let mb = data.moodboards ? data.moodboards.find(m => m.projectId === project.id) : null;
-        if (!mb) {
-          mb = {
-            id: 'mb-' + project.id,
-            projectId: project.id,
-            title: `Bảng cảm hứng ${project.name}`,
-            status: 'Draft',
-            updatedAt: new Date().toISOString(),
-            description: 'Định hướng màu sắc và phong cách thẩm mỹ dự án.',
-            palette: [
-              { hex: '#24473b', name: 'Xanh rừng già', role: 'Màu chủ đạo' },
-              { hex: '#cbbb97', name: 'Giấy Kraft', role: 'Màu nền' },
-              { hex: '#f6f1e5', name: 'Trắng kem', role: 'Tương phản' }
-            ],
-            keywords: ['Tự nhiên', 'Thủ công', 'Mộc mạc'],
-            cards: [
-              { id: 'c-init-1', title: 'Chất liệu giấy mộc', category: 'Chất liệu', image: 'assets/moodboard.svg', notes: 'Bề mặt giấy tái chế sần nhẹ.' }
-            ]
-          };
-        }
-
-        const isDraft = mb.status === 'Draft';
-        const isPaletteReady = mb.status === 'Palette Ready';
-        const isShared = mb.status === 'Shared';
-
-        main.innerHTML = `
-          ${banner()}
-          
-          ${App.header(
-            'ĐỊNH HƯỚNG THỊ GIÁC & MÀU SẮC',
-            esc(mb.title),
-            esc(mb.description || 'Xây dựng bản đồ cảm hứng, bảng mã màu HEX và trích xuất từ khóa thẩm mỹ từ AI.'),
-            `
-              <button class="button primary" id="open-ai-modal-btn">
-                ${icon('spark')} AI-3 Gợi ý phong cách & Bảng màu
-              </button>
-              <button class="button soft" id="add-card-btn">${icon('plus')} Thêm thẻ ảnh</button>
-              <button class="button" id="share-moodboard-btn">
-                ${icon('check')} ${isShared ? 'Đã chia sẻ (Shared)' : 'Chia sẻ Moodboard'}
-              </button>
-            `
-          )}
-
-          <!-- Thanh tiến trình trạng thái nghiệp vụ (Draft -> Palette Ready -> Shared) -->
-          <div class="moodboard-header-bar">
-            <div class="status-stepper">
-              <div class="status-step ${isDraft ? 'active' : 'completed'}">
-                <span class="step-num">1</span>
-                <span>Bản nháp (Draft)</span>
-              </div>
-              <span class="muted">→</span>
-              <div class="status-step ${isPaletteReady ? 'active' : (isShared ? 'completed' : '')}">
-                <span class="step-num">2</span>
-                <span>Bảng màu hoàn thiện (Palette Ready)</span>
-              </div>
-              <span class="muted">→</span>
-              <div class="status-step ${isShared ? 'active completed' : ''}">
-                <span class="step-num">3</span>
-                <span>Đã chia sẻ (Shared)</span>
-              </div>
-            </div>
-
-            <div class="row">
-              <span class="badge ${isShared ? 'green' : (isPaletteReady ? 'purple' : 'gray')}">
-                Trạng thái: ${esc(mb.status)}
-              </span>
-              <button class="button small" id="edit-mb-title-btn">${icon('edit')} Sửa tiêu đề</button>
-            </div>
-          </div>
-
-          <!-- PHẦN 1: BẢNG MÃ MÀU HEX CHUẨN HOÁ (PALETTE MANAGER) -->
-          <section class="panel" style="margin-bottom: 24px;">
-            <div class="panel-title">
-              <div>
-                <h2>Bảng mã màu thương hiệu (HEX Palette)</h2>
-                <p>Mã màu chính thức được trích xuất cho dự án ${esc(project.name)}. Nhấp để sao chép mã HEX.</p>
-              </div>
-              <button class="button small soft" id="add-color-btn">${icon('plus')} Thêm ô màu</button>
-            </div>
-
-            <div class="palette-container">
-              ${mb.palette.map((c, idx) => `
-                <div class="swatch-card">
-                  <div class="swatch-preview" style="background-color: ${esc(c.hex)};">
-                    <button class="copy-hex-btn" data-hex="${esc(c.hex)}" title="Sao chép ${esc(c.hex)}">
-                      Copy HEX
-                    </button>
-                  </div>
-                  <div class="swatch-info">
-                    <div class="row between">
-                      <span class="swatch-hex">${esc(c.hex.toUpperCase())}</span>
-                      <button class="icon-button small remove-color-btn" data-index="${idx}" title="Xóa màu" style="min-width:24px; min-height:24px; padding:2px;">
-                        ${icon('close')}
-                      </button>
-                    </div>
-                    <div class="swatch-name">${esc(c.name)}</div>
-                    <span class="swatch-role">${esc(c.role || 'Màu phối')}</span>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-
-            <!-- PHẦN 2: TỪ KHÓA THẨM MỸ (AESTHETIC KEYWORDS) -->
-            <div class="divider"></div>
-            <div class="row between">
-              <div>
-                <h3>Từ khóa thẩm mỹ & Cảm xúc (Aesthetic Keywords)</h3>
-                <p class="muted" style="font-size: 12px; margin-top: 2px;">Các từ khóa định vị phong cách thiết kế do Designer và AI thiết lập.</p>
-              </div>
-              <button class="button small" id="add-keyword-btn">${icon('plus')} Thêm từ khóa</button>
-            </div>
-
-            <div class="keyword-cloud">
-              ${(mb.keywords || []).map((k, kIdx) => `
-                <span class="keyword-tag removable">
-                  ${esc(k)}
-                  <button type="button" class="remove-keyword-btn" data-index="${kIdx}" title="Xóa từ khóa">&times;</button>
-                </span>
-              `).join('')}
-            </div>
-
-            ${mb.lastAIReason ? `
-              <div class="ai-reasoning-box" style="margin-top: 16px;">
-                <strong>Ghi chú lý do từ AI-3:</strong>
-                ${esc(mb.lastAIReason)}
-              </div>
-            ` : ''}
-          </section>
-
-          <!-- PHẦN 3: CANVAS THẺ HÌNH ẢNH CẢM HỨNG (VISUAL CARDS) -->
-          <section class="panel">
-            <div class="panel-title">
-              <div>
-                <h2>Bảng thẻ cảm hứng trực quan (Inspiration Cards)</h2>
-                <p>Các tài liệu tham chiếu về chất liệu, kiểu chữ và bố cục.</p>
-              </div>
-              <span class="muted" style="font-size: 12px;">Tổng cộng <strong>${mb.cards ? mb.cards.length : 0}</strong> thẻ cảm hứng</span>
-            </div>
-
-            <div class="canvas-grid">
-              ${(mb.cards || []).map(card => `
-                <div class="canvas-card">
-                  <div class="canvas-card-media">
-                    <img src="${esc(card.image)}" alt="${esc(card.title)}" onerror="this.src='assets/moodboard.svg'">
-                  </div>
-                  <div class="canvas-card-body">
-                    <div class="row between">
-                      <span class="badge purple">${esc(card.category || 'Cảm hứng')}</span>
-                      <button class="icon-button small remove-card-btn" data-id="${card.id}" title="Xóa thẻ" style="color:#ef4444;">
-                        ${icon('trash')}
-                      </button>
-                    </div>
-                    <h3>${esc(card.title)}</h3>
-                    <p>${esc(card.notes || 'Chưa có ghi chú định hướng.')}</p>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </section>
-        `;
-
-        // 1. Sao chép mã HEX khi nhấp
-        $$('.copy-hex-btn').forEach(btn => {
-          btn.onclick = () => {
-            const hex = btn.dataset.hex;
-            navigator.clipboard.writeText(hex).then(() => {
-              toast(`Đã sao chép mã màu ${hex} vào bộ nhớ tạm!`);
-            }).catch(() => {
-              toast(`Mã màu: ${hex}`);
-            });
-          };
-        });
-
-        // 2. Xóa ô màu
-        $$('.remove-color-btn').forEach(btn => {
-          btn.onclick = () => {
-            const idx = Number(btn.dataset.index);
-            mb.palette.splice(idx, 1);
-            App.action(() => {
-              Store.saveMoodboard(user.id, mb);
-            }, 'Đã cập nhật bảng màu.');
-          };
-        });
-
-        // 3. Thêm ô màu mới
-        const addColorBtn = $('#add-color-btn');
-        if (addColorBtn) {
-          addColorBtn.onclick = () => {
-            App.modal(
-              'Thêm ô màu vào bảng phối (Palette)',
-              `
-                <div class="form-grid">
-                  ${App.field('Mã màu HEX *', 'hex', '#2d4030', 'text', 'required placeholder="#RRGGBB"')}
-                  ${App.field('Chọn màu trực quan', 'colorPicker', '#2d4030', 'color')}
-                </div>
-                ${App.field('Tên màu *', 'name', '', 'text', 'required placeholder="Ví dụ: Nâu hạt rang"')}
-                ${App.select('Vai trò trong thiết kế', 'role', [
-                  ['Màu chủ đạo', 'Màu chủ đạo'],
-                  ['Màu nền / Bao bì', 'Màu nền / Bao bì'],
-                  ['Màu tương phản phụ', 'Màu tương phản phụ'],
-                  ['Màu chữ & Chi tiết', 'Màu chữ & Chi tiết']
-                ], 'Màu chủ đạo')}
-              `,
-              formData => {
-                const hexVal = (formData.hex || formData.colorPicker || '#000000').trim();
-                mb.palette.push({
-                  hex: hexVal,
-                  name: formData.name.trim(),
-                  role: formData.role
-                });
-                mb.status = 'Palette Ready';
-                Store.saveMoodboard(user.id, mb);
-              },
-              'Thêm màu'
-            );
-          };
-        }
-
-        // 4. Xóa từ khóa
-        $$('.remove-keyword-btn').forEach(btn => {
-          btn.onclick = () => {
-            const idx = Number(btn.dataset.index);
-            mb.keywords.splice(idx, 1);
-            App.action(() => {
-              Store.saveMoodboard(user.id, mb);
-            }, 'Đã xóa từ khóa.');
-          };
-        });
-
-        // 5. Thêm từ khóa thủ công
-        const addKeywordBtn = $('#add-keyword-btn');
-        if (addKeywordBtn) {
-          addKeywordBtn.onclick = () => {
-            const val = prompt('Nhập từ khóa phong cách thẩm mỹ mới:');
-            if (val && val.trim()) {
-              mb.keywords = mb.keywords || [];
-              mb.keywords.push(val.trim());
-              App.action(() => {
-                Store.saveMoodboard(user.id, mb);
-              }, 'Đã thêm từ khóa.');
-            }
-          };
-        }
-
-        // 6. Xóa thẻ cảm hứng
-        $$('.remove-card-btn').forEach(btn => {
-          btn.onclick = () => {
-            const cardId = btn.dataset.id;
-            if (confirm('Bạn có chắc chắn muốn xóa thẻ cảm hứng này?')) {
-              App.action(() => {
-                Store.removeMoodCard(user.id, project.id, cardId);
-              }, 'Đã xóa thẻ cảm hứng.');
-            }
-          };
-        });
-
-        // 7. Thêm thẻ ảnh mới
-        const addCardBtn = $('#add-card-btn');
-        if (addCardBtn) {
-          addCardBtn.onclick = () => {
-            App.modal(
-              'Thêm thẻ cảm hứng mới (Visual Inspiration Card)',
-              `
-                ${App.field('Tiêu đề thẻ cảm hứng *', 'title', '', 'text', 'required minlength="2" placeholder="Ví dụ: Vân gỗ mộc / Mẫu hộp kraft"')}
-                ${App.select('Phân loại *', 'category', [
-                  ['Chất liệu', 'Chất liệu'],
-                  ['Typography', 'Typography'],
-                  ['Graphic Motif', 'Họa tiết đồ họa'],
-                  ['Bố cục & Khoảng trắng', 'Bố cục & Khoảng trắng']
-                ], 'Chất liệu')}
-                ${App.select('Mẫu hình ảnh minh họa *', 'image', [
-                  ['assets/moodboard.svg', 'Moodboard tham chiếu chuẩn (SVG)'],
-                  ['assets/coffee.svg', 'Bao bì cà phê minh họa (SVG)']
-                ], 'assets/moodboard.svg')}
-                ${App.textField('Ghi chú định hướng', 'notes', '', 'placeholder="Mô tả cảm xúc hoặc quy cách cần áp dụng..."')}
-              `,
-              formData => {
-                Store.addMoodCard(user.id, project.id, formData);
-              },
-              'Thêm vào Moodboard'
-            );
-          };
-        }
-
-        // 8. Đổi tiêu đề moodboard
-        const editTitleBtn = $('#edit-mb-title-btn');
-        if (editTitleBtn) {
-          editTitleBtn.onclick = () => {
-            const newTitle = prompt('Nhập tiêu đề mới cho Moodboard:', mb.title);
-            if (newTitle && newTitle.trim()) {
-              mb.title = newTitle.trim();
-              App.action(() => {
-                Store.saveMoodboard(user.id, mb);
-              }, 'Đã đổi tiêu đề Moodboard.');
-            }
-          };
-        }
-
-        // 9. Chuyển trạng thái sang Shared
-        const shareBtn = $('#share-moodboard-btn');
-        if (shareBtn) {
-          shareBtn.onclick = () => {
-            mb.status = 'Shared';
-            App.action(() => {
-              Store.saveMoodboard(user.id, mb);
-            }, 'Moodboard đã được chia sẻ cho toàn bộ nhóm và khách hàng!');
-          };
-        }
-
-        // 10. MODAL AI-3: MOOD KEYWORD ASSISTANT (LUỒNG TRẢI NGHIỆM AI BẮT BUỘC)
-        const openAIBtn = $('#open-ai-modal-btn');
-        if (openAIBtn) {
-          openAIBtn.onclick = () => openAIMoodAssistantModal(mb);
-        }
-      }
-
-      // Hàm mở Modal AI Assistant với đầy đủ luồng: Input -> Validation -> Processing -> Result -> Explanation -> User Control & Failure Simulation
-      function openAIMoodAssistantModal(mb) {
-        const { $, $$, esc, icon, project, user, toast } = App;
-        const d = $('#dialog');
-
-        let defaultPrompt = `Dự án ${project.name}: Cà phê mộc nguyên bản, bao bì giấy kraft tự nhiên, phong cách Bắc Âu tối giản, tinh tế, gần gũi thiên nhiên.`;
-        
-        d.innerHTML = `
-          <div class="ai-dialog-header">
-            <div class="row between">
-              <div>
-                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.85;">CREATORSTUDIO AI ASSISTANT</p>
-                <h2>AI-3 · Mood Keyword & Palette Assistant</h2>
-                <p>Chuyển ý tưởng và brief thành bộ từ khóa thẩm mỹ & bảng màu HEX chuẩn xác.</p>
-              </div>
-              <button type="button" class="icon-button" data-close aria-label="Đóng" style="color:#ffffff;">${icon('close')}</button>
-            </div>
-          </div>
-
-          <div class="dialog-body" id="ai-modal-body">
-            <!-- BƯỚC 1: INPUT & CẤU HÌNH -->
-            <div id="ai-step-input">
-              <label class="field">
-                <span>Mô tả ý tưởng thẩm mỹ hoặc chọn từ ngữ cảnh brief: *</span>
-                <textarea id="ai-prompt-input" rows="3" placeholder="Nhập từ khóa hoặc mô tả ngắn gọn cảm xúc thương hiệu...">${esc(defaultPrompt)}</textarea>
-                <small class="muted">Gợi ý: "Cà phê mộc, mộc mạc, giấy kraft, xanh rừng" hoặc "Sang trọng tối giản, cao cấp, đen vàng"</small>
-              </label>
-
-              <div class="check" style="background: #fffbeb; border: 1px solid #fef3c7; padding: 10px 14px; border-radius: 8px;">
-                <input type="checkbox" id="ai-fail-checkbox">
-                <label for="ai-fail-checkbox" style="font-size: 12px; color: #92400e; cursor: pointer;">
-                  <strong>Mô phỏng tình huống AI thất bại (Fail State / Thiếu dữ liệu)</strong>
-                  <br>Dùng để kiểm thử trạng thái khi AI chưa chắc chắn hoặc không đủ thông tin tin cậy theo yêu cầu mục 6 của đề bài.
-                </label>
-              </div>
-
-              <div id="ai-input-error" class="form-error"></div>
-            </div>
-
-            <!-- BƯỚC 2: PROCESSING (SKELETON & PROGRESS) -->
-            <div id="ai-step-processing" style="display: none;">
-              <div class="ai-progress-box">
-                <div class="ai-progress-spinner"></div>
-                <h3 id="ai-progress-text">Đang phân tích ngữ cảnh thương hiệu...</h3>
-                <p class="muted" style="font-size: 12px; margin-top: 6px;">AI đang đối chiếu bảng màu in ấn và trích xuất từ khóa cảm xúc.</p>
-              </div>
-              <div class="skeleton skeleton-box"></div>
-              <div class="skeleton skeleton-text"></div>
-              <div class="skeleton skeleton-text" style="width: 60%;"></div>
-            </div>
-
-            <!-- BƯỚC 3: RESULT & EXPLANATION -->
-            <div id="ai-step-result" style="display: none;">
-              <div class="notice success" style="margin-bottom: 16px;">
-                ${icon('check')}
-                <div>
-                  <strong>Đã hoàn thành phân tích thẩm mỹ!</strong>
-                  <p id="ai-confidence-text">Độ tin cậy cao dựa trên mô hình phong cách nghệ thuật CreatorStudio.</p>
-                </div>
-              </div>
-
-              <div style="margin-bottom: 16px;">
-                <h4 style="margin-bottom: 8px;">Chủ đề phong cách: <span id="ai-res-theme" style="color: var(--primary-dark); font-weight: 700;"></span></h4>
-                
-                <p style="font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 6px;">Bảng màu HEX đề xuất:</p>
-                <div id="ai-res-palette" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px;"></div>
-
-                <p style="font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 6px;">Bộ từ khóa thẩm mỹ gợi ý:</p>
-                <div id="ai-res-keywords" class="keyword-cloud" style="margin-bottom: 14px;"></div>
-
-                <div class="ai-reasoning-box">
-                  <strong>Vì sao AI đề xuất phong cách này? (Explanation)</strong>
-                  <div id="ai-res-explanation"></div>
-                </div>
-
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 12px;">
-                  <p><strong>Gợi ý chất liệu in:</strong> <span id="ai-res-materials"></span></p>
-                  <p style="margin-top: 4px;"><strong>Gợi ý Typography:</strong> <span id="ai-res-typography"></span></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- BƯỚC 4: FAILURE STATE VIEW -->
-            <div id="ai-step-error" style="display: none;">
-              <div class="notice danger">
-                ${icon('alert')}
-                <div>
-                  <strong>AI không thể đưa ra đề xuất tin cậy!</strong>
-                  <p id="ai-error-message-text"></p>
-                </div>
-              </div>
-              <p style="font-size: 13px; color: #475569; margin: 12px 0;">
-                Theo quy chuẩn kiểm soát của người dùng: bạn có thể <strong>Thử lại</strong> với mô tả chi tiết hơn, hoặc <strong>Nhập thủ công</strong> mã màu vào Moodboard mà không cần thông qua AI.
-              </p>
-            </div>
-          </div>
-
-          <footer class="dialog-foot" id="ai-modal-foot">
-            <button type="button" class="button" data-close>Đóng</button>
-            <button type="button" class="button primary" id="ai-generate-btn">
-              ${icon('spark')} Bắt đầu sinh gợi ý
-            </button>
-          </footer>
-        `;
-
-        $$('[data-close]', d).forEach(b => b.onclick = () => d.close());
-
-        let generatedData = null;
-
-        const inputStep = $('#ai-step-input');
-        const processingStep = $('#ai-step-processing');
-        const resultStep = $('#ai-step-result');
-        const errorStep = $('#ai-step-error');
-        const foot = $('#ai-modal-foot');
-        const errElem = $('#ai-input-error');
-
-        // Bấm nút "Bắt đầu sinh gợi ý"
-        $('#ai-generate-btn').onclick = async () => {
-          const promptVal = $('#ai-prompt-input').value;
-          const shouldFail = $('#ai-fail-checkbox').checked;
-
-          if (!promptVal || promptVal.trim().length < 5) {
-            errElem.textContent = 'Vui lòng nhập mô tả ít nhất 5 ký tự.';
-            return;
-          }
-          errElem.textContent = '';
-
-          // Chuyển sang Processing View
-          inputStep.style.display = 'none';
-          resultStep.style.display = 'none';
-          errorStep.style.display = 'none';
-          processingStep.style.display = 'block';
-          foot.innerHTML = `<button type="button" class="button" disabled>AI đang tính toán...</button>`;
-
-          // Mô phỏng các bước tiến trình
-          const progressText = $('#ai-progress-text');
-          setTimeout(() => { if (progressText) progressText.textContent = 'Đang trích xuất mã màu HEX tương phản...'; }, 500);
-          setTimeout(() => { if (progressText) progressText.textContent = 'Đang cấu trúc bộ từ khóa cảm xúc & chất liệu...'; }, 1000);
-
-          try {
-            generatedData = await AIMoodAssistant.generateSuggestion(promptVal, shouldFail);
-
-            // Chuyển sang Result View
-            processingStep.style.display = 'none';
-            resultStep.style.display = 'block';
-
-            $('#ai-res-theme').textContent = generatedData.themeName;
-            $('#ai-confidence-text').textContent = generatedData.confidence;
-            $('#ai-res-explanation').textContent = generatedData.explanation;
-            $('#ai-res-materials').textContent = generatedData.materials;
-            $('#ai-res-typography').textContent = generatedData.typography;
-
-            // Render Palette
-            $('#ai-res-palette').innerHTML = generatedData.palette.map(c => `
-              <div style="background: ${c.hex}; height: 50px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); display: flex; align-items: flex-end; padding: 4px;">
-                <span style="font-size: 10px; font-weight: bold; background: rgba(255,255,255,0.85); padding: 1px 4px; border-radius: 4px;">${c.hex}</span>
-              </div>
-            `).join('');
-
-            // Render Keywords
-            $('#ai-res-keywords').innerHTML = generatedData.keywords.map(k => `
-              <span class="keyword-tag">${esc(k)}</span>
-            `).join('');
-
-            // Đổi Footer sang bộ nút User Control (Accept / Edit / Reject / Regenerate)
-            foot.innerHTML = `
-              <button type="button" class="button" id="ai-reject-btn">Từ chối (Reject)</button>
-              <button type="button" class="button" id="ai-regen-btn">${icon('spark')} Tạo lại (Regenerate)</button>
-              <button type="button" class="button primary" id="ai-accept-btn">${icon('check')} Chấp nhận & Áp dụng</button>
-            `;
-
-            $('#ai-reject-btn').onclick = () => d.close();
-            $('#ai-regen-btn').onclick = () => {
-              inputStep.style.display = 'block';
-              resultStep.style.display = 'none';
-              foot.innerHTML = `
-                <button type="button" class="button" data-close>Hủy</button>
-                <button type="button" class="button primary" id="ai-generate-btn">${icon('spark')} Bắt đầu sinh lại</button>
-              `;
-              $$('[data-close]', d).forEach(b => b.onclick = () => d.close());
-              $('#ai-generate-btn').onclick = () => $('#open-ai-modal-btn').click();
-            };
-
-            $('#ai-accept-btn').onclick = () => {
-              Store.applyAIPalette(user.id, project.id, {
-                palette: generatedData.palette,
-                keywords: generatedData.keywords,
-                reason: generatedData.explanation
-              });
-              d.close();
-              App.refresh();
-              toast('Đã áp dụng toàn bộ bảng màu và từ khóa từ AI vào Moodboard!');
-            };
-
-          } catch (err) {
-            // Chuyển sang Failure View
-            processingStep.style.display = 'none';
-            errorStep.style.display = 'block';
-            $('#ai-error-message-text').textContent = err.message;
-
-            foot.innerHTML = `
-              <button type="button" class="button" data-close>Đóng</button>
-              <button type="button" class="button" id="ai-manual-btn">Nhập thủ công</button>
-              <button type="button" class="button primary" id="ai-retry-btn">Thử lại (Retry)</button>
-            `;
-
-            $$('[data-close]', d).forEach(b => b.onclick = () => d.close());
-            $('#ai-retry-btn').onclick = () => {
-              $('#ai-fail-checkbox').checked = false;
-              errorStep.style.display = 'none';
-              inputStep.style.display = 'block';
-              foot.innerHTML = `
-                <button type="button" class="button" data-close>Đóng</button>
-                <button type="button" class="button primary" id="ai-generate-btn">${icon('spark')} Bắt đầu sinh gợi ý</button>
-              `;
-              $$('[data-close]', d).forEach(b => b.onclick = () => d.close());
-              $('#ai-generate-btn').onclick = () => $('#open-ai-modal-btn').click();
-            };
-
-            $('#ai-manual-btn').onclick = () => {
-              d.close();
-              $('#add-color-btn').click();
-            };
-          }
-        };
-
-        d.showModal();
-      }
-    });
-  </script>
+  <script src="js/sv2/api.js"></script>
+  <script src="js/sv2/share.js"></script>
+  <script src="js/sv2/designer-moodboard.js"></script>
 </body>
+
 </html>

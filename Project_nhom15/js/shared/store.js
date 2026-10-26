@@ -23,7 +23,7 @@ window.Store = (() => {
   function note(uid,vid,data){tx(d=>{actor(d,uid,'Lead');const v=d.versions.find(v=>v.id===vid);requireValue(v,'Không tìm thấy phiên bản.');writable(d,v.projectId);requireValue(v.status==='Internal Review','Phiên bản không còn ở bước duyệt nội bộ.');requireValue(data.text?.trim().length>=3&&data.text.length<=600,'Ghi chú cần từ 3 đến 600 ký tự.');if(data.id){const n=d.notes.find(n=>n.id===data.id&&n.versionId===vid);requireValue(n,'Không tìm thấy ghi chú.');n.text=data.text.trim()}else d.notes.push({id:id('n'),versionId:vid,text:data.text.trim(),x:pinCoordinate(data.x),y:pinCoordinate(data.y),resolved:false});log(d,'Đã lưu ghi chú nội bộ.')})}
   function resolveNote(uid,nid){tx(d=>{actor(d,uid,'Lead');const n=d.notes.find(n=>n.id===nid);requireValue(n,'Không tìm thấy ghi chú.');const v=d.versions.find(v=>v.id===n.versionId);writable(d,v.projectId);requireValue(v.status==='Internal Review','Phiên bản đã chuyển bước.');n.resolved=!n.resolved})}
   function reviewChecks(uid,vid,brand,info){tx(d=>{actor(d,uid,'Lead');const v=d.versions.find(v=>v.id===vid);requireValue(v,'Không tìm thấy phiên bản.');writable(d,v.projectId);requireValue(v.status==='Internal Review','Phiên bản đã chuyển bước.');v.checkBrand=!!brand;v.checkInfo=!!info})}
-  function review(uid,vid,action,reason=''){tx(d=>{actor(d,uid,'Lead');requireValue(['pass','rework'].includes(action),'Thao tác duyệt không hợp lệ.');const v=d.versions.find(v=>v.id===vid);requireValue(v,'Không tìm thấy phiên bản.');writable(d,v.projectId);requireValue(v.status==='Internal Review','Phiên bản đã được xử lý.');if(action==='pass'){requireValue(v.checkBrand&&v.checkInfo,'Hoàn thành checklist trước khi gửi.');requireValue(!d.notes.some(n=>n.versionId===vid&&!n.resolved),'Còn ghi chú nội bộ chưa xử lý.');v.status='Client Review';const project=d.projects.find(p=>p.id===v.projectId);if(project)project.status='In Review';for(const u of d.users.filter(u=>u.active&&u.role==='Client'))d.notifications.unshift({id:id('notif'),userId:u.id,projectId:v.projectId,type:'version',title:'Phiên bản chờ bạn duyệt',message:v.name,time:new Date().toISOString(),read:false,link:'html/sv1/client-review-versions.html?project='+encodeURIComponent(v.projectId)+'&version='+encodeURIComponent(v.id)})}else{requireValue(reason.trim().length>=8,'Nhập lý do yêu cầu sửa, ít nhất 8 ký tự.');v.status='Changes Requested'}v.history.push({action,reason,time:new Date().toISOString()});log(d,action==='pass'?'Đã chuyển phiên bản sang Client Review.':'Đã yêu cầu Designer sửa phiên bản.')})}
+  function review(uid,vid,action,reason=''){tx(d=>{actor(d,uid,'Lead');requireValue(['pass','rework'].includes(action),'Thao tác duyệt không hợp lệ.');const v=d.versions.find(v=>v.id===vid);requireValue(v,'Không tìm thấy phiên bản.');writable(d,v.projectId);requireValue(v.status==='Internal Review','Phiên bản đã được xử lý.');if(action==='pass'){requireValue(v.checkBrand&&v.checkInfo,'Hoàn thành checklist trước khi gửi.');requireValue(!d.notes.some(n=>n.versionId===vid&&!n.resolved),'Còn ghi chú nội bộ chưa xử lý.');v.status='Client Review';const project=d.projects.find(p=>p.id===v.projectId);if(project)project.status='In Review';for(const u of d.users.filter(u=>u.active&&u.role==='Client'))d.notifications.unshift({id:id('notif'),userId:u.id,projectId:v.projectId,type:'version',title:'Phiên bản chờ bạn duyệt',message:v.name,time:new Date().toISOString(),read:false,link:'html/sv1/client-review-versions.html?project='+encodeURIComponent(v.projectId)+'&version='+encodeURIComponent(v.id)})}else{requireValue(reason.trim().length>=8,'Nhập lý do yêu cầu sửa, ít nhất 8 ký tự.');v.status='Changes Requested';if(v.author)d.notifications.unshift({id:id('notif'),userId:v.author,projectId:v.projectId,type:'version',title:'Lead yêu cầu sửa phiên bản',message:reason.trim(),read:false,time:new Date().toISOString(),link:'html/sv2/designer-version-management.html?project='+encodeURIComponent(v.projectId)+'&version='+encodeURIComponent(v.id)})}v.history.push({action,reason,time:new Date().toISOString()});log(d,action==='pass'?'Đã chuyển phiên bản sang Client Review.':'Đã yêu cầu Designer sửa phiên bản.')})}
   function addComment(uid,pid,vid,text){tx(d=>{actor(d,uid,'Lead');writable(d,pid);requireValue(d.versions.some(v=>v.id===vid&&v.projectId===pid),'Phiên bản không hợp lệ.');requireValue(text.trim().length>=5&&text.length<=1000,'Phản hồi cần từ 5 đến 1.000 ký tự.');d.comments.push({id:id('C'),projectId:pid,versionId:vid,author:'Phản hồi nhập thủ công',text:text.trim()})})}
   function proposals(uid,pid,items){tx(d=>{actor(d,uid,'Lead');writable(d,pid);const pending=d.proposals.filter(p=>p.projectId===pid&&!p.taskId);requireValue(!pending.length,'Hãy xử lý hoặc bỏ các đề xuất cũ trước khi tạo lại.');for(const item of items){requireValue(!d.tasks.some(t=>t.projectId===pid&&t.sourceIds?.some(s=>item.sourceIds.includes(s))),'Phản hồi này đã có công việc. Bỏ chọn phản hồi đã xử lý trước khi tạo lại.');d.proposals.push({...item,id:id('ai'),projectId:pid,taskId:null})}log(d,'Đã tạo '+items.length+' gợi ý AI mô phỏng.')})}
   function saveProposal(uid,aid,data){tx(d=>{actor(d,uid,'Lead');const a=d.proposals.find(a=>a.id===aid);requireValue(a&&!a.taskId,'Đề xuất không còn chỉnh sửa được.');writable(d,a.projectId);const task=taskData(d,{...a,...data,status:'todo'});Object.assign(a,{title:task.title,description:task.description,assignee:task.assignee,priority:task.priority,due:task.due,ambiguous:false});log(d,'Đã chỉnh sửa đề xuất AI.')})}
@@ -145,7 +145,7 @@ window.Store = (() => {
           message: `${user.name} đã hoàn tất và nộp ${v.code} để duyệt nội bộ.`,
           time: new Date().toISOString(),
           read: false,
-          link: 'html/sv3/lead-internal-review.html'
+          link: 'html/sv3/lead-internal-review.html?project=' + encodeURIComponent(v.projectId) + '&version=' + encodeURIComponent(v.id)
         });
       }
 
@@ -186,6 +186,10 @@ window.Store = (() => {
       const user = actor(d, uid, ['Designer', 'Lead']);
       writable(d, data.projectId);
       requireValue(data.title?.trim().length >= 3, 'Tiêu đề moodboard cần ít nhất 3 ký tự.');
+      requireValue(!data.status || ['Draft', 'Palette Ready', 'Shared'].includes(data.status), 'Trạng thái moodboard không hợp lệ.');
+      requireValue(!data.palette || (Array.isArray(data.palette) && data.palette.every(c => /^#[0-9a-f]{6}$/i.test(c.hex))), 'Bảng màu cần mã HEX #RRGGBB.');
+      requireValue(!data.keywords || (Array.isArray(data.keywords) && data.keywords.every(k => typeof k === 'string' && k.trim())), 'Từ khóa không hợp lệ.');
+      requireValue(!data.cards || (Array.isArray(data.cards) && data.cards.every(c => typeof c.title === 'string' && c.title.trim().length >= 2)), 'Thẻ ảnh cần tiêu đề từ 2 ký tự.');
 
       let mb = d.moodboards.find(m => m.projectId === data.projectId);
       if (!mb) {
@@ -212,6 +216,10 @@ window.Store = (() => {
           palette: data.palette || mb.palette,
           keywords: data.keywords || mb.keywords
         });
+      }
+      if (data.cards !== undefined) mb.cards = clone(data.cards);
+      for (const field of ['lastAIReason', 'lastAIMaterials', 'lastAITypography', 'lastAITheme']) {
+        if (data[field] !== undefined) mb[field] = clone(data[field]);
       }
       log(d, `${user.name} đã lưu bảng cảm hứng: ${mb.title}`);
     });

@@ -46,6 +46,10 @@ window.Navigation = (() => {
     if (!user) throw Error('Tài khoản không hoạt động hoặc không còn tồn tại.');
     return activate(user.role, users, user.id);
   }
+  function applyContext(data) {
+    const pid = new URLSearchParams(location.search).get('project');
+    if (pid && data.projects.some(p => p.id === pid)) sessionStorage.setItem('cs-project', pid);
+  }
   function logout(){sessionStorage.removeItem('cs-user');sessionStorage.removeItem('cs.session');sessionStorage.removeItem('cs-project');localStorage.removeItem('currentUser');location.href=appUrl('html/sv1/login.html')}
   function bindMenu(){const q=s=>document.querySelector(s),side=q('.sidebar'),button=q('.menu-toggle'),shade=q('.sidebar-shade'),workspace=q('.workspace');let open=false;const media=matchMedia('(max-width:760px)');
     function setOpen(value){open=!!value&&media.matches;document.body.classList.toggle('menu-open',open);shade.hidden=!open;button.setAttribute('aria-expanded',String(open));workspace.inert=open;side.inert=media.matches&&!open;if(open)q('.mobile-close').focus();else if(media.matches)button.focus()}
@@ -62,7 +66,7 @@ window.Navigation = (() => {
     const initials=esc(user.name.split(' ').slice(-2).map(s=>s[0]).join(''));
     const menu=Object.entries(routes).filter(([,v])=>v[3]===user.role||v[3]==='*').map(([k,v])=>`<a href="${v[0]}" class="nav-link ${k===key?'active':''}" ${k===key?'aria-current="page"':''}>${icon(v[2])}<span>${esc(v[1])}</span></a>`).join('');
     document.body.classList.add('team-shell');
-    document.body.innerHTML=`<a class="skip-link" href="#main">Đến nội dung chính</a><div class="sidebar-shade" hidden></div>
+    document.body.innerHTML=`<a class="skip-link" href="${esc(location.pathname + location.search)}#main">Đến nội dung chính</a><div class="sidebar-shade" hidden></div>
       <aside class="sidebar" aria-label="Điều hướng chính">
         <a class="brand" href="${home(user.role)}"><span class="brand-mark">✳</span>CreatorStudio</a>
         <button class="icon-button mobile-close" aria-label="Đóng menu">${icon('close')}</button>
@@ -77,7 +81,7 @@ window.Navigation = (() => {
         <main id="main" tabindex="-1"></main><footer class="page-footer">CreatorStudio · Nhóm 15 · Dữ liệu minh họa lưu trên trình duyệt</footer></div>
       <dialog id="dialog" aria-labelledby="dialog-title"></dialog><div id="toast" role="status" aria-live="polite"></div>`;
     document.querySelector('#role-switch').onchange=e=>{try{const target=new URL(appUrl(switchAccount(e.target.value)));if(window.WorkspaceNavigation?.canOpen(target))window.WorkspaceNavigation.navigate(target);else location.href=target.href}catch(err){e.target.value=user.id;window.App?.toast(err.message)}};
-    document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);if(window.WorkspaceNavigation)window.WorkspaceNavigation.navigate(new URL(location.href),false);else location.reload()};
+    document.querySelector('#project-select').onchange=e=>{sessionStorage.setItem('cs-project',e.target.value);const url=new URL(location.href);url.searchParams.set('project',e.target.value);url.searchParams.delete('version');if(window.WorkspaceNavigation?.canOpen(url))window.WorkspaceNavigation.navigate(url);else location.href=url.href};
     document.querySelector('#demo-tools-btn').onclick=tools;
     bindMenu();
     const sidebar=document.querySelector('.sidebar');
@@ -86,9 +90,12 @@ window.Navigation = (() => {
     sidebar.addEventListener('scroll',()=>{try{sessionStorage.setItem(scrollKey,String(sidebar.scrollTop))}catch{}},{passive:true});
   }
 
-  return {accountOptions,switchAccount,renderShell,roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
+  return {applyContext,accountOptions,switchAccount,renderShell,roles,routes,integrations,home,canOpen,current,remember,activate,bindMenu,logout};
 })();
 
 window.addEventListener?.('pagereveal', event => {
-  if (event.viewTransition) event.viewTransition.finished.catch(() => {});
+  if (event.viewTransition) {
+    event.viewTransition.ready.catch(() => {});
+    event.viewTransition.finished.catch(() => {});
+  }
 });

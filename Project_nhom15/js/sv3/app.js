@@ -77,6 +77,7 @@ window.App = (() => {
   function init(key, fn) {
     try {
       Store.load();
+      Navigation.applyContext(Store.get());
       sync();
     } catch (e) {
       document.body.innerHTML =

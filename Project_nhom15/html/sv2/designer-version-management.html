@@ -1,330 +1,533 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <base href="../../">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/sv2/sv2-base.css">
-  <link rel="stylesheet" href="css/sv2/sv2-navigation.css">
-  <link rel="stylesheet" href="css/sv2/pages/designer.css">
-  <link rel="stylesheet" href="css/sv3/team-shell.css">
-  <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
-  <script src="js/shared/workspace-navigation.js"></script>
+  <link rel="stylesheet" href="css/sv2/share.css">
+  <link rel="stylesheet" href="css/sv2/designer-version-management.css">
 </head>
-<body>
-  <!-- Shell được render tự động qua App.init() -->
 
+<body class="page-designer-version-management">
+  <a class="skip-link" href="html/sv2/designer-version-management.html#main">Chuyển đến nội dung chính</a>
+  <div class="sidebar-shade" hidden></div>
+  <aside class="sidebar" aria-label="Điều hướng chính">
+    <a class="brand" href="html/sv2/designer-dashboard.html">
+      <span class="brand-mark">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m5 12 4 4L19 6"></path>
+        </svg>
+      </span>
+      <span>CreatorStudio</span>
+      <span class="brand-dot">®</span>
+    </a>
+    <button class="icon-button mobile-close" aria-label="Đóng menu">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 6 12 12M6 18 18 6"></path>
+      </svg>
+    </button>
+    <div class="studio">
+      <span class="studio-avatar">M</span>
+      <div>
+        <strong>Studio Mộc</strong>
+        <small>Không gian sáng tạo</small>
+      </div>
+      <span class="studio-arrow">⌄</span>
+    </div>
+    <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
+    <nav>
+      <a class="nav-link" href="html/sv2/designer-dashboard.html" data-role="Designer">
+        <span>Bảng điều khiển</span>
+      </a>
+      <a class="nav-link" href="html/sv2/designer-moodboard.html" data-role="Designer">
+        <span>Bảng cảm hứng</span>
+      </a>
+      <a class="nav-link active" href="html/sv2/designer-version-management.html" data-role="Designer" aria-current="page">
+        <span>Quản lý phiên bản</span>
+      </a>
+      <a class="nav-link" href="html/sv2/admin-brief-template-management.html" data-role="Admin" hidden="">
+        <span>Mẫu Brief &amp; AI</span>
+      </a>
+      <a class="nav-link" href="html/sv2/profile.html">
+        <span>Hồ sơ cá nhân</span>
+      </a>
+      <a class="nav-link" href="html/sv2/notifications.html">
+        <span>Thông báo</span>
+      </a>
+    </nav>
+    <div class="sidebar-project">
+      <p class="nav-caption">DỰ ÁN ĐANG CHỌN</p>
+      <strong>
+        <span class="status-dot"></span>Mộc Coffee</strong>
+      <small>Nhận diện &amp; bao bì cà phê nguyên bản</small>
+      <span class="side-tag">MC26</span>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="text-light" id="demo-tools-btn">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+        </svg>
+        Công cụ demo &amp; Dữ liệu</button>
+      <a class="profile" href="html/sv2/profile.html" title="Xem và sửa hồ sơ cá nhân">
+        <span class="avatar" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </span>
+        <div>
+          <strong data-user-name="">An Nguyễn</strong>
+          <small data-user-role="">Nhà thiết kế</small>
+        </div>
+        <span class="online" title="Đang trực tuyến"></span>
+      </a>
+      <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="icon-button menu-toggle" aria-label="Mở menu">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <div class="breadcrumb">
+        Studio Mộc <span>/</span>
+        <strong>Quản lý phiên bản</strong>
+      </div>
+      <div class="top-actions">
+        <label class="sr-only" for="project-select">Dự án</label>
+        <select id="project-select" aria-label="Chọn dự án">
+          <option value="p-moc" selected>
+            Mộc Coffee
+          </option>
+          <option value="p-lua">
+            Lúa Tea
+          </option>
+        </select>
+        <label class="sr-only" for="role-switch">Tài khoản demo</label>
+        <select id="role-switch" aria-label="Đổi vai trò demo">
+          <option value="Designer" selected>
+            Demo: Nhà thiết kế
+          </option>
+          <option value="Admin">
+            Demo: Quản trị viên
+          </option>
+          <option value="Lead">
+            Demo: Trưởng nhóm
+          </option>
+          <option value="Client">
+            Demo: Khách hàng
+          </option>
+        </select>
+        <a href="html/sv2/notifications.html" class="notification-button" id="activity-bell" title="Trung tâm thông báo"
+          aria-label="Xem thông báo">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path>
+          </svg>
+          <span class="notification-badge" hidden>0</span>
+        </a>
+        <a href="html/sv2/profile.html" class="avatar" title="Hồ sơ An Nguyễn" data-avatar="">
+          <img class="avatar-image" alt="Ảnh đại diện" hidden>
+          <span>AN</span>
+        </a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
+      <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">LỊCH SỬ PHIÊN BẢN &amp; SỬA ĐỔI</p>
+          <h1>Kiểm soát Phiên bản Thiết kế</h1>
+          <p class="muted">Tải lên phiên bản mới, cập nhật changelog, tích chọn checklist nghiệm thu và nộp duyệt nội
+            bộ.</p>
+        </div>
+        <div class="heading-actions">
+          <button class="button primary" id="upload-version-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Tải lên phiên bản mới
+          </button>
+        </div>
+      </section>
+      <!-- Thông tin cấu hình quy tắc phiên bản studio -->
+      <div class="designer-version-management-intro notice">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"></path>
+        </svg>
+        <div>
+          <strong>Quy tắc đặt mã phiên bản Studio: <code>{project}-{asset}-v{number}</code>
+          </strong>
+          <p>Mã phiên bản được tự động sinh dựa trên mã dự án (<strong>MC26</strong>), loại tài sản và số thứ tự phiên
+            bản tăng dần.</p>
+        </div>
+      </div>
+      <!-- Toolbar lọc trạng thái -->
+      <div class="toolbar">
+        <select id="status-filter" aria-label="Lọc trạng thái phiên bản">
+          <option value="all" selected>Tất cả trạng thái</option>
+          <option value="Draft">Bản nháp (Draft)</option>
+          <option value="Internal Review">Chờ duyệt nội bộ (Internal Review)</option>
+          <option value="Client Review">Khách hàng duyệt (Client Review)</option>
+          <option value="Changes Requested">Yêu cầu sửa đổi (Changes Requested)</option>
+          <option value="Approved">Đã phê duyệt (Approved)</option>
+          <option value="Archived">Đã lưu trữ (Archived)</option>
+        </select>
+        <span class="toolbar-count">Tổng cộng <strong>3</strong> phiên bản</span>
+      </div>
+      <!-- Danh sách các phiên bản -->
+      <div class="version-timeline">
+        <div class="version-card current">
+          <div class="version-thumb">
+            <img src="assets/coffee.svg" alt="Túi cà phê · Phiên bản 3" data-fallback="assets/coffee.svg">
+          </div>
+          <div class="version-details">
+            <div class="version-head-row">
+              <div class="designer-version-management-title-row row">
+                <span class="version-name-tag">MC26-BaoBi-v3</span>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h2>
+                <span class="badge purple">Internal Review</span>
+                <span class="badge blue">Mới nhất</span>
+              </div>
+              <div class="row">
+                <button class="button small archive-version-btn" data-id="v-moc-3" title="Lưu trữ phiên bản">Lưu
+                  trữ</button>
+              </div>
+            </div>
+            <p class="designer-version-management-metadata muted">
+              Tạo ngày: 08:30:00 2/10/2026 · Người thực hiện: An Nguyễn
+            </p>
+            <!-- Changelog -->
+            <div class="version-changelog">
+              <strong>Nhật ký thay đổi (Changelog):</strong>
+              <p class="designer-version-management-changelog-text">Đã tăng cỡ chữ MỘC lên 77pt, hoàn thiện nét line-art
+                lá chè &amp; hạt cà phê, bố sung hướng dẫn pha 3 bước.</p>
+            </div>
+            <!-- Checklist nghiệm thu hoàn thành phản hồi -->
+            <div class="version-checklist-view">
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xử lý phản hồi trước
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đúng quy chuẩn kích thước &amp; in ấn
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xuất file asset hoàn chỉnh
+              </span>
+            </div>
+            <!-- Danh sách phản hồi hoặc ghi chú gắn với phiên bản nếu có -->
+            <div class="designer-version-management-feedback">
+              <strong class="designer-version-management-feedback-title">Góp ý từ Khách hàng &amp; Trưởng nhóm:</strong>
+              <ul class="designer-version-management-feedback-list">
+                <li>
+                  <strong>Khánh Chi:</strong> Tên sản phẩm hơi nhỏ. Tăng cỡ chữ để dễ đọc.
+                </li>
+                <li>
+                  <strong>Khánh Chi:</strong> Bổ sung hướng dẫn pha trên mặt sau của túi.
+                </li>
+                <li>
+                  <strong>Khánh Chi:</strong> Màu này trông chưa thật sự cao cấp.
+                </li>
+                <li>
+                  <strong>Ghi chú nội bộ:</strong> Tên sản phẩm hơi nhỏ. Tăng độ rõ khi thu nhỏ. (Chưa xử lý)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="version-card ">
+          <div class="version-thumb">
+            <img src="assets/coffee.svg" alt="Túi cà phê · Phiên bản 2" data-fallback="assets/coffee.svg">
+          </div>
+          <div class="version-details">
+            <div class="version-head-row">
+              <div class="designer-version-management-title-row row">
+                <span class="version-name-tag">MC26-BaoBi-v2</span>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 2</h2>
+                <span class="badge high">Changes Requested</span>
+              </div>
+              <div class="row">
+                <button class="button small primary submit-review-btn" data-id="v-moc-2">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                  Nộp duyệt nội bộ
+                </button>
+                <button class="button small archive-version-btn" data-id="v-moc-2" title="Lưu trữ phiên bản">Lưu
+                  trữ</button>
+              </div>
+            </div>
+            <p class="designer-version-management-metadata muted">
+              Tạo ngày: 14:30:00 28/9/2026 · Người thực hiện: An Nguyễn
+            </p>
+            <!-- Changelog -->
+            <div class="version-changelog">
+              <strong>Nhật ký thay đổi (Changelog):</strong>
+              <p class="designer-version-management-changelog-text">Cải tiến bố cục nhãn chính, áp dụng màu kraft và
+                xanh lá sẫm từ moodboard.</p>
+            </div>
+            <!-- Checklist nghiệm thu hoàn thành phản hồi -->
+            <div class="version-checklist-view">
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xử lý phản hồi trước
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đúng quy chuẩn kích thước &amp; in ấn
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xuất file asset hoàn chỉnh
+              </span>
+            </div>
+            <!-- Danh sách phản hồi hoặc ghi chú gắn với phiên bản nếu có -->
+          </div>
+        </div>
+        <div class="version-card ">
+          <div class="version-thumb">
+            <img src="assets/coffee.svg" alt="Túi cà phê · Phiên bản 1" data-fallback="assets/coffee.svg">
+          </div>
+          <div class="version-details">
+            <div class="version-head-row">
+              <div class="designer-version-management-title-row row">
+                <span class="version-name-tag">MC26-BaoBi-v1</span>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 1</h2>
+                <span class="badge gray">Archived</span>
+              </div>
+              <div class="row">
+
+              </div>
+            </div>
+            <p class="designer-version-management-metadata muted">
+              Tạo ngày: 10:00:00 20/9/2026 · Người thực hiện: An Nguyễn
+            </p>
+            <!-- Changelog -->
+            <div class="version-changelog">
+              <strong>Nhật ký thay đổi (Changelog):</strong>
+              <p class="designer-version-management-changelog-text">Bản phác thảo ban đầu layout 1 cột, thử nghiệm logo
+                chữ Mộc.</p>
+            </div>
+            <!-- Checklist nghiệm thu hoàn thành phản hồi -->
+            <div class="version-checklist-view">
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xử lý phản hồi trước
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đúng quy chuẩn kích thước &amp; in ấn
+              </span>
+              <span class="checklist-badge done">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+                Đã xuất file asset hoàn chỉnh
+              </span>
+            </div>
+            <!-- Danh sách phản hồi hoặc ghi chú gắn với phiên bản nếu có -->
+          </div>
+        </div>
+      </div>
+      <div id="version-empty" class="empty-state" hidden><p>Chưa có phiên bản phù hợp.</p><button type="button" class="button small" id="version-reset-btn">Xóa bộ lọc</button></div>
+    </main>
+    <footer class="page-footer">
+      <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
+      <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
+    </footer>
+  </div>
+  <dialog id="dialog">
+    <div class="modal-head dialog-head">
+      <h2>Biểu mẫu</h2>
+      <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
+    </div>
+    <div class="modal-body dialog-body"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <template id="tools-form">
+    <form>
+      <p>Dữ liệu chỉ được lưu trong trình duyệt hiện tại.</p>
+      <button type="button" class="button" data-export="">Xuất dữ liệu JSON</button>
+      <button type="button" class="button danger" data-reset="">Khôi phục dữ liệu mẫu</button>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="version-row">
+    <div class="version-card current">
+      <div class="version-thumb">
+        <img src="assets/coffee.svg" alt="Túi cà phê · Phiên bản 3" data-fallback="assets/coffee.svg">
+      </div>
+      <div class="version-details">
+        <div class="version-head-row">
+          <div class="designer-version-management-title-row row">
+            <span class="version-name-tag">MC26-BaoBi-v3</span>
+            <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h2>
+            <span class="badge purple" data-version-status="">Internal Review</span>
+            <span class="badge blue" data-version-latest="">Mới nhất</span>
+          </div>
+          <div class="row">
+            <button type="button" class="button small submit-review-btn">Nộp duyệt</button>
+            <button type="button" class="button small edit-version-btn">Sửa nháp</button>
+            <button type="button" class="button small delete-version-btn">Xóa nháp</button>
+            <button type="button" class="button small archive-version-btn">Lưu trữ</button>
+          </div>
+        </div>
+        <p class="designer-version-management-metadata muted">
+          Tạo ngày: 08:30:00 2/10/2026 · Người thực hiện: An Nguyễn
+        </p>
+        <!-- Changelog -->
+        <div class="version-changelog">
+          <strong>Nhật ký thay đổi (Changelog):</strong>
+          <p class="designer-version-management-changelog-text">Đã tăng cỡ chữ MỘC lên 77pt, hoàn thiện nét line-art lá
+            chè &amp; hạt cà phê, bố sung hướng dẫn pha 3 bước.</p>
+        </div>
+        <!-- Checklist nghiệm thu hoàn thành phản hồi -->
+        <div class="version-checklist-view">
+          <span class="checklist-badge done">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Đã xử lý phản hồi trước
+          </span>
+          <span class="checklist-badge done">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Đúng quy chuẩn kích thước &amp; in ấn
+          </span>
+          <span class="checklist-badge done">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m5 12 4 4L19 6"></path>
+            </svg>
+            Đã xuất file asset hoàn chỉnh
+          </span>
+        </div>
+        <!-- Danh sách phản hồi hoặc ghi chú gắn với phiên bản nếu có -->
+        <div class="designer-version-management-feedback">
+          <strong class="designer-version-management-feedback-title">Góp ý từ Khách hàng &amp; Trưởng nhóm:</strong>
+          <ul class="designer-version-management-feedback-list">
+            <li>
+              <strong>Khánh Chi:</strong> Tên sản phẩm hơi nhỏ. Tăng cỡ chữ để dễ đọc.
+            </li>
+            <li>
+              <strong>Khánh Chi:</strong> Bổ sung hướng dẫn pha trên mặt sau của túi.
+            </li>
+            <li>
+              <strong>Khánh Chi:</strong> Màu này trông chưa thật sự cao cấp.
+            </li>
+            <li>
+              <strong>Ghi chú nội bộ:</strong> Tên sản phẩm hơi nhỏ. Tăng độ rõ khi thu nhỏ. (Chưa xử lý)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="version-form">
+    <form>
+      <p>Mã: <strong id="version-code-preview"></strong>
+      </p>
+      <label class="field">
+        <span>Tên phiên bản *</span>
+        <input type="text" name="name" value="" required minlength="3">
+      </label>
+      <label class="field">
+        <span>Loại tài sản</span>
+        <select name="assetType">
+          <option value="BaoBi">Bao bì</option>
+          <option value="Logo">Logo</option>
+          <option value="AnPham">Ấn phẩm</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Ảnh minh họa</span>
+        <select name="image">
+          <option value="assets/coffee.svg">Bao bì cà phê</option>
+          <option value="assets/moodboard.svg">Moodboard</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Ảnh tải lên (PNG/JPEG/WebP, tối đa 1 MB)</span>
+        <input type="file" name="designFile" value="" accept="image/png,image/jpeg,image/webp">
+      </label>
+      <label class="field">
+        <span>Nhật ký thay đổi *</span>
+        <textarea name="changelog" required minlength="5"></textarea>
+      </label>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
+  <template id="edit-version-form">
+    <form>
+      <label class="field">
+        <span>Tên phiên bản *</span>
+        <input type="text" name="name" value="" required minlength="3">
+      </label>
+      <label class="field">
+        <span>Nhật ký thay đổi *</span>
+        <textarea name="changelog" required minlength="5"></textarea>
+      </label>
+      <label class="checklist-item">
+        <input type="checkbox" name="checkFeedback"> Đã xử lý phản hồi</label>
+      <label class="checklist-item">
+        <input type="checkbox" name="checkSpec"> Đúng quy chuẩn kích thước và in ấn</label>
+      <label class="checklist-item">
+        <input type="checkbox" name="checkExport"> Đã xuất file hoàn chỉnh</label>
+      <p class="form-error" role="alert"></p>
+      <button class="button primary" type="submit">Lưu</button>
+    </form>
+  </template>
   <script src="js/shared/data.js"></script>
   <script src="js/shared/store.js"></script>
   <script src="js/shared/modules/navigation.js"></script>
-  <script src="js/sv2/app-sv2.js"></script>
-  <script>
-    WorkspaceNavigation.ready( () => {
-      let currentFilterStatus = 'all';
-
-      App.init('versions', renderVersionManagement);
-
-      function renderVersionManagement(){App.preserveFocus(renderVersionManagementContent)}
-      function renderVersionManagementContent() {
-        const { $, $$, esc, icon, data, user, project, banner, date, toast } = App;
-        const main = $('#main');
-
-        // Lấy danh sách phiên bản của dự án hiện tại, sắp xếp mới nhất lên đầu
-        let versions = data.versions.filter(v => v.projectId === project.id);
-        versions.sort((a, b) => (b.versionNum || 0) - (a.versionNum || 0));
-
-        if (currentFilterStatus !== 'all') {
-          versions = versions.filter(v => v.status === currentFilterStatus);
-        }
-
-        const pattern = data.settings?.versionPattern || '{project}-{asset}-v{number}';
-
-        main.innerHTML = `
-          ${banner()}
-
-          ${App.header(
-            'LỊCH SỬ PHIÊN BẢN & SỬA ĐỔI',
-            'Kiểm soát Phiên bản Thiết kế',
-            'Tải lên phiên bản mới, cập nhật changelog, tích chọn checklist nghiệm thu và nộp duyệt nội bộ.',
-            `
-              <button class="button primary" id="upload-version-btn">
-                ${icon('plus')} Tải lên phiên bản mới
-              </button>
-            `
-          )}
-
-          <!-- Thông tin cấu hình quy tắc phiên bản studio -->
-          <div class="notice" style="margin-bottom: 24px;">
-            ${icon('settings')}
-            <div>
-              <strong>Quy tắc đặt mã phiên bản Studio: <code>${esc(pattern)}</code></strong>
-              <p>Mã phiên bản được tự động sinh dựa trên mã dự án (<strong>${esc(project.code)}</strong>), loại tài sản và số thứ tự phiên bản tăng dần.</p>
-            </div>
-          </div>
-
-          <!-- Toolbar lọc trạng thái -->
-          <div class="toolbar">
-            <select id="status-filter" aria-label="Lọc trạng thái phiên bản">
-              <option value="all" ${currentFilterStatus === 'all' ? 'selected' : ''}>Tất cả trạng thái</option>
-              <option value="Draft" ${currentFilterStatus === 'Draft' ? 'selected' : ''}>Bản nháp (Draft)</option>
-              <option value="Internal Review" ${currentFilterStatus === 'Internal Review' ? 'selected' : ''}>Chờ duyệt nội bộ (Internal Review)</option>
-              <option value="Client Review" ${currentFilterStatus === 'Client Review' ? 'selected' : ''}>Khách hàng duyệt (Client Review)</option>
-              <option value="Changes Requested" ${currentFilterStatus === 'Changes Requested' ? 'selected' : ''}>Yêu cầu sửa đổi (Changes Requested)</option>
-              <option value="Approved" ${currentFilterStatus === 'Approved' ? 'selected' : ''}>Đã phê duyệt (Approved)</option>
-              <option value="Archived" ${currentFilterStatus === 'Archived' ? 'selected' : ''}>Đã lưu trữ (Archived)</option>
-            </select>
-            <span class="toolbar-count">Tổng cộng <strong>${versions.length}</strong> phiên bản</span>
-          </div>
-
-          <!-- Danh sách các phiên bản -->
-          <div class="version-timeline">
-            ${versions.length === 0 ? App.empty('Chưa có phiên bản nào', 'Hãy tải lên phiên bản v1 đầu tiên cho dự án này.') : versions.map((v, index) => {
-              const isCurrent = index === 0;
-              const canManage = v.author === user.id;
-              const isDraft = v.status === 'Draft';
-              const isChangesRequested = v.status === 'Changes Requested';
-              const isInternalReview = v.status === 'Internal Review';
-              const isClientReview = v.status === 'Client Review';
-              const isApproved = v.status === 'Approved';
-              const isArchived = v.status === 'Archived';
-
-              let badgeColor = 'gray';
-              if (isApproved) badgeColor = 'green';
-              else if (isChangesRequested) badgeColor = 'high';
-              else if (isInternalReview || isClientReview) badgeColor = 'purple';
-              else if (isDraft) badgeColor = 'yellow';
-
-              // Tìm comment hoặc note liên quan đến phiên bản này
-              const vComments = (data.comments || []).filter(c => c.versionId === v.id);
-              const vNotes = (data.notes || []).filter(n => n.versionId === v.id);
-
-              return `
-                <div class="version-card ${isCurrent ? 'current' : ''}">
-                  <div class="version-thumb">
-                    <img src="${esc(v.image || 'assets/coffee.svg')}" alt="${esc(v.name)}" onerror="this.src='assets/coffee.svg'">
-                  </div>
-
-                  <div class="version-details">
-                    <div class="version-head-row">
-                      <div class="row" style="gap: 8px; flex-wrap: wrap;">
-                        <span class="version-name-tag">${esc(v.code || v.name)}</span>
-                        <h2 style="font-size: 16px;">${esc(v.name)}</h2>
-                        <span class="badge ${badgeColor}">${esc(v.status)}</span>
-                        ${isCurrent ? '<span class="badge blue">Mới nhất</span>' : ''}
-                      </div>
-
-                      <div class="row">
-                        ${canManage && (isDraft || isChangesRequested) ? `
-                          <button class="button small primary submit-review-btn" data-id="${v.id}">
-                            ${icon('check')} Nộp duyệt nội bộ
-                          </button>
-                        ` : ''}
-
-                        ${canManage && isDraft ? `
-                          <button class="button small edit-version-btn" data-id="${v.id}">${icon('edit')} Sửa</button>
-                          <button class="button small danger delete-version-btn" data-id="${v.id}">${icon('trash')} Xóa nháp</button>
-                        ` : ''}
-
-                        ${canManage && !isArchived ? `
-                          <button class="button small archive-version-btn" data-id="${v.id}" title="Lưu trữ phiên bản">Lưu trữ</button>
-                        ` : ''}
-                      </div>
-                    </div>
-
-                    <p class="muted" style="font-size: 12px;">
-                      Tạo ngày: ${new Date(v.createdAt).toLocaleString('vi-VN')} · Người thực hiện: ${esc(data.users.find(u => u.id === v.author)?.name || 'Người dùng không còn tồn tại')} ${!canManage ? ' · Chỉ xem phiên bản của thành viên khác' : ''}
-                    </p>
-
-                    <!-- Changelog -->
-                    <div class="version-changelog">
-                      <strong>Nhật ký thay đổi (Changelog):</strong>
-                      <p style="margin-top: 4px;">${esc(v.changelog || 'Không có mô tả thay đổi.')}</p>
-                    </div>
-
-                    <!-- Checklist nghiệm thu hoàn thành phản hồi -->
-                    <div class="version-checklist-view">
-                      <span class="checklist-badge ${v.checkFeedback ? 'done' : 'pending'}">
-                        ${icon('check')} Đã xử lý phản hồi trước
-                      </span>
-                      <span class="checklist-badge ${v.checkSpec ? 'done' : 'pending'}">
-                        ${icon('check')} Đúng quy chuẩn kích thước & in ấn
-                      </span>
-                      <span class="checklist-badge ${v.checkExport ? 'done' : 'pending'}">
-                        ${icon('check')} Đã xuất file asset hoàn chỉnh
-                      </span>
-                    </div>
-
-                    <!-- Danh sách phản hồi hoặc ghi chú gắn với phiên bản nếu có -->
-                    ${vComments.length > 0 || vNotes.length > 0 ? `
-                      <div style="background: #fffdf5; border: 1px solid #fef3c7; border-radius: 8px; padding: 10px 14px; margin-top: 12px; font-size: 12px;">
-                        <strong style="color: #92400e;">Góp ý từ Khách hàng & Trưởng nhóm:</strong>
-                        <ul style="margin: 4px 0 0 16px; padding: 0; color: #78350f;">
-                          ${vComments.map(c => `<li><strong>${esc(c.author)}:</strong> ${esc(c.text)}</li>`).join('')}
-                          ${vNotes.map(n => `<li><strong>Ghi chú nội bộ:</strong> ${esc(n.text)} ${n.resolved ? '(Đã xử lý)' : '(Chưa xử lý)'}</li>`).join('')}
-                        </ul>
-                      </div>
-                    ` : ''}
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        `;
-
-        // 1. Lọc theo trạng thái
-        const statusFilter = $('#status-filter');
-        if (statusFilter) {
-          statusFilter.onchange = e => {
-            currentFilterStatus = e.target.value;
-            renderVersionManagement();
-          };
-        }
-
-        // 2. Upload / Tạo phiên bản mới Modal
-        const uploadBtn = $('#upload-version-btn');
-        if (uploadBtn) {
-          uploadBtn.onclick = () => {
-            const nextNum = Math.max(0, ...data.versions.filter(v => v.projectId === project.id && v.assetType === 'BaoBi').map(v => Number(v.versionNum) || 0)) + 1;
-            const autoCode = Store.computeVersionCode(data, project.id, 'BaoBi', nextNum);
-
-            App.modal(
-              'Tải lên phiên bản thiết kế mới',
-              `
-                <div class="notice" style="margin-bottom: 16px;">
-                  Mã phiên bản tự động: <strong id="version-code-preview">${esc(autoCode)}</strong>
-                </div>
-
-                ${App.field('Tên hiển thị phiên bản *', 'name', `${project.name} · Phiên bản ${nextNum}`, 'text', 'required minlength="3"')}
-                ${App.select('Loại tài sản sáng tạo *', 'assetType', [
-                  ['BaoBi', 'Bao bì sản phẩm (Packaging)'],
-                  ['Logo', 'Logo & Biểu trưng'],
-                  ['AnPham', 'Ấn phẩm truyền thông (Banner/Post)']
-                ], 'BaoBi')}
-
-                ${App.select('Chọn hình ảnh mockup thiết kế *', 'image', [
-                  ['assets/coffee.svg', 'Bao bì cà phê minh họa chuẩn (SVG)'],
-                  ['assets/moodboard.svg', 'Bản mẫu moodboard & đồ họa (SVG)']
-                ], 'assets/coffee.svg')}
-                <label class="field"><span>Tải ảnh thiết kế (PNG/JPEG/WebP, tối đa 1 MB; tùy chọn)</span><input type="file" name="designFile" accept="image/png,image/jpeg,image/webp"></label>
-
-                ${App.textField('Nhật ký thay đổi (Changelog) *', 'changelog', '', 'required minlength="5" placeholder="Ghi rõ những điểm đã chỉnh sửa hoặc cải tiến so với phiên bản trước..."')}
-
-                <p style="font-size: 13px; font-weight: 600; margin: 14px 0 6px;">Checklist hoàn thành trước khi nộp duyệt:</p>
-                <label class="check">
-                  <input type="checkbox" name="checkFeedback" checked>
-                  <span>Đã kiểm tra và giải quyết toàn bộ góp ý từ phiên bản trước</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="checkSpec" checked>
-                  <span>Đã kiểm tra quy chuẩn in ấn, tỷ lệ kích thước và độ phân giải</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="checkExport" checked>
-                  <span>Đã chuẩn bị đầy đủ file xuất bản (Export asset ready)</span>
-                </label>
-              `,
-              async (formData, form) => {
-                const file = form.elements.designFile.files[0];
-                if (file) {
-                  if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type) || file.size > 1024 * 1024) throw new Error('Chọn ảnh PNG/JPEG/WebP tối đa 1 MB.');
-                  formData.image = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = () => reject(new Error('Không đọc được ảnh. Hãy thử lại.'));
-                    reader.readAsDataURL(file);
-                  });
-                }
-                Store.saveVersion(user.id, {
-                  ...formData,
-                  projectId: project.id,
-                });
-              },
-              'Tạo bản nháp phiên bản'
-            );
-            $('#dialog-form').elements.assetType.onchange = e => {
-              const type = e.target.value;
-              const number = Math.max(0, ...Store.get().versions.filter(v => v.projectId === project.id && v.assetType === type).map(v => Number(v.versionNum) || 0)) + 1;
-              $('#version-code-preview').textContent = Store.computeVersionCode(Store.get(), project.id, type, number);
-            };
-          };
-        }
-
-        // 3. Nộp duyệt nội bộ
-        $$('.submit-review-btn').forEach(btn => {
-          btn.onclick = () => {
-            const vid = btn.dataset.id;
-            if (confirm('Bạn có chắc chắn muốn nộp phiên bản này để các Trưởng nhóm duyệt nội bộ?')) {
-              App.action(() => {
-                Store.submitVersionForReview(user.id, vid);
-              }, 'Đã nộp phiên bản để duyệt nội bộ thành công!');
-            }
-          };
-        });
-
-        // 4. Sửa phiên bản nháp
-        $$('.edit-version-btn').forEach(btn => {
-          btn.onclick = () => {
-            const vid = btn.dataset.id;
-            const targetV = data.versions.find(x => x.id === vid);
-            if (!targetV) return;
-
-            App.modal(
-              `Chỉnh sửa bản nháp: ${targetV.name}`,
-              `
-                ${App.field('Tên hiển thị phiên bản *', 'name', targetV.name, 'text', 'required minlength="3"')}
-                ${App.textField('Nhật ký thay đổi (Changelog) *', 'changelog', targetV.changelog, 'required minlength="5"')}
-                <label class="check">
-                  <input type="checkbox" name="checkFeedback" ${targetV.checkFeedback ? 'checked' : ''}>
-                  <span>Đã giải quyết góp ý phiên bản trước</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="checkSpec" ${targetV.checkSpec ? 'checked' : ''}>
-                  <span>Đúng quy chuẩn kích thước</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" name="checkExport" ${targetV.checkExport ? 'checked' : ''}>
-                  <span>Đã xuất asset đầy đủ</span>
-                </label>
-              `,
-              formData => {
-                Store.saveVersion(user.id, {
-                  ...formData,
-                  id: targetV.id,
-                  projectId: targetV.projectId
-                });
-              },
-              'Lưu thay đổi'
-            );
-          };
-        });
-
-        // 5. Xóa bản nháp
-        $$('.delete-version-btn').forEach(btn => {
-          btn.onclick = () => {
-            const vid = btn.dataset.id;
-            if (confirm('Bạn có chắc chắn muốn xóa bản nháp phiên bản này?')) {
-              App.action(() => {
-                Store.deleteVersion(user.id, vid);
-              }, 'Đã xóa bản nháp phiên bản.');
-            }
-          };
-        });
-
-        // 6. Lưu trữ phiên bản
-        $$('.archive-version-btn').forEach(btn => {
-          btn.onclick = () => {
-            const vid = btn.dataset.id;
-            if (confirm('Chuyển phiên bản này sang kho lưu trữ (Archived)?')) {
-              App.action(() => {
-                Store.archiveVersion(user.id, vid);
-              }, 'Đã chuyển phiên bản sang kho lưu trữ.');
-            }
-          };
-        });
-      }
-    });
-  </script>
+  <script src="js/sv2/api.js"></script>
+  <script src="js/sv2/share.js"></script>
+  <script src="js/sv2/designer-version-management.js"></script>
 </body>
+
 </html>
