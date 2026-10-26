@@ -5,7 +5,7 @@ window.App = (() => {
   const icon=name=>`<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${icons[name]||icons.grid}"/></svg>`;
   const routes=Navigation.routes;
   const roleName=Navigation.roles;
-  const stateLabel={todo:'Cần làm',doing:'Đang thực hiện',review:'Chờ duyệt',done:'Hoàn thành'};
+  const stateLabel={todo:'Cần làm',doing:'Đang thực hiện',review:'Chờ duyệt',done:'Hoàn thành',cancelled:'Đã hủy'};
   let data,user,project,renderPage=()=>{},toastTimer;
   function session(key,value){try{if(value!==undefined)sessionStorage.setItem(key,value);return sessionStorage.getItem(key)}catch{return null}}
   function sync(){data=Store.get();user=Navigation.current(data.users);if(!user)throw new Error('Không có tài khoản demo hoạt động.');project=data.projects.find(p=>p.id===session('cs-project'))||data.projects[0];session('cs-project',project.id)}

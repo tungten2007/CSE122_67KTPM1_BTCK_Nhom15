@@ -36,3 +36,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm: `tests/brief-regression.test.cjs`
 - Thêm: `tests/focus-regression.test.cjs`
 - Thêm: `tests/review-status.test.cjs`
+
+## Bổ sung ngày 26/10/2026 — hủy công việc
+
+- Thêm trạng thái `Đã hủy` cho bảng công việc SV3 và thao tác hủy riêng yêu cầu nhập lý do.
+- Chặn chuyển công việc thường sang trạng thái hủy, chặn chuyển lại hoặc sửa công việc đã hủy; cho phép lưu trữ dự án khi các việc còn lại đều đã hoàn thành hoặc đã hủy.
+- Cập nhật các tệp `js/store.js`, `js/app.js`, `js/pages/lead-task-board.js` và `css/pages/lead.css`.
+- Chưa chạy ứng dụng/kiểm thử; để người dùng kiểm tra theo yêu cầu.
