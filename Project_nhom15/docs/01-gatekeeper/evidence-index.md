@@ -15,7 +15,7 @@
 
 Trình duyệt Edge dùng phiên LocalStorage riêng; không đặt lại dữ liệu của người dùng. Lượt chạy lại SV3 P1 ngày 26/10 cũng đạt 6 nhóm, ảnh/kết quả tạm nằm ngoài repo trong creatorstudio-sv3-p1.
 
-Giới hạn: browser-task27 tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi duyệt Lead/Client qua UI. Chưa phải bằng chứng tạo/nộp phiên bản hoàn toàn bằng UI Designer. Kiểm tra bố cục ở các độ rộng trên không thay thế audit accessibility hoặc thử trên mọi thiết bị. Ảnh chạy thử hiện lưu local; các liên kết JSON không phải liên kết ảnh trên GitHub.
+Giới hạn: browser-task27 tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi duyệt Lead/Client qua UI. Chưa phải bằng chứng tạo/nộp phiên bản hoàn toàn bằng UI Designer. Kiểm tra bố cục ở các độ rộng trên không thay thế audit accessibility hoặc thử trên mọi thiết bị. Bộ ảnh mới 39 PNG đã lưu trong [qa-web-current](../qa-web-current/README.md); các ảnh QA cũ khác vẫn có thể chỉ lưu local.
 
 ## Gatekeeper và phần còn thiếu
 
@@ -30,3 +30,7 @@ Giới hạn: browser-task27 tạo/nộp phiên bản qua Store để dựng d�
 | Chất lượng | Các bộ kiểm tra cụ thể phía trên | W3C/axe/Lighthouse, module danh sách dùng chung và ảnh đủ phạm vi theo kế hoạch |
 
 Không đánh dấu toàn bộ tiêu chí hoặc gatekeeper đạt chỉ dựa vào các bộ kiểm thử này. Các báo cáo QA cũ trong docs giữ giá trị lịch sử theo ngày ghi trong từng file.
+
+## Audit bổ sung sau a2da7b3
+
+[19 lượt xem/8 độ rộng và 39 ảnh](../qa-web-current/README.md): không còn phát hiện trong phạm vi DOM/tràn ngang/tương phản nền đơn sắc. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa thay thế axe/W3C/Lighthouse.

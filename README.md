@@ -110,10 +110,12 @@ Trello/Figma và danh tính/MSSV cần nhóm cung cấp link và thông tin th�
 
 Chưa xác nhận URL deploy public hiện hành trong đợt kiểm tra này. [Hướng dẫn deploy](Project_nhom15/docs/02-quy-trinh/deploy.md) là checklist chuẩn bị, không phải bằng chứng đã xuất bản.
 
-Kết quả kiểm thử có trong repo; ảnh chạy thử lưu local. Figma, Trello, phê duyệt và link public chỉ đánh dấu hoàn thành khi có nguồn thật. OBS đang hoãn theo yêu cầu người dùng; các kịch bản khôi phục chỉ là tài liệu chuẩn bị.
+Kết quả kiểm thử và [39 ảnh web hiện hành](Project_nhom15/docs/qa-web-current/README.md) có trong repo. Các ảnh QA cũ khác có thể chỉ lưu local. Figma, Trello, phê duyệt và link public chỉ đánh dấu hoàn thành khi có nguồn thật. OBS đang hoãn theo yêu cầu người dùng; các kịch bản khôi phục chỉ là tài liệu chuẩn bị.
 
 ## 15. Giới hạn và việc tiếp theo
 
-Còn cần kiểm tra các mục chưa đủ bằng chứng: module danh sách dùng chung và kiểm thử theo kế hoạch, audit/W3C/axe/Lighthouse, bộ ảnh theo URL mới, link Figma/Trello, quy trình review và deploy. Chưa coi toàn bộ bài tập lớn hoàn tất.
+Còn cần kiểm tra các mục chưa đủ bằng chứng: module danh sách dùng chung và kiểm thử theo kế hoạch, W3C/axe/Lighthouse và tương phản vùng nền ảnh/gradient, bộ ảnh theo URL mới, link Figma/Trello, quy trình review và deploy. Chưa coi toàn bộ bài tập lớn hoàn tất.
 
 Đọc [chỉ mục tài liệu](Project_nhom15/docs/README.md), [tiến độ](Project_nhom15/docs/TIEN-DO-SV3.md) và [khai báo AI](Project_nhom15/docs/03-ai/ai-usage-report.md). Sinh viên tự bổ sung phần đã tự làm, cách hiểu code và thông tin thật; không tạo bằng chứng thay người khác.
+
+Audit tự viết hiện hành: [19 lượt/8 độ rộng](Project_nhom15/docs/qa-web-current/README.md); 0 phát hiện trong phạm vi đo được, còn 26 lượt phần tử nền ảnh/gradient chưa đo.

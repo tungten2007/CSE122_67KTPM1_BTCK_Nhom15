@@ -51,8 +51,8 @@
 
 .kpi-icon.purple { background: #eeecff; color: var(--primary-dark); }
 .kpi-icon.amber { background: #fef3c7; color: #b45309; }
-.kpi-icon.red { background: #fee2e2; color: #dc2626; }
-.kpi-icon.green { background: #dcfce7; color: #16a34a; }
+.kpi-icon.red { background: #fee2e2; color: #b91c1c; }
+.kpi-icon.green { background: #dcfce7; color: #15753a; }
 
 /* Urgent Banner */
 .urgent-banner {
@@ -306,7 +306,7 @@
 }
 
 .status-step.completed {
-  color: #16a34a;
+  color: #15753a;
 }
 
 .status-step .step-num {
@@ -326,7 +326,7 @@
 
 .status-step.completed .step-num {
   background: #dcfce7;
-  color: #16a34a;
+  color: #15753a;
 }
 
 /* Palette section */
@@ -399,7 +399,7 @@
   padding: 2px 6px;
   background: #f1f5f9;
   border-radius: 4px;
-  color: #64748b;
+  color: #52627a;
   display: inline-block;
   margin-top: 6px;
 }
@@ -493,7 +493,7 @@
   background: none;
   border: 0;
   padding: 0;
-  color: #8b5cf6;
+  color: #7041be;
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
@@ -672,4 +672,12 @@
  .task-item { display:grid; grid-template-columns:18px minmax(0,1fr); align-items:start; }
  .task-item-meta { grid-column:2; flex-wrap:wrap; gap:8px; }
  .task-item-title { overflow-wrap:anywhere; }
+}
+
+/* Keep moodboard controls within the workspace while the sidebar is visible. */
+.page-heading { flex-wrap:wrap; }
+.heading-actions { flex-wrap:wrap; max-width:100%; }
+@media(max-width:1024px){
+ .moodboard-header-bar { flex-wrap:wrap; gap:12px; }
+ .moodboard-header-bar > .row { flex-wrap:wrap; max-width:100%; }
 }

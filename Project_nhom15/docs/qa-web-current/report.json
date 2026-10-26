@@ -1,0 +1,462 @@
+{
+  "scope": "Custom DOM, computed solid-color contrast and overflow checks; not axe, WCAG certification, W3C validation or Lighthouse. Fresh isolated context.",
+  "generatedAt": "2026-10-26T07:11:44.262Z",
+  "baseScreens": 19,
+  "widths": [
+    320,
+    375,
+    390,
+    720,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "contrast": [
+    {
+      "screen": "landing",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "landing",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "login",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "login",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "register",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "register",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "error-404",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "error-404",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "profile",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "profile",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "notifications",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "notifications",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-project-overview",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-project-overview",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-creative-brief",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-creative-brief",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-review-versions",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "client-review-versions",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "designer-dashboard",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 6
+    },
+    {
+      "screen": "designer-dashboard",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 6
+    },
+    {
+      "screen": "designer-moodboard",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "designer-moodboard",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "designer-version-management",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "designer-version-management",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "lead-task-board",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "lead-task-board",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "lead-internal-review",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "lead-internal-review",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "lead-feedback-summary",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 2
+    },
+    {
+      "screen": "lead-feedback-summary",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 2
+    },
+    {
+      "screen": "admin-brief-template-management",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 5
+    },
+    {
+      "screen": "admin-brief-template-management",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 5
+    },
+    {
+      "screen": "admin-user-management",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "admin-user-management",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "admin-project-settings",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "admin-project-settings",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "error-403",
+      "viewport": 1440,
+      "violations": [],
+      "unknownCount": 0
+    },
+    {
+      "screen": "error-403",
+      "viewport": 375,
+      "violations": [],
+      "unknownCount": 0
+    }
+  ],
+  "a11y": [
+    {
+      "screen": "landing",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "CreatorStudio — Cùng nhau tạo điều khác biệt",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "login",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Đăng nhập — CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "register",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Đăng ký — CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "error-404",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "404 · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "profile",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "notifications",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "client-project-overview",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Dự án của tôi — CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "client-creative-brief",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Creative Brief — CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "client-review-versions",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Duyệt phiên bản — CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "designer-dashboard",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "designer-moodboard",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "designer-version-management",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "lead-task-board",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Bảng công việc · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "lead-internal-review",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Duyệt nội bộ · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "lead-feedback-summary",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Tổng hợp phản hồi · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "admin-brief-template-management",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "admin-user-management",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Quản lý người dùng · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "admin-project-settings",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "Thiết lập dự án · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    },
+    {
+      "screen": "error-403",
+      "mains": 1,
+      "h1s": 1,
+      "lang": "vi",
+      "title": "403 · CreatorStudio",
+      "unnamed": [],
+      "images": [],
+      "emptyButtons": [],
+      "dupIds": []
+    }
+  ],
+  "responsive": [],
+  "console": [],
+  "browser": "156.0.4314.42",
+  "unknownBackgroundCount": 26,
+  "status": "PASS_WITH_UNASSESSED_BACKGROUNDS",
+  "failureCount": 0
+}

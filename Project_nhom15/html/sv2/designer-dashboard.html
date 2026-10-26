@@ -38,7 +38,7 @@
         let myTasks = data.tasks.filter(t => t.projectId === project.id && t.assignee === user.id);
         const isUrgent = t => t.status !== 'done' && (t.urgent || t.priority === 'high' || (t.due && new Date(t.due + 'T23:59:59') <= new Date(Date.now() + (data.settings.warningDays || 0) * 86400000)));
         const focusTask = myTasks.find(isUrgent);
-        
+
         // Tính toán KPI
         const totalPending = myTasks.filter(t => t.status === 'todo' || t.status === 'doing').length;
         const totalUrgent = myTasks.filter(isUrgent).length;
@@ -114,7 +114,7 @@
 
         main.innerHTML = `
           ${banner()}
-          
+
           ${App.header(
             'KHÔNG GIAN NHÀ THIẾT KẾ',
             'Bảng điều khiển & Ưu tiên công việc',
@@ -209,10 +209,10 @@
             <div class="toolbar">
               <div class="search-box">
                 ${icon('search')}
-                <input type="search" id="task-search" placeholder="Tìm theo tên hoặc mô tả công việc..." value="${esc(searchQuery)}">
+                <input type="search" id="task-search" aria-label="Tìm công việc" placeholder="Tìm theo tên hoặc mô tả công việc..." value="${esc(searchQuery)}">
               </div>
 
-              <select id="status-filter">
+              <select id="status-filter" aria-label="Lọc trạng thái công việc">
                 <option value="all" ${currentFilter === 'all' ? 'selected' : ''}>Tất cả trạng thái</option>
                 <option value="todo" ${currentFilter === 'todo' ? 'selected' : ''}>Cần làm (To Do)</option>
                 <option value="doing" ${currentFilter === 'doing' ? 'selected' : ''}>Đang làm (Doing)</option>
@@ -220,7 +220,7 @@
                 <option value="done" ${currentFilter === 'done' ? 'selected' : ''}>Hoàn thành (Done)</option>
               </select>
 
-              <select id="priority-filter">
+              <select id="priority-filter" aria-label="Lọc mức ưu tiên">
                 <option value="all" ${currentPriorityFilter === 'all' ? 'selected' : ''}>Tất cả mức ưu tiên</option>
                 <option value="high" ${currentPriorityFilter === 'high' ? 'selected' : ''}>Ưu tiên cao</option>
                 <option value="medium" ${currentPriorityFilter === 'medium' ? 'selected' : ''}>Ưu tiên vừa</option>

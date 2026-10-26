@@ -140,3 +140,14 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Deploy/Trello là checklist chuẩn bị, không coi đã xuất bản/đã tạo board. Hoãn OBS theo yêu cầu người dùng.
 
 - Kiểm chứng đợt tài liệu: 22 Markdown, 134 liên kết tương đối không hỏng; README 15 phần; bảng 18 màn x 12 cột; 21 HTML; số lượt QA 24/57/6/6 khớp JSON; check_bundle.py đạt. Đây là kiểm tra tài liệu, không thay thế kiểm thử chức năng.
+
+
+## Audit web, tương phản và Moodboard — 26/10/2026
+
+- Tăng độ đậm chữ phụ, nhãn và trạng thái tại các khai báo màu gây thiếu tương phản; giữ nền/bảng màu thương hiệu.
+- Bổ sung tên truy cập cho 7 ô tìm kiếm/bộ lọc SV2. Thêm favicon ở các trang thiếu để tránh yêu cầu favicon mặc định lỗi.
+- Cho hàng nút và thanh trạng thái Moodboard xuống dòng, sửa tràn ngang 768px.
+- Khôi phục/cập nhật tests/audit-web.cjs: đường dẫn hiện hành, 19 lượt/8 độ rộng, trả mã lỗi khi audit phát hiện vấn đề; chụp ảnh tùy chọn.
+- Audit đạt trong phạm vi đo được: 0 lỗi tràn, 0 lỗi tương phản nền đơn sắc, 0 thiếu tên/alt/ID trùng và 0 console/pageerror/HTTP lỗi. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa chạy axe/W3C/Lighthouse.
+- Chạy hồi quy 11 tệp Node, bundle, 24 kiểm tra tài khoản và 57 kiểm tra vai trò đều đạt. Đã xem ảnh Moodboard 768px và đăng nhập 375px sau sửa.
+- Bằng chứng và 39 ảnh: [qa-web-current](qa-web-current/README.md). Chưa quay video.

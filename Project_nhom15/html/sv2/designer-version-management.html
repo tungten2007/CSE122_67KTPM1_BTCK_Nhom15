@@ -66,7 +66,7 @@
 
           <!-- Toolbar lọc trạng thái -->
           <div class="toolbar">
-            <select id="status-filter">
+            <select id="status-filter" aria-label="Lọc trạng thái phiên bản">
               <option value="all" ${currentFilterStatus === 'all' ? 'selected' : ''}>Tất cả trạng thái</option>
               <option value="Draft" ${currentFilterStatus === 'Draft' ? 'selected' : ''}>Bản nháp (Draft)</option>
               <option value="Internal Review" ${currentFilterStatus === 'Internal Review' ? 'selected' : ''}>Chờ duyệt nội bộ (Internal Review)</option>
