@@ -73,3 +73,16 @@ Các kết quả PASS ngày 12/10 ở phía trên thuộc phiên bản cũ. Chú
 - Chờ người dùng xác nhận các phần xóa, danh sách, seed và modal trước khi nhập các phần này vào dev.
 - Khi tích hợp, chuyển từng khối sang đường dẫn đã tái cấu trúc; giữ quyền Lead/Designer và các API chung của dev. Không chép đè toàn bộ store/app từ bản SV3 độc lập.
 - Những mục còn lại trong kế hoạch tổng thể vẫn chưa được chứng minh hoàn tất: các thay đổi SV1/SV2, module danh sách dùng chung, tài liệu toàn nhóm, kiểm tra tích hợp, deploy và tài sản Figma/Trello. Chưa quay OBS theo yêu cầu hiện tại.
+
+## Kết quả người dùng kiểm tra thủ công — 26/10/2026
+
+Nguồn: người dùng trực tiếp thao tác trên bản local và xác nhận trong cuộc trò chuyện; đây không phải kết quả bộ kiểm thử tự động.
+
+- Đạt: thêm và xóa tài khoản thử, tải lại trang không xuất hiện lại.
+- Đạt: chặn xóa An Nguyễn đang được giao công việc; tài khoản được giữ nguyên.
+- Đạt: lọc vai trò/trạng thái, kết hợp bộ lọc và xóa bộ lọc.
+- Đạt: sắp xếp tên, chuyển trang Trước/Sau và khóa nút ở hai đầu danh sách người dùng.
+- Đạt sau sửa: ô tìm kiếm người dùng giữ chữ khi nhập @; bản sửa đã tích hợp dev tại a38d1f7.
+- Đạt: tạo việc thử, hủy có lý do, xóa việc đã hủy; tải lại trang không xuất hiện lại.
+- Chờ phản hồi: tìm kiếm và chèn ký tự giữa chuỗi trên Bảng công việc.
+- Chưa kết luận: toàn bộ kế hoạch P1, tích hợp các phân hệ và các mục còn lại của kế hoạch tổng thể.
