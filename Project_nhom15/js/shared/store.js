@@ -48,6 +48,8 @@ window.Store = (() => {
     });
     return uid;
   }
+  function deleteTask(uid,tid){tx(d=>{actor(d,uid,'Lead');const t=d.tasks.find(t=>t.id===tid);requireValue(t,'Không tìm thấy công việc.');writable(d,t.projectId);requireValue(t.status==='cancelled','Chỉ xóa công việc đã hủy.');requireValue(!d.proposals.some(p=>p.taskId===tid||p.id===t.proposalId),'Công việc đang liên kết với đề xuất, không thể xóa.');d.tasks=d.tasks.filter(item=>item.id!==tid);log(d,'Đã xóa công việc đã hủy: '+t.title)})}
+  function deleteUser(uid,userId){tx(d=>{actor(d,uid,'Admin');const u=d.users.find(u=>u.id===userId);requireValue(u,'Không tìm thấy người dùng.');requireValue(userId!==uid,'Không thể xóa tài khoản đang sử dụng.');if(u.active&&u.role==='Admin')requireValue(d.users.some(x=>x.id!==userId&&x.active&&x.role==='Admin'),'Cần giữ ít nhất một Admin hoạt động.');requireValue(!d.tasks.some(t=>t.assignee===userId),'Người dùng vẫn được giao công việc. Hãy phân công lại trước khi xóa.');requireValue(!d.versions.some(v=>v.author===userId||v.designerId===userId||v.userId===userId),'Người dùng có phiên bản thiết kế được lưu. Không thể xóa để giữ lịch sử.');requireValue(!d.comments.some(c=>c.authorId===userId||c.userId===userId),'Người dùng có phản hồi được lưu. Không thể xóa để giữ lịch sử.');requireValue(!d.briefs.some(b=>b.clientId===userId),'Người dùng còn brief đang lưu. Không thể xóa để giữ lịch sử.');requireValue(!d.projects.some(p=>p.clientId===userId||p.ownerId===userId),'Người dùng còn liên kết với dự án. Không thể xóa để giữ lịch sử.');d.users=d.users.filter(item=>item.id!==userId);log(d,'Đã xóa người dùng: '+u.name)})}
   function reset(){const next=CS_SEED();localStorage.setItem(KEY,JSON.stringify(next));db=next}
   // --- Version Methods (SV2) ---
   function computeVersionCode(d, projectId, assetType, versionNum) {
@@ -387,5 +389,5 @@ window.Store = (() => {
   }
 
 
-  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,registerClient,transaction:tx,KEY,load,get,id,saveTask,moveTask,cancelTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,settings,tag,archive,reset};
+  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,registerClient,transaction:tx,KEY,load,get,id,saveTask,moveTask,cancelTask,deleteTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,deleteUser,settings,tag,archive,reset};
 })();

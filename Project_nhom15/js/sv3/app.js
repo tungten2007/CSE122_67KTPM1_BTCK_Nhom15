@@ -32,7 +32,49 @@ window.App = (() => {
   }
   function refresh(){sync();renderPage()}
   function action(fn,message){try{fn();refresh();if(message)toast(message);return true}catch(e){toast(e.message);return false}}
-  function modal(title,body,onSubmit,submit='Lưu thay đổi',danger=false){const d=$('#dialog');d.className='';d.innerHTML=`<form id="dialog-form"><header class="dialog-head"><div><p class="eyebrow">CREATORSTUDIO</p><h2 id="dialog-title">${esc(title)}</h2></div><button type="button" class="icon-button" data-close aria-label="Đóng">${icon('close')}</button></header><div class="dialog-body">${body}<p id="form-error" class="form-error" role="alert"></p></div><footer class="dialog-foot"><button type="button" class="button" data-close>Hủy</button>${onSubmit?`<button class="button ${danger?'danger':'primary'}" type="submit">${esc(submit)}</button>`:'<button type="button" class="button primary" data-close>Đóng</button>'}</footer></form>`;$$('[data-close]',d).forEach(b=>b.onclick=()=>d.close());$('#dialog-form').onsubmit=e=>{e.preventDefault();if(!onSubmit)return;try{onSubmit(Object.fromEntries(new FormData(e.target)),e.target);d.close();refresh()}catch(err){$('#form-error').textContent=err.message;$('#form-error').scrollIntoView({block:'nearest'})}};d.onclick=e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}};d.showModal();return d}
+  function modal(title,body,onSubmit,submit='Lưu thay đổi',danger=false){
+    const d=$('#dialog');
+    d.className='';
+    d.innerHTML=`<form id="dialog-form"><header class="dialog-head"><div><p class="eyebrow">CREATORSTUDIO</p><h2 id="dialog-title">${esc(title)}</h2></div><button type="button" class="icon-button" data-close aria-label="Đóng">${icon('close')}</button></header><div class="dialog-body">${body}<p id="form-error" class="form-error" role="alert" tabindex="-1"></p></div><footer class="dialog-foot"><button type="button" class="button" data-close>Hủy</button>${onSubmit?`<button class="button ${danger?'danger':'primary'}" type="submit">${esc(submit)}</button>`:'<button type="button" class="button primary" data-close>Đóng</button>'}</footer></form>`;
+    const form=$('#dialog-form'),error=$('#form-error');
+    let submitting=false;
+    $$('[data-close]',d).forEach(button=>button.onclick=()=>{if(!submitting)d.close()});
+    form.onsubmit=async event=>{
+      event.preventDefault();
+      if(!onSubmit||submitting)return;
+      const values=Object.fromEntries(new FormData(form));
+      const button=event.submitter||$('button[type="submit"]',form);
+      const oldText=button?.textContent;
+      submitting=true;
+      form.setAttribute('aria-busy','true');
+      error.textContent='';
+      if(button){button.disabled=true;button.textContent='Đang lưu…'}
+      try{
+        await onSubmit(values,form);
+        d.close();
+        refresh();
+      }catch(err){
+        error.textContent=err?.message||'Không lưu được thay đổi. Hãy thử lại.';
+        error.scrollIntoView({block:'nearest'});
+        error.focus();
+      }finally{
+        submitting=false;
+        form.removeAttribute('aria-busy');
+        if(button){button.disabled=false;button.textContent=oldText}
+      }
+    };
+    d.oncancel=event=>{if(submitting)event.preventDefault()};
+    d.onclick=event=>{
+      if(event.target===d&&!submitting){
+        const rect=d.getBoundingClientRect();
+        if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)d.close();
+      }
+    };
+    d.showModal();
+    const first=d.querySelector('.dialog-body input:not([disabled]):not([type="hidden"]),.dialog-body textarea:not([disabled]),.dialog-body select:not([disabled])')||d.querySelector('[data-close]');
+    first?.focus();
+    return d;
+  }
   const field=(label,name,value='',type='text',extra='')=>`<label class="field">${label}<input name="${name}" type="${type}" value="${esc(value)}" ${extra}></label>`;
   const textField=(label,name,value='',extra='')=>`<label class="field">${label}<textarea name="${name}" rows="4" ${extra}>${esc(value)}</textarea></label>`;
   const select=(label,name,options,value,extra='')=>`<label class="field">${label}<select name="${name}" ${extra}>${options.map(([v,l])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(l)}</option>`).join('')}</select></label>`;

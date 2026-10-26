@@ -106,3 +106,42 @@ Người dùng xác nhận cả nhóm đồng ý và yêu cầu hoàn thiện we
 23 kiểm tra sử dụng cuối và 34 lượt tích hợp chạy lại đạt; 9 file regression và 11 nhóm dữ liệu tích hợp đạt. Kết quả trong qa-final-v5, cùng bài kiểm thử browser-final-v5.cjs. Tài liệu chung đã đồng bộ trong README/user-guide/screen-list/team-assignment/ai-usage-report, giữ bản yêu cầu/bản nộp gốc làm tham chiếu.
 
 Trang web có 18 trang, gồm một trang đăng ký bổ sung. Bản frontend lưu dữ liệu trên trình duyệt; chưa có backend hoặc đồng bộ qua các máy. Duyệt nhóm được ghi theo lời người dùng, không tạo review giả trên GitHub. Phần Figma/OBS/nộp học phần vẫn đối chiếu riêng; không cản việc dùng bản web hiện tại. Gói: CreatorStudio-Task27-Integration-v5-Complete.zip.
+
+## Đợt P1 bổ sung 26/10/2026 — đang chờ kiểm tra
+
+Các kết quả PASS ngày 12/10 ở phía trên thuộc phiên bản cũ. Chúng không xác nhận những thay đổi P1 dưới đây đã hoạt động trên trình duyệt.
+
+| Phần | Trạng thái hiện tại | Vị trí trong nhánh feature/sv3 |
+|---|---|---|
+| Hủy công việc có lý do | Người dùng xác nhận phần hủy hoạt động; đã nhập vào dev tại 8001af7 | js/store.js; js/app.js; js/pages/lead-task-board.js |
+| Xóa công việc đã hủy | Đã viết mã, chưa kiểm tra trình duyệt | js/store.js; js/pages/lead-task-board.js |
+| Xóa người dùng có điều kiện | Đã viết mã, chưa kiểm tra trình duyệt | js/store.js; js/pages/admin-user-management.js |
+| Sắp xếp, tìm kiếm debounce, xóa bộ lọc và phân trang | Đã viết mã, chưa kiểm tra trình duyệt | Hai trang danh sách ở trên |
+| Seed 15 người dùng, 15 công việc, 2 việc đã hủy | Đã đếm trong mã nguồn; chưa kiểm tra trên giao diện | js/data.js |
+| Focus và trạng thái gửi modal | Đã viết mã, chưa kiểm tra trình duyệt | js/app.js |
+
+### Bước tiếp theo: kiểm tra bản feature trước khi tích hợp
+
+1. Dùng bản mới nhất của nhánh feature/sv3. Nhánh này hiện dùng HTML tại gốc Project_nhom15; dev dùng html/sv1, html/sv2, html/sv3. Chạy đúng bản cần kiểm tra bằng Live Server.
+2. Nếu cần giữ dữ liệu demo đã nhập, xuất bản sao JSON trong Công cụ demo trước khi đặt lại dữ liệu. Đặt lại dữ liệu mẫu sẽ xóa các thay đổi demo hiện có trên origin đó và nạp seed mới.
+3. Mở admin-user-management.html ở vai trò Admin: xác nhận tổng 15 thành viên; với 6 thành viên/trang có 3 trang. Thử tìm tên, lọc vai trò/trạng thái, sắp xếp và Xóa bộ lọc.
+4. Thêm một người dùng demo mới không được giao việc, sau đó thử xóa: Hủy trong hộp xác nhận phải giữ tài khoản, xác nhận xóa phải loại tài khoản khỏi bảng. Thử xóa An Nguyễn đang có công việc: phải hiện lỗi và giữ tài khoản. Tài khoản đang dùng không có quyền tự xóa.
+5. Mở lead-task-board.html ở vai trò Lead: thử tìm kiếm, sắp xếp, lọc ưu tiên/người phụ trách, chuyển trang và xóa bộ lọc. Tổng kết quả phải theo bộ lọc; không được mất thẻ chỉ vì chuyển trang.
+6. Tạo một công việc riêng để kiểm tra; hủy với lý do rồi xóa công việc đó. Hủy ở hộp xác nhận xóa phải giữ thẻ. Dự án đã lưu trữ phải giữ chỉ đọc.
+7. Trong modal tạo/sửa, kiểm tra focus ban đầu, nhấn Tab và Esc. Thử dữ liệu sai: form phải giữ dữ liệu và cho phép sửa rồi gửi lại. Sau thao tác thành công, đóng modal và bảng phải cập nhật.
+8. Tải lại trang, xác nhận các thao tác đã lưu vẫn còn. Ghi lỗi quan sát được và bước tái hiện trước khi yêu cầu tích hợp vào dev.
+
+### Sau bước kiểm tra
+
+- Chờ người dùng xác nhận các phần xóa, danh sách, seed và modal trước khi nhập các phần này vào dev.
+- Khi tích hợp, chuyển từng khối sang đường dẫn đã tái cấu trúc; giữ quyền Lead/Designer và các API chung của dev. Không chép đè toàn bộ store/app từ bản SV3 độc lập.
+- Những mục còn lại trong kế hoạch tổng thể vẫn chưa được chứng minh hoàn tất: các thay đổi SV1/SV2, module danh sách dùng chung, tài liệu toàn nhóm, kiểm tra tích hợp, deploy và tài sản Figma/Trello. Chưa quay OBS theo yêu cầu hiện tại.
+
+## Tích hợp SV3 vào dev — 26/10/2026
+
+- Hợp nhất feature/sv3: xóa công việc đã hủy, xóa người dùng có guard và hộp xác nhận; lọc/sắp xếp/phân trang; seed 15 người dùng và 15 công việc (2 việc đã hủy); trạng thái gửi và focus modal.
+- Chuyển mã sang js/shared, js/sv3 và css/sv3; giữ cấu trúc HTML, điều hướng, khóa dữ liệu dùng chung và API SV1/SV2 trên dev.
+- Nút Xóa người dùng nằm tại html/sv3/admin-user-management.html sau khi tải bản dev mới. File JavaScript tương ứng: js/sv3/pages/admin-user-management.js.
+- Chưa chạy trình duyệt hoặc bộ kiểm thử, theo yêu cầu người dùng tự kiểm tra. Seed mới áp dụng khi nạp dữ liệu mẫu mới; không tự đặt lại LocalStorage hiện có.
+
+Cập nhật: các bước chờ nhập dev trong checklist phía trên đã được thay bằng lần tích hợp này theo yêu cầu người dùng; kiểm tra trình duyệt vẫn chưa hoàn tất. Trên dev, mở html/sv3/admin-user-management.html và html/sv3/lead-task-board.html.
