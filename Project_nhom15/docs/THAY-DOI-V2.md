@@ -43,3 +43,5 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Chặn chuyển công việc thường sang trạng thái hủy, chặn chuyển lại hoặc sửa công việc đã hủy; cho phép lưu trữ dự án khi các việc còn lại đều đã hoàn thành hoặc đã hủy.
 - Cập nhật các tệp `js/store.js`, `js/app.js`, `js/pages/lead-task-board.js` và `css/pages/lead.css`.
 - Chưa chạy ứng dụng/kiểm thử; để người dùng kiểm tra theo yêu cầu.
+
+- Sửa bộ chọn sự kiện cho nút hủy để gắn đúng trên mọi thẻ công việc.

@@ -14,7 +14,7 @@
  A.$('#search').oninput=e=>{const pos=e.target.selectionStart;query=e.target.value;render();A.$('#search').focus();A.$('#search').setSelectionRange(pos,pos)};A.$('#person').onchange=e=>{person=e.target.value;render()};A.$('#priority').onchange=e=>{priority=e.target.value;render()};
  A.$$('[data-tab]').forEach(b=>b.onclick=()=>{mobileStatus=b.dataset.tab;render()});A.$$('[data-add]').forEach(b=>b.onclick=()=>edit({status:b.dataset.add}));
  A.$('[data-edit]').forEach(b=>b.onclick=()=>{const t=d.tasks.find(t=>t.id===b.dataset.edit);if(p.archived||t.status==='cancelled')A.modal(t.title,`<p>${A.esc(t.description)}</p><p>Trạng thái: ${A.stateLabel[t.status]} · Hạn ${A.date(t.due)}</p>${t.cancelReason?`<p>Lý do hủy: ${A.esc(t.cancelReason)}</p>`:''}`,null);else edit(t)});
- A.$('[data-cancel]').forEach(b=>b.onclick=()=>{const t=d.tasks.find(t=>t.id===b.dataset.cancel);if(!t)return;A.modal('Hủy công việc',A.textField('Lý do hủy *','reason','','required maxlength="500"'),form=>Store.cancelTask(A.user.id,t.id,form.reason),'Xác nhận hủy',true)});
+ A.$$('[data-cancel]').forEach(b=>b.onclick=()=>{const t=d.tasks.find(t=>t.id===b.dataset.cancel);if(!t)return;A.modal('Hủy công việc',A.textField('Lý do hủy *','reason','','required maxlength="500"'),form=>Store.cancelTask(A.user.id,t.id,form.reason),'Xác nhận hủy',true)});
  A.$$('[data-move]').forEach(s=>s.onchange=()=>{
    const previous=d.tasks.find(t=>t.id===s.dataset.move)?.status;
    const moved=A.action(()=>{
