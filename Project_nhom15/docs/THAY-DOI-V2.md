@@ -61,3 +61,8 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Tiến độ không tính các công việc đã hủy.
 - Sửa selector gắn sự kiện chỉnh sửa để áp dụng cho mọi thẻ công việc.
 - Chưa chạy kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — quản lý danh sách người dùng
+
+- Thêm sắp xếp theo tên, vai trò, trạng thái; tìm kiếm debounce; nút xóa bộ lọc; bộ đếm có thông báo cập nhật; giữ phân trang.
+- Chưa chạy kiểm thử.
