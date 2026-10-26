@@ -72,3 +72,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Mở rộng seed từ 6 lên 15 người dùng và từ 7 lên 15 công việc; có 2 công việc đã hủy để trình bày các trạng thái, lọc và phân trang.
 - Dữ liệu là tài khoản demo giả lập; không chứa thông tin đăng nhập thật.
 - Chưa chạy ứng dụng/kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — trạng thái gửi và focus của modal
+
+- Đưa focus vào trường đầu tiên khi mở form; modal chỉ xem đưa focus vào nút đóng.
+- Khóa nút gửi, hiển thị Đang lưu và ngăn gửi lặp trong lúc xử lý; hỗ trợ callback trả Promise.
+- Khi lưu thất bại, giữ nội dung form, đưa focus đến thông báo lỗi và bật lại nút gửi để thử lại.
+- Tệp sửa: `js/app.js`. Chỉ đối chiếu mã đã lưu trên GitHub; chưa chạy trình duyệt/kiểm thử, theo yêu cầu người dùng tự kiểm tra.
