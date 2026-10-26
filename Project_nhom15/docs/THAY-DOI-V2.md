@@ -52,3 +52,5 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm thao tác xóa người dùng; chặn tự xóa, xóa Admin hoạt động cuối cùng và xóa người dùng còn liên kết với task, phiên bản, phản hồi, brief hoặc dự án.
 - Ghi nhận thao tác vào activity log; cập nhật `js/store.js`, `js/pages/lead-task-board.js` và `js/pages/admin-user-management.js`.
 - Chưa chạy kiểm thử; chờ người dùng kiểm tra trước khi gộp vào `dev`.
+
+- Điều chỉnh thẻ đã hủy: giữ chỉ đọc, tắt kéo thả, đồng thời hiện nút xóa khi dự án còn mở.
