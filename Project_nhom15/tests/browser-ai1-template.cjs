@@ -1,0 +1,56 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),out=process.env.QA_OUTPUT_DIR||path.join(require('node:os').tmpdir(),'creatorstudio-ai1-template');
+const checks=[],errors=[],mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.ttf':'font/ttf'};
+const server=http.createServer((req,res)=>{const f=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(!f.startsWith(root+path.sep)||!fs.existsSync(f)||!fs.statSync(f).isFile()){res.writeHead(404);return res.end()}res.setHeader('Content-Type',mime[path.extname(f)]||'application/octet-stream');res.end(fs.readFileSync(f))});
+(async()=>{await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+try{
+ fs.mkdirSync(out,{recursive:true});browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE_PATH?{executablePath:process.env.CHROMIUM_EXECUTABLE_PATH}:{})});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
+ const base='http://127.0.0.1:'+server.address().port,go=p=>page.goto(base+'/'+p);
+ const pass=s=>{checks.push(s);console.log('PASS '+s)};
+ const submit=()=>page.locator('#dialog-form button[type=submit]').click();
+ const done=()=>page.waitForFunction(()=>!document.querySelector('#dialog').open);
+ await go('html/sv3/lead-task-board.html');await page.evaluate(()=>Navigation.activate('Admin',Store.get().users));await go('html/sv2/admin-brief-template-management.html');
+ await page.locator('#add-template-btn').waitFor();
+ const blocked=await page.evaluate(()=>{const before=JSON.stringify(Store.get());try{Store.deleteBriefTemplate('u-admin','bt-01');return false}catch{return before===JSON.stringify(Store.get())}});
+ assert.equal(blocked,true);
+ await page.locator('.delete-template-btn[data-id=bt-04]').click();await page.locator('#dialog [data-close]').last().click();assert.equal(await page.locator('.delete-template-btn[data-id=bt-04]').count(),1);
+ await page.locator('.delete-template-btn[data-id=bt-04]').click();await submit();await done();assert.equal(await page.locator('.delete-template-btn[data-id=bt-04]').count(),0);await page.reload();assert.equal(await page.locator('.delete-template-btn[data-id=bt-04]').count(),0);
+ await page.locator('.toggle-status-btn[data-id=bt-01]').click();assert.equal(await page.locator('#dialog').evaluate(e=>e.open),true);await page.keyboard.press('Escape');
+ pass('Template delete confirmation, Inactive-only guard, reload persistence and disable confirmation');
+ await page.evaluate(()=>{Store.transaction(d=>{d.briefTemplates.forEach(t=>t.status='Inactive')});App.refresh()});
+ while(await page.locator('.delete-template-btn').count()){await page.locator('.delete-template-btn').first().click();await submit();await done()}
+ assert.match(await page.locator('#main').innerText(),/Chưa có mẫu brief/);assert.equal(await page.locator('#prompt-editor').count(),0);
+ await page.locator('#add-template-btn').click();await page.locator('[name=name]').fill('Mẫu thử sau rỗng');await submit();await done();assert.equal(await page.locator('.template-card').count(),1);
+ pass('Deleting last template has usable empty state; can create a new template');
+ await page.evaluate(()=>{Store.reset();Navigation.activate('Client',Store.get().users)});await go('html/sv1/client-creative-brief.html?project=p-moc');
+ await page.locator('#brief-template').waitFor();
+ assert.deepEqual(await page.locator('#brief-template option').evaluateAll(es=>es.map(e=>e.value)),['bt-01','bt-02']);
+ await page.locator('#raw-idea').fill('Ý tưởng ngắn');await page.locator('#generate').click();assert.match(await page.locator('#brief-error').innerText(),/20 ký tự/);
+ await page.locator('#raw-idea').fill('Thiết kế hộp quà cà phê giấy kraft dành cho người trẻ, gồm hai túi cà phê và thiệp cảm ơn.');
+ await page.locator('#brief-template').selectOption('bt-02');await page.locator('#generate').click();await page.waitForFunction(()=>!document.querySelector('#structured-form').hidden);
+ assert.match(await page.locator('#explanation-text').innerText(),/bao bì sản phẩm/i);assert.match(await page.locator('#deliverables').inputValue(),/bao bì|nhãn sản phẩm/);
+ assert.match(await page.locator('#deliverables').inputValue(),/Quy cách/);
+ await page.locator('#accept').click();
+ assert.equal(await page.evaluate(()=>Store.get().briefs.find(b=>b.projectId==='p-moc').clientData.templateId),'bt-02');
+ await page.reload();await page.locator('#brief-template').waitFor();assert.equal(await page.locator('#brief-template').inputValue(),'bt-02');
+ pass('AI1 selects Active templates only, rejects short input, uses chosen category/sections and saves template identity');
+ await page.evaluate(()=>Navigation.activate('Admin',Store.get().users));await go('html/sv2/admin-brief-template-management.html');
+ await page.locator('.toggle-status-btn[data-id=bt-02]').click();await submit();await done();await page.locator('.delete-template-btn[data-id=bt-02]').click();await submit();assert.match(await page.locator('#form-error').innerText(),/brief sử dụng/);await page.keyboard.press('Escape');
+ pass('Referenced template cannot be deleted; historical brief preserved');
+ await page.evaluate(()=>{Store.transaction(d=>d.briefTemplates.forEach(t=>t.status='Inactive'));Navigation.activate('Client',Store.get().users)});
+ await go('html/sv1/client-creative-brief.html?project=p-moc');await page.locator('#brief-template').waitFor();
+ assert.equal(await page.locator('#brief-template').isDisabled(),true);await page.locator('#generate').click();assert.match(await page.locator('#brief-error').innerText(),/tạm ngừng|không còn/);
+ await page.locator('#manual').click();assert.equal(await page.locator('#structured-form').isVisible(),true);assert.equal(await page.locator('#brief-error').innerText(),'');
+ pass('No Active template gives recoverable error and manual brief remains available');
+ await page.setViewportSize({width:390,height:844});await page.waitForFunction(()=>document.querySelector('.sidebar').getBoundingClientRect().right<=1);await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:path.join(out,'client-mobile.png'),fullPage:true});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+ await page.evaluate(()=>Navigation.activate('Admin',Store.get().users));await go('html/sv2/admin-brief-template-management.html');await page.locator('#add-template-btn').waitFor();await page.screenshot({path:path.join(out,'templates-mobile.png'),fullPage:true});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+ assert.deepEqual(errors,[]);pass('Client/template mobile 390px without overflow or JavaScript errors');
+ fs.writeFileSync(path.join(out,'result.json'),JSON.stringify({status:'PASS',date:new Date().toISOString(),browser:browser.version(),checks,errors,note:'Isolated test context; AI uses deterministic rules, not external LLM.'},null,2));
+ console.log('RESULT '+out);
+}catch(e){fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'result.json'),JSON.stringify({status:'FAIL',checks,errors,error:String(e)},null,2));throw e}
+finally{if(browser)await browser.close();await new Promise(r=>server.close(r))}
+})().catch(e=>{console.error(e);process.exitCode=1;server.close()});

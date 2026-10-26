@@ -109,3 +109,12 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Khi xem ảnh 320px phát hiện nhãn bộ lọc bị ép quá hẹp; đã sửa local để các ô lọc xếp dọc, chạy lại đạt và xem lại ảnh.
 - Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/qa-sv3-p1/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
 - Phạm vi này chưa chứng minh toàn bộ kế hoạch tổng thể hoàn tất; chưa quay OBS.
+
+## P1 mẫu brief và AI-1 — 26/10/2026
+
+- Quản trị: chỉ xóa mẫu Inactive, xác nhận trước khi xóa/tắt mẫu; chặn xóa mẫu còn được brief tham chiếu; hiển thị trạng thái rỗng khi hết mẫu và vẫn tạo lại mẫu được.
+- Validation dữ liệu: trạng thái mẫu hợp lệ, giới hạn tên/prompt, prompt có biến {raw_input}.
+- Khách hàng: danh sách mẫu chỉ có Active Template; AI-1 mô phỏng dùng ngành hàng/các mục của mẫu đã chọn, lưu ID/tên/ngành hàng cùng brief. Không thực thi prompt bằng LLM và không gọi API ngoài.
+- Mô tả tối đa 20 ký tự bị từ chối có hướng dẫn; khi không còn mẫu Active có thông báo phục hồi và vẫn viết thủ công được. Bố cục thử mẫu trên mobile đã sửa sau khi xem ảnh.
+- Kiểm tra local: 11/11 tệp Node, check_bundle.py đạt; 6 nhóm Edge trong browser-ai1-template.cjs đạt, không pageerror. Ảnh 390px đã được xem, không tràn ngang.
+- Kết quả: docs/qa-ai1-template/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.

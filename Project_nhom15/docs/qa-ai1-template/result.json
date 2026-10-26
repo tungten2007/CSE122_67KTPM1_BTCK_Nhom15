@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "date": "2026-10-26T06:42:51.303Z",
+  "browser": "156.0.4314.42",
+  "checks": [
+    "Template delete confirmation, Inactive-only guard, reload persistence and disable confirmation",
+    "Deleting last template has usable empty state; can create a new template",
+    "AI1 selects Active templates only, rejects short input, uses chosen category/sections and saves template identity",
+    "Referenced template cannot be deleted; historical brief preserved",
+    "No Active template gives recoverable error and manual brief remains available",
+    "Client/template mobile 390px without overflow or JavaScript errors"
+  ],
+  "errors": [],
+  "note": "Isolated test context; AI uses deterministic rules, not external LLM."
+}

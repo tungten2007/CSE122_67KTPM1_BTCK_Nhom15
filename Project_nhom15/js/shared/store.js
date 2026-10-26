@@ -276,6 +276,9 @@ window.Store = (() => {
       requireValue(data.name?.trim().length >= 3, 'Tên mẫu brief cần ít nhất 3 ký tự.');
       requireValue(data.category?.trim().length >= 2, 'Ngành hàng/Phân loại không được để trống.');
       requireValue(data.promptTemplate?.trim().length >= 10, 'Prompt cấu hình cho AI-1 cần ít nhất 10 ký tự.');
+      requireValue(!data.status||['Active Template','Inactive','Custom'].includes(data.status),'Trạng thái mẫu brief không hợp lệ.');
+      requireValue(data.name.trim().length<=120&&data.promptTemplate.trim().length<=10000,'Tên mẫu tối đa 120 ký tự, prompt tối đa 10.000 ký tự.');
+      requireValue(data.promptTemplate.includes('{raw_input}'),'Prompt cần có biến {raw_input} để nhận mô tả khách hàng.');
 
       if (data.id) {
         const t = d.briefTemplates.find(t => t.id === data.id);
@@ -305,6 +308,8 @@ window.Store = (() => {
     });
     return resultId;
   }
+
+  function deleteBriefTemplate(uid,templateId){tx(d=>{actor(d,uid,'Admin');const template=d.briefTemplates.find(t=>t.id===templateId);requireValue(template,'Không tìm thấy mẫu brief.');requireValue(template.status==='Inactive','Chỉ xóa mẫu brief đã tạm ngừng.');requireValue(!d.briefs.some(b=>b.templateId===templateId||b.clientData?.templateId===templateId),'Mẫu đã được brief sử dụng; hãy giữ ở trạng thái tạm ngừng.');d.briefTemplates=d.briefTemplates.filter(t=>t.id!==templateId);log(d,'Đã xóa mẫu brief: '+template.name)})}
 
   function toggleBriefTemplate(uid, templateId) {
     tx(d => {
@@ -389,5 +394,5 @@ window.Store = (() => {
   }
 
 
-  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,registerClient,transaction:tx,KEY,load,get,id,saveTask,moveTask,cancelTask,deleteTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,deleteUser,settings,tag,archive,reset};
+  return {computeVersionCode,saveVersion,submitVersionForReview,deleteVersion,archiveVersion,saveMoodboard,addMoodCard,removeMoodCard,applyAIPalette,saveBriefTemplate,toggleBriefTemplate,deleteBriefTemplate,updateProfile,markNotification,markAllNotifications,deleteNotification,clearAllNotifications,registerClient,transaction:tx,KEY,load,get,id,saveTask,moveTask,cancelTask,deleteTask,brief,note,resolveNote,reviewChecks,review,addComment,proposals,saveProposal,removeProposal,discard,convert,saveUser,toggleUser,deleteUser,settings,tag,archive,reset};
 })();

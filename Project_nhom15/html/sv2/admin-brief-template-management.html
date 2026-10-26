@@ -91,7 +91,7 @@
 
           <!-- Lưới các Mẫu Brief định sẵn -->
           <section class="template-grid">
-            ${templates.map(tpl => {
+            ${templates.length ? templates.map(tpl => {
               const isActive = tpl.status === 'Active Template';
               const isCustom = tpl.status === 'Custom';
               let badgeColor = isActive ? 'green' : (isCustom ? 'purple' : 'gray');
@@ -124,14 +124,15 @@
                     <button class="button small toggle-status-btn" data-id="${tpl.id}" title="Đổi trạng thái">
                       ${isActive ? 'Tắt mẫu' : 'Bật mẫu'}
                     </button>
+                    ${tpl.status==='Inactive'?'<button type="button" class="button small danger delete-template-btn" data-id="'+esc(tpl.id)+'">Xóa mẫu</button>':''}
                   </div>
                 </div>
               `;
-            }).join('')}
+            }).join('') : App.empty('Không có mẫu brief phù hợp','Thay đổi bộ lọc hoặc thêm mẫu brief mới.')}
           </section>
 
           <!-- KHUNG CẤU HÌNH PROMPT CHO AI-1 (BRIEF STRUCTURER) -->
-          <section class="prompt-config-card" id="ai-prompt-config-section">
+          ${selectedTemplate ? `<section class="prompt-config-card" id="ai-prompt-config-section">
             <div class="panel-title">
               <div>
                 <h2>Cấu hình Prompt gợi ý cho AI-1 (Brief Structurer)</h2>
@@ -175,7 +176,7 @@
 
               <div id="test-output-box" class="prompt-test-output" style="display: none;"></div>
             </div>
-          </section>
+          </section>` : App.empty("Chưa có mẫu brief","Thêm mẫu để bắt đầu cấu hình AI.")}
         `;
 
         // 1. Lọc và tìm kiếm
@@ -208,12 +209,16 @@
         $$('.toggle-status-btn').forEach(btn => {
           btn.onclick = () => {
             const tid = btn.dataset.id;
-            App.action(() => {
-              Store.toggleBriefTemplate(user.id, tid);
-            }, 'Đã cập nhật trạng thái áp dụng mẫu brief.');
+            const tpl=data.briefTemplates.find(t=>t.id===tid);
+            const change=()=>Store.toggleBriefTemplate(user.id,tid);
+            if(tpl?.status==='Active Template')App.modal('Tạm ngừng mẫu brief?', '<p>Mẫu này sẽ không còn được chọn để tạo brief mới. Các brief đã lưu vẫn được giữ.</p>',change,'Tạm ngừng',true);
+            else App.action(change,'Đã bật mẫu brief.');
           };
         });
 
+        $$('.delete-template-btn').forEach(btn=>{btn.onclick=()=>{const tpl=App.data.briefTemplates.find(t=>t.id===btn.dataset.id);if(!tpl)return;App.modal('Xóa mẫu brief?', '<p>Xóa mẫu '+esc(tpl.name)+'? Mẫu đã được brief sử dụng sẽ được giữ lại.</p>',()=>Store.deleteBriefTemplate(user.id,tpl.id),'Xóa mẫu',true)}});
+
+        if(selectedTemplate){
         // 4. Click token pill để chèn vào textarea
         $$('.token-pill').forEach(pill => {
           pill.onclick = () => {
@@ -258,6 +263,7 @@
           }, 800);
         };
 
+        }
         // 7. Thêm mẫu Brief mới
         $('#add-template-btn').onclick = () => {
           App.modal(
