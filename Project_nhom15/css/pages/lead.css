@@ -5,3 +5,5 @@
 .column-dot.cancelled{background:#7e899d}.task-status-cancelled{font-size:10px;color:#6d7688;margin-top:7px}.task-cancel{width:100%;margin-top:8px}.cancel-reason{font-size:11px;color:#7d5360;background:#f8eef0;border-radius:6px;padding:7px 9px}
 
 .task-delete{width:100%;margin-top:8px}
+
+.board-pagination{margin:14px 0 6px}

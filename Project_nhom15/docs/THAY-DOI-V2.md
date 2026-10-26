@@ -54,3 +54,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Chưa chạy kiểm thử; chờ người dùng kiểm tra trước khi gộp vào `dev`.
 
 - Điều chỉnh thẻ đã hủy: giữ chỉ đọc, tắt kéo thả, đồng thời hiện nút xóa khi dự án còn mở.
+
+## Bổ sung ngày 26/10/2026 — lọc và phân trang bảng công việc
+
+- Thêm sắp xếp theo hạn, tên hoặc ưu tiên; xóa bộ lọc; tìm kiếm debounce; đếm kết quả và phân trang.
+- Tiến độ không tính các công việc đã hủy.
+- Sửa selector gắn sự kiện chỉnh sửa để áp dụng cho mọi thẻ công việc.
+- Chưa chạy kiểm thử.
