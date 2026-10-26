@@ -177,3 +177,14 @@ Nguồn: người dùng trực tiếp thao tác trên bản local và xác nhậ
 - Mô tả tối đa 20 ký tự bị từ chối có hướng dẫn; khi không còn mẫu Active có thông báo phục hồi và vẫn viết thủ công được. Bố cục thử mẫu trên mobile đã sửa sau khi xem ảnh.
 - Kiểm tra local: 11/11 tệp Node, check_bundle.py đạt; 6 nhóm Edge trong browser-ai1-template.cjs đạt, không pageerror. Ảnh 390px đã được xem, không tràn ngang.
 - Kết quả: docs/qa-ai1-template/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.
+
+## Tích hợp tài khoản, hồ sơ và bốn vai trò — 26/10/2026
+
+- Đăng ký: lỗi hiển thị tại từng trường, aria-invalid/aria-describedby, đưa focus vào trường sai và khóa gửi lặp trong lúc tạo tài khoản.
+- Sửa refresh khung SV2 còn truy cập user-chip cũ: đổi tên hồ sơ nay cập nhật đúng UI, không bị ghi đè lại khi đổi mật khẩu tiếp.
+- Xử lý Promise ready của View Transition khi hiệu ứng bị bỏ qua; kiểm tra điều hướng thông báo giữ cùng document và mở đúng dự án.
+- Sửa thông báo mobile: tab lọc xuống hàng, ngày nằm dưới tiêu đề. Sửa thanh tài khoản khách hàng và chiều rộng nội dung/select ở 320px.
+- Cập nhật browser-final-v5.cjs và browser-task27.cjs cho đường dẫn chia theo sinh viên, chọn tài khoản demo theo ID, và bỏ chế độ single-process cũ.
+- Kiểm tra local đạt: 11/11 tệp Node; check_bundle.py; 24 lượt tài khoản; 57 lượt tích hợp/hiển thị ở 320/390/1440px; chạy lại 6 nhóm AI-1 và 6 nhóm SV3 đạt. Không pageerror trong các bộ này.
+- Phạm vi luồng phiên bản trong browser-task27: tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi thao tác duyệt Lead/Client qua giao diện; không ghi đây là minh chứng thao tác UI Designer đầy đủ.
+- Kết quả hiện hành: docs/qa-integration-current/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.

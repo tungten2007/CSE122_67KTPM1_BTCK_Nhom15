@@ -866,3 +866,6 @@ html { scrollbar-gutter:stable; }
 .topbar { view-transition-name:workspace-topbar; }
 ::view-transition-group(workspace-sidebar),::view-transition-group(workspace-topbar) { animation-duration:0s; }
 ::view-transition-old(workspace-sidebar),::view-transition-new(workspace-sidebar),::view-transition-old(workspace-topbar),::view-transition-new(workspace-topbar) { animation:none; }
+@media(max-width:360px){.app .topbar{gap:8px}.app .topbar-right{gap:4px}.app .topbar-right>.avatar.small{display:none}.app .project-control select{max-width:80px;min-width:0}.app .role-control select{max-width:100px;min-width:0}}
+.app .workspace,.app .main-content{min-width:0}.app .main-content select{max-width:100%;min-width:0}
+.app .main-content{width:100%;max-width:1520px}

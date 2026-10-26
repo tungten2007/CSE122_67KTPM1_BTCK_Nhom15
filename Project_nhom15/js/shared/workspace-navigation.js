@@ -87,6 +87,7 @@ window.WorkspaceNavigation = (() => {
       };
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
         const transition = document.startViewTransition(update);
+        transition.ready.catch(() => {}); // Skipped visual transitions must not reject globally.
         transition.finished.catch(() => {});
         await transition.updateCallbackDone;
         await transition.finished.catch(() => {});
