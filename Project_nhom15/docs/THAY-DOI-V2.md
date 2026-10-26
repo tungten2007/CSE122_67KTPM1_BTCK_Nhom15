@@ -79,3 +79,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Khóa nút gửi, hiển thị Đang lưu và ngăn gửi lặp trong lúc xử lý; hỗ trợ callback trả Promise.
 - Khi lưu thất bại, giữ nội dung form, đưa focus đến thông báo lỗi và bật lại nút gửi để thử lại.
 - Tệp sửa: `js/app.js`. Chỉ đối chiếu mã đã lưu trên GitHub; chưa chạy trình duyệt/kiểm thử, theo yêu cầu người dùng tự kiểm tra.
+
+## Sửa lỗi nhập tìm kiếm người dùng — 26/10/2026
+
+- Giữ nguyên ô tìm kiếm khi debounce lọc danh sách; chỉ cập nhật bảng kết quả và phân trang, tránh dựng lại ô nhập làm gián đoạn con trỏ/vùng chọn khi gõ @.
+- Lưu truy vấn ngay khi nhập và chờ bộ gõ kết thúc composition trước khi lọc.
+- Đã sửa local trước. Kiểm tra Edge headless đạt: gõ chậm, Shift+2 (@), gõ tiếp email, chèn ký tự giữa chuỗi và giữ vị trí con trỏ, lọc email, xóa bộ lọc và sự kiện composition. Không có pageerror trong lượt kiểm tra.
+- Cập nhật feature/sv3 trước; chưa nhập bản sửa này vào dev, chờ người dùng xác nhận trên trang đang dùng.
