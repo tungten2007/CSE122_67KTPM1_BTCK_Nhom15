@@ -129,3 +129,14 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Kiểm tra local đạt: 11/11 tệp Node; check_bundle.py; 24 lượt tài khoản; 57 lượt tích hợp/hiển thị ở 320/390/1440px; chạy lại 6 nhóm AI-1 và 6 nhóm SV3 đạt. Không pageerror trong các bộ này.
 - Phạm vi luồng phiên bản trong browser-task27: tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi thao tác duyệt Lead/Client qua giao diện; không ghi đây là minh chứng thao tác UI Designer đầy đủ.
 - Kết quả hiện hành: docs/qa-integration-current/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.
+
+
+## Đối chiếu tài liệu hiện hành — 26/10/2026
+
+- Khôi phục có chọn lọc tài liệu gatekeeper/quy trình/AI từ bản sao lưu, giữ nguyên các stash và tài liệu QA cũ.
+- README gốc 15 phần; sửa hướng dẫn chạy theo html/sv1, chỉ mục tài liệu và bằng chứng QA thật.
+- Kiểm kê 18 màn giữ đúng 12 cột; sửa sort/phân trang/hủy task, confirm tắt mẫu và seed theo bản hiện hành.
+- Thay chỉ mục minh chứng cũ bằng phạm vi kiểm tra cụ thể; bỏ các khẳng định chưa xác minh về PR/Figma/deploy và điểm đạt tổng thể.
+- Deploy/Trello là checklist chuẩn bị, không coi đã xuất bản/đã tạo board. Hoãn OBS theo yêu cầu người dùng.
+
+- Kiểm chứng đợt tài liệu: 22 Markdown, 134 liên kết tương đối không hỏng; README 15 phần; bảng 18 màn x 12 cột; 21 HTML; số lượt QA 24/57/6/6 khớp JSON; check_bundle.py đạt. Đây là kiểm tra tài liệu, không thay thế kiểm thử chức năng.
