@@ -119,3 +119,5 @@ Còn cần kiểm tra các mục chưa đủ bằng chứng: module danh sách d
 Đọc [chỉ mục tài liệu](Project_nhom15/docs/README.md), [tiến độ](Project_nhom15/docs/TIEN-DO-SV3.md) và [khai báo AI](Project_nhom15/docs/03-ai/ai-usage-report.md). Sinh viên tự bổ sung phần đã tự làm, cách hiểu code và thông tin thật; không tạo bằng chứng thay người khác.
 
 Audit tự viết hiện hành: [19 lượt/8 độ rộng](Project_nhom15/docs/qa-web-current/README.md); 0 phát hiện trong phạm vi đo được, còn 26 lượt phần tử nền ảnh/gradient chưa đo.
+
+Axe-core 4.14.0 đã chạy [44 lượt trang/modal](Project_nhom15/docs/qa-axe-current/README.md): 0 vi phạm tự động, 118 lượt phần tử incomplete cần xem thủ công.

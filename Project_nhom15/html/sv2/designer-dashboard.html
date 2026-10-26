@@ -84,7 +84,7 @@
                 const isDone = t.status === 'done';
                 return `
                   <div class="task-item ${isUrgent && !isDone ? 'urgent' : ''}">
-                    <input type="checkbox" class="task-item-check" data-id="${t.id}" ${isDone ? 'checked' : ''} title="Đánh dấu hoàn thành">
+                    <input type="checkbox" class="task-item-check" data-id="${t.id}" ${isDone ? 'checked' : ''} aria-label="Đánh dấu hoàn thành: ${esc(t.title)}" title="Đánh dấu hoàn thành">
                     <div class="task-item-main">
                       <div class="task-item-title">
                         <span style="${isDone ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${esc(t.title)}</span>
@@ -175,7 +175,7 @@
               <div class="urgent-banner-content">
                 <div class="urgent-banner-icon">${icon('alert')}</div>
                 <div>
-                  <h3>Có ${totalUrgent} nhiệm vụ cần ưu tiên giải quyết hôm nay!</h3>
+                  <h2>Có ${totalUrgent} nhiệm vụ cần ưu tiên giải quyết hôm nay!</h2>
                   <p>Hạn chót phiên bản mới cho dự án ${esc(project.name)} đang đến gần. Vui lòng kiểm tra và cập nhật tiến độ.</p>
                 </div>
               </div>

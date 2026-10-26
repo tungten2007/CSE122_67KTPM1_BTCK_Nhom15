@@ -268,7 +268,7 @@ window.App = (() => {
   const empty = (title, desc) => `
     <div class="empty">
       ${icon('file')}
-      <h3>${esc(title)}</h3>
+      <h2>${esc(title)}</h2>
       <p>${esc(desc)}</p>
     </div>
   `;

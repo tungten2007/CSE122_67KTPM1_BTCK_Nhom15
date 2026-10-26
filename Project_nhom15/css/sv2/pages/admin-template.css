@@ -34,7 +34,7 @@
 }
 
 .template-card.inactive-card {
-  opacity: 0.75;
+  opacity: 1;
   background: #fbfcfe;
 }
 
@@ -46,7 +46,7 @@
   margin-bottom: 12px;
 }
 
-.template-card-header h3 {
+.template-card-header h2 {
   font-size: 16px;
   color: var(--ink);
   font-weight: 700;
@@ -159,7 +159,7 @@
   margin-top: 18px;
 }
 
-.prompt-tester h4 {
+.prompt-tester h3 {
   font-size: 13px;
   color: #334155;
   margin-bottom: 8px;

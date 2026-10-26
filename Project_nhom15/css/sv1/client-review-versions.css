@@ -227,7 +227,7 @@
 .changelog .eyebrow {
   font-size: 9px;
 }
-.changelog h3 {
+.changelog h2 {
   font-size: 14px;
   margin: 8px 0;
 }
@@ -253,10 +253,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.feedback-heading h3 {
+.feedback-heading h2 {
   font-size: 15px;
 }
-.feedback-heading h3 span {
+.feedback-heading h2 span {
   font-size: 10px;
   padding: 3px 7px;
   border-radius: 5px;
@@ -383,7 +383,7 @@
 .decision-panel .eyebrow {
   font-size: 9px;
 }
-.decision-panel h3 {
+.decision-panel h2 {
   font-size: 15px;
   margin: 5px 0;
 }

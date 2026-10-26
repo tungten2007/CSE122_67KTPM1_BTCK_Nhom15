@@ -86,7 +86,7 @@
   flex-shrink: 0;
 }
 
-.urgent-banner h3 {
+.urgent-banner h2 {
   font-size: 15px;
   color: #9f1239;
   font-weight: 700;
@@ -448,7 +448,7 @@
   flex-direction: column;
 }
 
-.canvas-card-body h4 {
+.canvas-card-body h3 {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 6px;

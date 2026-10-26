@@ -34,3 +34,7 @@ Không đánh dấu toàn bộ tiêu chí hoặc gatekeeper đạt chỉ dựa v
 ## Audit bổ sung sau a2da7b3
 
 [19 lượt xem/8 độ rộng và 39 ảnh](../qa-web-current/README.md): không còn phát hiện trong phạm vi DOM/tràn ngang/tương phản nền đơn sắc. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa thay thế axe/W3C/Lighthouse.
+
+## Axe bổ sung sau 963fc6c
+
+[44 lượt trang/modal](../qa-axe-current/README.md): 0 vi phạm tự động, 118 lượt phần tử incomplete. Giới hạn preload và kiểm tra thủ công ghi trong báo cáo; chưa xác nhận toàn bộ WCAG.

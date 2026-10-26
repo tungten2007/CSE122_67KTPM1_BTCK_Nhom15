@@ -208,3 +208,13 @@ Nguồn: người dùng trực tiếp thao tác trên bản local và xác nhậ
 - Audit đạt trong phạm vi đo được: 0 lỗi tràn, 0 lỗi tương phản nền đơn sắc, 0 thiếu tên/alt/ID trùng và 0 console/pageerror/HTTP lỗi. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa chạy axe/W3C/Lighthouse.
 - Chạy hồi quy 11 tệp Node, bundle, 24 kiểm tra tài khoản và 57 kiểm tra vai trò đều đạt. Đã xem ảnh Moodboard 768px và đăng nhập 375px sau sửa.
 - Bằng chứng và 39 ảnh: [qa-web-current](qa-web-current/README.md). Chưa quay video.
+
+
+## Axe và cấu trúc truy cập — 26/10/2026
+
+- Sửa cấp tiêu đề theo cấu trúc h1/h2/h3, cập nhật CSS tương ứng; đặt tên riêng hai vùng sidebar/feedback.
+- Checkbox hoàn thành có aria-label chứa tên task; nhãn avatar chứa chữ viết tắt nhìn thấy.
+- Sửa tương phản select task và bỏ opacity toàn thẻ mẫu Inactive, giữ trạng thái bằng badge.
+- Axe-core 4.14.0: 44 lượt trang/modal ở 1440/375px, 0 vi phạm tự động và 0 HTTP/pageerror; còn 118 lượt phần tử incomplete cần xem thủ công. preload=false do lỗi @import của bước tải CSSOM engine; không tắt rule hay loại DOM.
+- Hồi quy: 11/11 tệp Node, check_bundle.py, browser-task27 57 kiểm tra đạt. Đã xem ảnh mẫu Inactive và modal user 375px.
+- Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](qa-axe-current/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.
