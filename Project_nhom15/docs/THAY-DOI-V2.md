@@ -92,3 +92,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Chuyển mã sang js/shared, js/sv3 và css/sv3; giữ cấu trúc HTML, điều hướng, khóa dữ liệu dùng chung và API SV1/SV2 trên dev.
 - Nút Xóa người dùng nằm tại html/sv3/admin-user-management.html sau khi tải bản dev mới. File JavaScript tương ứng: js/sv3/pages/admin-user-management.js.
 - Chưa chạy trình duyệt hoặc bộ kiểm thử, theo yêu cầu người dùng tự kiểm tra. Seed mới áp dụng khi nạp dữ liệu mẫu mới; không tự đặt lại LocalStorage hiện có.
+
+## Sửa lỗi nhập tìm kiếm người dùng — 26/10/2026
+
+- Giữ nguyên ô tìm kiếm khi debounce lọc danh sách; chỉ cập nhật bảng kết quả và phân trang, tránh dựng lại ô nhập làm gián đoạn con trỏ/vùng chọn khi gõ @.
+- Lưu truy vấn ngay khi nhập và chờ bộ gõ kết thúc composition trước khi lọc.
+- Đã sửa local trước. Kiểm tra Edge headless đạt: gõ chậm, Shift+2 (@), gõ tiếp email, chèn ký tự giữa chuỗi và giữ vị trí con trỏ, lọc email, xóa bộ lọc và sự kiện composition. Không có pageerror trong lượt kiểm tra.
+- Đã sửa local, cập nhật feature/sv3, kiểm tra Edge đạt và được người dùng xác nhận hoạt động. Nhập bản sửa vào dev sau xác nhận.
