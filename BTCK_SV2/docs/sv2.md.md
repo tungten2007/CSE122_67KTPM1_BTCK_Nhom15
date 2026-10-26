@@ -64,10 +64,10 @@ Dựa trên **Bảng kiểm kê màn hình dự án CreatorStudio** (file `Bang_
 Bản dễ học dùng JavaScript mô phỏng theo từ khóa, không gọi API thật:
 
 1. Nhập mô tả (ít nhất 5 ký tự).
-2. Hiển thị trạng thái đang xử lý trong khoảng 0,9 giây.
-3. Dùng `includes()` để nhận diện nhóm cà phê/kraft hoặc trà, chọn bảng màu có sẵn gồm 4 mã HEX và các từ khóa.
+2. Hiển thị spinner, skeleton và các bước xử lý trong khoảng 1,8 giây.
+3. Dùng `includes()` để nhận diện nhóm cà phê/kraft, trà hoặc sang trọng/cao cấp; hiển thị chủ đề, 4 mã HEX, các nhãn từ khóa, gợi ý chất liệu và Typography.
 4. Giải thích ngắn vì sao chọn nhóm màu đó.
-5. Người dùng áp dụng, bỏ qua hoặc sửa mô tả để gợi ý lại. Cùng mô tả có thể cho cùng kết quả.
+5. Người dùng Chấp nhận & Áp dụng, Từ chối hoặc Tạo lại để sửa mô tả và sinh gợi ý mới. Cùng mô tả có thể cho cùng kết quả.
 6. Mô tả không khớp từ khóa hoặc bật checkbox mô phỏng lỗi sẽ hiện hướng dẫn thử lại/nhập thủ công.
 
 ### Cấu hình System Prompt cho AI-1 (`admin-brief-template-management.html`)

@@ -442,65 +442,161 @@ document.addEventListener('DOMContentLoaded', function () {
     if (coTheSuaDuAn()) { bangCamHung.status = 'Shared'; luuBangCamHung(); hienThongBao('Đã chia sẻ Moodboard.'); }
   };
 
-  // 6. AI mô phỏng: kiểm tra từ khóa bằng includes, chọn bảng màu có sẵn.
-  // Đây là quy tắc JavaScript cho bài tập, không phải mô hình AI thật.
+  // 6. AI-3 mô phỏng theo từ khóa. Kết quả có chủ đề, màu, giải thích và gợi ý thiết kế.
+  // Không gọi API AI thật; dữ liệu gợi ý được khai báo rõ ràng để dễ học và chỉnh sửa.
   function goiYPhongCach(moTa) {
     const chuoi = moTa.toLowerCase();
-    const laCaPhe = ['cà phê', 'coffee', 'kraft', 'mộc', 'organic'].some(function (tu) { return chuoi.includes(tu); });
-    const laTra = ['trà', 'tea', 'lá', 'thảo mộc'].some(function (tu) { return chuoi.includes(tu); });
-    if (!laCaPhe && !laTra) throw new Error('Chưa nhận diện được phong cách. Hãy thêm từ khóa cà phê, giấy kraft hoặc trà.');
-    if (laTra && !laCaPhe) return {
-      palette: [{ hex: '#315b45', name: 'Xanh lá trà' }, { hex: '#bdd3a4', name: 'Xanh non' }, { hex: '#f7f4e8', name: 'Kem' }, { hex: '#a67c52', name: 'Nâu gỗ' }],
-      keywords: ['Thanh mát', 'Tự nhiên', 'Nhẹ nhàng'], reason: 'Từ khóa về trà phù hợp với xanh lá và màu kem, gợi cảm giác nhẹ nhàng.'
-    };
-    return {
-      palette: [{ hex: '#24473b', name: 'Xanh rừng' }, { hex: '#cbbb97', name: 'Kraft' }, { hex: '#f6f1e5', name: 'Kem' }, { hex: '#5a4434', name: 'Nâu cà phê' }],
-      keywords: ['Mộc mạc', 'Tự nhiên', 'Ấm áp', 'Tối giản'], reason: 'Từ khóa cà phê và kraft phù hợp với nâu ấm, xanh trầm và kem sáng.'
-    };
-  }
-  document.getElementById('open-ai-modal-btn').onclick = function () {
-    const hop = document.getElementById('ai-dialog');
-    const nhap = document.getElementById('ai-prompt-input');
-    let ketQua = null;
-    nhap.value = 'Cà phê mộc, giấy kraft, tự nhiên và tối giản';
-    function chuyenBuoc(ten) {
-      document.querySelectorAll('[data-ai-step]').forEach(function (e) { e.hidden = e.dataset.aiStep !== ten; });
+    if (['sang trọng', 'cao cấp', 'luxury', 'đen vàng'].some(function (tu) { return chuoi.includes(tu); })) {
+      return {
+        theme: 'Sang trọng Tối giản (Minimal Luxury)',
+        palette: [{ hex: '#1c1c1c', name: 'Đen than', role: 'Màu chủ đạo' }, { hex: '#c6a667', name: 'Vàng champagne', role: 'Điểm nhấn' }, { hex: '#f5f1e9', name: 'Trắng ngà', role: 'Màu nền' }, { hex: '#77736d', name: 'Xám ấm', role: 'Màu chữ phụ' }],
+        keywords: ['Tinh tế', 'Cao cấp', 'Tối giản', 'Tương phản', 'Sang trọng'],
+        reason: 'Từ khóa sang trọng và cao cấp phù hợp với nền đen trầm, điểm nhấn vàng champagne và khoảng trắng thoáng. Bảng màu gợi ý cảm giác tinh tế, dễ tạo điểm nhấn cho sản phẩm.',
+        materials: 'Giấy mỹ thuật mịn hoặc giấy đen, kết hợp ép kim vàng ở chi tiết cần nhấn.',
+        typography: 'Serif thanh lịch cho tiêu đề, kết hợp Sans-serif đơn giản và khoảng cách chữ thoáng.'
+      };
     }
-    hop.querySelector('[data-close]').onclick = function () { hop.close(); };
+    if (['trà', 'tea', 'thảo mộc'].some(function (tu) { return chuoi.includes(tu); }) && !['cà phê', 'coffee'].some(function (tu) { return chuoi.includes(tu); })) {
+      return {
+        theme: 'Thanh mát Tự nhiên (Fresh Botanical)',
+        palette: [{ hex: '#315b45', name: 'Xanh lá trà', role: 'Màu chủ đạo' }, { hex: '#bdd3a4', name: 'Xanh non', role: 'Màu phối' }, { hex: '#f7f4e8', name: 'Kem', role: 'Màu nền' }, { hex: '#a67c52', name: 'Nâu gỗ', role: 'Điểm nhấn' }],
+        keywords: ['Thanh mát', 'Tự nhiên', 'Nhẹ nhàng', 'Thảo mộc', 'Trong lành'],
+        reason: 'Từ khóa về trà và thảo mộc phù hợp với xanh lá, xanh non và nền kem sáng. Nhóm màu gợi cảm giác nhẹ nhàng, gần gũi với lá trà và nguyên liệu thiên nhiên.',
+        materials: 'Giấy có bề mặt tự nhiên, nhãn giấy sáng và hình minh họa thực vật nét mảnh.',
+        typography: 'Sans-serif dễ đọc, kết hợp Serif mềm mại cho tên thương hiệu.'
+      };
+    }
+    if (['cà phê', 'coffee', 'kraft', 'mộc', 'organic'].some(function (tu) { return chuoi.includes(tu); })) {
+      return {
+        theme: 'Mộc Mạc Hữu Cơ (Earthy Organic)',
+        palette: [{ hex: '#24473b', name: 'Xanh rừng già (Forest)', role: 'Màu chủ đạo' }, { hex: '#cbbb97', name: 'Giấy Kraft Tự Nhiên (Raw Kraft)', role: 'Màu nền / Bao bì' }, { hex: '#f6f1e5', name: 'Trắng Kem Mộc (Cream Linen)', role: 'Màu tương phản phụ' }, { hex: '#5a4434', name: 'Nâu hạt rang', role: 'Màu chữ & Nhấn' }],
+        keywords: ['Nguyên bản & Thô mộc', 'Chất liệu Kraft tự nhiên', 'Thủ công tinh tế', 'Tối giản Bắc Âu', 'Ấm áp & Tin cậy'],
+        reason: 'Sắc xanh rừng sẫm #24473B gợi nhớ cao nguyên và nguồn gốc đồi chè, kết hợp cùng tông kraft #CBBB97 tạo cảm giác thô mộc, thân thiện với môi trường. Nền kem và nâu hạt rang giúp truyền tải thông điệp “từ những điều nguyên bản”.',
+        materials: 'Giấy kraft tái chế sần nhẹ, in lụa 2 màu đơn sắc, ép nhũ mờ hạt cát.',
+        typography: 'Serif cổ điển có chân vững chãi kết hợp Sans-serif thoáng đãng.'
+      };
+    }
+    throw new Error('Chưa nhận diện được phong cách. Hãy thêm từ khóa như cà phê, giấy kraft, trà hoặc sang trọng.');
+  }
+
+  const hopAI = document.getElementById('ai-dialog');
+  const nhapAI = document.getElementById('ai-prompt-input');
+  let ketQuaAI = null;
+  let lanXuLyAI = 0;
+  const henGioAI = [];
+
+  // Hủy tiến trình cũ khi đóng hoặc mở lại để kết quả cũ không xuất hiện muộn.
+  function huyXuLyAI() {
+    lanXuLyAI++;
+    henGioAI.forEach(function (maHen) { clearTimeout(maHen); });
+    henGioAI.length = 0;
+  }
+  function chuyenBuocAI(ten) {
+    hopAI.querySelectorAll('[data-ai-step]').forEach(function (e) { e.hidden = e.dataset.aiStep !== ten; });
+    hopAI.querySelectorAll('[data-ai-footer]').forEach(function (e) { e.hidden = e.dataset.aiFooter !== ten; });
+    hopAI.querySelector('.ai-dialog-body').scrollTop = 0;
+  }
+  hopAI.onclose = huyXuLyAI;
+  hopAI.oncancel = huyXuLyAI;
+  hopAI.querySelectorAll('[data-ai-close]').forEach(function (nut) { nut.onclick = function () { huyXuLyAI(); hopAI.close(); }; });
+
+  document.getElementById('open-ai-modal-btn').onclick = function () {
+    huyXuLyAI();
+    ketQuaAI = null;
+    nhapAI.value = 'Dự án ' + duAn.name + ': Cà phê mộc nguyên bản, bao bì giấy kraft tự nhiên, phong cách Bắc Âu tối giản, tinh tế, gần gũi thiên nhiên.';
     document.getElementById('ai-fail-checkbox').checked = false;
     document.getElementById('ai-input-error').textContent = '';
-    chuyenBuoc('input'); hop.showModal();
-    document.getElementById('ai-generate-btn').onclick = function () {
-      if (nhap.value.trim().length < 5) { document.getElementById('ai-input-error').textContent = 'Nhập mô tả ít nhất 5 ký tự.'; return; }
-      const moTa = nhap.value;
-      const giaLapLoi = document.getElementById('ai-fail-checkbox').checked;
-      chuyenBuoc('processing');
-      setTimeout(function () {
-        try {
-          if (giaLapLoi) throw new Error('Lỗi mô phỏng. Bạn có thể thử lại hoặc chọn màu thủ công.');
-          ketQua = goiYPhongCach(moTa);
-          document.getElementById('ai-res-explanation').textContent = ketQua.reason;
-          document.getElementById('ai-res-keywords').textContent = ketQua.keywords.join(' · ');
-          const vung = document.getElementById('ai-res-palette'); vung.replaceChildren();
-          ketQua.palette.forEach(function (mau) {
-            const o = saoChepMau('ai-color-row'); o.querySelector('rect').setAttribute('fill', mau.hex); o.querySelector('span').textContent = mau.hex; vung.append(o);
-          });
-          chuyenBuoc('result');
-        } catch (loi) { document.getElementById('ai-error-message-text').textContent = loi.message; chuyenBuoc('error'); }
-      }, 900);
-    };
-    document.getElementById('ai-accept-btn').onclick = function () {
-      if (!ketQua || !coTheSuaDuAn()) return;
-      bangCamHung.palette = ketQua.palette;
-      bangCamHung.keywords = ketQua.keywords;
-      bangCamHung.lastAIReason = ketQua.reason;
-      bangCamHung.status = 'Palette Ready'; luuBangCamHung(); hop.close();
-    };
-    document.getElementById('ai-regen-btn').onclick = function () { chuyenBuoc('input'); };
-    document.getElementById('ai-retry-btn').onclick = function () { document.getElementById('ai-fail-checkbox').checked = false; chuyenBuoc('input'); };
-    document.getElementById('ai-reject-btn').onclick = function () { hop.close(); };
-    document.getElementById('ai-manual-btn').onclick = function () { hop.close(); document.getElementById('add-color-btn').click(); };
+    document.getElementById('ai-save-error').textContent = '';
+    chuyenBuocAI('input');
+    hopAI.showModal();
   };
+
+  document.getElementById('ai-generate-btn').onclick = function () {
+    if (nhapAI.value.trim().length < 5) {
+      document.getElementById('ai-input-error').textContent = 'Vui lòng nhập mô tả ít nhất 5 ký tự.';
+      nhapAI.focus();
+      return;
+    }
+    huyXuLyAI();
+    ketQuaAI = null;
+    const lanHienTai = lanXuLyAI;
+    const moTa = nhapAI.value.trim();
+    const giaLapLoi = document.getElementById('ai-fail-checkbox').checked;
+    document.getElementById('ai-input-error').textContent = '';
+    document.getElementById('ai-save-error').textContent = '';
+    document.getElementById('ai-progress-text').textContent = 'Đang phân tích ngữ cảnh thương hiệu…';
+    chuyenBuocAI('processing');
+    henGioAI.push(setTimeout(function () {
+      if (lanHienTai === lanXuLyAI && hopAI.open) document.getElementById('ai-progress-text').textContent = 'Đang trích xuất mã màu HEX tương phản…';
+    }, 550));
+    henGioAI.push(setTimeout(function () {
+      if (lanHienTai === lanXuLyAI && hopAI.open) document.getElementById('ai-progress-text').textContent = 'Đang cấu trúc từ khóa, chất liệu và kiểu chữ…';
+    }, 1100));
+    henGioAI.push(setTimeout(function () {
+      if (lanHienTai !== lanXuLyAI || !hopAI.open) return;
+      try {
+        if (giaLapLoi) throw new Error('AI mô phỏng chưa đủ thông tin để tạo gợi ý. Hãy thử lại hoặc nhập bảng màu thủ công.');
+        ketQuaAI = goiYPhongCach(moTa);
+        document.getElementById('ai-res-theme').textContent = ketQuaAI.theme;
+        document.getElementById('ai-res-explanation').textContent = ketQuaAI.reason;
+        document.getElementById('ai-res-materials').textContent = ketQuaAI.materials;
+        document.getElementById('ai-res-typography').textContent = ketQuaAI.typography;
+        const vungMau = document.getElementById('ai-res-palette');
+        vungMau.replaceChildren();
+        ketQuaAI.palette.forEach(function (mau) {
+          const o = saoChepMau('ai-color-row');
+          o.querySelector('rect').setAttribute('fill', mau.hex);
+          o.querySelector('span').textContent = mau.hex.toUpperCase();
+          vungMau.append(o);
+        });
+        const vungTuKhoa = document.getElementById('ai-res-keywords');
+        vungTuKhoa.replaceChildren();
+        ketQuaAI.keywords.forEach(function (tu) {
+          const nhan = saoChepMau('ai-keyword-row');
+          nhan.textContent = tu;
+          vungTuKhoa.append(nhan);
+        });
+        chuyenBuocAI('result');
+      } catch (loi) {
+        document.getElementById('ai-error-message-text').textContent = loi.message;
+        chuyenBuocAI('error');
+      }
+    }, 1800));
+  };
+
+  document.getElementById('ai-accept-btn').onclick = function () {
+    if (!ketQuaAI || !coTheSuaDuAn()) return;
+    // Giữ dữ liệu cũ để khôi phục nếu trình duyệt không lưu được.
+    const cu = { palette: bangCamHung.palette, keywords: bangCamHung.keywords, lastAIReason: bangCamHung.lastAIReason, lastAIMaterials: bangCamHung.lastAIMaterials, lastAITypography: bangCamHung.lastAITypography, lastAITheme: bangCamHung.lastAITheme, status: bangCamHung.status, updatedAt: bangCamHung.updatedAt };
+    bangCamHung.palette = ketQuaAI.palette;
+    bangCamHung.keywords = ketQuaAI.keywords;
+    bangCamHung.lastAIReason = ketQuaAI.reason;
+    bangCamHung.lastAIMaterials = ketQuaAI.materials;
+    bangCamHung.lastAITypography = ketQuaAI.typography;
+    bangCamHung.lastAITheme = ketQuaAI.theme;
+    bangCamHung.status = 'Palette Ready';
+    bangCamHung.updatedAt = new Date().toISOString();
+    if (!luuDuLieu()) {
+      Object.assign(bangCamHung, cu);
+      document.getElementById('ai-save-error').textContent = 'Chưa lưu được gợi ý. Hãy kiểm tra dung lượng trình duyệt rồi thử lại.';
+      return;
+    }
+    hienMoodboard();
+    hopAI.close();
+    hienThongBao('Đã áp dụng bảng màu và từ khóa AI vào Moodboard!');
+  };
+  document.getElementById('ai-regen-btn').onclick = function () {
+    huyXuLyAI(); ketQuaAI = null;
+    document.getElementById('ai-input-error').textContent = '';
+    chuyenBuocAI('input'); nhapAI.focus();
+  };
+  document.getElementById('ai-retry-btn').onclick = function () {
+    huyXuLyAI(); ketQuaAI = null;
+    document.getElementById('ai-fail-checkbox').checked = false;
+    chuyenBuocAI('input'); nhapAI.focus();
+  };
+  document.getElementById('ai-reject-btn').onclick = function () { huyXuLyAI(); ketQuaAI = null; hopAI.close(); };
+  document.getElementById('ai-manual-btn').onclick = function () { huyXuLyAI(); ketQuaAI = null; hopAI.close(); document.getElementById('add-color-btn').click(); };
   hienMoodboard();
 
 });

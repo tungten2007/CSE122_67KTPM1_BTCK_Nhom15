@@ -47,9 +47,9 @@ File giữ tên `test-client.md` theo mẫu được cung cấp; nội dung là 
 | TC-17 | Thẻ ảnh | Thêm thẻ gồm tên, loại, ảnh mẫu và ghi chú; sau đó xóa | Hiện đúng thẻ và số lượng; dữ liệu được lưu đúng Moodboard |
 | TC-18 | Tiêu đề/trạng thái | Đổi tiêu đề, chia sẻ Moodboard, tải lại | Giữ tiêu đề mới; trạng thái `Shared` được hiển thị và lưu. Đây là mô phỏng, không gửi dữ liệu lên dịch vụ chia sẻ thật |
 | TC-19 | AI đầu vào | Mở AI-3, nhập dưới 5 ký tự rồi bấm sinh gợi ý | Báo lỗi đầu vào, chưa chuyển sang kết quả |
-| TC-20 | AI thành công | Nhập “Cà phê giấy kraft tự nhiên”, sinh gợi ý | Có trạng thái xử lý; hiện 4 màu, từ khóa và giải thích. Kết quả lấy từ quy tắc có sẵn, không phải API AI thật |
-| TC-21 | AI nhóm phong cách | Thử mô tả “Trà xanh thanh mát”, sau đó mô tả không thuộc nhóm hỗ trợ | Nhóm trà có gợi ý tương ứng; mô tả không nhận diện được có hướng dẫn bổ sung từ khóa |
-| TC-22 | AI quyền quyết định | Sau khi có kết quả, thử Bỏ qua; mở lại, Sửa mô tả/Gợi ý lại; cuối cùng Áp dụng | Bỏ qua không thay bảng màu; sửa mở lại đầu vào; Áp dụng lưu màu/từ khóa, giải thích và trạng thái `Palette Ready`. Cùng mô tả có thể cho cùng kết quả |
+| TC-20 | AI thành công | Nhập “Cà phê giấy kraft tự nhiên”, sinh gợi ý | Có spinner/skeleton và các bước xử lý; hiện chủ đề, 4 màu, nhãn từ khóa, giải thích, gợi ý chất liệu và Typography. Kết quả lấy từ quy tắc có sẵn, không phải API AI thật |
+| TC-21 | AI nhóm phong cách | Thử mô tả “Trà xanh thanh mát”, “Sang trọng cao cấp đen vàng”, sau đó mô tả không thuộc nhóm hỗ trợ | Nhóm trà và nhóm cao cấp có gợi ý tương ứng; mô tả không nhận diện được có hướng dẫn bổ sung từ khóa |
+| TC-22 | AI quyền quyết định | Sau khi có kết quả, thử Từ chối (Reject); mở lại, Tạo lại (Regenerate); cuối cùng Chấp nhận & Áp dụng | Từ chối không thay bảng màu; sửa mở lại đầu vào; Áp dụng lưu màu/từ khóa, giải thích và trạng thái `Palette Ready`. Cùng mô tả có thể cho cùng kết quả |
 | TC-23 | AI lỗi | Bật mô phỏng lỗi, sinh gợi ý; thử Thử lại và Chọn màu thủ công | Có thông báo lỗi; thử lại bỏ tùy chọn giả lập lỗi; chọn thủ công mở form thêm màu |
 
 ## Quản lý phiên bản — Màn hình 6

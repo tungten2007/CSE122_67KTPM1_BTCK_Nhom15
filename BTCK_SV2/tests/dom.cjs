@@ -65,6 +65,7 @@ class Element {
   getElementById(id) { return this.querySelector('#' + id); }
   createElement(tag) { return new Element(tag); }
   addEventListener() {}
+  focus() {}
   showModal() { this.open = true; }
   close() { this.open = false; }
   click() { return this.onclick?.({target: this, preventDefault(){}}); }

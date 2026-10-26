@@ -33,7 +33,7 @@ node tests/verify.cjs
 ## Tổng hợp kết quả thực thi
 
 - **Bộ kiểm tra chức năng tự động chạy đạt, mã thoát 0.**
-- Chương trình xuất **2 nhóm kết quả PASS**: cấu trúc/khởi tạo 8 trang và các luồng chức năng được liệt kê bên dưới.
+- Chương trình xuất **3 nhóm kết quả PASS**: cấu trúc/khởi tạo 8 trang, luồng AI-3 theo video và các chức năng còn lại được liệt kê bên dưới.
 - Không có assertion thất bại trong lần chạy bộ kiểm tra này. Chương trình chưa xuất tổng số test case riêng lẻ, vì vậy không ghi con số 75 hoặc số liệu của bản SV1.
 - Kết quả PASS trong bảng là kết quả **DOM mô phỏng**, không đồng nghĩa toàn bộ thao tác đã đạt trên trình duyệt thật.
 
@@ -64,6 +64,7 @@ node tests/verify.cjs
 | AT-21 | AI-3 mô phỏng lỗi có thông báo; bấm thử lại bỏ chọn checkbox mô phỏng lỗi | PASS |
 | AT-22 | Admin lưu Prompt; công cụ thử nghiệm hiển thị kết quả mô phỏng | PASS |
 | AT-23 | Dự án đã lưu trữ không mở được form thêm nhiệm vụ | PASS |
+| AT-24 | AI-3 có chủ đề, chất liệu, Typography và nhãn từ khóa; kiểm tra đầu vào, Từ chối không lưu, Tạo lại, nhóm trà/cao cấp, chuyển nhập thủ công và hủy tiến trình cũ | PASS |
 
 ## Giao diện và minh chứng hiện có
 
@@ -91,3 +92,11 @@ Trong quá trình xem mobile đã chỉnh CSS cho thanh đầu trang, hàng côn
 Dùng [test-client.md](test-client.md) để chạy thủ công phần SV2. Tên file được giữ theo mẫu đầu vào; nội dung bên trong đã đổi sang Designer, Admin Template và các trang dùng chung của SV2.
 
 Chỉ cập nhật trạng thái đạt khi đã thực hiện thao tác và có kết quả thực tế tương ứng.
+
+## Kiểm tra lại AI-3 theo video tham chiếu — 26/10/2026
+
+- Đã khôi phục hộp thoại nhập mô tả, spinner/skeleton và các bước xử lý; kết quả có chủ đề, 4 màu HEX, nhãn từ khóa, giải thích, gợi ý chất liệu và Typography.
+- Trình duyệt thực tế: đã thử sinh gợi ý cà phê, Tạo lại với trà, Từ chối giữ nguyên bảng màu, mô phỏng lỗi, Thử lại, chuyển sang form nhập màu thủ công, Áp dụng rồi tải lại vẫn giữ từ khóa và giải thích. Không ghi nhận lỗi JavaScript trong các luồng được kiểm tra.
+- Mobile 390 × 844: hộp thoại nằm trong màn hình, nội dung cuộn riêng; bảng màu chuyển 2 cột, chân hộp thoại có các nút thao tác. Đo vùng nội dung không bị tràn ngang.
+- Ảnh minh chứng: [nhập mô tả](../design/mockups/ai-3-input.jpg), [kết quả](../design/mockups/ai-3-result.jpg), [giải thích/chất liệu/Typography](../design/mockups/ai-3-result-details.jpg), [lỗi](../design/mockups/ai-3-error.jpg), [kết quả mobile](../design/mockups/mobile-ai-3-result.jpg).
+- AI vẫn là mô phỏng JavaScript theo các nhóm từ khóa; chưa gọi API hoặc xác nhận độ chính xác của một mô hình AI thật.

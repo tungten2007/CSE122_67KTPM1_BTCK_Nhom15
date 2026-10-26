@@ -559,51 +559,62 @@
       <button class="button primary" type="submit">Lưu</button>
     </form>
   </template>
-  <dialog id="ai-dialog">
-    <div class="modal-head dialog-head">
-      <h2>AI-3: Gợi ý phong cách (mô phỏng)</h2>
-      <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
-    </div>
-    <div class="modal-body dialog-body">
+  <dialog id="ai-dialog" aria-labelledby="ai-dialog-title" aria-describedby="ai-dialog-description">
+    <header class="ai-dialog-header">
+      <div>
+        <p class="ai-dialog-eyebrow">CREATORSTUDIO AI ASSISTANT</p>
+        <h2 id="ai-dialog-title">AI-3 · Mood Keyword &amp; Palette Assistant</h2>
+        <p id="ai-dialog-description">Chuyển ý tưởng và brief thành bộ từ khóa thẩm mỹ &amp; bảng màu HEX gợi ý.</p>
+      </div>
+      <button type="button" class="ai-dialog-close" data-ai-close aria-label="Đóng trợ lý AI">×</button>
+    </header>
+    <div class="ai-dialog-body">
       <section data-ai-step="input">
-        <label class="field">
-          <span>Mô tả ý tưởng *</span>
-          <textarea id="ai-prompt-input" rows="4"></textarea>
+        <label class="field" for="ai-prompt-input">
+          <span>Mô tả ý tưởng thẩm mỹ hoặc chọn từ ngữ cảnh brief: *</span>
+          <textarea id="ai-prompt-input" rows="4" aria-describedby="ai-prompt-help ai-input-error"></textarea>
         </label>
-        <label>
-          <input type="checkbox" id="ai-fail-checkbox"> Mô phỏng lỗi</label>
-        <p id="ai-input-error" class="form-error"></p>
-        <button type="button" id="ai-generate-btn" class="button primary">Sinh gợi ý</button>
+        <p id="ai-prompt-help" class="ai-help">Gợi ý: “Cà phê mộc, giấy kraft, xanh rừng”, “Trà xanh thanh mát” hoặc “Sang trọng, cao cấp, đen vàng”.</p>
+        <label class="ai-fail-option">
+          <input type="checkbox" id="ai-fail-checkbox">
+          <span><strong>Mô phỏng tình huống AI thất bại (Fail State / Thiếu dữ liệu)</strong><small>Dùng để kiểm thử trạng thái lỗi, thử lại và chuyển sang nhập thủ công.</small></span>
+        </label>
+        <p id="ai-input-error" class="form-error" role="alert"></p>
       </section>
-      <section data-ai-step="processing" hidden>
-        <p>Đang phân tích từ khóa và chọn bảng màu…</p>
+      <section data-ai-step="processing" hidden aria-live="polite" aria-busy="true">
+        <div class="ai-processing-box">
+          <div class="ai-spinner" aria-hidden="true"></div>
+          <strong id="ai-progress-text">Đang phân tích ngữ cảnh thương hiệu…</strong>
+          <p>Đang đối chiếu bảng màu và trích xuất từ khóa cảm xúc.</p>
+        </div>
+        <div class="ai-skeleton ai-skeleton-block" aria-hidden="true"></div>
+        <div class="ai-skeleton ai-skeleton-line" aria-hidden="true"></div>
+        <div class="ai-skeleton ai-skeleton-short" aria-hidden="true"></div>
       </section>
       <section data-ai-step="result" hidden>
-        <h3>Gợi ý bảng màu</h3>
+        <div class="ai-success" role="status"><strong>✓ Đã hoàn thành phân tích thẩm mỹ!</strong><p>Mô phỏng theo từ khóa; không phải độ tin cậy từ mô hình AI.</p></div>
+        <h3 class="ai-theme-title">Chủ đề phong cách: <span id="ai-res-theme"></span></h3>
+        <h4 class="ai-section-label">Bảng màu HEX đề xuất:</h4>
         <div id="ai-res-palette" class="ai-result-palette"></div>
-        <p id="ai-res-keywords"></p>
-        <p id="ai-res-explanation"></p>
-        <div class="row">
-          <button type="button" id="ai-accept-btn" class="button primary">Áp dụng</button>
-          <button type="button" id="ai-regen-btn" class="button">Sửa mô tả / Gợi ý lại</button>
-          <button type="button" id="ai-reject-btn" class="button">Bỏ qua</button>
-        </div>
+        <h4 class="ai-section-label">Bộ từ khóa thẩm mỹ gợi ý:</h4>
+        <div id="ai-res-keywords" class="ai-keywords"></div>
+        <div class="ai-explanation"><h4>Vì sao AI đề xuất phong cách này? (Explanation)</h4><p id="ai-res-explanation"></p></div>
+        <div class="ai-design-details"><p><strong>Gợi ý chất liệu in:</strong> <span id="ai-res-materials"></span></p><p><strong>Gợi ý Typography:</strong> <span id="ai-res-typography"></span></p></div>
+        <p id="ai-save-error" class="form-error" role="alert"></p>
       </section>
       <section data-ai-step="error" hidden>
-        <p id="ai-error-message-text" class="form-error"></p>
-        <button type="button" id="ai-retry-btn" class="button">Thử lại</button>
-        <button type="button" id="ai-manual-btn" class="button">Chọn màu thủ công</button>
+        <div class="ai-error-box"><h3>Chưa thể tạo gợi ý phù hợp</h3><p id="ai-error-message-text" role="alert"></p><p>Bạn có thể bổ sung mô tả, thử lại hoặc chọn bảng màu thủ công.</p></div>
       </section>
     </div>
+    <footer class="ai-dialog-footer">
+      <div class="ai-footer-group" data-ai-footer="input"><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-generate-btn" class="button ai-submit">✧ Bắt đầu sinh gợi ý</button></div>
+      <div class="ai-footer-group" data-ai-footer="processing" hidden><button type="button" class="button" disabled>AI đang tính toán…</button></div>
+      <div class="ai-footer-group" data-ai-footer="result" hidden><button type="button" id="ai-reject-btn" class="button">Từ chối (Reject)</button><button type="button" id="ai-regen-btn" class="button">✧ Tạo lại (Regenerate)</button><button type="button" id="ai-accept-btn" class="button ai-submit">✓ Chấp nhận &amp; Áp dụng</button></div>
+      <div class="ai-footer-group" data-ai-footer="error" hidden><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-manual-btn" class="button">Nhập thủ công</button><button type="button" id="ai-retry-btn" class="button ai-submit">Thử lại (Retry)</button></div>
+    </footer>
   </dialog>
-  <template id="ai-color-row">
-    <div class="ai-color-item">
-      <svg viewBox="0 0 100 60" aria-hidden="true">
-        <rect width="100" height="60" fill="#ffffff"></rect>
-      </svg>
-      <span>#FFFFFF</span>
-    </div>
-  </template>
+  <template id="ai-color-row"><div class="ai-color-item"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><rect width="100" height="60" fill="#ffffff"></rect></svg><span class="ai-color-hex">#FFFFFF</span></div></template>
+  <template id="ai-keyword-row"><span class="ai-keyword-pill"></span></template>
   <script src="js/designer-moodboard.js"></script>
 </body>
 

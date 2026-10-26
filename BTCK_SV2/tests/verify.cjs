@@ -20,7 +20,7 @@ function open(name, options = {}) {
     Option: function(text,value){ const e=new Element('option',{value}); e.textContent=text; return e; },
     FormData: function(form){ return Object.entries(form.elements).filter(([,e]) => !e.disabled && (e.attrs.type !== 'checkbox' || e.checked)).map(([k,e]) => [k, e.attrs.type === 'checkbox' ? 'on' : e.value]); },
     alert(){}, confirm(){return true;}, prompt(){return null;},
-    navigator:{clipboard:{writeText:async()=>{}}}, setTimeout(fn){timers.push(fn);},
+    navigator:{clipboard:{writeText:async()=>{}}}, setTimeout(fn){timers.push(fn);return fn;}, clearTimeout(fn){const i=timers.indexOf(fn);if(i>=0) timers.splice(i,1);},
   });
   vm.runInContext(fs.readFileSync(path.join(root,'js',name+'.js'),'utf8'),context);
   ready();
@@ -86,6 +86,40 @@ async function main() {
   md.getElementById('open-ai-modal-btn').click(); md.getElementById('ai-fail-checkbox').checked=true; md.getElementById('ai-generate-btn').click();
   mood.timers.splice(0).forEach(fn=>fn()); assert.ok(md.getElementById('ai-error-message-text').textContent);
   md.getElementById('ai-retry-btn').click(); assert.equal(md.getElementById('ai-fail-checkbox').checked,false);
+  // AI dialog restored from the reference video: details, decisions and cancellation.
+  md.getElementById('open-ai-modal-btn').click();
+  md.getElementById('ai-prompt-input').value='abc'; md.getElementById('ai-generate-btn').click();
+  assert.ok(md.getElementById('ai-input-error').textContent);
+  md.getElementById('ai-prompt-input').value='Cà phê kraft mộc'; md.getElementById('ai-generate-btn').click();
+  assert.equal(md.querySelector('[data-ai-step="processing"]').hidden,false);
+  mood.timers.splice(0).forEach(fn=>fn());
+  assert.ok(md.getElementById('ai-res-theme').textContent.includes('Earthy Organic'));
+  assert.ok(md.getElementById('ai-res-materials').textContent.includes('kraft'));
+  assert.ok(md.getElementById('ai-res-typography').textContent.includes('Serif'));
+  assert.equal(md.getElementById('ai-res-keywords').children.length,5);
+  const paletteBeforeReject=JSON.stringify(mood.data.moodboards[0].palette);
+  md.getElementById('ai-reject-btn').click();
+  assert.equal(JSON.stringify(mood.data.moodboards[0].palette),paletteBeforeReject);
+  md.getElementById('open-ai-modal-btn').click(); md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn()); md.getElementById('ai-regen-btn').click();
+  md.getElementById('ai-prompt-input').value='Trà xanh thảo mộc'; md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn());
+  assert.ok(md.getElementById('ai-res-theme').textContent.includes('Fresh Botanical'));
+  md.getElementById('ai-accept-btn').click();
+  assert.equal(mood.data.moodboards[0].palette[0].hex,'#315b45');
+  assert.ok(mood.data.moodboards[0].lastAITypography);
+  md.getElementById('open-ai-modal-btn').click();
+  md.getElementById('ai-prompt-input').value='Sang trọng cao cấp đen vàng'; md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn()); assert.ok(md.getElementById('ai-res-theme').textContent.includes('Minimal Luxury'));
+  md.getElementById('ai-regen-btn').click(); md.getElementById('ai-prompt-input').value='không rõ ý tưởng'; md.getElementById('ai-generate-btn').click();
+  mood.timers.splice(0).forEach(fn=>fn()); assert.equal(md.querySelector('[data-ai-step="error"]').hidden,false);
+  md.getElementById('ai-manual-btn').click(); assert.equal(md.getElementById('ai-dialog').open,false); assert.equal(md.getElementById('dialog').open,true);
+  md.getElementById('dialog').close(); md.getElementById('open-ai-modal-btn').click(); md.getElementById('ai-generate-btn').click();
+  const obsoleteTimers=[...mood.timers]; md.getElementById('ai-dialog').querySelector('[data-ai-close]').click();
+  md.getElementById('open-ai-modal-btn').click(); obsoleteTimers.forEach(fn=>fn());
+  assert.equal(md.querySelector('[data-ai-step="input"]').hidden,false);
+  assert.equal(md.querySelector('[data-ai-step="result"]').hidden,true);
+  console.log('PASS: AI theme/materials/typography, keyword pills, validation, reject, regenerate, tea/luxury, manual fallback and stale request cancellation.');
   const admin=open('admin-brief-template-management'); const ad=admin.document;
   ad.getElementById('prompt-editor').value='Prompt thử nghiệm {raw_input}'; ad.getElementById('save-prompt-btn').click();
   assert.equal(admin.data.briefTemplates[0].promptTemplate,'Prompt thử nghiệm {raw_input}');
