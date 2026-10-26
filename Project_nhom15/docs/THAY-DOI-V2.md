@@ -161,3 +161,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Axe-core 4.14.0: 44 lượt trang/modal ở 1440/375px, 0 vi phạm tự động và 0 HTTP/pageerror; còn 118 lượt phần tử incomplete cần xem thủ công. preload=false do lỗi @import của bước tải CSSOM engine; không tắt rule hay loại DOM.
 - Hồi quy: 11/11 tệp Node, check_bundle.py, browser-task27 57 kiểm tra đạt. Đã xem ảnh mẫu Inactive và modal user 375px.
 - Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](qa-axe-current/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.
+
+
+## Định dạng code riêng SV3 — 26/10/2026
+
+- Sắp xếp 7 HTML, 6 CSS và 9 JavaScript trong html/sv3, css/sv3, js/sv3: thụt lề 2 khoảng trắng, tách khai báo/quy tắc/khối lệnh, xuống dòng biểu thức dài.
+- Prettier 3.6.2, printWidth 100, HTML whitespace strict; kiểm tra AST/debug-check của formatter đạt trên 22 bản mã trước định dạng. Nội dung chuỗi dữ liệu và nghiệp vụ được giữ nguyên.
+- Commit chỉ định dạng từ mã đã commit. Các sửa HTML/validation đang làm dở ở working tree được giữ riêng và không đưa vào commit định dạng; không sửa code SV1/SV2/shared trong đợt này.
+- Theo yêu cầu mới nhất của người dùng: chỉ định dạng, không chạy thêm kiểm thử. Các kiểm tra đã thực hiện trước yêu cầu dừng được giữ ngoài commit này; đợt này không tuyên bố thay đổi chức năng.
