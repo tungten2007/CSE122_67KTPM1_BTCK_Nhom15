@@ -66,3 +66,9 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 
 - Thêm sắp xếp theo tên, vai trò, trạng thái; tìm kiếm debounce; nút xóa bộ lọc; bộ đếm có thông báo cập nhật; giữ phân trang.
 - Chưa chạy kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — dữ liệu demo SV3
+
+- Mở rộng seed từ 6 lên 15 người dùng và từ 7 lên 15 công việc; có 2 công việc đã hủy để trình bày các trạng thái, lọc và phân trang.
+- Dữ liệu là tài khoản demo giả lập; không chứa thông tin đăng nhập thật.
+- Chưa chạy ứng dụng/kiểm thử.
