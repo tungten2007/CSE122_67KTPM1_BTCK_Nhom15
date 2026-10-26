@@ -1,0 +1,21 @@
+TASK-27 — Tích hợp website CreatorStudio toàn nhóm
+Người phụ trách: SV3; SV1/SV2 review phần mình
+Trạng thái đề xuất: CHỜ DUYỆT — đã triển khai và kiểm tra kỹ thuật
+
+Mô tả:
+Ghép mã SV1/SV2/SV3 trong Project_nhom15; nối điều hướng, phiên demo và dữ liệu chung. Luồng Client gửi brief → Lead giao Designer → Designer nộp version → Lead duyệt → Client phản hồi/duyệt phải dùng đúng ID và giữ dữ liệu sau tải lại.
+
+Checklist:
+[x] Đối chiếu PR #1/#2/#3 và giữ nguồn đóng góp
+[x] Ghép đủ 17 màn chính và route bốn vai trò
+[x] Store chung cho brief/task/version/comment/notification
+[x] Kiểm tra hai luồng tích hợp qua giao diện
+[x] Sửa lỗi mobile phát hiện khi ghép
+[x] 10 nhóm test dữ liệu; 9 file regression; 34 lượt Chromium
+[x] Mô tả thay đổi, cách chạy, kết quả QA và giới hạn
+[ ] SV1/SV2 review
+[ ] Merge bản tích hợp theo quyết định nhóm
+
+Minh chứng: docs/TASK-27-INTEGRATION-v1.md; docs/qa-task27-v1/result.json
+Nhánh: feature/task27-integration-v1
+Không đánh dấu đã review/merge/OBS. Hạn nộp: giữ theo thẻ gốc, chưa có dữ liệu để sửa.

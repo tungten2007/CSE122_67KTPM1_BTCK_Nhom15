@@ -4,7 +4,7 @@ const root=require('node:path').join(__dirname,'..');
 function render(status){
  const nodes=new Map();const $=s=>{if(!nodes.has(s))nodes.set(s,{innerHTML:'',checked:false});return nodes.get(s)};
  const A={data:{versions:[{id:'v',projectId:'p',status,name:'Phiên bản QA',author:'u',history:[],checkBrand:false,checkInfo:false}],notes:[],users:[{id:'u',name:'QA'}]},project:{id:'p',name:'QA Project',archived:false},preserveFocus:fn=>fn(),header:()=>'',banner:()=>'',empty:()=>'',esc:s=>String(s??''),icon:()=>'',initials:()=>'',init:(key,fn)=>fn(),$, $$:()=>[]};
- const c={App:A,Store:{},console};vm.createContext(c);vm.runInContext(fs.readFileSync(root+'/js/pages/lead-internal-review.js','utf8'),c);return $('#main').innerHTML;
+ const c={App:A,Store:{},console};vm.createContext(c);vm.runInContext(fs.readFileSync(root+'/js/sv3/pages/lead-internal-review.js','utf8'),c);return $('#main').innerHTML;
 }
 for(const status of ['Internal Review','Client Review','Changes Requested','Approved']){
  const html=render(status);assert(html.includes(status));

@@ -4,7 +4,7 @@ const root=path.join(__dirname,'..'),nodes=new Map(),memory=new Map();
 const $=selector=>{if(!nodes.has(selector))nodes.set(selector,{innerHTML:''});return nodes.get(selector)};
 const context={window:{},localStorage:{getItem:key=>memory.get(key)||null,setItem:(key,value)=>memory.set(key,value)}};
 context.window=context;vm.createContext(context);
-for(const file of ['js/data.js','js/store.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
+for(const file of ['js/shared/data.js','js/shared/store.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
 const seed=context.CS_SEED();
 seed.versions.push({id:'v-second',projectId:'p-moc',name:'VERSION SECOND'}, {id:'v-foreign',projectId:'p-lua',name:'FOREIGN VERSION'});
 seed.comments=[{id:'first-comment',projectId:'p-moc',versionId:'v-moc-3',text:'FIRST COMMENT',author:'Client'},
@@ -21,15 +21,15 @@ const App={data:context.Store.get(),project:seed.projects[0],user:seed.users.fin
  select:(label,name,options,value,extra)=>{selects.set(name,{options,value,extra});return `<select name="${name}"></select>`},
  modal:(title,body,submit)=>modal={title,body,submit},init:(key,fn)=>{render=fn;render()},refresh:()=>{App.data=context.Store.get();render()}
 };context.App=App;
-vm.runInContext(fs.readFileSync(path.join(root,'js/pages/lead-feedback-summary.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(root,'js/sv3/pages/lead-feedback-summary.js'),'utf8'),context);
 let html=$('#main').innerHTML;
-assert.match(html,/Tất cả 2 phiên bản/);
+assert.match(html,/Tất cả 4 phiên bản/);
 assert.match(html,/SECOND COMMENT<\/p><small>Client · VERSION SECOND/);
 assert.match(html,/INVALID COMMENT<\/p><small>Client · Phiên bản không còn khả dụng/);
 assert(!html.includes('FOREIGN VERSION'));
 edit.onclick();assert.equal(selects.get('assignee').value,'');assert.equal(selects.get('assignee').options[0][0],'');assert.equal(selects.get('assignee').extra,'required');
 App.data.proposals[0].assignee='';edit.onclick();assert.equal(selects.get('assignee').value,'');
-$('#add-comment').onclick();const versions=selects.get('versionId');assert.equal(versions.value,'');assert.equal(versions.extra,'required');assert.deepEqual(Array.from(versions.options,option=>option[0]),['','v-moc-3','v-second']);
+$('#add-comment').onclick();const versions=selects.get('versionId');assert.equal(versions.value,'');assert.equal(versions.extra,'required');assert.deepEqual(Array.from(versions.options,option=>option[0]),['',...App.data.versions.filter(v=>v.projectId==='p-moc').map(v=>v.id)]);
 const before=JSON.stringify(context.Store.get());
 assert.throws(()=>modal.submit({versionId:'',text:'Nội dung hợp lệ'}));
 assert.throws(()=>modal.submit({versionId:'v-foreign',text:'Nội dung hợp lệ'}));assert.equal(JSON.stringify(context.Store.get()),before);

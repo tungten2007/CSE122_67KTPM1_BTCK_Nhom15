@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+  <base href="../../">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng ký — CreatorStudio</title>
+    <link rel="stylesheet" href="css/shared/shared.css" />
+    <link rel="stylesheet" href="css/sv1/login.css" />
+    <script defer src="js/shared/data.js"></script><script defer src="js/shared/store.js"></script><script defer src="js/shared/modules/navigation.js"></script><script defer src="js/shared/client-store-adapter.js"></script><script src="js/sv1/shared.js" defer></script>
+    <script src="js/sv1/register.js" defer></script>
+    <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+  <body>
+    <a class="skip-link" href="#main">Đến nội dung chính</a>
+    <main class="login-layout" id="main">
+      <section class="login-story">
+        <a class="brand" href="html/sv1/index.html"
+          ><span class="brand-mark">✳</span>CreatorStudio</a
+        >
+        <div class="story-copy">
+          <span class="eyebrow">Ý tưởng của bạn, hành trình của chúng ta</span>
+          <h1>
+            Mọi sáng tạo hay<br />đều bắt đầu bằng<br /><em>một kết nối.</em>
+          </h1>
+          <p>
+            Một nơi để trao đổi ý tưởng, cùng hoàn thiện<br />và tạo nên những
+            điều bạn tự hào.
+          </p>
+          <div class="story-art">
+            <img
+              src="assets/images/moc-v2.svg"
+              alt="Bản sắc thương hiệu Mộc với bảng màu xanh và kem"
+            /><span class="art-label">MỘC — BRAND IDENTITY <span>→</span></span>
+          </div>
+        </div>
+        <small>CREATORSTUDIO / CREATIVE WORKSPACE</small>
+      </section>
+      <section class="login-form-side">
+        <a class="back-link" href="html/sv1/index.html">← Về trang chủ</a>
+        <div class="login-card">
+          <span class="eyebrow">Chào mừng bạn đến CreatorStudio</span>
+          <h2>Bắt đầu ý tưởng mới.</h2>
+          <p>Tạo tài khoản khách hàng để gửi brief và duyệt thiết kế.</p>
+          <div class="demo-notice">
+            Đăng ký mô phỏng, lưu trên trình duyệt này. Dùng thông tin thử nghiệm và mật khẩu demo; không nhập mật khẩu thật.
+          </div>
+          <form id="register-form" novalidate>
+            <label class="field">Họ và tên<input id="register-name" type="text" maxlength="80" required autocomplete="off" placeholder="Tên hiển thị của bạn" /></label>
+            <label class="field">Email<input id="register-email" type="email" required autocomplete="off" placeholder="ban@example.com" /></label>
+            <label class="field">Mật khẩu demo<input id="register-password" type="password" minlength="6" maxlength="128" required autocomplete="off" placeholder="Từ 6 ký tự, không dùng mật khẩu thật" /></label>
+            <label class="field">Nhập lại mật khẩu<input id="register-confirm" type="password" required autocomplete="off" /></label>
+            <p class="demo-notice">Tài khoản mới có vai trò Khách hàng. Quản trị viên có thể thay đổi vai trò trong mục Quản lý người dùng.</p>
+            <button class="btn primary" id="register-submit" type="submit">Tạo tài khoản demo <span>→</span></button>
+            <p id="register-status" class="error" role="status" aria-live="polite"></p>
+          </form>
+          <p class="auth-switch">Đã có tài khoản? <a href="html/sv1/login.html">Đăng nhập</a></p>
+        </div>
+        <small class="bottom-note"
+          >Dữ liệu mẫu lưu tại trình duyệt · Không cần tài khoản thật</small
+        >
+      </section>
+    </main>
+  </body>
+</html>

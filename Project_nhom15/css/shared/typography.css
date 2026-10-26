@@ -1,0 +1,28 @@
+/* Local Inter includes Vietnamese glyphs and variable weights 100–900.
+   License: ../../assets/fonts/OFL.txt. No external font service is required. */
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/fonts/Inter-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font: "Inter", sans-serif;
+  font-family: var(--font);
+}
+
+body,
+button,
+input,
+select,
+textarea,
+option,
+optgroup,
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font);
+}

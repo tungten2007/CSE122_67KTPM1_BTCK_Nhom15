@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <base href="../../">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trung tâm Thông báo (Notifications) · CreatorStudio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/sv2/sv2-base.css">
+  <link rel="stylesheet" href="css/sv2/sv2-navigation.css">
+  <link rel="stylesheet" href="css/sv2/pages/shared.css">
+  <link rel="stylesheet" href="css/sv3/team-shell.css">
+  <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="js/shared/workspace-navigation.js"></script>
+</head>
+<body>
+  <!-- Shell được render tự động qua App.init() -->
+
+  <script src="js/shared/data.js"></script>
+  <script src="js/shared/store.js"></script>
+  <script src="js/shared/modules/navigation.js"></script>
+  <script src="js/shared/client-store-adapter.js"></script>
+  <script src="js/sv1/shared.js"></script>
+  <script src="js/sv2/app-sv2.js"></script>
+  <script>
+    WorkspaceNavigation.ready( () => {
+      let currentTab = 'all'; // all, unread, version, comment, task
+      let projectFilter = 'all';
+
+      App.init('notifications', renderNotifications);
+
+      function renderNotifications(){App.preserveFocus(renderNotificationsContent)}
+      function renderNotificationsContent() {
+        const { $, $$, esc, icon, data, user, project, banner, toast } = App;
+        const main = $('#main');
+
+        let notifs = (data.notifications || []).filter(n => n.userId === user.id);
+
+        // Lọc theo tab
+        if (currentTab === 'unread') {
+          notifs = notifs.filter(n => !n.read);
+        } else if (currentTab !== 'all') {
+          notifs = notifs.filter(n => n.type === currentTab);
+        }
+
+        // Lọc theo dự án
+        if (projectFilter !== 'all') {
+          notifs = notifs.filter(n => n.projectId === projectFilter);
+        }
+
+        const totalUnread = (data.notifications || []).filter(n => n.userId === user.id && !n.read).length;
+
+        main.innerHTML = `
+          ${banner()}
+
+          ${App.header(
+            'TRUNG TÂM HOẠT ĐỘNG DÙNG CHUNG',
+            'Thông báo & Biến động Dự án',
+            'Theo dõi các thay đổi về phiên bản mới, bình luận của khách hàng, nhiệm vụ gấp và cảnh báo hệ thống.',
+            `
+              ${totalUnread > 0 ? `
+                <button class="button soft" id="mark-all-read-btn">
+                  ${icon('check')} Đánh dấu tất cả đã đọc
+                </button>
+              ` : ''}
+              <button class="button danger small" id="clear-all-btn">
+                ${icon('trash')} Xóa tất cả
+              </button>
+            `
+          )}
+
+          <!-- Thanh tab lọc & Bộ lọc dự án -->
+          <div class="notification-filter-bar">
+            <div class="filter-tabs">
+              <button class="filter-tab ${currentTab === 'all' ? 'active' : ''}" data-tab="all">
+                Tất cả (${(data.notifications || []).filter(n => n.userId === user.id).length})
+              </button>
+              <button class="filter-tab ${currentTab === 'unread' ? 'active' : ''}" data-tab="unread">
+                Chưa đọc (${totalUnread})
+              </button>
+              <button class="filter-tab ${currentTab === 'version' ? 'active' : ''}" data-tab="version">
+                Phiên bản
+              </button>
+              <button class="filter-tab ${currentTab === 'comment' ? 'active' : ''}" data-tab="comment">
+                Nhận xét
+              </button>
+              <button class="filter-tab ${currentTab === 'task' ? 'active' : ''}" data-tab="task">
+                Nhiệm vụ
+              </button>
+            </div>
+
+            <select id="project-filter-select" aria-label="Lọc theo dự án">
+              <option value="all" ${projectFilter === 'all' ? 'selected' : ''}>Tất cả dự án</option>
+              ${data.projects.map(p => `
+                <option value="${p.id}" ${projectFilter === p.id ? 'selected' : ''}>${esc(p.name)}</option>
+              `).join('')}
+            </select>
+          </div>
+
+          <!-- Danh sách thông báo (CRUD: R / U / D: Unread, Read, Empty State, Cleared) -->
+          <section class="panel">
+            ${notifs.length === 0 ? App.empty('Không có thông báo nào', 'Hộp thư thông báo của bạn đang trống hoặc đã được xóa sạch.') : `
+              <div class="notification-list">
+                ${notifs.map(n => {
+                  let typeClass = n.type || 'system';
+                  let iconName = 'bell';
+                  if (n.type === 'version') iconName = 'file';
+                  else if (n.type === 'comment') iconName = 'spark';
+                  else if (n.type === 'task') iconName = 'clock';
+
+                  const timeStr = new Date(n.time).toLocaleString('vi-VN');
+
+                  return `
+                    <div class="notification-card ${!n.read ? 'unread' : ''}">
+                      <div class="notification-icon-wrap ${typeClass}">
+                        ${icon(iconName)}
+                      </div>
+
+                      <div class="notification-content">
+                        <div class="notification-title-row">
+                          <span class="notification-title">${esc(n.title)}</span>
+                          <span class="notification-time">${timeStr}</span>
+                        </div>
+
+                        <p class="notification-msg">${esc(n.message)}</p>
+
+                        <div class="notification-actions">
+                          ${n.link ? `
+                            <a href="${esc(n.link)}" class="link-button view-notif-link" data-id="${n.id}">
+                              Xem chi tiết →
+                            </a>
+                          ` : ''}
+
+                          <button class="link-button toggle-read-btn" data-id="${n.id}" data-read="${n.read}">
+                            ${n.read ? 'Đánh dấu chưa đọc' : 'Đánh dấu đã đọc'}
+                          </button>
+
+                          <button class="link-button delete-notif-btn" data-id="${n.id}" style="color: #ef4444; margin-left: auto;">
+                            ${icon('trash')} Xóa
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
+          </section>
+        `;
+
+        // Gắn sự kiện chuyển đổi tab
+        $$('.filter-tab').forEach(btn => {
+          btn.onclick = () => {
+            currentTab = btn.dataset.tab;
+            renderNotifications();
+          };
+        });
+
+        // Lọc theo dự án
+        const pSel = $('#project-filter-select');
+        if (pSel) {
+          pSel.onchange = e => {
+            projectFilter = e.target.value;
+            renderNotifications();
+          };
+        }
+
+        // Đánh dấu tất cả đã đọc
+        const markAllBtn = $('#mark-all-read-btn');
+        if (markAllBtn) {
+          markAllBtn.onclick = () => {
+            App.action(() => {
+              Store.markAllNotifications(user.id);
+            }, 'Đã đánh dấu tất cả thông báo là đã đọc.');
+          };
+        }
+
+        // Xóa tất cả thông báo
+        const clearAllBtn = $('#clear-all-btn');
+        if (clearAllBtn) {
+          clearAllBtn.onclick = () => {
+            if (confirm('Bạn có chắc chắn muốn xóa tất cả thông báo trong hộp thư?')) {
+              App.action(() => {
+                Store.clearAllNotifications(user.id);
+              }, 'Đã xóa toàn bộ thông báo.');
+            }
+          };
+        }
+
+        // Đánh dấu đã đọc / chưa đọc 1 thông báo
+        $$('.toggle-read-btn').forEach(btn => {
+          btn.onclick = () => {
+            const notifId = btn.dataset.id;
+            const currentReadState = btn.dataset.read === 'true';
+            App.action(() => {
+              Store.markNotification(notifId, !currentReadState);
+            }, !currentReadState ? 'Đã đánh dấu đã đọc.' : 'Đã đánh dấu chưa đọc.');
+          };
+        });
+
+        // Xóa 1 thông báo
+        $$('.delete-notif-btn').forEach(btn => {
+          btn.onclick = () => {
+            const notifId = btn.dataset.id;
+            App.action(() => {
+              Store.deleteNotification(notifId);
+            }, 'Đã xóa thông báo.');
+          };
+        });
+
+        // Khi bấm "Xem chi tiết" -> tự động đánh dấu đã đọc
+        $$('.view-notif-link').forEach(link => {
+          link.onclick = event => {
+            try {
+              const notifId=link.dataset.id;
+              Store.markNotification(notifId,true);
+              const notification=Store.get().notifications.find(n=>n.id===notifId);
+              if(notification?.projectId){sessionStorage.setItem('cs-project',notification.projectId);const target=new URL(link.href,location.href);if(!target.searchParams.has('project'))target.searchParams.set('project',notification.projectId);link.href=target.href;}
+            } catch(error){event.preventDefault();App.toast(error.message);}
+          };
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -16,8 +16,8 @@ async function run(){
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH,args:['--no-sandbox','--disable-dev-shm-usage','--single-process','--no-zygote','--disable-gpu']});
  try{
  const context=await browser.newContext(),page=await context.newPage();page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
- await page.goto(base+'/lead-task-board.html');await page.evaluate(()=>Store.reset());
- const pages=[['lead-task-board.html','Lead','task15','#new-task'],['lead-internal-review.html','Lead','task16','#new-note'],['lead-feedback-summary.html','Lead','task17','#manual'],['admin-user-management.html','Admin','task19','#add-user'],['admin-project-settings.html','Admin','task20','#add-tag'],['404.html','Admin','task26',null]];
+ await page.goto(base+'/html/sv3/lead-task-board.html');await page.evaluate(()=>Store.reset());
+ const pages=[['html/sv3/lead-task-board.html','Lead','task15','#new-task'],['html/sv3/lead-internal-review.html','Lead','task16','#new-note'],['html/sv3/lead-feedback-summary.html','Lead','task17','#manual'],['html/sv3/admin-user-management.html','Admin','task19','#add-user'],['html/sv3/admin-project-settings.html','Admin','task20','#add-tag'],['html/sv3/404.html','Admin','task26',null]];
  const layout=async label=>{const result=await page.evaluate(()=>({w:innerWidth,sw:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('main *')].filter(e=>{const r=e.getBoundingClientRect();return r.width&&r.right>innerWidth+1}).slice(0,10).map(e=>e.tagName+'.'+e.className)}));assert(result.sw<=result.w+1,label+' overflow '+JSON.stringify(result))};
  for(const width of [320,768,1024,1440]){
   await page.setViewportSize({width,height:1000});

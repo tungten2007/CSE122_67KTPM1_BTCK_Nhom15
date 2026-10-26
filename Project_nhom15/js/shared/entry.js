@@ -1,0 +1,1 @@
+try { Store.load(); const user = Navigation.current(Store.get().users); location.replace(new URL(Navigation.home(user?.role),document.baseURI).href); } catch { location.replace(new URL('html/sv3/lead-task-board.html',document.baseURI).href); }

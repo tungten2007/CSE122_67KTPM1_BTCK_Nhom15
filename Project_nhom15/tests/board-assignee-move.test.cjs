@@ -3,7 +3,7 @@ const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/st
 const root=path.join(__dirname,'..'),nodes=new Map();
 const $=selector=>{if(!nodes.has(selector))nodes.set(selector,{innerHTML:''});return nodes.get(selector)};
 const context={window:{}};context.window=context;vm.createContext(context);
-vm.runInContext(fs.readFileSync(path.join(root,'js/data.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(root,'js/shared/data.js'),'utf8'),context);
 const data=context.CS_SEED(),task=data.tasks[0];task.assignee='u-binh';
 const edit={dataset:{edit:task.id}},move={dataset:{move:task.id},value:task.status};
 let render,modal,assigneeField,failMove=false;
@@ -18,7 +18,7 @@ const App={data,project:data.projects[0],user:data.users.find(u=>u.id==='u-lead'
  action:fn=>{try{fn();render();return true}catch{return false}},init:(key,fn)=>{render=fn;render()}
 };
 context.App=App;context.Store={moveTask:(uid,id,status)=>{if(failMove)throw Error('save failed');task.status=status}};
-vm.runInContext(fs.readFileSync(path.join(root,'js/pages/lead-task-board.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(root,'js/sv3/pages/lead-task-board.js'),'utf8'),context);
 edit.onclick();assert.equal(assigneeField.value,'');assert.equal(assigneeField.options[0][0],'');
 assert.match(assigneeField.options[0][1],/Chọn lại/);assert.equal(assigneeField.extra,'required');
 assert(!assigneeField.options.some(([id])=>id==='u-binh'));

@@ -1,23 +1,35 @@
 """Máy chủ chạy thử, chỉ trên máy cá nhân. Python 3.9+; không cần npm."""
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, unquote
 import argparse
 import os
 import threading
 import webbrowser
 from check_bundle import check
+from mock_api import MockAPIHandlerMixin, ProjectRepository
 ROOT=Path(__file__).resolve().parent
-class Handler(SimpleHTTPRequestHandler):
+class Handler(MockAPIHandlerMixin, SimpleHTTPRequestHandler):
     def do_GET(self):
         route=urlsplit(self.path).path
+        if route.startswith('/api/'):
+            return self.handle_api()
+        if any(part.startswith('.') or part == '__pycache__' for part in Path(unquote(route)).parts):
+            self.send_error(404, 'File not found')
+            return
         if not Path(self.translate_path(route)).exists():
             # File CSS/JS/ảnh thiếu phải trả 404, không trả HTML trang lỗi.
-            if (route.endswith('.html') or not Path(route).suffix) and route!='/404.html' and (ROOT/'404.html').is_file():
-                self.send_response(302);self.send_header('Location','/404.html');self.end_headers()
+            if (route.endswith('.html') or not Path(route).suffix) and route!='/html/sv3/404.html' and (ROOT/'html/sv3/404.html').is_file():
+                self.send_response(302);self.send_header('Location','/html/sv3/404.html');self.end_headers()
             else:self.send_error(404,'File not found')
             return
         return super().do_GET()
+    def do_HEAD(self):
+        route=unquote(urlsplit(self.path).path)
+        if any(part.startswith('.') or part == '__pycache__' for part in Path(route).parts):
+            self.send_error(404, 'File not found')
+            return
+        return super().do_HEAD()
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('port',nargs='?',default=8000,type=int)
@@ -33,6 +45,7 @@ if __name__=='__main__':
     except OSError:
         print('Khong mo duoc cong. Thu: python server.py 8001 --open')
         raise SystemExit(1)
+    server.project_repository=ProjectRepository(ROOT/'.demo-data/mock-api.sqlite3', ROOT/'assets/data/mock-projects.json')
     url=f'http://127.0.0.1:{args.port}/index.html'
     print('Mo '+url+' — Ctrl+C de dung',flush=True)
     if args.open:threading.Thread(target=webbrowser.open,args=(url,),daemon=True).start()

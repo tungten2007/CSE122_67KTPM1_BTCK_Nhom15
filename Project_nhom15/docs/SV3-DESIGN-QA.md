@@ -33,3 +33,9 @@ Không ghi PASS khi chỉ có lệnh chỉnh sửa thành công; không tuyên b
 Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa vẫn bị rate limit. Chưa có sửa Figma mới hoặc export; các lỗi/giới hạn QA nêu trên vẫn còn.
 
 Ngày 12/10/2026: thử tiếp tục sửa mobile và lấy screenshot; Figma MCP vẫn trả rate limit Starter. Không có chỉnh sửa canvas mới trong lần thử này.
+
+## Cập nhật website — 25/10/2026
+
+- Đã đổi viền focus bàn phím trong bộ giao diện SV1/SV3 và SV2 từ tím nhạt `#a8a2ff` sang chàm đậm `#4338ca`, giúp chỉ báo focus dễ nhận ra hơn trên nền sáng.
+- Đây là chỉnh sửa CSS mã nguồn; chưa chạy lại sweep Chromium hay kiểm tra 200% zoom trong lần cập nhật này.
+- Figma MCP tiếp tục từ chối yêu cầu chụp frame vì đạt giới hạn Starter. Vì vậy lỗi chồng chữ mobile trong các frame Figma, QA ảnh cuối, wireframe và trạng thái/prototype AI vẫn chưa được khắc phục hoặc xác nhận.

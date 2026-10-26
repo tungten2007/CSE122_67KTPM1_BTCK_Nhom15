@@ -1,31 +1,23 @@
-# Báo cáo sử dụng AI — Bản nháp do trợ lý tạo
+# Khai báo sử dụng AI — CreatorStudio dùng chung
 
-- Yêu cầu: người dùng chọn chuyển từ thiết kế Figma sang làm trực tiếp website, chỉ phần SV3.
-- Công cụ: Codex hỗ trợ tạo HTML/CSS/JavaScript thuần, SVG minh họa, dữ liệu mẫu, kiểm thử và tài liệu.
-- Nguồn: bộ thiết kế SV3 và UI Kit đã bàn giao, bảng phân công 17 màn hình, TASK-SV3-01 đến TASK-SV3-06 trong kế hoạch hiện hành.
-- Phần sinh tự động: toàn bộ bản frontend độc lập trong ZIP này và bộ kiểm thử Node. Chưa có xác nhận sinh viên đã sửa hoặc tự trình bày được.
-- AI-2 trong sản phẩm: mô phỏng bằng quy tắc JavaScript, không gọi LLM API, không dùng API key. Có đầu vào, xử lý, kết quả, lý do/nguồn, sửa, bỏ, xác nhận, lỗi và nhập thủ công.
-- Lỗi/rủi ro đã xử lý: bỏ trống hoặc trùng email; tự khóa Admin; lưu khi LocalStorage đầy; chuyển việc từ phản hồi mơ hồ; tạo lặp cùng đề xuất; dự án lưu trữ vẫn bị gọi hàm ghi; kiểm tra lại dữ liệu lưu trước giao dịch.
-- Kiểm chứng: 12 nhóm nghiệp vụ bằng Node, cú pháp JS, tham chiếu file và máy chủ HTTP. Trình duyệt kiểm thử chưa khả dụng; chưa có bằng chứng chạy responsive hoặc kéo thả trực tiếp.
-- Sinh viên bổ sung sau khi học/chạy: phần tự chỉnh sửa, lỗi thực tế trên máy, ảnh/video minh chứng và điều đã hiểu.
+## AI trong website
 
-Gợi ý học để trình bày: đọc `data.js` trước, theo hành động Tạo công việc ở page JS đến `Store.saveTask`, xem `localStorage.setItem`, rồi theo luồng AI-2 đến `Store.convert`.
+| Tính năng | Đầu vào | Kết quả | Người dùng kiểm soát | Cách triển khai |
+|---|---|---|---|---|
+| AI-1 Brief Structurer | Mô tả, ngân sách, hạn | Brief năm phần | Sửa/chấp nhận/bỏ/tạo lại, lưu/gửi | JavaScript theo quy tắc |
+| AI-2 Feedback Summarizer | Các comment được chọn | Gợi ý việc cần làm, ưu tiên/lý do/nguồn | Làm rõ/sửa/bỏ, chọn người/hạn rồi tạo task | Module JavaScript mô phỏng |
+| AI-3 Mood Keyword Assistant | Mô tả định hướng | Từ khóa và bảng màu | Sửa/chấp nhận/bỏ/tạo lại, áp dụng moodboard | Module JavaScript mô phỏng |
 
-Cập nhật Task 5: Codex tách module navigation, thêm phiên 4 vai trò, trang chờ ghép, chuông, xử lý menu và 5 nhóm kiểm thử. Chưa xác nhận sinh viên đã tự chỉnh sửa hoặc kiểm tra UI.
+Cả ba là AI mô phỏng, không gọi LLM/API bên ngoài, không dùng khóa API và không gửi mô tả dự án ra dịch vụ AI. Loading dùng độ trễ giả lập. Cảnh báo thiếu dữ liệu/không chắc chắn giúp người dùng kiểm tra kết quả; không diễn giải nó là độ tin cậy của mô hình thật.
 
+## AI hỗ trợ phát triển bài
 
-## Đợt rà soát ngày 06/10/2026
+Codex hỗ trợ theo yêu cầu người dùng: kiểm tra nguồn SV1/SV2/SV3 trên GitHub; ghép điều hướng và dữ liệu; viết/chỉnh HTML, CSS, JavaScript; sửa lỗi, chạy kiểm thử, tạo tài liệu và đóng gói phiên bản. Các yêu cầu thiết kế Landing gồm menu theo ảnh mẫu, giới thiệu chức năng, chân trang và kiểu chữ/màu phù hợp CreatorStudio.
 
-Theo yêu cầu người dùng, trợ lý phân công các agent Planning, UI/UX, Frontend, QA và Progress. Đã đọc bộ ZIP, bảng kiểm kê 17 màn hình và yêu cầu môn học truy cập được; file kế hoạch chi tiết 29 task tìm thấy nhưng không tải được. Các agent kiểm tra và sửa lỗi của bản hiện có, không xây màn hình SV1/SV2. Bằng chứng và giới hạn kiểm thử được ghi trong `QA-SV3-2026-10-06.md`; trạng thái thực tế nằm ở `TIEN-DO-SV3.md`. Chưa có xác nhận sinh viên đã tự sửa, hiểu toàn bộ code, quay OBS hoặc được duyệt. AI-2 vẫn là mô phỏng theo quy tắc.
+Ví dụ yêu cầu chính: “làm tiếp phần SV3”, “xem sản phẩm SV1 và2 rồi tích hợp”, “menu bấm mở mục con như ảnh”, “thêm website có thể làm gì”, “cả nhóm đồng ý, hoàn thiện website”. Đây là mô tả yêu cầu thật trong cuộc trò chuyện, không phải prompt đã được sinh viên tự ghi trong báo cáo riêng.
 
-## 09/10/2026 — TASK-16 và GitHub
-Trợ lý đọc đề cùng ba ảnh hướng dẫn, kiểm tra repo hiện có; AI bổ sung bộ chọn phiên bản và validation review action. Có kiểm thử độc lập bằng Node/DOM giả lập, chưa browser. Mã được chuẩn bị trên nhánh riêng; không giả lịch sử sinh viên hay video OBS. Phần sinh viên tự sửa/hiểu vẫn chờ xác nhận.
+Lỗi được phát hiện và sửa khi kiểm chứng: phân công người bị khóa, feedback nhầm phiên bản, route/Store riêng không liên thông, ảnh review cố định, responsive tràn ngang, mất focus khi tìm kiếm, cập nhật hồ sơ bị chặn do kiểm tra vai trò và thông báo mở sai dự án.
 
+Kiểm chứng: đối chiếu mã nguồn, test Store/DOM, Chromium qua giao diện, ảnh desktop/mobile và kiểm tra phụ thuộc file. Kết quả trong docs/qa-task27-v1, qa-final-v5; lịch sử yêu cầu/checklist trong TASK-27-INTEGRATION-v1.md.
 
-## Cập nhật12/10/2026 — TASK17 và QA phần SV3
-
-AI hỗ trợ rà source, sửa form người phụ trách không hợp lệ, gắn đúng phiên bản phản hồi và đặt lại lựa chọn khi đổi dự án. AI-2 của sản phẩm vẫn là quy tắc mô phỏng, không gọi LLM/API.
-
-Agent Frontend sửa TASK17; root chạy Chromium16 nhóm và9 file regression; agent QA xem nguồn/kết quả/ảnh độc lập. Agent QA tiếp tục chạy12 nhóm Admin/403/404 và24 lượt responsive sáu màn, review ảnh desktop/mobile/tablet. Root kiểm tra kết quả và lưu trên GitHub. Các script browser là công cụ QA, không thêm thư viện vào website.
-
-Không nhận đã duyệt Figma, review nhóm/giảng viên, merge, quay OBS hoặc tích hợp mã SV1/SV2. Những phần này vẫn ghi trạng thái riêng.
+Nhóm cần tự bổ sung phần thay đổi đã tự làm, điều từng sinh viên học được và video giải thích theo thực tế. Không coi code/tài liệu do AI hỗ trợ là bằng chứng sinh viên đã tự hiểu hoặc đã được giảng viên duyệt.

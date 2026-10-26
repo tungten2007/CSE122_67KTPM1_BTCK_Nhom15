@@ -37,6 +37,12 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm: `tests/focus-regression.test.cjs`
 - Thêm: `tests/review-status.test.cjs`
 
+## Tích hợp phần hủy công việc — 26/10/2026
+
+- Đưa luồng hủy công việc từ `feature/sv3` vào cấu trúc đã sắp xếp của `dev`: `js/shared/store.js`, `js/sv3/app.js`, `js/sv3/pages/lead-task-board.js`, `css/sv3/pages/lead.css`.
+- Yêu cầu lý do, hiển thị cột Đã hủy, chặn chuyển/chỉnh sửa công việc đã hủy và tính trạng thái hủy là trạng thái kết thúc khi lưu trữ dự án.
+- Không chạy kiểm thử; người dùng sẽ kiểm tra thủ công.
+
 ## Bổ sung ngày 26/10/2026 — hủy công việc
 
 - Thêm trạng thái `Đã hủy` cho bảng công việc SV3 và thao tác hủy riêng yêu cầu nhập lý do.
@@ -80,9 +86,26 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Khi lưu thất bại, giữ nội dung form, đưa focus đến thông báo lỗi và bật lại nút gửi để thử lại.
 - Tệp sửa: `js/app.js`. Chỉ đối chiếu mã đã lưu trên GitHub; chưa chạy trình duyệt/kiểm thử, theo yêu cầu người dùng tự kiểm tra.
 
+## Tích hợp SV3 vào dev — 26/10/2026
+
+- Hợp nhất feature/sv3: xóa công việc đã hủy, xóa người dùng có guard và hộp xác nhận; lọc/sắp xếp/phân trang; seed 15 người dùng và 15 công việc (2 việc đã hủy); trạng thái gửi và focus modal.
+- Chuyển mã sang js/shared, js/sv3 và css/sv3; giữ cấu trúc HTML, điều hướng, khóa dữ liệu dùng chung và API SV1/SV2 trên dev.
+- Nút Xóa người dùng nằm tại html/sv3/admin-user-management.html sau khi tải bản dev mới. File JavaScript tương ứng: js/sv3/pages/admin-user-management.js.
+- Chưa chạy trình duyệt hoặc bộ kiểm thử, theo yêu cầu người dùng tự kiểm tra. Seed mới áp dụng khi nạp dữ liệu mẫu mới; không tự đặt lại LocalStorage hiện có.
+
 ## Sửa lỗi nhập tìm kiếm người dùng — 26/10/2026
 
 - Giữ nguyên ô tìm kiếm khi debounce lọc danh sách; chỉ cập nhật bảng kết quả và phân trang, tránh dựng lại ô nhập làm gián đoạn con trỏ/vùng chọn khi gõ @.
 - Lưu truy vấn ngay khi nhập và chờ bộ gõ kết thúc composition trước khi lọc.
 - Đã sửa local trước. Kiểm tra Edge headless đạt: gõ chậm, Shift+2 (@), gõ tiếp email, chèn ký tự giữa chuỗi và giữ vị trí con trỏ, lọc email, xóa bộ lọc và sự kiện composition. Không có pageerror trong lượt kiểm tra.
-- Cập nhật feature/sv3 trước; chưa nhập bản sửa này vào dev, chờ người dùng xác nhận trên trang đang dùng.
+- Đã sửa local, cập nhật feature/sv3, kiểm tra Edge đạt và được người dùng xác nhận hoạt động. Nhập bản sửa vào dev sau xác nhận.
+
+## Tự kiểm tra SV3 P1 — 26/10/2026
+
+- Người dùng đã cho phép Codex chủ động chạy kiểm tra thay vì chờ xác nhận từng thao tác.
+- Local: 10/10 tệp kiểm thử Node đạt; store.test.cjs có 17 nhóm nghiệp vụ. Đã sửa các kỳ vọng lỗi thời về số task/Lead theo seed và thêm ca kiểm tra hủy/xóa có guard.
+- Kiểm tra gói check_bundle.py đạt.
+- Edge headless với phiên LocalStorage mới riêng: 6 nhóm đạt, gồm phân trang 15 user, tạo/xóa/guard, focus modal, gõ @, tìm kiếm/chèn giữa chuỗi, lọc kết hợp, sắp xếp và phân trang bảng công việc, hủy/xóa qua tải lại, không tràn ngang tại các kích thước đã thử.
+- Khi xem ảnh 320px phát hiện nhãn bộ lọc bị ép quá hẹp; đã sửa local để các ô lọc xếp dọc, chạy lại đạt và xem lại ảnh.
+- Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/qa-sv3-p1/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
+- Phạm vi này chưa chứng minh toàn bộ kế hoạch tổng thể hoàn tất; chưa quay OBS.
