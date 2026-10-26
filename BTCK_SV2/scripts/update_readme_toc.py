@@ -3,8 +3,15 @@ from pathlib import Path
 import argparse
 import html
 import re
+import sys
 
-README = Path(__file__).resolve().parents[1] / 'README.md'
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+ROOT = Path(__file__).resolve().parents[1]
+README = ROOT / 'README.md'
+if not README.exists():
+    README = ROOT / 'docs' / 'sv2.md.md'
 START = '<!-- AUTO-TOC:START -->'
 END = '<!-- AUTO-TOC:END -->'
 

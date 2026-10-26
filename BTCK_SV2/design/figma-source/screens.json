@@ -1,0 +1,178 @@
+[
+  {
+    "page": "index.html",
+    "mode": "desktop",
+    "role": "portal",
+    "file": "desktop-index.jpg",
+    "fullPage": true,
+    "documentHeight": 1193,
+    "title": "CreatorStudio · Cổng Điều hướng Dự án",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "designer-dashboard.html",
+    "mode": "desktop",
+    "role": "Designer",
+    "file": "desktop-designer-dashboard.jpg",
+    "fullPage": true,
+    "documentHeight": 1046,
+    "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "designer-moodboard.html",
+    "mode": "desktop",
+    "role": "Designer",
+    "file": "desktop-designer-moodboard.jpg",
+    "fullPage": true,
+    "documentHeight": 1414,
+    "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "designer-version-management.html",
+    "mode": "desktop",
+    "role": "Designer",
+    "file": "desktop-designer-version-management.jpg",
+    "fullPage": true,
+    "documentHeight": 1257,
+    "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "profile.html",
+    "mode": "desktop",
+    "role": "Designer",
+    "file": "desktop-profile.jpg",
+    "fullPage": true,
+    "documentHeight": 1062,
+    "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "notifications.html",
+    "mode": "desktop",
+    "role": "Designer",
+    "file": "desktop-notifications.jpg",
+    "fullPage": true,
+    "documentHeight": 1031,
+    "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "404.html",
+    "mode": "desktop",
+    "role": "public",
+    "file": "desktop-404.jpg",
+    "fullPage": true,
+    "documentHeight": 1000,
+    "title": "Thông báo Điều hướng · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "admin-brief-template-management.html",
+    "mode": "desktop",
+    "role": "Admin",
+    "file": "desktop-admin-brief-template-management.jpg",
+    "fullPage": true,
+    "documentHeight": 1791,
+    "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+    "viewportHeight": 1000,
+    "viewportWidth": 1440
+  },
+  {
+    "page": "index.html",
+    "mode": "mobile",
+    "role": "portal",
+    "file": "mobile-index.jpg",
+    "fullPage": true,
+    "documentHeight": 2761,
+    "title": "CreatorStudio · Cổng Điều hướng Dự án",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "designer-dashboard.html",
+    "mode": "mobile",
+    "role": "Designer",
+    "file": "mobile-designer-dashboard.jpg",
+    "fullPage": true,
+    "documentHeight": 2065,
+    "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "designer-moodboard.html",
+    "mode": "mobile",
+    "role": "Designer",
+    "file": "mobile-designer-moodboard.jpg",
+    "fullPage": true,
+    "documentHeight": 3422,
+    "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "designer-version-management.html",
+    "mode": "mobile",
+    "role": "Designer",
+    "file": "mobile-designer-version-management.jpg",
+    "fullPage": true,
+    "documentHeight": 2364,
+    "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "profile.html",
+    "mode": "mobile",
+    "role": "Designer",
+    "file": "mobile-profile.jpg",
+    "fullPage": true,
+    "documentHeight": 2157,
+    "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "notifications.html",
+    "mode": "mobile",
+    "role": "Designer",
+    "file": "mobile-notifications.jpg",
+    "fullPage": true,
+    "documentHeight": 1706,
+    "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "404.html",
+    "mode": "mobile",
+    "role": "public",
+    "file": "mobile-404.jpg",
+    "fullPage": true,
+    "documentHeight": 844,
+    "title": "Thông báo Điều hướng · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  },
+  {
+    "page": "admin-brief-template-management.html",
+    "mode": "mobile",
+    "role": "Admin",
+    "file": "mobile-admin-brief-template-management.jpg",
+    "fullPage": true,
+    "documentHeight": 3249,
+    "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+    "viewportHeight": 844,
+    "viewportWidth": 390
+  }
+]

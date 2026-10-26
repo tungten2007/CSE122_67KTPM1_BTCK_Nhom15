@@ -67,7 +67,7 @@ Bản dễ học dùng JavaScript mô phỏng theo từ khóa, không gọi API 
 2. Hiển thị spinner, skeleton và các bước xử lý trong khoảng 1,8 giây.
 3. Dùng `includes()` để nhận diện nhóm cà phê/kraft, trà hoặc sang trọng/cao cấp; hiển thị chủ đề, 4 mã HEX, các nhãn từ khóa, gợi ý chất liệu và Typography.
 4. Giải thích ngắn vì sao chọn nhóm màu đó.
-5. Người dùng Chấp nhận & Áp dụng, Từ chối hoặc Tạo lại để sửa mô tả và sinh gợi ý mới. Cùng mô tả có thể cho cùng kết quả.
+5. Người dùng có thể chỉnh sửa 4 mã HEX, từ khóa và giải thích trước khi Chấp nhận & Áp dụng, Từ chối hoặc Tạo lại để sửa mô tả và sinh gợi ý mới. Cùng mô tả có thể cho cùng kết quả.
 6. Mô tả không khớp từ khóa hoặc bật checkbox mô phỏng lỗi sẽ hiện hướng dẫn thử lại/nhập thủ công.
 
 ### Cấu hình System Prompt cho AI-1 (`admin-brief-template-management.html`)
@@ -80,7 +80,7 @@ Bản dễ học dùng JavaScript mô phỏng theo từ khóa, không gọi API 
 
 ## 4. Cấu trúc Thư mục Dự án
 
-Mỗi trang có 3 file độc lập: HTML ở thư mục gốc, CSS trong `css/`, JavaScript trong `js/`:
+HTML ở thư mục gốc, CSS trong `css/`, JavaScript trong `js/`. Các trang nạp `css/share.css` và `js/share.js` trước phần riêng cùng tên:
 
 | Trang | HTML | CSS riêng | JavaScript riêng |
 |---|---|---|---|
@@ -93,15 +93,15 @@ Mỗi trang có 3 file độc lập: HTML ở thư mục gốc, CSS trong `css/`
 | Thông báo | `notifications.html` | `css/notifications.css` | `js/notifications.js` |
 | Lỗi 403/404 | `404.html` | `css/404.css` | `js/404.js` |
 
-- **HTML:** khung trang, thành phần tĩnh và `<template>` cho các khối giao diện, biểu mẫu, modal và dòng dữ liệu lặp. Chỉ nạp CSS/JS cùng tên, không nhúng style hoặc JavaScript.
-- **CSS:** tự chứa đầy đủ bố cục, thành phần, màu sắc và responsive của trang; không `@import`, không tải stylesheet chung. Các lớp `is-hidden` và các lớp trạng thái điều khiển hiển thị.
-- **JavaScript:** toàn bộ nằm trong `DOMContentLoaded`; xử lý sự kiện, validation, dữ liệu và liên kết DOM. Dùng `cloneNode`, `textContent`, thuộc tính DOM và `classList`; không `innerHTML`, không chuỗi HTML, không gán `.style`. Màu HEX của Moodboard được gán vào dữ liệu `fill` của hình SVG trong template.
+- **HTML:** khung trang, thành phần tĩnh và `<template>`; nạp CSS/JS dùng chung trước, CSS/JS riêng sau; không nhúng style hoặc JavaScript.
+- **CSS:** `share.css` chứa định dạng và responsive dùng chung; CSS riêng chỉ giữ các thành phần của trang. Không dùng `@import`. Các lớp trạng thái và thuộc tính `hidden` điều khiển hiển thị.
+- **JavaScript:** `share.js` khai báo dữ liệu và tiện ích chung; JavaScript từng trang gọi `khoiTaoChung()` trong `DOMContentLoaded` rồi xử lý sự kiện, validation và dữ liệu riêng. Dùng `cloneNode`, `textContent`, thuộc tính DOM và `classList`; không `innerHTML`, không chuỗi HTML, không gán `.style`. Màu HEX của Moodboard được gán vào dữ liệu `fill` của hình SVG trong template.
 
 Khung trang được viết trực tiếp trong HTML để đọc được ngay. Chỉ các dòng danh sách và biểu mẫu dùng `<template>` có tên rõ nghĩa như `task-row`, `task-form`. JavaScript sao chép mẫu bằng `cloneNode(true)`, điền `textContent`/`value` và gắn sự kiện. Không còn bộ dựng giao diện App/View/Store hoặc các ký hiệu `{{0}}`.
 
-Mỗi JS gồm dữ liệu mẫu, hàm đọc/lưu LocalStorage, sự kiện menu và xử lý riêng của trang. Tên hàm tiếng Việt như `docDuLieu`, `luuDuLieu`, `hienHoSo` giúp dễ đọc và thuyết trình. Dữ liệu giữ schema/khóa cũ để các trang sử dụng được thông tin của nhau. Trang 404 chỉ đọc mã lỗi và chọn liên kết quay về, không nạp toàn bộ dữ liệu mẫu.
+Dữ liệu mẫu, hàm đọc/lưu LocalStorage, tiện ích form và sự kiện menu được tập trung trong `js/share.js`; file JS từng trang chỉ giữ phần xử lý riêng. Tên hàm tiếng Việt như `docDuLieu`, `luuDuLieu`, `hienHoSo` giúp dễ đọc và thuyết trình. Dữ liệu giữ schema/khóa cũ để các trang sử dụng được thông tin của nhau. Trang 404 dùng hàm chọn trang chủ từ file chung nhưng không gọi khởi tạo dữ liệu/menu.
 
-Xem [Hướng dẫn đọc mã nguồn cơ bản](docs/giai-thich-ma-nguon.md).
+Xem [Hướng dẫn file dùng chung và file riêng](share-files.md).
 
 Tài nguyên bổ trợ được giữ trong `assets/`, tài liệu trong `docs/`, link Figma trong `design/`; `scripts/update_readme_toc.py` cập nhật mục lục, `tests/verify.cjs` kiểm thử, `server.py` chạy localhost tùy chọn.
 
@@ -119,15 +119,15 @@ Excel ghi AI-3 = Mood Keyword Assistant, AI-2 = Feedback Summarizer; README nhó
 
 Hồ sơ hỗ trợ avatar URL http/https và ký tự thay thế khi ảnh lỗi. Đổi mật khẩu là mô phỏng LocalStorage, mật khẩu mặc định `demo123`, chỉ dùng dữ liệu thử nghiệm. Upload phiên bản nhận PNG/JPEG/WebP tối đa 1 MB hoặc chọn ảnh mockup có sẵn. AI là mô phỏng bằng quy tắc JavaScript, không gọi API thật.
 
-Cấu trúc hiện tại gồm 8 bộ HTML/CSS/JS độc lập: HTML ở thư mục gốc, CSS trong `css/`, JS trong `js/`. Dữ liệu dùng cùng schema/LocalStorage để hỗ trợ tích hợp các vai trò.
+Cấu trúc hiện tại gồm 8 trang có CSS/JS riêng và hai file dùng chung `css/share.css`, `js/share.js`: HTML ở thư mục gốc, CSS trong `css/`, JS trong `js/`. Dữ liệu dùng cùng schema/LocalStorage để hỗ trợ tích hợp các vai trò.
 
-- [Kết quả kiểm thử và các lỗi đã sửa](docs/kiem-thu.md)
-- [Danh sách màn hình](docs/screen-list.md)
-- [Vai trò và tính năng](docs/roles-and-features.md)
-- [Phân công, Git workflow và minh chứng](docs/team-assignment.md)
-- [Mô tả dự án](docs/project-proposal.md)
-- [Link Figma do README nhóm cung cấp](design/figma-link.txt)
+- [Kết quả kiểm thử và các lỗi đã sửa](test-results.md)
+- [Danh sách màn hình](screen-list.md)
+- [Hướng dẫn file dùng chung](share-files.md)
+- [Phân công, Git workflow và minh chứng](team-assignment.md)
+- [Đối chiếu barem và các việc còn thiếu](rubric-audit.md)
+- [Link Figma do README nhóm cung cấp](../design/figma-link.txt)
 
 Kiểm tra tự động: chạy `node tests/verify.cjs` nếu máy có Node.js. Bộ kiểm tra dùng DOM mô phỏng bằng Node.js để khởi tạo 8 trang và chạy các thao tác chính. Chưa thay thế kiểm thử bố cục hoặc thao tác trên trình duyệt desktop/mobile.
 
-Repository và PR SV2 đã được ghi tại [Phân công và minh chứng](docs/team-assignment.md). Còn cần xác minh review/merge, mockup được duyệt, 6 video OBS và kiểm thử tích hợp SV1/SV3 trước khi đánh dấu DONE.
+Repository và PR SV2 đã được ghi tại [Phân công và minh chứng](team-assignment.md). Còn cần xác minh review/merge, mockup được duyệt, 6 video OBS và kiểm thử tích hợp SV1/SV3 trước khi đánh dấu DONE.

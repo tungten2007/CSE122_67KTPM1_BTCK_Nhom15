@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('err-desc').textContent = 'Chọn vai trò phù hợp trên trang chính để mở trang này.';
   }
   let vaiTro = 'Designer';
-  try { vaiTro = JSON.parse(localStorage.getItem('currentUser') || 'null')?.role || vaiTro; } catch (loi) { /* Dùng Designer. */ }
-  document.getElementById('safe-home-btn').href = vaiTro === 'Admin' ? 'admin-brief-template-management.html' : vaiTro === 'Designer' ? 'designer-dashboard.html' : 'profile.html';
+  vaiTro = CreatorStudioAPI.getCurrentUser().data?.role || vaiTro;
+  document.getElementById('safe-home-btn').href = trangChu(vaiTro);
 
 });

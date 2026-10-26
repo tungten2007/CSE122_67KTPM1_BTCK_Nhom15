@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CreatorStudio · Cổng Điều hướng Dự án</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/share.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body class="index-page-layout page-index">
-  <div class="index-container">
+  <main class="index-container" id="main">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
     <!-- Brand Header -->
     <header class="index-header row between">
       <div class="index-brand-row row">
@@ -21,7 +24,7 @@
           </svg>
         </span>
         <div>
-          <h2 class="index-brand-title">CreatorStudio</h2>
+          <p class="index-brand-title">CreatorStudio</p>
           <small class="muted">Học phần Phát triển Ứng dụng Web Cơ bản</small>
         </div>
       </div>
@@ -43,7 +46,7 @@
     <section class="role-switcher-banner">
       <div class="index-role-heading row between">
         <div>
-          <h3>Bộ chuyển đổi vai trò Demo (1-Click Demo Role Switcher)</h3>
+          <h2>Bộ chuyển đổi vai trò Demo (1-Click Demo Role Switcher)</h2>
           <p class="index-role-description muted">Nhấp vào một vai trò để kích hoạt tài khoản tương ứng và bắt đầu trải
             nghiệm</p>
         </div>
@@ -162,7 +165,9 @@
         <a href="notifications.html" class="index-screen-link button primary small">Mở Trung tâm thông báo →</a>
       </div>
     </div>
-  </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/share.js"></script>
   <script src="js/index.js"></script>
 </body>
 

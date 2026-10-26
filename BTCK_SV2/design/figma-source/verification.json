@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-10-26",
+  "afterReload": true,
+  "desktop": [
+    "05 Brief templates — Desktop",
+    "08 Error 404 — Desktop",
+    "07 Notifications — Desktop",
+    "06 Profile — Desktop",
+    "04 Version management — Desktop",
+    "03 Moodboard — Desktop",
+    "02 Designer dashboard — Desktop",
+    "01 Navigation portal — Desktop"
+  ],
+  "mobile": [
+    "08 Error 404 — Mobile",
+    "05 Brief templates — Mobile",
+    "07 Notifications — Mobile",
+    "06 Profile — Mobile",
+    "02 Designer dashboard — Mobile",
+    "04 Version management — Mobile",
+    "03 Moodboard — Mobile",
+    "01 Navigation portal — Mobile"
+  ],
+  "textLayersVerified": true
+}

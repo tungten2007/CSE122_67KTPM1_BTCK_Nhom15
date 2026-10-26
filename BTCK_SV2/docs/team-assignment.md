@@ -30,12 +30,12 @@ Một màn hình độc lập = một video OBS theo README gốc. Video có m�
 
 ## Trách nhiệm chéo của SV2
 
-Ngoài 6 màn hình được giao, SV2 phụ trách dữ liệu dùng chung (các đối tượng CS_SEED và Store trong mỗi file JavaScript riêng), JavaScript/LocalStorage, AI-3 Mood Keyword Assistant và kiểm thử phần Designer. Các trang dùng chung cần thống nhất Header, Sidebar, Role Switcher và UI Kit khi tích hợp SV1/SV3.
+Ngoài 6 màn hình được giao, SV2 phụ trách dữ liệu dùng chung (CS_SEED và các hàm LocalStorage trong `js/share.js`), JavaScript/LocalStorage, AI-3 Mood Keyword Assistant và kiểm thử phần Designer. Các trang dùng chung cần thống nhất Header, Sidebar, Role Switcher và UI Kit khi tích hợp SV1/SV3.
 
 ## Checklist nghiệm thu
 
 - [x] Có 6 màn hình SV2 đúng tên file kiểm kê và bộ HTML/CSS/JS riêng cho từng trang.
-- [x] Dữ liệu mẫu tập trung; có bộ kiểm tra tự động cho Store, phân quyền và AI mô phỏng.
+- [x] Dữ liệu mẫu tập trung; có bộ kiểm tra tự động cho dữ liệu, phân quyền và AI mô phỏng.
 - [ ] Xác minh mockup được duyệt, giao diện desktop/tablet/mobile và accessibility cơ bản.
 - [ ] Chạy đầy đủ validation, điều hướng, CRUD và các trạng thái nghiệp vụ phù hợp trên trình duyệt.
 - [ ] Kiểm thử AI: nhập → xử lý → kết quả → giải thích → chấp nhận/sửa/từ chối/tạo lại/lưu; có lỗi, thử lại và nhập thủ công.

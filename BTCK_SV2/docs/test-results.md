@@ -2,6 +2,8 @@
 
 Ngày cập nhật: **26/10/2026**. Dự án: **CreatorStudio — CSE122**.
 
+> Kết quả mới nhất sau sửa lỗi theo barem: [biên bản sửa lỗi hệ thống](system-fixes.md). Bộ test hiện có 4 nhóm PASS; các biên bản cũ bên dưới phản ánh thời điểm kiểm tra tương ứng.
+
 ## Phạm vi bàn giao
 
 SV2 phụ trách 6 màn hình theo phân công:
@@ -43,9 +45,9 @@ node tests/verify.cjs
 |---|---|---|
 | AT-01 | Khởi tạo đủ 8 trang HTML ở thư mục gốc trong DOM mô phỏng | PASS |
 | AT-02 | Cú pháp JavaScript của từng trang hợp lệ | PASS |
-| AT-03 | HTML liên kết CSS riêng trong `css/`, JS riêng trong `js/`; các liên kết tài nguyên cục bộ được kiểm tra đều tồn tại | PASS |
+| AT-03 | HTML nạp `css/share.css`, `js/share.js` trước CSS/JS riêng; các liên kết tài nguyên cục bộ được kiểm tra đều tồn tại | PASS |
 | AT-04 | HTML không còn thẻ style, thuộc tính style hoặc sự kiện inline theo kiểm tra hiện có | PASS |
-| AT-05 | JS bọc `DOMContentLoaded`, không còn App/View/Store, `innerHTML` hoặc gán `.style`; CSS không dùng `@import` | PASS |
+| AT-05 | JS riêng khởi tạo trong `DOMContentLoaded`, tiện ích được khai báo một lần ở `share.js`; không còn App/View/Store, `innerHTML` hoặc gán `.style`; CSS không dùng `@import` | PASS |
 | AT-06 | Form hồ sơ ban đầu bị khóa; bấm chỉnh sửa thì mở các trường | PASS |
 | AT-07 | Avatar URL dạng `javascript:` bị từ chối và không được lưu | PASS |
 | AT-08 | Lưu tên hồ sơ hợp lệ; khởi tạo lại trang với cùng dữ liệu vẫn đọc đúng tên đã lưu | PASS |
@@ -81,7 +83,7 @@ Trong quá trình xem mobile đã chỉnh CSS cho thanh đầu trang, hàng côn
 
 ## Vấn đề còn ghi nhận
 
-- Lệnh `python scripts/update_readme_toc.py --check` hiện không chạy được vì script tìm `README.md` ở thư mục gốc nhưng file đó không còn tại vị trí này. Nội dung giới thiệu dự án hiện nằm ở [docs/sv2.md.md](sv2.md.md). Cần thống nhất lại đường dẫn trước khi kiểm tra mục lục; không ghi mục này là PASS.
+- Đã sửa script mục lục để đọc [hướng dẫn SV2](sv2.md.md) khi README gốc không có; kiểm tra `--check` hiện PASS.
 - DOM mô phỏng không xác nhận được CSS thực tế, validation mặc định của trình duyệt, focus/bàn phím, FileReader, clipboard hay hành vi hộp thoại gốc.
 - Chưa thực thi đầy đủ thao tác xóa/lưu trữ phiên bản, thay loại tài sản, upload ảnh thật và các trường hợp hết dung lượng LocalStorage trong lần kiểm tra hiện tại.
 - Chưa chạy đầy đủ luồng liên vai trò giữa SV1 → SV2 → SV3 trên mã đã tích hợp.
@@ -100,3 +102,10 @@ Chỉ cập nhật trạng thái đạt khi đã thực hiện thao tác và có
 - Mobile 390 × 844: hộp thoại nằm trong màn hình, nội dung cuộn riêng; bảng màu chuyển 2 cột, chân hộp thoại có các nút thao tác. Đo vùng nội dung không bị tràn ngang.
 - Ảnh minh chứng: [nhập mô tả](../design/mockups/ai-3-input.jpg), [kết quả](../design/mockups/ai-3-result.jpg), [giải thích/chất liệu/Typography](../design/mockups/ai-3-result-details.jpg), [lỗi](../design/mockups/ai-3-error.jpg), [kết quả mobile](../design/mockups/mobile-ai-3-result.jpg).
 - AI vẫn là mô phỏng JavaScript theo các nhóm từ khóa; chưa gọi API hoặc xác nhận độ chính xác của một mô hình AI thật.
+
+## Tách file dùng chung share.css / share.js — 26/10/2026
+
+- Dữ liệu mẫu, LocalStorage, menu, vai trò và tiện ích form dùng chung được tập trung trong `js/share.js`; CSS nền tảng và thành phần chung ở `css/share.css`.
+- Các file riêng giữ xử lý và định dạng riêng, gồm toàn bộ luồng AI-3 mới của Moodboard.
+- Bộ kiểm tra tự động đạt sau khi nạp script đúng thứ tự từ HTML; có kiểm tra thêm chọn vai trò ở cổng điều hướng và liên kết quay về của 403.
+- Đã đối chiếu trên trình duyệt cả 8 trang trước/sau bằng kích thước, display, màu, nền, cỡ chữ và padding của các khối chính được chọn; không ghi nhận khác biệt. Không ghi nhận lỗi JavaScript trong lượt mở trang này.

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý Mẫu Brief &amp; Cấu hình AI-1 · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/share.css">
   <link rel="stylesheet" href="css/admin-brief-template-management.css">
 </head>
 
@@ -138,6 +139,8 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
       <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
       <section class="page-heading">
         <div>
@@ -163,21 +166,22 @@
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0"></path>
           </svg>
-          <input type="search" id="tpl-search" placeholder="Tìm kiếm mẫu brief..." value="">
+          <input type="search" id="tpl-search" aria-label="Tìm mẫu Brief" placeholder="Tìm kiếm mẫu brief..." value="">
         </div>
-        <select id="status-filter">
+        <select id="status-filter" aria-label="Lọc trạng thái mẫu">
           <option value="all" selected>Tất cả trạng thái</option>
           <option value="Active Template">Đang áp dụng (Active Template)</option>
           <option value="Inactive">Tạm ngừng (Inactive)</option>
           <option value="Custom">Tùy biến (Custom)</option>
         </select>
-        <select id="cat-filter">
+        <select id="cat-filter" aria-label="Lọc ngành hàng">
           <option value="all" selected>Tất cả ngành hàng</option>
           <option value="Branding">Branding</option>
           <option value="Packaging">Packaging</option>
           <option value="UI/UX">UI/UX</option>
           <option value="Campaign">Campaign</option>
         </select>
+        <select id="template-sort" aria-label="Sắp xếp danh sách"><option value="default">Thứ tự mặc định</option><option value="name-asc">Tên A → Z</option><option value="name-desc">Tên Z → A</option></select>
         <span class="toolbar-count">Tổng cộng <strong>4</strong> mẫu brief</span>
       </div>
       <!-- Lưới các Mẫu Brief định sẵn -->
@@ -186,7 +190,7 @@
           <div class="template-card-header">
             <div>
               <span class="template-category-badge">Branding</span>
-              <h3>Nhận diện thương hiệu (Branding Identity)</h3>
+              <h2>Nhận diện thương hiệu (Branding Identity)</h2>
             </div>
             <span class="badge green">Active Template</span>
           </div>
@@ -219,7 +223,7 @@
           <div class="template-card-header">
             <div>
               <span class="template-category-badge">Packaging</span>
-              <h3>Thiết kế bao bì sản phẩm (Packaging Design)</h3>
+              <h2>Thiết kế bao bì sản phẩm (Packaging Design)</h2>
             </div>
             <span class="badge green">Active Template</span>
           </div>
@@ -252,7 +256,7 @@
           <div class="template-card-header">
             <div>
               <span class="template-category-badge">UI/UX</span>
-              <h3>Giao diện Web / App (UI/UX Digital Product)</h3>
+              <h2>Giao diện Web / App (UI/UX Digital Product)</h2>
             </div>
             <span class="badge purple">Custom</span>
           </div>
@@ -284,7 +288,7 @@
           <div class="template-card-header">
             <div>
               <span class="template-category-badge">Campaign</span>
-              <h3>Chiến dịch truyền thông (Creative Campaign)</h3>
+              <h2>Chiến dịch truyền thông (Creative Campaign)</h2>
             </div>
             <span class="badge gray">Inactive</span>
           </div>
@@ -313,7 +317,7 @@
           </div>
         </div>
       </section>
-      <p id="template-empty" class="empty-state" hidden>Không có mẫu Brief phù hợp.</p>
+      <div id="template-empty" class="empty-state" hidden><p>Không có mẫu Brief phù hợp.</p><button type="button" class="button small" id="template-reset-btn">Xóa bộ lọc</button></div>
       <!-- KHUNG CẤU HÌNH PROMPT CHO AI-1 (BRIEF STRUCTURER) -->
       <section class="prompt-config-card" id="ai-prompt-config-section">
         <div class="panel-title">
@@ -336,8 +340,8 @@
         </div>
         <label class="field">
           <span>System Prompt Template cho AI-1: *</span>
-          <textarea id="prompt-editor" class="prompt-textarea"
-            rows="4">Bạn là Giám đốc Sáng tạo AI của CreatorStudio. Hãy phân tích yêu cầu sau và cấu trúc thành brief Branding: 1. Mục tiêu cốt lõi; 2. Giá trị định vị; 3. Deliverables thiết yếu; 4. Tone of Voice; 5. Rủi ro sáng tạo. Dữ liệu: {raw_input}</textarea>
+          <textarea id="prompt-editor" aria-describedby="prompt-error" class="prompt-textarea"
+            rows="4">Bạn là Giám đốc Sáng tạo AI của CreatorStudio. Hãy phân tích yêu cầu sau và cấu trúc thành brief Branding: 1. Mục tiêu cốt lõi; 2. Giá trị định vị; 3. Deliverables thiết yếu; 4. Tone of Voice; 5. Rủi ro sáng tạo. Dữ liệu: {raw_input}</textarea><p id="prompt-error" class="field-error" role="alert"></p>
         </label>
         <div class="admin-brief-template-management-prompt-actions row between">
           <button class="button primary" id="save-prompt-btn">
@@ -350,20 +354,20 @@
         </div>
         <!-- Công cụ kiểm thử trực quan cấu hình Prompt AI -->
         <div class="prompt-tester">
-          <h4>
+          <h3>
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"></path>
             </svg>
             Thử nghiệm Prompt AI với mô tả mẫu
-          </h4>
+          </h3>
           <p class="admin-brief-template-management-test-help muted">Kiểm tra xem Prompt được cấu hình có trích xuất
             đúng các trường thông tin không.</p>
           <div class="admin-brief-template-management-test-form row">
             <label class="admin-brief-template-management-test-field field">
               <span>Mô tả thô mẫu của khách hàng:</span>
-              <input type="text" id="test-raw-input"
-                value="Chúng tôi cần thiết kế hộp quà cà phê 2 túi, phong cách mộc mạc organic, dùng giấy kraft và xanh lá trầm.">
+              <input type="text" id="test-raw-input" aria-describedby="test-input-error"
+                value="Chúng tôi cần thiết kế hộp quà cà phê 2 túi, phong cách mộc mạc organic, dùng giấy kraft và xanh lá trầm."><p id="test-input-error" class="field-error" role="alert"></p>
             </label>
             <button class="button primary" id="run-test-ai-btn">
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -403,7 +407,7 @@
       <div class="template-card-header">
         <div>
           <span class="template-category-badge">Branding</span>
-          <h3>Nhận diện thương hiệu (Branding Identity)</h3>
+          <h2>Nhận diện thương hiệu (Branding Identity)</h2>
         </div>
         <span class="badge green">Active Template</span>
       </div>
@@ -469,6 +473,8 @@
       <button class="button primary" type="submit">Lưu</button>
     </form>
   </template>
+  <script src="js/api.js"></script>
+  <script src="js/share.js"></script>
   <script src="js/admin-brief-template-management.js"></script>
 </body>
 

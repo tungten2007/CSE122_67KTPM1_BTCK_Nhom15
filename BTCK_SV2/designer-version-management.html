@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/share.css">
   <link rel="stylesheet" href="css/designer-version-management.css">
 </head>
 
@@ -138,6 +139,8 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
       <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
       <section class="page-heading">
         <div>
@@ -171,7 +174,7 @@
       </div>
       <!-- Toolbar lọc trạng thái -->
       <div class="toolbar">
-        <select id="status-filter">
+        <select id="status-filter" aria-label="Lọc trạng thái phiên bản">
           <option value="all" selected>Tất cả trạng thái</option>
           <option value="Draft">Bản nháp (Draft)</option>
           <option value="Internal Review">Chờ duyệt nội bộ (Internal Review)</option>
@@ -192,7 +195,7 @@
             <div class="version-head-row">
               <div class="designer-version-management-title-row row">
                 <span class="version-name-tag">MC26-BaoBi-v3</span>
-                <h3 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h3>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h2>
                 <span class="badge purple">Internal Review</span>
                 <span class="badge blue">Mới nhất</span>
               </div>
@@ -262,7 +265,7 @@
             <div class="version-head-row">
               <div class="designer-version-management-title-row row">
                 <span class="version-name-tag">MC26-BaoBi-v2</span>
-                <h3 class="designer-version-management-title">Túi cà phê · Phiên bản 2</h3>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 2</h2>
                 <span class="badge high">Changes Requested</span>
               </div>
               <div class="row">
@@ -321,7 +324,7 @@
             <div class="version-head-row">
               <div class="designer-version-management-title-row row">
                 <span class="version-name-tag">MC26-BaoBi-v1</span>
-                <h3 class="designer-version-management-title">Túi cà phê · Phiên bản 1</h3>
+                <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 1</h2>
                 <span class="badge gray">Archived</span>
               </div>
               <div class="row">
@@ -365,7 +368,7 @@
           </div>
         </div>
       </div>
-      <p id="version-empty" class="empty-state" hidden>Chưa có phiên bản phù hợp.</p>
+      <div id="version-empty" class="empty-state" hidden><p>Chưa có phiên bản phù hợp.</p><button type="button" class="button small" id="version-reset-btn">Xóa bộ lọc</button></div>
     </main>
     <footer class="page-footer">
       <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
@@ -398,7 +401,7 @@
         <div class="version-head-row">
           <div class="designer-version-management-title-row row">
             <span class="version-name-tag">MC26-BaoBi-v3</span>
-            <h3 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h3>
+            <h2 class="designer-version-management-title">Túi cà phê · Phiên bản 3</h2>
             <span class="badge purple" data-version-status="">Internal Review</span>
             <span class="badge blue" data-version-latest="">Mới nhất</span>
           </div>
@@ -518,6 +521,8 @@
       <button class="button primary" type="submit">Lưu</button>
     </form>
   </template>
+  <script src="js/api.js"></script>
+  <script src="js/share.js"></script>
   <script src="js/designer-version-management.js"></script>
 </body>
 

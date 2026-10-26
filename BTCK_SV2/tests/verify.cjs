@@ -22,7 +22,8 @@ function open(name, options = {}) {
     alert(){}, confirm(){return true;}, prompt(){return null;},
     navigator:{clipboard:{writeText:async()=>{}}}, setTimeout(fn){timers.push(fn);return fn;}, clearTimeout(fn){const i=timers.indexOf(fn);if(i>=0) timers.splice(i,1);},
   });
-  vm.runInContext(fs.readFileSync(path.join(root,'js',name+'.js'),'utf8'),context);
+  const scripts=[...fs.readFileSync(path.join(root,name+'.html'),'utf8').matchAll(/<script\b[^>]*src="([^"]+)"[^>]*><\/script>/g)].map(m=>m[1]);
+  for(const script of scripts) vm.runInContext(fs.readFileSync(path.join(root,script),'utf8'),context,{filename:script});
   ready();
   return { document, storage:localStorage, location, timers, get data(){return JSON.parse(localStorage.getItem('creatorstudio.v1'));} };
 }
@@ -36,6 +37,11 @@ async function main() {
     const css = fs.readFileSync(path.join(root,'css',name+'.css'),'utf8');
     new vm.Script(js, {filename:name+'.js'});
     assert.ok(html.includes(`href="css/${name}.css"`) && html.includes(`src="js/${name}.js"`));
+    const styles=[...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
+    const scripts=[...html.matchAll(/<script\b[^>]*src="([^"]+)"/g)].map(m=>m[1]);
+    assert.deepEqual(styles,['css/share.css',`css/${name}.css`]);
+    assert.deepEqual(scripts,['js/api.js','js/share.js',`js/${name}.js`]);
+    assert.ok(!/function (CS_SEED|docDuLieu|luuDuLieu|saoChepMau|moBieuMau|doiVaiTro)\b/.test(js));
     assert.ok(!/<style\b|\sstyle=|\son\w+=/i.test(html));
     assert.ok(!/\{\{\d+\}\}|data-view-attrs/.test(html));
     assert.ok(!/\.style\b|innerHTML|insertAdjacentHTML|const (App|View|Store)\b/.test(js));
@@ -48,7 +54,15 @@ async function main() {
     }
     open(name);
   }
-  console.log('PASS: 8 trang khởi tạo trong DOM mô phỏng; đường dẫn, HTML/CSS/JS riêng và cú pháp hợp lệ.');
+  for (const shared of ['api.js','share.js']) new vm.Script(fs.readFileSync(path.join(root,'js',shared),'utf8'),{filename:shared});
+  console.log('PASS: 8 trang khởi tạo; api.js → share.js → phần riêng; cú pháp hợp lệ.');
+  const portal=open('index');
+  portal.document.querySelector('[data-role="Admin"]').click();
+  assert.equal(portal.location.href,'admin-brief-template-management.html');
+  assert.equal(JSON.parse(portal.storage.getItem('currentUser')).role,'Admin');
+  const forbidden=open('404',{storage:portal.storage,search:'?code=403'});
+  assert.equal(forbidden.document.getElementById('err-code').textContent,'403');
+  assert.equal(forbidden.document.getElementById('safe-home-btn').href,'admin-brief-template-management.html');
   const p = open('profile'); const d=p.document; const form=d.getElementById('profile-info-form');
   assert.equal(form.elements.name.disabled,true);
   d.getElementById('toggle-edit-btn').click(); assert.equal(form.elements.name.disabled,false);
@@ -128,5 +142,47 @@ async function main() {
   const storage=memory(); storage.setItem('creatorstudio.v1',JSON.stringify(archiveData));
   const archived=open('designer-dashboard',{storage}); archived.document.getElementById('add-task-btn').click(); assert.ok(!archived.document.getElementById('dialog').open);
   console.log('PASS: hồ sơ/mật khẩu, tìm kiếm/thêm/đổi trạng thái công việc, phân quyền, mã phiên bản/checklist/nộp duyệt, thông báo theo user, AI success/error/retry, Prompt Admin và dự án lưu trữ.');
+  // Regression: lỗi dữ liệu phải giữ nguyên dữ liệu cũ, không ghi đè bằng seed.
+  const brokenStorage=memory(); brokenStorage.setItem('creatorstudio.v1','{broken-json');
+  const broken=open('designer-dashboard',{storage:brokenStorage});
+  assert.equal(broken.document.getElementById('data-error').hidden,false);
+  broken.document.getElementById('add-task-btn').click();
+  const brokenForm=broken.document.getElementById('dialog').querySelector('form');
+  field(brokenForm,'title','Không được ghi đè'); await submit(brokenForm);
+  assert.equal(brokenStorage.getItem('creatorstudio.v1'),'{broken-json');
+  assert.equal(broken.document.getElementById('dialog').open,true);
+
+  const states=open('designer-dashboard'); const sd=states.document;
+  sd.querySelector('[data-mode="error"]').click();
+  assert.equal(sd.getElementById('task-error').hidden,false);
+  assert.equal(sd.getElementById('task-empty').hidden,true);
+  assert.equal(sd.querySelector('.task-list').children.length,0);
+  sd.getElementById('task-retry-btn').click();
+  assert.equal(sd.getElementById('task-error').hidden,true);
+  assert.ok(sd.querySelector('.task-list').children.length>0);
+  sd.getElementById('task-search').value='Không tồn tại';sd.getElementById('task-search').oninput();
+  sd.getElementById('task-reset-btn').click();
+  assert.equal(sd.getElementById('task-search').value,'');
+  assert.ok(sd.querySelector('.task-list').children.length>0);
+  sd.getElementById('task-sort').value='name-asc';sd.getElementById('task-sort').onchange();
+  const names=sd.querySelectorAll('[data-task-title]').map(e=>e.textContent);
+  assert.deepEqual(names,[...names].sort((a,b)=>a.localeCompare(b,'vi')));
+
+  const edited=open('designer-moodboard');const ed=edited.document;
+  ed.getElementById('open-ai-modal-btn').click();ed.getElementById('ai-generate-btn').click();
+  edited.timers.splice(0).forEach(fn=>fn());ed.getElementById('ai-edit-btn').click();
+  const editForm=ed.getElementById('ai-edit-form');
+  field(editForm,'hex0','#NOPE');ed.getElementById('ai-accept-btn').click();
+  assert.equal(editForm.elements.hex0.getAttribute('aria-invalid'),'true');
+  assert.equal(edited.storage.getItem('creatorstudio.v1'),null);
+  field(editForm,'hex0','#123456');field(editForm,'keywords','Từ khóa đã sửa\nGiấy thủ công');
+  field(editForm,'reason','Giải thích đã được người dùng điều chỉnh.');ed.getElementById('ai-accept-btn').click();
+  assert.equal(edited.data.moodboards[0].palette[0].hex,'#123456');
+  assert.deepEqual(edited.data.moodboards[0].keywords,['Từ khóa đã sửa','Giấy thủ công']);
+  const reloaded=open('designer-moodboard',{storage:edited.storage});
+  assert.ok(reloaded.document.querySelector('.palette-container').textContent.includes('#123456'));
+  assert.ok(reloaded.document.getElementById('ai-reason').textContent.includes('điều chỉnh'));
+  console.log('PASS: data-error preserves storage; error/retry/reset, sorting and edited AI validation/apply/reload.');
+
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

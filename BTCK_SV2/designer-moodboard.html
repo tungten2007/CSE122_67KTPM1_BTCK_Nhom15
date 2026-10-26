@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/share.css">
   <link rel="stylesheet" href="css/designer-moodboard.css">
 </head>
 
@@ -138,6 +139,8 @@
       </div>
     </header>
     <main id="main" tabindex="-1">
+      <section id="data-sync-notice" class="notice warning" role="status" hidden><p>Dữ liệu đã thay đổi ở trang khác. Kiểm tra nội dung đang nhập trước khi tải lại.</p><button type="button" class="button small" id="data-sync-reload">Tải lại dữ liệu</button></section>
+      <section id="data-error" class="notice danger data-error" role="alert" hidden><h2>Chưa đọc được dữ liệu đã lưu</h2><p>Dữ liệu cũ được giữ nguyên. Đang hiển thị bản mẫu để xem; tạm ngừng lưu để tránh ghi đè.</p><button type="button" class="button small" id="data-retry-btn">Thử đọc lại dữ liệu</button></section>
       <p id="archive-notice" class="notice warning" hidden>Dự án đã lưu trữ, chỉ được xem.</p>
       <section class="page-heading">
         <div>
@@ -378,7 +381,7 @@
                   </svg>
                 </button>
               </div>
-              <h4>Chất liệu túi giấy Kraft có vân sần</h4>
+              <h3>Chất liệu túi giấy Kraft có vân sần</h3>
               <p>Bề mặt sần nhẹ tạo cảm giác mộc mạc, thân thiện với môi trường.</p>
             </div>
           </div>
@@ -399,7 +402,7 @@
                   </svg>
                 </button>
               </div>
-              <h4>Typography Serif cổ điển vững chãi</h4>
+              <h3>Typography Serif cổ điển vững chãi</h3>
               <p>Font chữ MỘC với đường nét dày dặn, sang trọng nhưng gần gũi.</p>
             </div>
           </div>
@@ -420,7 +423,7 @@
                   </svg>
                 </button>
               </div>
-              <h4>Họa tiết lá chè &amp; hạt cà phê cách điệu</h4>
+              <h3>Họa tiết lá chè &amp; hạt cà phê cách điệu</h3>
               <p>Nét vẽ line-art màu vàng cát trên nền xanh sẫm tối giản.</p>
             </div>
           </div>
@@ -491,7 +494,7 @@
             </svg>
           </button>
         </div>
-        <h4>Chất liệu túi giấy Kraft có vân sần</h4>
+        <h3>Chất liệu túi giấy Kraft có vân sần</h3>
         <p>Bề mặt sần nhẹ tạo cảm giác mộc mạc, thân thiện với môi trường.</p>
       </div>
     </div>
@@ -601,6 +604,13 @@
         <div class="ai-explanation"><h4>Vì sao AI đề xuất phong cách này? (Explanation)</h4><p id="ai-res-explanation"></p></div>
         <div class="ai-design-details"><p><strong>Gợi ý chất liệu in:</strong> <span id="ai-res-materials"></span></p><p><strong>Gợi ý Typography:</strong> <span id="ai-res-typography"></span></p></div>
         <p id="ai-save-error" class="form-error" role="alert"></p>
+        <form id="ai-edit-form" hidden>
+          <h4>Chỉnh sửa trước khi áp dụng</h4>
+          <p>Chỉ lưu thay đổi vào Moodboard khi bấm Chấp nhận &amp; Áp dụng.</p>
+          <div id="ai-edit-colors" class="ai-edit-colors"></div>
+          <label class="field"><span>Từ khóa (mỗi dòng một từ khóa, tối đa 10) *</span><textarea name="keywords" rows="5" required maxlength="500"></textarea></label>
+          <label class="field"><span>Giải thích phong cách *</span><textarea name="reason" rows="4" required maxlength="1500"></textarea></label>
+        </form>
       </section>
       <section data-ai-step="error" hidden>
         <div class="ai-error-box"><h3>Chưa thể tạo gợi ý phù hợp</h3><p id="ai-error-message-text" role="alert"></p><p>Bạn có thể bổ sung mô tả, thử lại hoặc chọn bảng màu thủ công.</p></div>
@@ -609,12 +619,14 @@
     <footer class="ai-dialog-footer">
       <div class="ai-footer-group" data-ai-footer="input"><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-generate-btn" class="button ai-submit">✧ Bắt đầu sinh gợi ý</button></div>
       <div class="ai-footer-group" data-ai-footer="processing" hidden><button type="button" class="button" disabled>AI đang tính toán…</button></div>
-      <div class="ai-footer-group" data-ai-footer="result" hidden><button type="button" id="ai-reject-btn" class="button">Từ chối (Reject)</button><button type="button" id="ai-regen-btn" class="button">✧ Tạo lại (Regenerate)</button><button type="button" id="ai-accept-btn" class="button ai-submit">✓ Chấp nhận &amp; Áp dụng</button></div>
+      <div class="ai-footer-group" data-ai-footer="result" hidden><button type="button" id="ai-reject-btn" class="button">Từ chối (Reject)</button><button type="button" id="ai-edit-btn" class="button">Chỉnh sửa gợi ý</button><button type="button" id="ai-regen-btn" class="button">✧ Tạo lại (Regenerate)</button><button type="button" id="ai-accept-btn" class="button ai-submit">✓ Chấp nhận &amp; Áp dụng</button></div>
       <div class="ai-footer-group" data-ai-footer="error" hidden><button type="button" class="button" data-ai-close>Đóng</button><button type="button" id="ai-manual-btn" class="button">Nhập thủ công</button><button type="button" id="ai-retry-btn" class="button ai-submit">Thử lại (Retry)</button></div>
     </footer>
   </dialog>
   <template id="ai-color-row"><div class="ai-color-item"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><rect width="100" height="60" fill="#ffffff"></rect></svg><span class="ai-color-hex">#FFFFFF</span></div></template>
   <template id="ai-keyword-row"><span class="ai-keyword-pill"></span></template>
+  <script src="js/api.js"></script>
+  <script src="js/share.js"></script>
   <script src="js/designer-moodboard.js"></script>
 </body>
 
