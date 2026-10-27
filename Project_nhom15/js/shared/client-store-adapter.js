@@ -14,12 +14,25 @@ window.TeamClient=(()=>{
  function projectView(p,d){
   const versions=d.versions.filter(v=>v.projectId===p.id&&publicStates.includes(v.status)).sort((a,b)=>(Date.parse(a.createdAt)||0)-(Date.parse(b.createdAt)||0)||(a.versionNum||0)-(b.versionNum||0));
   const requested=new URLSearchParams(location.search).get('version');const v=versions.find(v=>v.id===requested)||versions.at(-1);
-  const previous=versions[versions.findIndex(x=>x.id===v?.id)-1];
+  // Archived drafts/internal reviews must never become visible to clients.
+  const sharedActions=['pass','Client Review','Approved','Changes Requested','Rejected','changes_requested'];
+  function clientHistory(version){
+   if(publicStates.includes(version.status))return true;
+   if(version.status!=='Archived')return false;
+   if((version.history||[]).some(h=>sharedActions.includes(h.action)))return true;
+   // Compatibility with the original bundled v1, archived before sharing history was recorded.
+   return version.id==='v-moc-1'&&version.projectId==='p-moc'&&version.code==='MC26-BaoBi-v1'&&
+    version.createdAt==='2026-09-20T10:00:00+07:00'&&
+    !(version.history||[]).some(h=>['submitted_internal','rework'].includes(h.action));
+  }
+  const comparisonVersions=d.versions.filter(item=>item.projectId===p.id&&clientHistory(item))
+   .sort((a,b)=>(Date.parse(a.createdAt)||0)-(Date.parse(b.createdAt)||0)||(a.versionNum||0)-(b.versionNum||0));
+  const previous=comparisonVersions[comparisonVersions.findIndex(item=>item.id===v?.id)-1];
   const b=d.briefs.filter(b=>b.projectId===p.id).at(-1),tasks=d.tasks.filter(t=>t.projectId===p.id);
   return {...p,category:p.category||p.tags?.[0]||'Branding',art:p.art||'moc',deadline:p.deadline||b?.deadline||'2026-12-01',
    status:p.archived?'Archived':p.status||(v?.status==='Approved'?'Completed':v?.status==='Client Review'?'In Review':'Active'),
    progress:p.status==='Completed'?100:tasks.length?Math.round(tasks.filter(t=>t.status==='done').length/tasks.length*100):(p.progress||0),
-   versionId:v?.id||null,versionStatus:v?.status||null,versionImage:v?.image||'assets/coffee.svg',previousImage:previous?.image||null,rejectionReason:[...(v?.history||[])].reverse().find(h=>h.action==='Rejected')?.reason||'',
+   versionId:v?.id||null,versionStatus:v?.status||null,versionImage:v?.image||'assets/coffee.svg',previousImage:previous?.image||null,previousVersionName:previous?.name||null,rejectionReason:[...(v?.history||[])].reverse().find(h=>h.action==='Rejected')?.reason||'',
    availableVersions:versions.map(v=>({id:v.id,name:v.name,status:v.status})),
    comments:d.comments.filter(c=>c.versionId===v?.id).map(c=>({...c,x:c.x??.5,y:c.y??.5,createdAt:c.createdAt||'2026-10-01T00:00:00Z'})),
    brief:b?{...b.clientData,sections:b.clientData?.sections||{goal:b.summary||'',audience:b.audience||'',message:'',style:'',deliverables:b.deliverables||''},deadline:b.deadline,accepted:b.clientData?.accepted??true,submitted:['submitted','approved'].includes(b.status),reviewStatus:b.status,reason:b.reason||''}:null};
