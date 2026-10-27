@@ -44,6 +44,32 @@ window.TeamClient=(()=>{
  }
  for(const n of value.notifications){const prev=old.notifications.find(x=>x.id===n.id);if(prev&&n.read!==prev.read){const target=d.notifications.find(x=>x.id===n.id&&x.userId===user.id);if(target)target.read=n.read}}
  });baseline=clone(value);return true}catch(e){window.CS?.toast(e.message);return false}}
+ // General feedback is independent of the version approval decision.
+ function sendFeedback(projectId, versionId, text) {
+  try {
+   const user = session();
+   const content = String(text || '').trim();
+   check(user?.role === 'Client', 'Chỉ khách hàng được gửi phản hồi.');
+   check(content.length >= 3 && content.length <= 1000, 'Phản hồi cần từ 3 đến 1.000 ký tự.');
+   Store.transaction(d => {
+    const actor = d.users.find(item => item.id === user.id && item.active && item.role === 'Client');
+    check(actor, 'Tài khoản không còn quyền gửi phản hồi.');
+    const project = d.projects.find(item => item.id === projectId);
+    const version = d.versions.find(item => item.id === versionId && item.projectId === projectId);
+    check(project && !project.archived, 'Dự án đã lưu trữ hoặc không còn tồn tại.');
+    check(version && publicStates.includes(version.status), 'Phiên bản chưa được chia sẻ với khách hàng.');
+    d.comments.push({
+     id: Store.id('C'), projectId, versionId, text: content,
+     kind: 'general', author: actor.name, authorId: actor.id,
+     x: 0.5, y: 0.5, resolved: false, createdAt: new Date().toISOString(),
+    });
+   });
+   return true;
+  } catch (error) {
+   window.CS?.toast(error.message);
+   return false;
+  }
+ }
  function notify(message, projectId, type, versionId) {
   try {
    const user = session();
@@ -69,5 +95,5 @@ window.TeamClient=(()=>{
   }
  }
 
- return {read,write,session,login,authenticate,home,notify};
+ return {read,write,session,login,authenticate,home,notify,sendFeedback};
 })();

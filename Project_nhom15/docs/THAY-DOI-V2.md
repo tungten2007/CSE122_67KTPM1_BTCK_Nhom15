@@ -194,3 +194,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thông báo phản hồi của Lead mở Tổng hợp phản hồi đúng dự án/phiên bản; dữ liệu vẫn nằm trong Store chung, không tạo kho phản hồi thứ hai.
 - Trang Tổng hợp phản hồi làm mới khi Store thay đổi ở tab khác. Giữ quy tắc chỉ gửi khi phiên bản đang Client Review và dự án chưa lưu trữ.
 - Không chạy thêm kiểm thử theo yêu cầu người dùng; giữ riêng các thay đổi đang làm dở.
+
+
+## Mở nút gửi phản hồi chung của khách hàng — 27/10/2026
+
+- Tách điều kiện gửi phản hồi chung khỏi điều kiện duyệt/sửa quyết định phiên bản; khách hàng có thể gửi bổ sung trên phiên bản đã được chia sẻ, kể cả Approved, Changes Requested hoặc Rejected.
+- Thêm TeamClient.sendFeedback để ghi phản hồi chung vào Store mà không thay trạng thái duyệt hoặc sửa lịch sử cũ. Giữ kiểm tra tài khoản Client đang hoạt động, dự án chưa lưu trữ, phiên bản thuộc đúng dự án và đã chia sẻ; nội dung từ 3–1.000 ký tự.
+- Giữ nguyên khóa thao tác duyệt và sửa/xóa các phản hồi cũ khi phiên bản đã kết thúc. Phản hồi mới vẫn gửi thông báo tới trưởng nhóm như luồng hiện có.
+- Không chạy thêm kiểm thử theo yêu cầu người dùng; các thay đổi đang làm dở khác được giữ riêng.

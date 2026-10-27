@@ -35,7 +35,7 @@
     entry.innerHTML = '<div><h2>Gửi phản hồi cho trưởng nhóm</h2><p>Nêu rõ điều cần thay đổi và lý do. Phản hồi được lưu theo phiên bản đã chọn và xuất hiện trong Tổng hợp phản hồi của trưởng nhóm.</p><p id="feedback-availability" role="status"></p></div><div class="actions"><button class="btn primary" id="send-feedback" type="button">＋ Gửi phản hồi</button><a class="btn" href="' + escape(reviewLink) + '">Xem thiết kế</a></div>';
     versionLabel.insertAdjacentElement("afterend", entry);
     $("#send-feedback").onclick = () => {
-      if (!locked()) openComment(0.5, 0.5, true);
+      if (!feedbackLocked()) openComment(0.5, 0.5, true);
     };
   }
   const dialog = $("#comment-dialog");
@@ -53,6 +53,10 @@
       p.status === "Archived" ||
       p.versionStatus !== "Client Review"
     );
+  }
+  function feedbackLocked() {
+    return p.status === "Archived" ||
+      !["Client Review", "Approved", "Changes Requested", "Rejected"].includes(p.versionStatus);
   }
   function refresh() {
     p = CS.read().projects.find((item) => item.id === p.id);
@@ -80,9 +84,9 @@
     );
     $("#comment-count").textContent = comments.length;
     if (feedbackView) {
-      $("#send-feedback").disabled = locked();
-      $("#feedback-availability").textContent = locked()
-        ? "Phiên bản này đã kết thúc nhận phản hồi hoặc dự án đã lưu trữ. Bạn vẫn có thể xem lịch sử; hãy chọn phiên bản đang chờ khách hàng duyệt để gửi mới."
+      $("#send-feedback").disabled = feedbackLocked();
+      $("#feedback-availability").textContent = feedbackLocked()
+        ? "Dự án đã lưu trữ hoặc phiên bản chưa được chia sẻ với khách hàng. Bạn vẫn có thể xem lịch sử phản hồi."
         : "Trưởng nhóm sẽ nhận thông báo khi bạn gửi phản hồi.";
     }
     $("#pins").innerHTML = comments
@@ -202,14 +206,16 @@
     dialog.close();
   $("#comment-form").onsubmit = (e) => {
     e.preventDefault();
-    if (locked()) return;
+    const generalFeedback = !editing && pending?.kind === "general";
+    if (generalFeedback ? feedbackLocked() : locked()) return;
     const text = $("#comment-text").value.trim();
-    if (!text) {
-      $("#comment-error").textContent = "Vui lòng nhập nội dung phản hồi.";
+    if (text.length < 3) {
+      $("#comment-error").textContent = "Vui lòng nhập phản hồi có ít nhất 3 ký tự.";
       return;
     }
-    if (
-      update(p.id, (project) => {
+    const saved = generalFeedback
+      ? TeamClient.sendFeedback(p.id, p.versionId, text)
+      : update(p.id, (project) => {
         if (editing) {
           const c = project.comments.find((c) => c.id === editing);
           if (c) {
@@ -225,8 +231,8 @@
             createdAt: new Date().toISOString(),
           });
         }
-      })
-    ) {
+      });
+    if (saved) {
       dialog.close();
       refresh();
       CS.notify(`Có phản hồi mới cho ${p.name}.`, p.id, "comment", p.versionId);
