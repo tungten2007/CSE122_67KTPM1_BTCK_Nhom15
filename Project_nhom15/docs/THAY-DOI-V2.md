@@ -202,3 +202,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm TeamClient.sendFeedback để ghi phản hồi chung vào Store mà không thay trạng thái duyệt hoặc sửa lịch sử cũ. Giữ kiểm tra tài khoản Client đang hoạt động, dự án chưa lưu trữ, phiên bản thuộc đúng dự án và đã chia sẻ; nội dung từ 3–1.000 ký tự.
 - Giữ nguyên khóa thao tác duyệt và sửa/xóa các phản hồi cũ khi phiên bản đã kết thúc. Phản hồi mới vẫn gửi thông báo tới trưởng nhóm như luồng hiện có.
 - Không chạy thêm kiểm thử theo yêu cầu người dùng; các thay đổi đang làm dở khác được giữ riêng.
+
+
+## Sắp xếp tài liệu và Screen Inventory chung — 27/10/2026
+
+- Đặt bản Screen Inventory chính ngay tại docs/screen-inventory.md, chia theo 3 sinh viên, giữ đủ 12 cột và cập nhật tên nhánh tiếng Anh.
+- Phân biệt 18 HTML chính, 3 tiện ích và chế độ Phản hồi khách hàng dùng chung tệp phiên bản; tổng 19 dòng nghiệp vụ nhưng vẫn 21 HTML.
+- Sắp xếp README docs theo nhóm mục đích; bổ sung chỉ mục thư mục 01-gatekeeper. Hai bảng cũ chuyển thành liên kết về bản chính, tránh duy trì nội dung trùng lặp.
+- Giữ nguyên tệp code, ảnh/kết quả QA và tài liệu lịch sử. Không chạy thêm kiểm thử theo yêu cầu người dùng; không đánh dấu đã quay OBS hay đã duyệt Figma.
