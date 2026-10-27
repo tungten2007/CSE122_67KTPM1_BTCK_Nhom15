@@ -33,6 +33,7 @@ window.Navigation = (() => {
     // Client Routes
     clientBrief: ['html/sv1/client-creative-brief.html', 'Creative Brief', 'file', 'Client'],
     clientReview: ['html/sv1/client-review-versions.html', 'Duyệt phiên bản', 'check', 'Client'],
+    clientFeedback: ['html/sv1/client-review-versions.html?view=feedback', 'Phản hồi', 'message', 'Client'],
     clientProjects: ['html/sv1/client-project-overview.html', 'Tổng quan dự án', 'grid', 'Client'],
 
     // Shared Routes (Dùng chung)

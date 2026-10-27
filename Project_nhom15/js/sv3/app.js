@@ -77,6 +77,10 @@ window.App = (() => {
   function init(key, fn) {
     try {
       Store.load();
+      const linkedProject = new URLSearchParams(location.search).get("project");
+      if (linkedProject && Store.get().projects.some((item) => item.id === linkedProject)) {
+        session("cs-project", linkedProject);
+      }
       sync();
     } catch (e) {
       document.body.innerHTML =
