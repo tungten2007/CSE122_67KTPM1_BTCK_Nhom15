@@ -85,6 +85,21 @@
     "js/sv3/pages/lead-task-board.js",
     "js/sv3/pages/role-preview.js",
     "mock_api.py",
-    "server.py"
+    "server.py",
+    "js/sv2/admin-brief-template-management.js",
+    "js/sv2/api.js",
+    "js/sv2/designer-dashboard.js",
+    "js/sv2/designer-moodboard.js",
+    "js/sv2/designer-version-management.js",
+    "js/sv2/notifications.js",
+    "js/sv2/profile.js",
+    "js/sv2/share.js",
+    "css/sv2/admin-brief-template-management.css",
+    "css/sv2/designer-dashboard.css",
+    "css/sv2/designer-moodboard.css",
+    "css/sv2/designer-version-management.css",
+    "css/sv2/notifications.css",
+    "css/sv2/profile.css",
+    "css/sv2/share.css"
   ]
 }

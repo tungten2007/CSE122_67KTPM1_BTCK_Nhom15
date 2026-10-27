@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1200" viewBox="0 0 1440 1200" role="img" aria-labelledby="title desc"><title id="title">Wireframe · Bảng cảm hứng Moodboard</title><desc id="desc">Bố cục desktop của trang Bảng cảm hứng Moodboard trong CreatorStudio. Bản phác thảo cấu trúc đen trắng, không thể hiện thiết kế màu hoàn chỉnh.</desc><g font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1440" height="1200" rx="0" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="0" y="0" width="240" height="1200" rx="0" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<path d="M240 0V1200" fill="none" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="20" y="24" width="34" height="34" rx="6" fill="#e4e4e4" stroke="#b8b8b8" stroke-width="1"/>
+<text x="29" y="48" font-size="20" fill="#262626" font-weight="600">C</text>
+<text x="66" y="48" font-size="19" fill="#262626" font-weight="600">CreatorStudio</text>
+<rect x="20" y="88" width="200" height="64" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="36" y="114" font-size="15" fill="#262626" font-weight="600">Studio Mộc</text>
+<text x="36" y="135" font-size="12" fill="#737373" font-weight="400">Không gian làm việc</text>
+<text x="20" y="190" font-size="11" fill="#737373" font-weight="600">ĐIỀU HƯỚNG</text>
+<rect x="29" y="220" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="234" font-size="14" fill="#262626" font-weight="400">Bảng điều khiển</text>
+<rect x="16" y="256" width="208" height="40" rx="6" fill="#e5e5e5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="29" y="268" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="282" font-size="14" fill="#262626" font-weight="600">Bảng cảm hứng</text>
+<rect x="29" y="316" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="330" font-size="14" fill="#262626" font-weight="400">Quản lý phiên bản</text>
+<rect x="29" y="364" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="378" font-size="14" fill="#262626" font-weight="400">Hồ sơ cá nhân</text>
+<rect x="29" y="412" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="426" font-size="14" fill="#262626" font-weight="400">Thông báo</text>
+<path d="M20 504H220" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="20" y="536" font-size="11" fill="#737373" font-weight="400">DỰ ÁN ĐANG CHỌN</text>
+<text x="20" y="565" font-size="15" fill="#262626" font-weight="600">Tên dự án</text>
+<rect x="20" y="581" width="155" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<text x="20" y="1106" font-size="12" fill="#737373" font-weight="400">Công cụ demo &amp; dữ liệu</text>
+<circle cx="38" cy="1152" r="18" fill="#eeeeee" stroke="#b8b8b8"/>
+<text x="70" y="1148" font-size="13" fill="#262626" font-weight="600">Người dùng</text>
+<text x="70" y="1167" font-size="12" fill="#737373" font-weight="400">Designer</text>
+<rect x="240" y="0" width="1200" height="74" rx="0" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="272" y="45" font-size="14" fill="#737373" font-weight="400">Studio Mộc  /  Bảng cảm hứng Moodboard</text>
+<rect x="1020" y="19" width="145" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1032" y="42" font-size="13" fill="#262626" font-weight="400">Chọn dự án  ⌄</text>
+<rect x="1177" y="19" width="165" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1189" y="42" font-size="13" fill="#262626" font-weight="400">Designer  ⌄</text>
+<rect x="1354" y="19" width="38" height="36" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1367" y="43" font-size="18" fill="#262626" font-weight="400">◦</text>
+<text x="280" y="115" font-size="11" fill="#737373" font-weight="600">CREATORSTUDIO / DESIGNER</text>
+<text x="280" y="153" font-size="28" fill="#262626" font-weight="600">Bảng cảm hứng Moodboard</text>
+<rect x="280" y="174" width="650" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<path d="M240 1152H1440" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="280" y="1181" font-size="12" fill="#737373" font-weight="400">WIREFRAME · DESKTOP · Designer</text>
+<text x="1075" y="1181" font-size="12" fill="#737373" font-weight="400">CSE122 · Phân hệ SV2</text>
+<rect x="280" y="205" width="260" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="292" y="228" font-size="13" fill="#262626" font-weight="600">AI-3: Gợi ý phong cách</text>
+<rect x="556" y="205" width="190" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="568" y="228" font-size="13" fill="#262626" font-weight="400">+ Thêm thẻ ảnh</text>
+<rect x="762" y="205" width="195" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="774" y="228" font-size="13" fill="#262626" font-weight="400">Chia sẻ Moodboard</text>
+<rect x="280" y="267" width="1120" height="65" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="302" y="306" font-size="14" fill="#262626" font-weight="600">1  Bản nháp  →  2  Bảng màu hoàn thiện  →  3  Đã chia sẻ</text>
+<rect x="1040" y="286" width="142" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1049" y="303" font-size="11" fill="#262626" font-weight="400">Trạng thái</text>
+<rect x="1200" y="282" width="180" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1212" y="305" font-size="13" fill="#262626" font-weight="400">Sửa tiêu đề</text>
+<rect x="280" y="356" width="1120" height="354" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="388" font-size="19" fill="#262626" font-weight="600">Bảng mã màu thương hiệu</text>
+<rect x="1205" y="373" width="175" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1217" y="396" font-size="13" fill="#262626" font-weight="400">+ Thêm ô màu</text>
+<rect x="300" y="420" width="252" height="118" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M300 420l252 118M552 420l-252 118" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="341.0" y="465.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="351.0" y="484.0" font-size="12" fill="#737373" font-weight="400">Ô màu</text>
+<text x="312" y="565" font-size="14" fill="#262626" font-weight="600">#RRGGBB</text>
+<text x="312" y="589" font-size="12" fill="#737373" font-weight="400">Tên màu / vai trò màu</text>
+<rect x="572" y="420" width="252" height="118" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M572 420l252 118M824 420l-252 118" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="613.0" y="465.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="623.0" y="484.0" font-size="12" fill="#737373" font-weight="400">Ô màu</text>
+<text x="584" y="565" font-size="14" fill="#262626" font-weight="600">#RRGGBB</text>
+<text x="584" y="589" font-size="12" fill="#737373" font-weight="400">Tên màu / vai trò màu</text>
+<rect x="844" y="420" width="252" height="118" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M844 420l252 118M1096 420l-252 118" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="885.0" y="465.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="895.0" y="484.0" font-size="12" fill="#737373" font-weight="400">Ô màu</text>
+<text x="856" y="565" font-size="14" fill="#262626" font-weight="600">#RRGGBB</text>
+<text x="856" y="589" font-size="12" fill="#737373" font-weight="400">Tên màu / vai trò màu</text>
+<rect x="1116" y="420" width="252" height="118" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M1116 420l252 118M1368 420l-252 118" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="1157.0" y="465.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="1167.0" y="484.0" font-size="12" fill="#737373" font-weight="400">Ô màu</text>
+<text x="1128" y="565" font-size="14" fill="#262626" font-weight="600">#RRGGBB</text>
+<text x="1128" y="589" font-size="12" fill="#737373" font-weight="400">Tên màu / vai trò màu</text>
+<path d="M300 613H1380" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="300" y="642" font-size="15" fill="#262626" font-weight="600">Từ khóa thẩm mỹ &amp; cảm xúc</text>
+<rect x="300" y="660" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="309" y="677" font-size="11" fill="#262626" font-weight="400">Từ khóa 01  ×</text>
+<rect x="470" y="660" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="479" y="677" font-size="11" fill="#262626" font-weight="400">Từ khóa 02  ×</text>
+<rect x="640" y="660" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="649" y="677" font-size="11" fill="#262626" font-weight="400">Từ khóa 03  ×</text>
+<rect x="810" y="660" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="819" y="677" font-size="11" fill="#262626" font-weight="400">Từ khóa 04  ×</text>
+<rect x="1205" y="638" width="175" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1217" y="661" font-size="13" fill="#262626" font-weight="400">+ Thêm từ khóa</text>
+<rect x="280" y="734" width="1120" height="354" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="766" font-size="19" fill="#262626" font-weight="600">Thẻ cảm hứng trực quan</text>
+<rect x="300" y="795" width="344" height="168" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M300 795l344 168M644 795l-344 168" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="387.0" y="865.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="397.0" y="884.0" font-size="12" fill="#737373" font-weight="400">Ảnh tham chiếu</text>
+<rect x="300" y="977" width="115" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="309" y="994" font-size="11" fill="#262626" font-weight="400">Phân loại</text>
+<text x="300" y="1027" font-size="15" fill="#262626" font-weight="600">Tên thẻ cảm hứng</text>
+<rect x="300" y="1044" width="305" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="300" y="1060" width="240" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="665" y="795" width="344" height="168" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M665 795l344 168M1009 795l-344 168" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="752.0" y="865.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="762.0" y="884.0" font-size="12" fill="#737373" font-weight="400">Ảnh tham chiếu</text>
+<rect x="665" y="977" width="115" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="674" y="994" font-size="11" fill="#262626" font-weight="400">Phân loại</text>
+<text x="665" y="1027" font-size="15" fill="#262626" font-weight="600">Tên thẻ cảm hứng</text>
+<rect x="665" y="1044" width="305" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="665" y="1060" width="240" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="1030" y="795" width="344" height="168" rx="5" fill="#f3f3f3" stroke="#b8b8b8" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M1030 795l344 168M1374 795l-344 168" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<rect x="1117.0" y="865.0" width="170" height="28" rx="3" fill="#f9f9f9" stroke="none" stroke-width="1"/>
+<text x="1127.0" y="884.0" font-size="12" fill="#737373" font-weight="400">Ảnh tham chiếu</text>
+<rect x="1030" y="977" width="115" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1039" y="994" font-size="11" fill="#262626" font-weight="400">Phân loại</text>
+<text x="1030" y="1027" font-size="15" fill="#262626" font-weight="600">Tên thẻ cảm hứng</text>
+<rect x="1030" y="1044" width="305" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<rect x="1030" y="1060" width="240" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+</g></svg>

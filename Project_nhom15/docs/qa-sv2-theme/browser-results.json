@@ -1,0 +1,677 @@
+{
+  "checkedAt": "2026-10-27",
+  "scope": "Six SV2 pages in the integrated group project",
+  "responsive": [
+    {
+      "page": "designer-dashboard",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-moodboard",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-version-management",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "profile",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "notifications",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-dashboard",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-moodboard",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-version-management",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "profile",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "notifications",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "designer-dashboard",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "designer-moodboard",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "designer-version-management",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "profile",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "notifications",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "designer-dashboard",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "designer-moodboard",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "designer-version-management",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "profile",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "notifications",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "admin-brief-template-management",
+      "viewportWidth": 320,
+      "badImages": [],
+      "clientWidth": 305,
+      "menuExpanded": "false",
+      "scrollWidth": 305,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "admin-brief-template-management",
+      "viewportWidth": 375,
+      "badImages": [],
+      "clientWidth": 360,
+      "menuExpanded": "false",
+      "scrollWidth": 360,
+      "sidebarHidden": "true",
+      "sidebarInert": true
+    },
+    {
+      "page": "admin-brief-template-management",
+      "viewportWidth": 768,
+      "badImages": [],
+      "clientWidth": 753,
+      "menuExpanded": "false",
+      "scrollWidth": 753,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    },
+    {
+      "page": "admin-brief-template-management",
+      "viewportWidth": 1024,
+      "badImages": [],
+      "clientWidth": 1009,
+      "menuExpanded": "false",
+      "scrollWidth": 1009,
+      "sidebarHidden": "false",
+      "sidebarInert": false
+    }
+  ],
+  "finalDomContrast": [
+    {
+      "label": "admin-final",
+      "url": "http://127.0.0.1:8018/html/sv2/admin-brief-template-management.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    },
+    {
+      "label": "designer-dashboard-final",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    },
+    {
+      "label": "designer-moodboard-final",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-moodboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    },
+    {
+      "label": "designer-version-management-final",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-version-management.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Quản lý Phiên bản Thiết kế (Version Management) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    },
+    {
+      "label": "profile-final",
+      "url": "http://127.0.0.1:8018/html/sv2/profile.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Quản lý Hồ sơ Cá nhân (Profile) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    },
+    {
+      "label": "notifications-final",
+      "url": "http://127.0.0.1:8018/html/sv2/notifications.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 1265,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Trung tâm Thông báo (Notifications) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 1265
+    }
+  ],
+  "additionalStates": [
+    {
+      "label": "template-validation-mobile",
+      "url": "http://127.0.0.1:8018/html/sv2/admin-brief-template-management.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 360,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Quản lý Mẫu Brief & Cấu hình AI-1 · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 360
+    },
+    {
+      "label": "ai-input-320",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-moodboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "ai-result-320",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-moodboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "ai-edit-320",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-moodboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "ai-error-320",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-moodboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng cảm hứng Thẩm mỹ (Moodboard) · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "dashboard-Đang tải (Loading)",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "dashboard-Rỗng (Empty)",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "dashboard-Lỗi dữ liệu (Error)",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "dashboard-Cảnh báo gấp (Urgent)",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    },
+    {
+      "label": "dashboard-Bình thường (Normal)",
+      "url": "http://127.0.0.1:8018/html/sv2/designer-dashboard.html",
+      "contrast": [],
+      "duplicateIds": [],
+      "h1": 1,
+      "main": 1,
+      "manualContrast": 0,
+      "missingLabels": [],
+      "scroll": 305,
+      "theme": {
+        "font": "Inter, sans-serif",
+        "primary": "#39765a",
+        "sidebar": "rgb(252, 253, 249)"
+      },
+      "title": "Bảng điều khiển Nhà thiết kế · CreatorStudio",
+      "unnamedDialogs": [],
+      "width": 305
+    }
+  ],
+  "keyboard": [
+    {
+      "test": "drawer-shift-tab",
+      "focus": "✳\n      CreatorStudio",
+      "insideSidebar": true
+    },
+    {
+      "test": "drawer-tab-wrap",
+      "focus": "Đóng menu",
+      "insideSidebar": true
+    },
+    {
+      "test": "drawer-escape",
+      "expanded": "false",
+      "focus": "Mở menu",
+      "sidebarInert": true,
+      "workspaceInert": false
+    },
+    {
+      "test": "template-required-field",
+      "describedby": "modal-form-field-error-0",
+      "dialogName": "dialog-title",
+      "focus": "modal-form-control-0",
+      "invalid": "true",
+      "viewport": 360,
+      "width": 328
+    },
+    {
+      "test": "template-dialog-close-restores-opener",
+      "focus": "Thêm mẫu Brief mới",
+      "open": false
+    },
+    {
+      "test": "drawer-first-shift-tab-wrap",
+      "focus": "Đăng xuất"
+    },
+    {
+      "test": "drawer-last-tab-wrap",
+      "focus": "✳\n      CreatorStudio"
+    },
+    {
+      "test": "desktop-to-mobile-sidebar",
+      "sidebarHidden": "true",
+      "sidebarInert": true,
+      "workspaceInert": false
+    },
+    {
+      "test": "ai-processing",
+      "busy": "true",
+      "statusRole": "status"
+    },
+    {
+      "test": "ai-processing-focus",
+      "focus": "ai-progress-text",
+      "insideDialog": true
+    },
+    {
+      "test": "ai-retry",
+      "failChecked": false,
+      "focus": "ai-prompt-input"
+    },
+    {
+      "test": "ai-input-validation",
+      "error": "Vui lòng nhập mô tả ít nhất 5 ký tự.",
+      "focus": "ai-prompt-input",
+      "invalid": "true"
+    },
+    {
+      "test": "ai-dialog-close-restores-opener",
+      "focus": "open-ai-modal-btn",
+      "open": false
+    },
+    {
+      "test": "notification-action-preserves-focus",
+      "focus": "Đánh dấu chưa đọc: Khánh Chi đã nhận xét trên Phiên bản 2"
+    },
+    {
+      "test": "notification-filter-pressed",
+      "pressed": [
+        {
+          "pressed": "false",
+          "text": "Tất cả (5)"
+        },
+        {
+          "pressed": "true",
+          "text": "Chưa đọc (2)"
+        },
+        {
+          "pressed": "false",
+          "text": "Phiên bản"
+        },
+        {
+          "pressed": "false",
+          "text": "Nhận xét"
+        },
+        {
+          "pressed": "false",
+          "text": "Nhiệm vụ"
+        }
+      ]
+    },
+    {
+      "test": "template-selection-preserves-focus",
+      "focus": "Đang cấu hình AI",
+      "pressed": "true"
+    },
+    {
+      "test": "task-status-keyboard-preserves-focus",
+      "focus": "Đổi trạng thái: Phác thảo nhãn cà phê",
+      "value": "doing"
+    },
+    {
+      "test": "skip-link",
+      "focus": "main",
+      "outline": "solid"
+    }
+  ],
+  "consoleErrors": [],
+  "limitations": [
+    "Read-only DOM checks are not a full WCAG conformance audit.",
+    "Browser zoom 200% and real-device assistive technology were not verified.",
+    "AI result colors on SVG and inspiration images also received visual inspection; automated contrast measured CSS text/background colors."
+  ]
+}

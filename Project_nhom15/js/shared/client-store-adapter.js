@@ -39,11 +39,61 @@ window.TeamClient=(()=>{
  const v=d.versions.find(v=>v.id===p.versionId&&v.projectId===p.id);check(!target.archived&&v?.status==='Client Review','Phiên bản đã chuyển bước; hãy tải lại trước khi phản hồi.');check(publicStates.includes(p.versionStatus),'Trạng thái phiên bản không hợp lệ.');
  const removed=(before?.comments||[]).filter(c=>!p.comments.some(x=>x.id===c.id)).map(c=>c.id);d.comments=d.comments.filter(c=>!removed.includes(c.id));
  for(const c of p.comments){const prev=before?.comments.find(x=>x.id===c.id);if(prev&&equal(prev,c))continue;check(c.text?.trim().length>=3,'Phản hồi cần ít nhất 3 ký tự.');const entry={...c,projectId:p.id,versionId:v.id,author:user.name};const i=d.comments.findIndex(x=>x.id===c.id);if(i<0)d.comments.push(entry);else d.comments[i]=entry}
- if(v.status!==p.versionStatus){v.status=p.versionStatus;v.history.push({action:p.versionStatus,by:user.id,time:new Date().toISOString(),reason:p.rejectionReason||p.changeReason||''});for(const u of d.users.filter(u=>u.active&&['Lead','Designer'].includes(u.role)))d.notifications.unshift({id:Store.id('notif'),userId:u.id,projectId:p.id,type:'feedback',title:'Khách hàng đã phản hồi',message:p.name+': '+p.versionStatus,read:false,time:new Date().toISOString(),link:u.role==='Lead'?'html/sv3/lead-feedback-summary.html':'html/sv2/designer-version-management.html'})}
+ if(v.status!==p.versionStatus){v.status=p.versionStatus;v.history.push({action:p.versionStatus,by:user.id,time:new Date().toISOString(),reason:p.rejectionReason||p.changeReason||''});for(const u of d.users.filter(u=>u.active&&['Lead','Designer'].includes(u.role)))d.notifications.unshift({id:Store.id('notif'),userId:u.id,projectId:p.id,type:'feedback',title:'Khách hàng đã phản hồi',message:p.name+': '+p.versionStatus,read:false,time:new Date().toISOString(),link:(u.role==='Lead'?'html/sv3/lead-feedback-summary.html':'html/sv2/designer-version-management.html')+'?project='+encodeURIComponent(p.id)+'&version='+encodeURIComponent(v.id)})}
  }
  }
  for(const n of value.notifications){const prev=old.notifications.find(x=>x.id===n.id);if(prev&&n.read!==prev.read){const target=d.notifications.find(x=>x.id===n.id&&x.userId===user.id);if(target)target.read=n.read}}
  });baseline=clone(value);return true}catch(e){window.CS?.toast(e.message);return false}}
- function notify(message,projectId,type){try{const user=session();Store.transaction(d=>{check(user?.role==='Client','Phiên Client không hợp lệ.');for(const u of d.users.filter(u=>u.active&&(u.role==='Lead'||u.id===user.id)))d.notifications.unshift({id:Store.id('notif'),userId:u.id,projectId,type,title:message,message,read:false,time:new Date().toISOString(),link:u.role==='Lead'?'html/sv3/lead-task-board.html':'html/sv1/client-project-overview.html?project='+encodeURIComponent(projectId)})});return true}catch(e){window.CS?.toast(e.message);return false}}
- return {read,write,session,login,authenticate,home,notify};
+ // General feedback is independent of the version approval decision.
+ function sendFeedback(projectId, versionId, text) {
+  try {
+   const user = session();
+   const content = String(text || '').trim();
+   check(user?.role === 'Client', 'Chỉ khách hàng được gửi phản hồi.');
+   check(content.length >= 3 && content.length <= 1000, 'Phản hồi cần từ 3 đến 1.000 ký tự.');
+   Store.transaction(d => {
+    const actor = d.users.find(item => item.id === user.id && item.active && item.role === 'Client');
+    check(actor, 'Tài khoản không còn quyền gửi phản hồi.');
+    const project = d.projects.find(item => item.id === projectId);
+    const version = d.versions.find(item => item.id === versionId && item.projectId === projectId);
+    check(project && !project.archived, 'Dự án đã lưu trữ hoặc không còn tồn tại.');
+    check(version && publicStates.includes(version.status), 'Phiên bản chưa được chia sẻ với khách hàng.');
+    d.comments.push({
+     id: Store.id('C'), projectId, versionId, text: content,
+     kind: 'general', author: actor.name, authorId: actor.id,
+     x: 0.5, y: 0.5, resolved: false, createdAt: new Date().toISOString(),
+    });
+   });
+   return true;
+  } catch (error) {
+   window.CS?.toast(error.message);
+   return false;
+  }
+ }
+ function notify(message, projectId, type, versionId) {
+  try {
+   const user = session();
+   Store.transaction(d => {
+    check(user?.role === 'Client', 'Phiên Client không hợp lệ.');
+    const isFeedback = ['comment', 'feedback'].includes(type);
+    const context = '?project=' + encodeURIComponent(projectId) + (versionId ? '&version=' + encodeURIComponent(versionId) : '');
+    for (const recipient of d.users.filter(u => u.active && (u.role === 'Lead' || u.id === user.id))) {
+     const page = recipient.role === 'Lead'
+      ? (isFeedback ? 'html/sv3/lead-feedback-summary.html' : 'html/sv3/lead-task-board.html')
+      : (isFeedback ? 'html/sv1/client-review-versions.html' : 'html/sv1/client-project-overview.html');
+     d.notifications.unshift({
+      id: Store.id('notif'), userId: recipient.id, projectId, versionId, type,
+      title: message, message, read: false, time: new Date().toISOString(),
+      link: page + context + (isFeedback && recipient.role === 'Client' ? '&view=feedback' : ''),
+     });
+    }
+   });
+   return true;
+  } catch (error) {
+   window.CS?.toast(error.message);
+   return false;
+  }
+ }
+
+ return {read,write,session,login,authenticate,home,notify,sendFeedback};
 })();

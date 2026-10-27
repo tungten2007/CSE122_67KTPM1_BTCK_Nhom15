@@ -2,13 +2,36 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const root=path.join(__dirname,'..');const memory=new Map();let failWrite=false;
 const context={window:{},localStorage:{getItem:k=>memory.get(k)||null,setItem:(k,v)=>{if(failWrite)throw Error('Quota');memory.set(k,v)}},setTimeout,Date,Math,JSON};context.window=context;vm.createContext(context);['js/shared/data.js','js/shared/store.js','js/sv3/modules/ai-feedback-summarizer.js'].forEach(p=>vm.runInContext(fs.readFileSync(path.join(root,p),'utf8'),context));const S=context.Store;let count=0;
-function test(name,fn){S.reset();fn();count++;console.log('PASS '+name)}
+let seedTaskCount;
+function test(name,fn){S.reset();seedTaskCount=S.get().tasks.length;fn();count++;console.log('PASS '+name)}
 const task={projectId:'p-moc',title:'Việc kiểm thử',description:'Nội dung mới',assignee:'u-an',priority:'high',status:'todo',due:'2026-10-12'};
 (async()=>{
+test('Hủy và xóa task: lý do, quyền, trạng thái và lưu qua tải lại',()=>{
+ const tid=S.saveTask('u-lead',task),before=JSON.stringify(S.get());
+ assert.throws(()=>S.cancelTask('u-admin',tid,'Việc thử'));
+ assert.throws(()=>S.cancelTask('u-lead',tid,'   '));
+ assert.throws(()=>S.deleteTask('u-lead',tid));
+ assert.equal(JSON.stringify(S.get()),before);
+ S.cancelTask('u-lead',tid,'Không còn phạm vi thực hiện');
+ assert.equal(S.get().tasks.find(t=>t.id===tid).cancelReason,'Không còn phạm vi thực hiện');
+ assert.throws(()=>S.moveTask('u-lead',tid,'todo'));
+ assert.throws(()=>S.saveTask('u-lead',{...task,id:tid}));
+ S.deleteTask('u-lead',tid);S.load();assert(!S.get().tasks.some(t=>t.id===tid));
+});
+test('Xóa user giữ nguyên dữ liệu khi bị chặn và xóa được user mới chưa liên kết',()=>{
+ const before=JSON.stringify(S.get());
+ assert.throws(()=>S.deleteUser('u-admin','u-admin'));
+ assert.throws(()=>S.deleteUser('u-admin','u-an'));
+ assert.throws(()=>S.deleteUser('u-lead','u-binh'));
+ assert.equal(JSON.stringify(S.get()),before);
+ S.saveUser('u-admin',{name:'QA User',email:'qa-delete@example.com',role:'Designer'});
+ const user=S.get().users.find(u=>u.email==='qa-delete@example.com');
+ S.deleteUser('u-admin',user.id);S.load();assert(!S.get().users.some(u=>u.id===user.id));
+});
 test('Tạo, sửa, chuyển cột và tải lại vẫn giữ dữ liệu',()=>{const tid=S.saveTask('u-lead',task);S.saveTask('u-lead',{...task,id:tid,title:'Đã sửa tiêu đề'});S.moveTask('u-lead',tid,'done');S.load();const t=S.get().tasks.find(t=>t.id===tid);assert.equal(t.title,'Đã sửa tiêu đề');assert.equal(t.status,'done')});
-test('Validation và phân quyền chặn ghi sai',()=>{assert.throws(()=>S.saveTask('u-admin',task));assert.throws(()=>S.saveTask('u-lead',{...task,title:' '}));assert.throws(()=>S.moveTask('u-lead','CS-101','wrong'));assert.throws(()=>S.saveTask('u-lead',{...task,due:'2026-02-31'}));assert.equal(S.get().tasks.length,7)});
-test('Duyệt brief tạo đúng một việc; không duyệt lặp',()=>{S.brief('u-lead','b-01','approve',task);assert.equal(S.get().briefs[0].status,'approved');assert.equal(S.get().tasks.length,8);assert.throws(()=>S.brief('u-lead','b-01','approve',task))});
-test('Yêu cầu bổ sung có lý do và không tự tạo việc',()=>{assert.throws(()=>S.brief('u-lead','b-01','return',{reason:' '}));S.brief('u-lead','b-01','return',{reason:'Cần làm rõ nội dung hộp quà'});assert.equal(S.get().briefs[0].status,'changes');assert.equal(S.get().tasks.length,7)});
+test('Validation và phân quyền chặn ghi sai',()=>{assert.throws(()=>S.saveTask('u-admin',task));assert.throws(()=>S.saveTask('u-lead',{...task,title:' '}));assert.throws(()=>S.moveTask('u-lead','CS-101','wrong'));assert.throws(()=>S.saveTask('u-lead',{...task,due:'2026-02-31'}));assert.equal(S.get().tasks.length,seedTaskCount)});
+test('Duyệt brief tạo đúng một việc; không duyệt lặp',()=>{S.brief('u-lead','b-01','approve',task);assert.equal(S.get().briefs[0].status,'approved');assert.equal(S.get().tasks.length,seedTaskCount+1);assert.throws(()=>S.brief('u-lead','b-01','approve',task))});
+test('Yêu cầu bổ sung có lý do và không tự tạo việc',()=>{assert.throws(()=>S.brief('u-lead','b-01','return',{reason:' '}));S.brief('u-lead','b-01','return',{reason:'Cần làm rõ nội dung hộp quà'});assert.equal(S.get().briefs[0].status,'changes');assert.equal(S.get().tasks.length,seedTaskCount)});
 test('Thao tác brief không hợp lệ giữ nguyên brief, công việc và lịch sử',()=>{
   const before=JSON.stringify(S.get()),persisted=memory.get(S.KEY);
   assert.throws(()=>S.brief('u-lead','b-01','unknown',task),/không hợp lệ/);
@@ -31,9 +54,9 @@ test('Công việc có người phụ trách đã khóa phải chọn lại rõ 
 test('Tạo, sửa, giải quyết ghi chú và yêu cầu sửa phiên bản',()=>{S.note('u-lead','v-moc-3',{text:'Kiểm tra độ tương phản',x:30,y:60});const n=S.get().notes.at(-1);S.note('u-lead','v-moc-3',{id:n.id,text:'Tăng độ tương phản chữ'});S.resolveNote('u-lead',n.id);assert.equal(S.get().notes.at(-1).resolved,true);S.review('u-lead','v-moc-3','rework','Tên sản phẩm còn quá nhỏ');assert.equal(S.get().versions.find(v=>v.id==='v-moc-3').status,'Changes Requested')});
 test('Người dùng: tạo, sửa, email trùng, khóa/mở khóa, tự khóa',()=>{S.saveUser('u-admin',{name:'Test User',email:'test@example.com',role:'Designer'});let u=S.get().users.at(-1);S.saveUser('u-admin',{...u,role:'Lead'});S.toggleUser('u-admin',u.id);assert.equal(S.get().users.at(-1).active,false);S.toggleUser('u-admin',u.id);assert.throws(()=>S.saveUser('u-admin',{name:'Khác',email:'TEST@example.com',role:'Client'}));assert.throws(()=>S.toggleUser('u-admin','u-admin'));assert.throws(()=>S.saveUser('u-admin',{...S.get().users[0],role:'Client'}));S.load();assert.equal(S.get().users.at(-1).role,'Lead')});
 test('Quy tắc studio và CRUD nhãn bảo toàn dự án',()=>{S.settings('u-admin',{warningDays:5,versionPattern:'{project}_{asset}_{number}',requireReview:true});assert.equal(S.get().settings.warningDays,5);assert.throws(()=>S.settings('u-admin',{warningDays:31,versionPattern:'x'}));S.tag('u-admin','Mới','add');S.tag('u-admin','Mới','edit','Đã sửa');S.tag('u-admin','Đã sửa','delete');assert(!S.get().tags.includes('Đã sửa'));assert.throws(()=>S.tag('u-admin','Branding','delete'));S.tag('u-admin','Branding','edit','Thương hiệu');assert(S.get().projects[0].tags.includes('Thương hiệu'))});
-test('Lưu trữ chặn dự án đang mở và khóa mọi sửa liên quan',()=>{assert.throws(()=>S.archive('u-admin','p-moc'));S.archive('u-admin','p-lua');assert.equal(S.get().projects[1].archived,true);assert.throws(()=>S.saveTask('u-lead',{...task,projectId:'p-lua'}));assert.throws(()=>S.moveTask('u-lead','CS-107','todo'));assert.throws(()=>S.tag('u-admin','Branding','edit','X'));assert.throws(()=>S.proposals('u-lead','p-lua',[]))});
+test('Lưu trữ chặn dự án đang mở và khóa mọi sửa liên quan',()=>{assert.throws(()=>S.archive('u-admin','p-moc'));for(const t of S.get().tasks.filter(t=>t.projectId==='p-lua'&&!['done','cancelled'].includes(t.status)))S.moveTask('u-lead',t.id,'done');S.archive('u-admin','p-lua');assert.equal(S.get().projects[1].archived,true);assert.throws(()=>S.saveTask('u-lead',{...task,projectId:'p-lua'}));assert.throws(()=>S.moveTask('u-lead','CS-107','todo'));assert.throws(()=>S.tag('u-admin','Branding','edit','X'));assert.throws(()=>S.proposals('u-lead','p-lua',[]))});
 test('Không giả lưu khi LocalStorage đầy',()=>{const before=JSON.stringify(S.get());failWrite=true;assert.throws(()=>S.saveTask('u-lead',task));failWrite=false;assert.equal(JSON.stringify(S.get()),before)});
-S.reset();const items=await context.FeedbackAI.generate(S.get().comments,S.get().users.filter(u=>u.role==='Designer'&&u.active));assert.equal(items.length,3);assert.equal(items.filter(i=>i.ambiguous).length,1);S.proposals('u-lead','p-moc',items);let proposals=S.get().proposals;S.saveProposal('u-lead',proposals[0].id,{...task,title:'Tăng chữ thêm 15%',description:'Yêu cầu đã xác nhận'});assert.throws(()=>S.convert('u-lead','p-moc',[proposals[2].id]));S.convert('u-lead','p-moc',[proposals[0].id,proposals[1].id]);assert.equal(S.get().tasks.length,9);assert.equal(S.get().tasks.at(-2).title,'Tăng chữ thêm 15%');assert.throws(()=>S.convert('u-lead','p-moc',[proposals[0].id]));S.discard('u-lead','p-moc');assert.equal(S.get().comments.length,3);assert.equal(S.get().proposals.length,2);S.load();assert.equal(S.get().tasks.length,9);assert.throws(()=>S.proposals('u-lead','p-moc',items));count++;console.log('PASS AI → sửa → tạo task, chặn mơ hồ và trùng, từ chối giữ nguồn, lưu qua tải lại');
+S.reset();seedTaskCount=S.get().tasks.length;const items=await context.FeedbackAI.generate(S.get().comments,S.get().users.filter(u=>u.role==='Designer'&&u.active));assert.equal(items.length,3);assert.equal(items.filter(i=>i.ambiguous).length,1);S.proposals('u-lead','p-moc',items);let proposals=S.get().proposals;S.saveProposal('u-lead',proposals[0].id,{...task,title:'Tăng chữ thêm 15%',description:'Yêu cầu đã xác nhận'});assert.throws(()=>S.convert('u-lead','p-moc',[proposals[2].id]));S.convert('u-lead','p-moc',[proposals[0].id,proposals[1].id]);assert.equal(S.get().tasks.length,seedTaskCount+2);assert.equal(S.get().tasks.at(-2).title,'Tăng chữ thêm 15%');assert.throws(()=>S.convert('u-lead','p-moc',[proposals[0].id]));S.discard('u-lead','p-moc');assert.equal(S.get().comments.length,3);assert.equal(S.get().proposals.length,2);S.load();assert.equal(S.get().tasks.length,seedTaskCount+2);assert.throws(()=>S.proposals('u-lead','p-moc',items));count++;console.log('PASS AI → sửa → tạo task, chặn mơ hồ và trùng, từ chối giữ nguồn, lưu qua tải lại');
 await assert.rejects(context.FeedbackAI.generate([],[],false));await assert.rejects(context.FeedbackAI.generate(S.get().comments,[],true));count++;console.log('PASS AI thiếu dữ liệu và lỗi mô phỏng');
 console.log(`\n${count} nhóm kiểm thử nghiệp vụ đạt.`);
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -14,7 +14,7 @@ const version=(id,projectId,status)=>({id,projectId,status,name:id,author:'u',hi
 let rerender,modal;
 const A={data:{versions:[version('old','p','Approved'),version('pending','p','Internal Review'),version('other','q','Internal Review')],notes:[],users:[]},project:{id:'p',name:'Project P'},user:{id:'u-lead'},preserveFocus:fn=>fn(),header:()=>'',banner:()=>'',empty:()=>'',esc:s=>String(s??''),icon:()=>'',textField:()=>'',modal:(title,body,submit)=>modal={title,body,submit},toast:()=>{},init:(key,fn)=>{rerender=fn;fn()},$, $$:()=>[]};
 let reviewed;
-const page={App:A,Store:{review:(...args)=>reviewed=args}};vm.createContext(page);
+const page={App:A,Store:{review:(...args)=>reviewed=args},URLSearchParams,location:{search:''}};vm.createContext(page);
 vm.runInContext(fs.readFileSync(path.join(root,'js/sv3/pages/lead-internal-review.js'),'utf8'),page);
 assert.match($('#main').innerHTML,/value="pending" selected/,'Prefer pending review over first approved version');
 assert(!$('#main').innerHTML.includes('value="other"'),'Selector scoped to current project');

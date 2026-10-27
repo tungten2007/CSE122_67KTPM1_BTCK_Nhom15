@@ -14,6 +14,7 @@ for(const fn of [()=>S.saveVersion('u-ngoc',{...data,id}),()=>S.submitVersionFor
 assert.equal(S.get().versions.find(v=>v.id===id).author,'u-an');
 S.submitVersionForReview('u-an',id);
 const notifications=S.get().notifications.filter(n=>n.title==='Phiên bản mới chờ duyệt: '+data.name);
-assert.equal(notifications.length,2);assert(notifications.some(n=>n.userId===lead.id));assert(notifications.some(n=>n.userId==='u-lead'));
+const expectedLeads=S.get().users.filter(u=>u.active&&u.role==='Lead').map(u=>u.id).sort();
+assert.equal(JSON.stringify(notifications.map(n=>n.userId).sort()),JSON.stringify(expectedLeads));assert(notifications.some(n=>n.userId===lead.id));assert(notifications.some(n=>n.userId==='u-lead'));
 S.markAllNotifications(lead.id);assert(S.get().notifications.filter(n=>n.userId===lead.id).every(n=>n.read));assert(S.get().notifications.some(n=>n.userId==='u-lead'&&!n.read));
 console.log('PASS multiple accounts, explicit identity, version ownership and independent Lead notifications.');

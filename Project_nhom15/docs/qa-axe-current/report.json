@@ -1,0 +1,3312 @@
+{
+  "generatedAt": "2026-10-26T07:22:55.935Z",
+  "sourceBaseCommit": "963fc6cd39a34c4397934164da8fb5bff68792a1",
+  "sourceNote": "Tested working tree; see accompanying change notes for edits beyond the base commit",
+  "axeOptions": {
+    "preload": false
+  },
+  "preloadNote": "CSSOM preload disabled due to relative @import fetching issue; no rules disabled. Incomplete results retained for manual review.",
+  "scope": "axe default rules on loaded pages; no exclusions or disabled rules; fresh isolated context; not full WCAG certification",
+  "scans": [
+    {
+      "name": "landing",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "help": "Elements must only use permitted ARIA attributes",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".hero-visual"
+              ],
+              "html": "<div class=\"hero-visual\" aria-label=\"Minh họa dự án nhận diện thương hiệu Mộc\">",
+              "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute.",
+              "any": [],
+              "all": [],
+              "none": [
+                {
+                  "id": "aria-prohibited-attr",
+                  "data": {
+                    "role": null,
+                    "nodeName": "div",
+                    "messageKey": "noRoleSingular",
+                    "prohibited": [
+                      "aria-label"
+                    ]
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".primary > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#hero-demo > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".visual-top > span:nth-child(2)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".mini-icon"
+              ],
+              "html": "<span class=\"mini-icon\">✧</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".check"
+              ],
+              "html": "<span class=\"check\">✓</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".btn[href$=\"#creative-roles\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(1) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">✧</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(2) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">◈</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(3) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">≋</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Client\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Designer\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Creative Lead\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Admin\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "a[href$=\"#main\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">↑</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 39
+    },
+    {
+      "name": "login",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".art-label > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#login-submit > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".selected > span"
+              ],
+              "html": "<span>◎</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Designer\"] > span"
+              ],
+              "html": "<span>◈</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Creative Lead\"] > span"
+              ],
+              "html": "<span>▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 39
+    },
+    {
+      "name": "register",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".art-label > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#register-submit > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 37
+    },
+    {
+      "name": "error-404",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 40
+    },
+    {
+      "name": "profile",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".nav-link:nth-child(1) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(3) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">◫</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 38
+    },
+    {
+      "name": "notifications",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".nav-link:nth-child(1) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(3) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">◫</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 34
+    },
+    {
+      "name": "client-project-overview",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[aria-current=\"page\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(3) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">◫</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".search-box > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">⌕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "client-creative-brief",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".nav-link:nth-child(1) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".active > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(3) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">◫</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".brief-project > span"
+              ],
+              "html": "<span>▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#generate > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "client-review-versions",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".nav-link:nth-child(1) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".nav-link:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "a[aria-current=\"page\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">◫</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".pin-tip > span"
+              ],
+              "html": "<span>⊕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-heading > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-empty > span"
+              ],
+              "html": "<span>⊕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 39
+    },
+    {
+      "name": "designer-dashboard",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "div:nth-child(2) > h2"
+              ],
+              "html": "<h2>Có 2 nhiệm vụ cần ưu tiên giải quyết hôm nay!</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"urgent-banner\">",
+                      "target": [
+                        ".urgent-banner"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".urgent-banner-content > div:nth-child(2) > p"
+              ],
+              "html": "<p>Hạn chót phiên bản mới cho dự án Mộc Coffee đang đến gần. Vui lòng kiểm tra và cập nhật tiến độ.</p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"urgent-banner\">",
+                      "target": [
+                        ".urgent-banner"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-header > span"
+              ],
+              "html": "<span>Ưu tiên theo hạn chót · Tham chiếu Moodboard AI-3</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body"
+              ],
+              "html": "<div class=\"ai-insight-body\">\n              Ưu tiên <strong>CS-101 Phác thảo nhãn cà phê</strong>, hạn 06/10/2026.\n              Xem định hướng phong cách tại <a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>. Gợi ý ưu tiên được tính từ dữ liệu nhiệm vụ.\n            </div>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body > strong"
+              ],
+              "html": "<strong>CS-101 Phác thảo nhãn cà phê</strong>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body > a"
+              ],
+              "html": "<a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "help": "Links must be distinguishable without relying on color",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".ai-insight-body > a"
+              ],
+              "html": "<a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>",
+              "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "link-in-text-block",
+                  "data": {
+                    "messageKey": "bgGradient"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"ai-insight-body\">\n              Ưu tiên <strong>CS-101 Phác thảo nhãn cà phê</strong>, hạn 06/10/2026.\n              Xem định hướng phong cách tại <a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>. Gợi ý ưu tiên được tính từ dữ liệu nhiệm vụ.\n            </div>",
+                      "target": [
+                        ".ai-insight-body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's contrast ratio could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 42
+    },
+    {
+      "name": "designer-moodboard",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".status-stepper > .muted:nth-child(2)"
+              ],
+              "html": "<span class=\"muted\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".muted:nth-child(4)"
+              ],
+              "html": "<span class=\"muted\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(1) > .canvas-card-body > .between.row > .badge.purple"
+              ],
+              "html": "<span class=\"badge purple\">Chất liệu</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(1) > .canvas-card-body > h3"
+              ],
+              "html": "<h3>Chất liệu túi giấy Kraft có vân sần</h3>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(2) > .canvas-card-body > .between.row > .badge.purple"
+              ],
+              "html": "<span class=\"badge purple\">Typography</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(2) > .canvas-card-body > h3"
+              ],
+              "html": "<h3>Typography Serif cổ điển vững chãi</h3>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(3) > .canvas-card-body > .between.row > .badge.purple"
+              ],
+              "html": "<span class=\"badge purple\">Graphic Motif</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".canvas-card:nth-child(3) > .canvas-card-body > h3"
+              ],
+              "html": "<h3>Họa tiết lá chè &amp; hạt cà phê cách điệu</h3>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgOverlap",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it is overlapped by another element"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 43
+    },
+    {
+      "name": "designer-version-management",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 45
+    },
+    {
+      "name": "lead-task-board",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 43
+    },
+    {
+      "name": "lead-internal-review",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 44
+    },
+    {
+      "name": "lead-feedback-summary",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".feedback-intro > div > h2"
+              ],
+              "html": "<h2>Phản hồi rõ ràng. Công việc cụ thể.</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"feedback-intro\">",
+                      "target": [
+                        ".feedback-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-intro > div > p"
+              ],
+              "html": "<p>AI-2 mô phỏng · Gợi ý từ phản hồi, luôn do bạn kiểm tra và quyết định.</p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"feedback-intro\">",
+                      "target": [
+                        ".feedback-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 41
+    },
+    {
+      "name": "admin-brief-template-management",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".panel-title > div > h2"
+              ],
+              "html": "<h2>Cấu hình Prompt gợi ý cho AI-1 (Brief Structurer)</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "15.0pt (20px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".panel-title > div > p"
+              ],
+              "html": "<p>Cấu hình System Prompt điều khiển cách AI chuyển hóa mô tả thô của khách hàng thành brief chuẩn cho mẫu <strong>Nhận diện thương hiệu (Branding Identity)</strong></p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "p > strong"
+              ],
+              "html": "<strong>Nhận diện thương hiệu (Branding Identity)</strong>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#ai-prompt-config-section > p"
+              ],
+              "html": "<p style=\"font-size: 13px; color: #475569; margin-bottom: 8px;\">\n              Các biến tham số hệ thống hỗ trợ chèn vào prompt:\n            </p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#ai-prompt-config-section > .field > span"
+              ],
+              "html": "<span>System Prompt Template cho AI-1: *</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 42
+    },
+    {
+      "name": "admin-user-management",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 45
+    },
+    {
+      "name": "admin-project-settings",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 41
+    },
+    {
+      "name": "error-403",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 40
+    },
+    {
+      "name": "landing",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "help": "Elements must only use permitted ARIA attributes",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".hero-visual"
+              ],
+              "html": "<div class=\"hero-visual\" aria-label=\"Minh họa dự án nhận diện thương hiệu Mộc\">",
+              "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute.",
+              "any": [],
+              "all": [],
+              "none": [
+                {
+                  "id": "aria-prohibited-attr",
+                  "data": {
+                    "role": null,
+                    "nodeName": "div",
+                    "messageKey": "noRoleSingular",
+                    "prohibited": [
+                      "aria-label"
+                    ]
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".primary > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#hero-demo > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".visual-top > span:nth-child(2)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".mini-icon"
+              ],
+              "html": "<span class=\"mini-icon\">✧</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".check"
+              ],
+              "html": "<span class=\"check\">✓</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".btn[href$=\"#creative-roles\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(1) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">✧</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(2) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">◈</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "article:nth-child(3) > .feature-icon"
+              ],
+              "html": "<span class=\"feature-icon\">≋</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Client\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Designer\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Creative Lead\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Admin\"] > span:nth-child(3)"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "a[href$=\"#main\"] > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">↑</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 39
+    },
+    {
+      "name": "login",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "#login-submit > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".selected > span"
+              ],
+              "html": "<span>◎</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Designer\"] > span"
+              ],
+              "html": "<span>◈</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "button[data-role=\"Creative Lead\"] > span"
+              ],
+              "html": "<span>▦</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 37
+    },
+    {
+      "name": "register",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "#register-submit > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 35
+    },
+    {
+      "name": "error-404",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 39
+    },
+    {
+      "name": "profile",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name",
+              "any": [
+                {
+                  "id": "label-content-name-mismatch",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Unable to determine if the visible text is part of the accessible name"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 38
+    },
+    {
+      "name": "notifications",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name",
+              "any": [
+                {
+                  "id": "label-content-name-mismatch",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Unable to determine if the visible text is part of the accessible name"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 34
+    },
+    {
+      "name": "client-project-overview",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".search-box > span[aria-hidden=\"true\"]"
+              ],
+              "html": "<span aria-hidden=\"true\">⌕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name",
+              "any": [
+                {
+                  "id": "label-content-name-mismatch",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Unable to determine if the visible text is part of the accessible name"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "client-creative-brief",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".brief-project > span"
+              ],
+              "html": "<span>▤</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#generate > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name",
+              "any": [
+                {
+                  "id": "label-content-name-mismatch",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Unable to determine if the visible text is part of the accessible name"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "client-review-versions",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".pin-tip > span"
+              ],
+              "html": "<span>⊕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-heading > span"
+              ],
+              "html": "<span>→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-empty > span"
+              ],
+              "html": "<span>⊕</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "impact": "serious",
+          "help": "Elements must have their visible text as part of their accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".mobile-menu"
+              ],
+              "html": "<button class=\"btn mobile-menu\" aria-controls=\"sidebar\" aria-expanded=\"false\" aria-label=\"Mở menu\">☰</button>",
+              "failureSummary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name",
+              "any": [
+                {
+                  "id": "label-content-name-mismatch",
+                  "data": null,
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Unable to determine if the visible text is part of the accessible name"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 39
+    },
+    {
+      "name": "designer-dashboard",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "div:nth-child(2) > h2"
+              ],
+              "html": "<h2>Có 2 nhiệm vụ cần ưu tiên giải quyết hôm nay!</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"urgent-banner\">",
+                      "target": [
+                        ".urgent-banner"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".urgent-banner-content > div:nth-child(2) > p"
+              ],
+              "html": "<p>Hạn chót phiên bản mới cho dự án Mộc Coffee đang đến gần. Vui lòng kiểm tra và cập nhật tiến độ.</p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"urgent-banner\">",
+                      "target": [
+                        ".urgent-banner"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-header > span"
+              ],
+              "html": "<span>Ưu tiên theo hạn chót · Tham chiếu Moodboard AI-3</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body"
+              ],
+              "html": "<div class=\"ai-insight-body\">\n              Ưu tiên <strong>CS-101 Phác thảo nhãn cà phê</strong>, hạn 06/10/2026.\n              Xem định hướng phong cách tại <a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>. Gợi ý ưu tiên được tính từ dữ liệu nhiệm vụ.\n            </div>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body > strong"
+              ],
+              "html": "<strong>CS-101 Phác thảo nhãn cà phê</strong>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".ai-insight-body > a"
+              ],
+              "html": "<a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"ai-insight-panel\">",
+                      "target": [
+                        ".ai-insight-panel"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        },
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "help": "Links must be distinguishable without relying on color",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".ai-insight-body > a"
+              ],
+              "html": "<a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>",
+              "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "link-in-text-block",
+                  "data": {
+                    "messageKey": "bgGradient"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"ai-insight-body\">\n              Ưu tiên <strong>CS-101 Phác thảo nhãn cà phê</strong>, hạn 06/10/2026.\n              Xem định hướng phong cách tại <a href=\"html/sv2/designer-moodboard.html\">Moodboard AI-3</a>. Gợi ý ưu tiên được tính từ dữ liệu nhiệm vụ.\n            </div>",
+                      "target": [
+                        ".ai-insight-body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's contrast ratio could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "designer-moodboard",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".status-stepper > .muted:nth-child(2)"
+              ],
+              "html": "<span class=\"muted\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".muted:nth-child(4)"
+              ],
+              "html": "<span class=\"muted\">→</span>",
+              "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "messageKey": "nonBmp"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element content contains only non-text characters"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 41
+    },
+    {
+      "name": "designer-version-management",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 43
+    },
+    {
+      "name": "lead-task-board",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 41
+    },
+    {
+      "name": "lead-internal-review",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 44
+    },
+    {
+      "name": "lead-feedback-summary",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".feedback-intro > div > h2"
+              ],
+              "html": "<h2>Phản hồi rõ ràng. Công việc cụ thể.</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "11.3pt (15px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"feedback-intro\">",
+                      "target": [
+                        ".feedback-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".feedback-intro > div > p"
+              ],
+              "html": "<p>AI-2 mô phỏng · Gợi ý từ phản hồi, luôn do bạn kiểm tra và quyết định.</p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "8.3pt (11px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"feedback-intro\">",
+                      "target": [
+                        ".feedback-intro"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "admin-brief-template-management",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".panel-title > div > h2"
+              ],
+              "html": "<h2>Cấu hình Prompt gợi ý cho AI-1 (Brief Structurer)</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "15.0pt (20px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                ".panel-title > div > p"
+              ],
+              "html": "<p>Cấu hình System Prompt điều khiển cách AI chuyển hóa mô tả thô của khách hàng thành brief chuẩn cho mẫu <strong>Nhận diện thương hiệu (Branding Identity)</strong></p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "p > strong"
+              ],
+              "html": "<strong>Nhận diện thương hiệu (Branding Identity)</strong>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "bold",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#ai-prompt-config-section > p"
+              ],
+              "html": "<p style=\"font-size: 13px; color: #475569; margin-bottom: 8px;\">\n              Các biến tham số hệ thống hỗ trợ chèn vào prompt:\n            </p>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            },
+            {
+              "target": [
+                "#ai-prompt-config-section > .field > span"
+              ],
+              "html": "<span>System Prompt Template cho AI-1: *</span>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "bgGradient",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<section class=\"prompt-config-card\" id=\"ai-prompt-config-section\">",
+                      "target": [
+                        "#ai-prompt-config-section"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a background gradient"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 40
+    },
+    {
+      "name": "admin-user-management",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 43
+    },
+    {
+      "name": "admin-project-settings",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 40
+    },
+    {
+      "name": "error-403",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 39
+    },
+    {
+      "name": "create-task-dialog",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 30
+    },
+    {
+      "name": "create-user-dialog",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 30
+    },
+    {
+      "name": "create-template-dialog",
+      "width": 1440,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 29
+    },
+    {
+      "name": "create-task-dialog",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 30
+    },
+    {
+      "name": "create-user-dialog",
+      "width": 375,
+      "violations": [],
+      "incomplete": [],
+      "passedRules": 30
+    },
+    {
+      "name": "create-template-dialog",
+      "width": 375,
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "#dialog-title"
+              ],
+              "html": "<h2 id=\"dialog-title\">Thêm mẫu Brief chuẩn hóa mới</h2>",
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements",
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "contrastRatio": 0,
+                    "fontSize": "15.0pt (20px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscuring",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it partially overlaps other elements"
+                }
+              ],
+              "all": [],
+              "none": []
+            }
+          ]
+        }
+      ],
+      "passedRules": 29
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.4314.42",
+  "axeVersion": "4.14.0",
+  "engineSha256": "20c09fe157a8a34a30e241aaa1fcdade657734f08ab379ecfbeb7d45cc46e878",
+  "violationNodes": 0,
+  "incompleteNodes": 118,
+  "status": "NO_AUTOMATED_VIOLATIONS"
+}

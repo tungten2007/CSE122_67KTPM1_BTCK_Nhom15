@@ -240,3 +240,5 @@
   .profile-hero-info { flex-basis: 100%; }
   .profile-stats-group { flex-wrap: wrap; }
 }
+.notification-filter-bar{min-width:0;max-width:100%}.notification-filter-bar .filter-tabs{flex-wrap:wrap;min-width:0;max-width:100%}@media(max-width:760px){.notification-filter-bar{align-items:stretch}.notification-filter-bar .filter-tabs{width:100%}}
+@media(max-width:600px){.notification-title-row{flex-direction:column;align-items:flex-start;gap:4px}.notification-actions{flex-wrap:wrap}}

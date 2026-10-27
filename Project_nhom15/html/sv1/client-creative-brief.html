@@ -2,6 +2,7 @@
 <html lang="vi">
   <head>
   <base href="../../">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Creative Brief — CreatorStudio</title>
@@ -36,7 +37,7 @@
         >
       </div>
       <div id="brief-empty" class="empty" hidden>
-        <h3>Chọn một ý tưởng để bắt đầu</h3>
+        <h2>Chọn một ý tưởng để bắt đầu</h2>
         <p>Chọn dự án phía trên hoặc tạo một dự án mới để viết brief.</p>
         <a class="btn primary" href="html/sv1/client-project-overview.html"
           >Đến danh sách dự án →</a
@@ -47,9 +48,14 @@
           <div class="panel-title">
             <span class="number-tag">01</span>
             <div>
-              <h3>Ý tưởng của bạn</h3>
+              <h2>Ý tưởng của bạn</h2>
               <p>Bắt đầu bằng những điều bạn đang nghĩ.</p>
             </div>
+          </div>
+          <div class="field">
+            <label for="brief-template">Mẫu brief đang áp dụng</label>
+            <select id="brief-template" aria-describedby="template-note"></select>
+            <small id="template-note"></small>
           </div>
           <div class="field">
             <label for="raw-idea">Mô tả yêu cầu *</label
@@ -105,14 +111,14 @@
           <div class="panel-title">
             <span class="number-tag">02</span>
             <div>
-              <h3>Định hướng sáng tạo</h3>
+              <h2>Định hướng sáng tạo</h2>
               <p>Rà soát và chỉnh sửa trước khi gửi.</p>
             </div>
             <span class="pill" id="result-source">Chưa có kết quả</span>
           </div>
           <div id="result-placeholder" class="result-placeholder">
             <span>✧</span>
-            <h3>Từ ý tưởng đến định hướng.</h3>
+            <h2>Từ ý tưởng đến định hướng.</h2>
             <p>
               Nhập mô tả và tạo brief, hoặc chọn tự viết.<br />5 phần rõ ràng để
               đội ngũ hiểu đúng mong muốn của bạn.
@@ -124,7 +130,7 @@
           </div>
           <div id="generating" class="result-placeholder" role="status" hidden>
             <span class="spin">✳</span>
-            <h3>Đang sắp xếp ý tưởng của bạn…</h3>
+            <h2>Đang sắp xếp ý tưởng của bạn…</h2>
             <p>Phân tích mô tả và dựng brief 5 phần.</p>
           </div>
           <form id="structured-form" hidden>

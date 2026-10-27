@@ -1,0 +1,178 @@
+[
+  {
+    "name": "01 Navigation portal — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:3408",
+    "level": "0",
+    "Height": "2761",
+    "Width": "390",
+    "X-position": "0",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-3408"
+  },
+  {
+    "name": "02 Designer dashboard — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:3636",
+    "level": "0",
+    "Height": "2065",
+    "Width": "390",
+    "X-position": "500",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-3636"
+  },
+  {
+    "name": "03 Moodboard — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:3915",
+    "level": "0",
+    "Height": "3422",
+    "Width": "390",
+    "X-position": "1000",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-3915"
+  },
+  {
+    "name": "04 Version management — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:4515",
+    "level": "0",
+    "Height": "2364",
+    "Width": "390",
+    "X-position": "1500",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-4515"
+  },
+  {
+    "name": "05 Brief templates — Mobile",
+    "page": "Mobile",
+    "nodeId": "11:2",
+    "level": "0",
+    "Height": "3249",
+    "Width": "390",
+    "X-position": "0",
+    "Y-position": "3700",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=11-2"
+  },
+  {
+    "name": "06 Profile — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:4892",
+    "level": "0",
+    "Height": "2157",
+    "Width": "390",
+    "X-position": "500",
+    "Y-position": "3700",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-4892"
+  },
+  {
+    "name": "07 Notifications — Mobile",
+    "page": "Mobile",
+    "nodeId": "9:5089",
+    "level": "0",
+    "Height": "1706",
+    "Width": "390",
+    "X-position": "1000",
+    "Y-position": "3700",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-5089"
+  },
+  {
+    "name": "08 Error 404 — Mobile",
+    "page": "Mobile",
+    "nodeId": "11:380",
+    "level": "0",
+    "Height": "844",
+    "Width": "390",
+    "X-position": "1500",
+    "Y-position": "3700",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=11-380"
+  },
+  {
+    "name": "01 Navigation portal — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:2",
+    "level": "0",
+    "Height": "1193",
+    "Width": "1440",
+    "X-position": "0",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-2"
+  },
+  {
+    "name": "02 Designer dashboard — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:208",
+    "level": "0",
+    "Height": "1046",
+    "Width": "1440",
+    "X-position": "1600",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-208"
+  },
+  {
+    "name": "03 Moodboard — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:682",
+    "level": "0",
+    "Height": "1414",
+    "Width": "1440",
+    "X-position": "3200",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-682"
+  },
+  {
+    "name": "04 Version management — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:1453",
+    "level": "0",
+    "Height": "1257",
+    "Width": "1440",
+    "X-position": "4800",
+    "Y-position": "0",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-1453"
+  },
+  {
+    "name": "05 Brief templates — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:2850",
+    "level": "0",
+    "Height": "1791",
+    "Width": "1440",
+    "X-position": "0",
+    "Y-position": "1800",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-2850"
+  },
+  {
+    "name": "06 Profile — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:2009",
+    "level": "0",
+    "Height": "1062",
+    "Width": "1440",
+    "X-position": "1600",
+    "Y-position": "1800",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-2009"
+  },
+  {
+    "name": "07 Notifications — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:2395",
+    "level": "0",
+    "Height": "1031",
+    "Width": "1440",
+    "X-position": "3200",
+    "Y-position": "1800",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-2395"
+  },
+  {
+    "name": "08 Error 404 — Desktop",
+    "page": "Desktop",
+    "nodeId": "9:2825",
+    "level": "0",
+    "Height": "1000",
+    "Width": "1440",
+    "X-position": "4800",
+    "Y-position": "1800",
+    "url": "https://www.figma.com/design/4aJfEbqeO6GyTijMEvvOD3/creatorstudio-sv2?node-id=9-2825"
+  }
+]

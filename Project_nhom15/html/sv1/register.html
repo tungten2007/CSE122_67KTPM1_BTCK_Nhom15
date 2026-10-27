@@ -2,6 +2,7 @@
 <html lang="vi">
   <head>
   <base href="../../">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Đăng ký — CreatorStudio</title>
@@ -12,7 +13,7 @@
     <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
 </head>
   <body>
-    <a class="skip-link" href="#main">Đến nội dung chính</a>
+    <a class="skip-link" href="html/sv1/register.html#main">Đến nội dung chính</a>
     <main class="login-layout" id="main">
       <section class="login-story">
         <a class="brand" href="html/sv1/index.html"
@@ -46,10 +47,10 @@
             Đăng ký mô phỏng, lưu trên trình duyệt này. Dùng thông tin thử nghiệm và mật khẩu demo; không nhập mật khẩu thật.
           </div>
           <form id="register-form" novalidate>
-            <label class="field">Họ và tên<input id="register-name" type="text" maxlength="80" required autocomplete="off" placeholder="Tên hiển thị của bạn" /></label>
-            <label class="field">Email<input id="register-email" type="email" required autocomplete="off" placeholder="ban@example.com" /></label>
-            <label class="field">Mật khẩu demo<input id="register-password" type="password" minlength="6" maxlength="128" required autocomplete="off" placeholder="Từ 6 ký tự, không dùng mật khẩu thật" /></label>
-            <label class="field">Nhập lại mật khẩu<input id="register-confirm" type="password" required autocomplete="off" /></label>
+            <label class="field">Họ và tên<input id="register-name" type="text" maxlength="80" required autocomplete="off" placeholder="Tên hiển thị của bạn" aria-invalid="false" aria-describedby="register-name-error" /><small id="register-name-error" class="error"></small></label>
+            <label class="field">Email<input id="register-email" type="email" required autocomplete="off" placeholder="ban@example.com" aria-invalid="false" aria-describedby="register-email-error" /><small id="register-email-error" class="error"></small></label>
+            <label class="field">Mật khẩu demo<input id="register-password" type="password" minlength="6" maxlength="128" required autocomplete="off" placeholder="Từ 6 ký tự, không dùng mật khẩu thật" aria-invalid="false" aria-describedby="register-password-error" /><small id="register-password-error" class="error"></small></label>
+            <label class="field">Nhập lại mật khẩu<input id="register-confirm" type="password" required autocomplete="off" aria-invalid="false" aria-describedby="register-confirm-error" /><small id="register-confirm-error" class="error"></small></label>
             <p class="demo-notice">Tài khoản mới có vai trò Khách hàng. Quản trị viên có thể thay đổi vai trò trong mục Quản lý người dùng.</p>
             <button class="btn primary" id="register-submit" type="submit">Tạo tài khoản demo <span>→</span></button>
             <p id="register-status" class="error" role="status" aria-live="polite"></p>

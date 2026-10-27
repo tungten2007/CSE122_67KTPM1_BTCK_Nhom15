@@ -11,6 +11,19 @@
     return;
   }
   const fields = ["goal", "audience", "message", "style", "deliverables"];
+  let appliedTemplate=p.brief?.templateId?{id:p.brief.templateId,name:p.brief.templateName,category:p.brief.templateCategory}:null;
+  function activeTemplates(){Store.load();return Store.get().briefTemplates.filter(t=>t.status==='Active Template')}
+  function renderTemplates(templates,preferred){
+    const select=$('#brief-template');select.replaceChildren();
+    for(const t of templates){const option=document.createElement('option');option.value=t.id;option.textContent=t.name;select.append(option)}
+    if(templates.some(t=>t.id===preferred))select.value=preferred;
+    else if(templates.some(t=>t.category===p.category))select.value=templates.find(t=>t.category===p.category).id;
+    if(!templates.length){const option=document.createElement('option');option.value='';option.textContent='Chưa có mẫu đang áp dụng';select.append(option)}
+    select.disabled=!templates.length;
+    $('#template-note').textContent=templates.length?'AI mô phỏng sử dụng ngành hàng và các mục trong mẫu đã chọn.':'Chưa có mẫu hoạt động. Bạn vẫn có thể chọn Tự viết brief.';
+  }
+  renderTemplates(activeTemplates(),p.brief?.templateId);
+  $('#brief-template').onchange=()=>{appliedTemplate=null;edited()};
   const readonly = p.status === "Archived";
   let accepted = false,
     source = "manual",
@@ -63,6 +76,9 @@
   function collect() {
     return {
       raw: $("#raw-idea").value.trim(),
+      templateId:appliedTemplate?.id||null,
+      templateName:appliedTemplate?.name||null,
+      templateCategory:appliedTemplate?.category||null,
       sections: Object.fromEntries(
         fields.map((id) => [id, $("#" + id).value.trim()]),
       ),
@@ -138,7 +154,10 @@
       $("#raw-idea").focus();
       return;
     }
+    let template;
+    try{const templates=activeTemplates(),chosen=$('#brief-template').value;template=templates.find(t=>t.id===chosen);renderTemplates(templates,chosen);if(!template)throw Error('Mẫu đã tạm ngừng hoặc không còn tồn tại. Chọn mẫu đang áp dụng, thử lại hoặc Tự viết brief.')}catch(err){$('#brief-error').textContent=err.message;return}
     busy = true;
+    $('#brief-template').disabled=true;
     accepted = false;
     submitted = false;
     state();
@@ -170,15 +189,15 @@
           : "Truyền tải giá trị cốt lõi của thương hiệu một cách gần gũi. Cần xác nhận thông điệp cụ thể.",
       style: nature
         ? "Tự nhiên, tối giản, gần gũi. Gợi ý xanh lá và kem; cần xác nhận màu và font theo nhận diện."
-        : p.category === "UI/UX"
+        : template.category === "UI/UX"
           ? "Giao diện rõ ràng, hiện đại; ưu tiên khả năng đọc và trải nghiệm trên thiết bị di động."
           : "Bố cục rõ ràng, có điểm nhấn. Cần bổ sung màu sắc, cảm xúc và mẫu tham khảo.",
       deliverables:
-        p.category === "Branding"
+        template.category === "Branding"
           ? "Đề xuất: logo, bảng màu, typography và hướng dẫn nhận diện cơ bản. Xác nhận số lượng, định dạng và phạm vi bàn giao."
-          : p.category === "UI/UX"
+          : template.category === "UI/UX"
             ? "Đề xuất: sitemap, wireframe, giao diện desktop/mobile và prototype. Xác nhận số màn hình và phạm vi bàn giao."
-            : "Đề xuất: key visual và bộ ấn phẩm chiến dịch. Xác nhận kênh truyền thông, kích thước và số lượng.",
+            : template.category === "Packaging" ? "Đề xuất: thiết kế bao bì, nhãn sản phẩm và quy cách in. Xác nhận kích thước, chất liệu, số lượng và định dạng bàn giao." : "Đề xuất: key visual và bộ ấn phẩm chiến dịch. Xác nhận kênh truyền thông, kích thước và số lượng.",
     };
     const budgetMatch = raw.match(
       /(?:ngân sách|budget)\s*[:=]?\s*([\d.,]+)\s*(triệu|tr|million|nghìn|ngàn|k|tỷ|vnđ|vnd)?/i,
@@ -204,8 +223,12 @@
         extractedBudget = true;
       }
     }
+    if(template.sections?.length)values.deliverables+="\nCác mục cần xác nhận theo mẫu: "+template.sections.join("; ")+". Bạn có thể chỉnh sửa trước khi lưu.";
+    appliedTemplate={id:template.id,name:template.name,category:template.category};
     fields.forEach((id) => ($("#" + id).value = values[id].slice(0, 2000)));
-    explanation = `Đã giữ mô tả gốc và sắp xếp thành 5 phần. ${nature ? "Từ khóa thiên nhiên/xanh gợi ý cảm xúc tự nhiên." : "Phong cách được đề xuất theo loại dự án " + p.category + "."} ${young ? "Có tín hiệu về đối tượng người trẻ." : "Đối tượng chưa rõ, cần bạn bổ sung."} ${extractedBudget ? "Đã nhận diện ngân sách từ mô tả; hãy kiểm tra con số." : "Ngân sách và ngày bàn giao dùng thông tin bạn nhập."} Các nội dung đề xuất cần được xác nhận; đây là mô phỏng bằng quy tắc.`;
+    explanation = `Đã giữ mô tả gốc và sắp xếp thành 5 phần. ${nature ? "Từ khóa thiên nhiên/xanh gợi ý cảm xúc tự nhiên." : "Phong cách được đề xuất theo loại dự án " + template.category + "."} ${young ? "Có tín hiệu về đối tượng người trẻ." : "Đối tượng chưa rõ, cần bạn bổ sung."} ${extractedBudget ? "Đã nhận diện ngân sách từ mô tả; hãy kiểm tra con số." : "Ngân sách và ngày bàn giao dùng thông tin bạn nhập."} Các nội dung đề xuất cần được xác nhận; đây là mô phỏng bằng quy tắc.`;
+    explanation+=" Mẫu đang áp dụng: "+template.name+". Đây là mô phỏng theo ngành hàng và các mục của mẫu, không thực thi prompt bằng mô hình ngôn ngữ.";
+    $("#brief-template").disabled=false;
     $("#generating").hidden = true;
     $("#brief-result").setAttribute("aria-busy", "false");
     $$(
@@ -218,6 +241,8 @@
   }
   $("#generate").onclick = $("#regenerate").onclick = generate;
   $("#manual").onclick = () => {
+    appliedTemplate=null;
+    $("#brief-error").textContent="";
     source = "manual";
     explanation =
       "Bạn chủ động viết 5 phần định hướng. Hãy xác nhận nội dung và phạm vi trước khi gửi.";
@@ -289,6 +314,6 @@
   };
   if (readonly)
     $$(
-      "#brief-workspace input, #brief-workspace textarea, #brief-workspace button",
+      "#brief-workspace input, #brief-workspace textarea, #brief-workspace select, #brief-workspace button",
     ).forEach((el) => (el.disabled = true));
 })();

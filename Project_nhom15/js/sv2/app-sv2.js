@@ -147,11 +147,13 @@ window.App = (() => {
     if (bell) bell.innerHTML = `${icon('bell')}${count ? `<span class="notification-badge">${count}</span>` : ''}`;
     $$('.profile strong').forEach(el => el.textContent = user.name);
     $$('.profile .avatar, .top-actions > .avatar').forEach(el => el.innerHTML = avatar(user));
+    const accountSelect=$('#role-switch');
+    if(accountSelect)accountSelect.innerHTML=Navigation.accountOptions(data.users,user.id);
     if (document.body.classList.contains('client-account')) {
-      $('.user-chip strong').textContent = user.name;
-      $('.user-chip .avatar').textContent = user.name.split(' ').slice(-2).map(s => s[0]).join('');
-      const badge = $('#notification-count');
-      badge.textContent = count; badge.hidden = !count;
+      const name=$('.user-chip strong'),initial=$('.user-chip .avatar'),badge=$('#notification-count');
+      if(name)name.textContent=user.name;
+      if(initial)initial.textContent=user.name.split(' ').slice(-2).map(s=>s[0]).join('');
+      if(badge){badge.textContent=count;badge.hidden=!count}
     }
     renderPage();
   }
@@ -266,7 +268,7 @@ window.App = (() => {
   const empty = (title, desc) => `
     <div class="empty">
       ${icon('file')}
-      <h3>${esc(title)}</h3>
+      <h2>${esc(title)}</h2>
       <p>${esc(desc)}</p>
     </div>
   `;

@@ -227,7 +227,7 @@
 .changelog .eyebrow {
   font-size: 9px;
 }
-.changelog h3 {
+.changelog h2 {
   font-size: 14px;
   margin: 8px 0;
 }
@@ -253,10 +253,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.feedback-heading h3 {
+.feedback-heading h2 {
   font-size: 15px;
 }
-.feedback-heading h3 span {
+.feedback-heading h2 span {
   font-size: 10px;
   padding: 3px 7px;
   border-radius: 5px;
@@ -291,7 +291,7 @@
 }
 .feedback-empty > span {
   font-size: 28px;
-  color: #a6b599;
+  color: #526451;
   display: block;
   margin-bottom: 13px;
 }
@@ -383,7 +383,7 @@
 .decision-panel .eyebrow {
   font-size: 9px;
 }
-.decision-panel h3 {
+.decision-panel h2 {
   font-size: 15px;
   margin: 5px 0;
 }
@@ -549,3 +549,23 @@
 }
 
 .compare-empty{padding:24px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+
+
+/* Dedicated feedback entry, sharing the same project/version comments. */
+.client-feedback-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 24px;
+}
+.client-feedback-entry > div:first-child { flex: 1 1 320px; min-width: 0; }
+.client-feedback-entry h2 { margin: 0 0 10px; font-size: 20px; }
+.client-feedback-entry p { color: var(--muted); line-height: 1.7; }
+.client-feedback-entry .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.client-feedback-view .review-layout { grid-template-columns: minmax(0, 1fr); }
+.client-feedback-view .design-panel,
+.client-feedback-view .decision-panel { display: none; }
+.client-feedback-view .feedback-panel { max-height: none; }

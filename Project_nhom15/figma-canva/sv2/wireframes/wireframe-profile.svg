@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1280" viewBox="0 0 1440 1280" role="img" aria-labelledby="title desc"><title id="title">Wireframe · Hồ sơ cá nhân &amp; tài khoản</title><desc id="desc">Bố cục desktop của trang Hồ sơ cá nhân &amp; tài khoản trong CreatorStudio. Bản phác thảo cấu trúc đen trắng, không thể hiện thiết kế màu hoàn chỉnh.</desc><g font-family="Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="1440" height="1280" rx="0" fill="#f5f5f5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="0" y="0" width="240" height="1280" rx="0" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<path d="M240 0V1280" fill="none" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="20" y="24" width="34" height="34" rx="6" fill="#e4e4e4" stroke="#b8b8b8" stroke-width="1"/>
+<text x="29" y="48" font-size="20" fill="#262626" font-weight="600">C</text>
+<text x="66" y="48" font-size="19" fill="#262626" font-weight="600">CreatorStudio</text>
+<rect x="20" y="88" width="200" height="64" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="36" y="114" font-size="15" fill="#262626" font-weight="600">Studio Mộc</text>
+<text x="36" y="135" font-size="12" fill="#737373" font-weight="400">Không gian làm việc</text>
+<text x="20" y="190" font-size="11" fill="#737373" font-weight="600">ĐIỀU HƯỚNG</text>
+<rect x="29" y="220" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="234" font-size="14" fill="#262626" font-weight="400">Bảng điều khiển</text>
+<rect x="29" y="268" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="282" font-size="14" fill="#262626" font-weight="400">Bảng cảm hứng</text>
+<rect x="29" y="316" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="330" font-size="14" fill="#262626" font-weight="400">Quản lý phiên bản</text>
+<rect x="16" y="352" width="208" height="40" rx="6" fill="#e5e5e5" stroke="#b8b8b8" stroke-width="1"/>
+<rect x="29" y="364" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="378" font-size="14" fill="#262626" font-weight="600">Hồ sơ cá nhân</text>
+<rect x="29" y="412" width="16" height="16" rx="3" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="57" y="426" font-size="14" fill="#262626" font-weight="400">Thông báo</text>
+<path d="M20 504H220" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="20" y="536" font-size="11" fill="#737373" font-weight="400">DỰ ÁN ĐANG CHỌN</text>
+<text x="20" y="565" font-size="15" fill="#262626" font-weight="600">Tên dự án</text>
+<rect x="20" y="581" width="155" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<text x="20" y="1186" font-size="12" fill="#737373" font-weight="400">Công cụ demo &amp; dữ liệu</text>
+<circle cx="38" cy="1232" r="18" fill="#eeeeee" stroke="#b8b8b8"/>
+<text x="70" y="1228" font-size="13" fill="#262626" font-weight="600">Người dùng</text>
+<text x="70" y="1247" font-size="12" fill="#737373" font-weight="400">Designer</text>
+<rect x="240" y="0" width="1200" height="74" rx="0" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="272" y="45" font-size="14" fill="#737373" font-weight="400">Studio Mộc  /  Hồ sơ cá nhân &amp; tài khoản</text>
+<rect x="1020" y="19" width="145" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1032" y="42" font-size="13" fill="#262626" font-weight="400">Chọn dự án  ⌄</text>
+<rect x="1177" y="19" width="165" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1189" y="42" font-size="13" fill="#262626" font-weight="400">Designer  ⌄</text>
+<rect x="1354" y="19" width="38" height="36" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1367" y="43" font-size="18" fill="#262626" font-weight="400">◦</text>
+<text x="280" y="115" font-size="11" fill="#737373" font-weight="600">CREATORSTUDIO / DESIGNER</text>
+<text x="280" y="153" font-size="28" fill="#262626" font-weight="600">Hồ sơ cá nhân &amp; tài khoản</text>
+<rect x="280" y="174" width="650" height="7" rx="3" fill="#e7e7e7" stroke="none" stroke-width="1"/>
+<path d="M240 1232H1440" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="280" y="1261" font-size="12" fill="#737373" font-weight="400">WIREFRAME · DESKTOP · Designer</text>
+<text x="1075" y="1261" font-size="12" fill="#737373" font-weight="400">CSE122 · Phân hệ SV2</text>
+<rect x="1170" y="207" width="230" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="1182" y="230" font-size="13" fill="#262626" font-weight="600">Chỉnh sửa hồ sơ</text>
+<rect x="280" y="267" width="1120" height="158" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<circle cx="350" cy="345" r="47" fill="#eeeeee" stroke="#b8b8b8"/>
+<text x="420" y="313" font-size="22" fill="#262626" font-weight="600">Họ và tên người dùng</text>
+<rect x="420" y="328" width="160" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="429" y="345" font-size="11" fill="#262626" font-weight="400">Vai trò người dùng</text>
+<rect x="598" y="328" width="150" height="25" rx="4" fill="#f0f0f0" stroke="#b8b8b8" stroke-width="1"/>
+<text x="607" y="345" font-size="11" fill="#262626" font-weight="400">Đang hoạt động</text>
+<text x="420" y="382" font-size="13" fill="#737373" font-weight="400">Email · Chức danh · Giới thiệu ngắn</text>
+<text x="970" y="332" font-size="25" fill="#262626" font-weight="600">00</text>
+<text x="970" y="364" font-size="11" fill="#737373" font-weight="400">Dự án tham gia</text>
+<text x="1110" y="332" font-size="25" fill="#262626" font-weight="600">00</text>
+<text x="1110" y="364" font-size="11" fill="#737373" font-weight="400">Nhiệm vụ xong</text>
+<text x="1250" y="332" font-size="25" fill="#262626" font-weight="600">00</text>
+<text x="1250" y="364" font-size="11" fill="#737373" font-weight="400">Phiên bản nộp</text>
+<rect x="280" y="451" width="650" height="720" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="300" y="483" font-size="19" fill="#262626" font-weight="600">Thông tin chi tiết tài khoản</text>
+<text x="300" y="534" font-size="13" fill="#262626" font-weight="600">Họ và tên *</text>
+<rect x="300" y="546" width="610" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="572" font-size="13" fill="#737373" font-weight="400">Tên người dùng</text>
+<text x="300" y="625" font-size="13" fill="#262626" font-weight="600">Địa chỉ email *</text>
+<rect x="300" y="637" width="610" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="663" font-size="13" fill="#737373" font-weight="400">email@example.com</text>
+<text x="300" y="716" font-size="13" fill="#262626" font-weight="600">Chức danh chuyên môn</text>
+<rect x="300" y="728" width="610" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="754" font-size="13" fill="#737373" font-weight="400">Chức danh</text>
+<text x="300" y="807" font-size="13" fill="#262626" font-weight="600">Giới thiệu bản thân</text>
+<rect x="300" y="819" width="610" height="95" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="845" font-size="13" fill="#737373" font-weight="400">Nội dung giới thiệu…</text>
+<text x="300" y="955" font-size="13" fill="#262626" font-weight="600">Avatar URL</text>
+<rect x="300" y="967" width="610" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="993" font-size="13" fill="#737373" font-weight="400">https://…</text>
+<rect x="300" y="1071" width="205" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="312" y="1094" font-size="13" fill="#262626" font-weight="600">Lưu hồ sơ</text>
+<rect x="521" y="1071" width="175" height="36" rx="6" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="533" y="1094" font-size="13" fill="#262626" font-weight="400">Hủy chỉnh sửa</text>
+<rect x="954" y="451" width="446" height="720" rx="8" fill="#ffffff" stroke="#b8b8b8" stroke-width="1"/>
+<text x="974" y="483" font-size="19" fill="#262626" font-weight="600">Thay đổi mật khẩu</text>
+<text x="974" y="534" font-size="13" fill="#262626" font-weight="600">Mật khẩu hiện tại *</text>
+<rect x="974" y="546" width="406" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="986" y="572" font-size="13" fill="#737373" font-weight="400">••••••••</text>
+<text x="974" y="625" font-size="13" fill="#262626" font-weight="600">Mật khẩu mới *</text>
+<rect x="974" y="637" width="406" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="986" y="663" font-size="13" fill="#737373" font-weight="400">••••••••</text>
+<text x="974" y="716" font-size="13" fill="#262626" font-weight="600">Xác nhận mật khẩu mới *</text>
+<rect x="974" y="728" width="406" height="42" rx="5" fill="#fafafa" stroke="#b8b8b8" stroke-width="1"/>
+<text x="986" y="754" font-size="13" fill="#737373" font-weight="400">••••••••</text>
+<text x="974" y="803" font-size="12" fill="#737373" font-weight="400">Thông báo kiểm tra hợp lệ / lỗi</text>
+<rect x="974" y="827" width="250" height="36" rx="6" fill="#e3e3e3" stroke="#b8b8b8" stroke-width="1"/>
+<text x="986" y="850" font-size="13" fill="#262626" font-weight="600">Cập nhật mật khẩu</text>
+<path d="M974 896H1380" fill="none" stroke="#d0d0d0" stroke-width="1"/>
+<text x="974" y="930" font-size="17" fill="#262626" font-weight="600">Quyền hạn vai trò</text>
+<text x="974" y="967" font-size="13" fill="#737373" font-weight="400">• Vai trò và phạm vi thao tác</text>
+<text x="974" y="998" font-size="13" fill="#737373" font-weight="400">• Mã định danh người dùng</text>
+<text x="974" y="1029" font-size="13" fill="#737373" font-weight="400">• Thông tin trạng thái tài khoản</text>
+</g></svg>

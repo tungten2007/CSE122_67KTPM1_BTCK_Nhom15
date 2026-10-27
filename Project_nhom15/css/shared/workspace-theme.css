@@ -1,0 +1,38 @@
+/* Shared brand colors for every workspace role and navigation history. */
+html:root {
+  --primary: #39765a;
+  --primary-dark: #183c32;
+  --primary-light: #e6eddf;
+  --ink: #183c32;
+  --muted: #566451;
+  --line: #e2e7dc;
+  --bg: #f6f7f2;
+  --paper: #f6f7f2;
+  --green: #39765a;
+  --side: #183c32;
+}
+
+html:root #role-switch,
+html:root #project-select,
+html:root #project-switch {
+  color: var(--ink);
+  background-color: #edf2e6;
+  border-color: var(--line);
+}
+
+html:root #role-switch option,
+html:root #role-switch optgroup {
+  color: var(--ink);
+  background-color: #fcfdf9;
+}
+
+html:root .button.primary,
+html:root .btn.primary {
+  color: #ffffff;
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+html:root :is(button, a, input, select, textarea):focus-visible {
+  outline-color: var(--primary);
+}

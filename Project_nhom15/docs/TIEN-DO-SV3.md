@@ -106,3 +106,115 @@ Người dùng xác nhận cả nhóm đồng ý và yêu cầu hoàn thiện we
 23 kiểm tra sử dụng cuối và 34 lượt tích hợp chạy lại đạt; 9 file regression và 11 nhóm dữ liệu tích hợp đạt. Kết quả trong qa-final-v5, cùng bài kiểm thử browser-final-v5.cjs. Tài liệu chung đã đồng bộ trong README/user-guide/screen-list/team-assignment/ai-usage-report, giữ bản yêu cầu/bản nộp gốc làm tham chiếu.
 
 Trang web có 18 trang, gồm một trang đăng ký bổ sung. Bản frontend lưu dữ liệu trên trình duyệt; chưa có backend hoặc đồng bộ qua các máy. Duyệt nhóm được ghi theo lời người dùng, không tạo review giả trên GitHub. Phần Figma/OBS/nộp học phần vẫn đối chiếu riêng; không cản việc dùng bản web hiện tại. Gói: CreatorStudio-Task27-Integration-v5-Complete.zip.
+
+## Đợt P1 bổ sung 26/10/2026 — đang chờ kiểm tra
+
+Các kết quả PASS ngày 12/10 ở phía trên thuộc phiên bản cũ. Chúng không xác nhận những thay đổi P1 dưới đây đã hoạt động trên trình duyệt.
+
+| Phần | Trạng thái hiện tại | Vị trí trong nhánh feature/sv3 |
+|---|---|---|
+| Hủy công việc có lý do | Người dùng xác nhận phần hủy hoạt động; đã nhập vào dev tại 8001af7 | js/store.js; js/app.js; js/pages/lead-task-board.js |
+| Xóa công việc đã hủy | Đã viết mã, chưa kiểm tra trình duyệt | js/store.js; js/pages/lead-task-board.js |
+| Xóa người dùng có điều kiện | Đã viết mã, chưa kiểm tra trình duyệt | js/store.js; js/pages/admin-user-management.js |
+| Sắp xếp, tìm kiếm debounce, xóa bộ lọc và phân trang | Đã viết mã, chưa kiểm tra trình duyệt | Hai trang danh sách ở trên |
+| Seed 15 người dùng, 15 công việc, 2 việc đã hủy | Đã đếm trong mã nguồn; chưa kiểm tra trên giao diện | js/data.js |
+| Focus và trạng thái gửi modal | Đã viết mã, chưa kiểm tra trình duyệt | js/app.js |
+
+### Bước tiếp theo: kiểm tra bản feature trước khi tích hợp
+
+1. Dùng bản mới nhất của nhánh feature/sv3. Nhánh này hiện dùng HTML tại gốc Project_nhom15; dev dùng html/sv1, html/sv2, html/sv3. Chạy đúng bản cần kiểm tra bằng Live Server.
+2. Nếu cần giữ dữ liệu demo đã nhập, xuất bản sao JSON trong Công cụ demo trước khi đặt lại dữ liệu. Đặt lại dữ liệu mẫu sẽ xóa các thay đổi demo hiện có trên origin đó và nạp seed mới.
+3. Mở admin-user-management.html ở vai trò Admin: xác nhận tổng 15 thành viên; với 6 thành viên/trang có 3 trang. Thử tìm tên, lọc vai trò/trạng thái, sắp xếp và Xóa bộ lọc.
+4. Thêm một người dùng demo mới không được giao việc, sau đó thử xóa: Hủy trong hộp xác nhận phải giữ tài khoản, xác nhận xóa phải loại tài khoản khỏi bảng. Thử xóa An Nguyễn đang có công việc: phải hiện lỗi và giữ tài khoản. Tài khoản đang dùng không có quyền tự xóa.
+5. Mở lead-task-board.html ở vai trò Lead: thử tìm kiếm, sắp xếp, lọc ưu tiên/người phụ trách, chuyển trang và xóa bộ lọc. Tổng kết quả phải theo bộ lọc; không được mất thẻ chỉ vì chuyển trang.
+6. Tạo một công việc riêng để kiểm tra; hủy với lý do rồi xóa công việc đó. Hủy ở hộp xác nhận xóa phải giữ thẻ. Dự án đã lưu trữ phải giữ chỉ đọc.
+7. Trong modal tạo/sửa, kiểm tra focus ban đầu, nhấn Tab và Esc. Thử dữ liệu sai: form phải giữ dữ liệu và cho phép sửa rồi gửi lại. Sau thao tác thành công, đóng modal và bảng phải cập nhật.
+8. Tải lại trang, xác nhận các thao tác đã lưu vẫn còn. Ghi lỗi quan sát được và bước tái hiện trước khi yêu cầu tích hợp vào dev.
+
+### Sau bước kiểm tra
+
+- Chờ người dùng xác nhận các phần xóa, danh sách, seed và modal trước khi nhập các phần này vào dev.
+- Khi tích hợp, chuyển từng khối sang đường dẫn đã tái cấu trúc; giữ quyền Lead/Designer và các API chung của dev. Không chép đè toàn bộ store/app từ bản SV3 độc lập.
+- Những mục còn lại trong kế hoạch tổng thể vẫn chưa được chứng minh hoàn tất: các thay đổi SV1/SV2, module danh sách dùng chung, tài liệu toàn nhóm, kiểm tra tích hợp, deploy và tài sản Figma/Trello. Chưa quay OBS theo yêu cầu hiện tại.
+
+## Tích hợp SV3 vào dev — 26/10/2026
+
+- Hợp nhất feature/sv3: xóa công việc đã hủy, xóa người dùng có guard và hộp xác nhận; lọc/sắp xếp/phân trang; seed 15 người dùng và 15 công việc (2 việc đã hủy); trạng thái gửi và focus modal.
+- Chuyển mã sang js/shared, js/sv3 và css/sv3; giữ cấu trúc HTML, điều hướng, khóa dữ liệu dùng chung và API SV1/SV2 trên dev.
+- Nút Xóa người dùng nằm tại html/sv3/admin-user-management.html sau khi tải bản dev mới. File JavaScript tương ứng: js/sv3/pages/admin-user-management.js.
+- Chưa chạy trình duyệt hoặc bộ kiểm thử, theo yêu cầu người dùng tự kiểm tra. Seed mới áp dụng khi nạp dữ liệu mẫu mới; không tự đặt lại LocalStorage hiện có.
+
+Cập nhật: các bước chờ nhập dev trong checklist phía trên đã được thay bằng lần tích hợp này theo yêu cầu người dùng; kiểm tra trình duyệt vẫn chưa hoàn tất. Trên dev, mở html/sv3/admin-user-management.html và html/sv3/lead-task-board.html.
+
+## Kết quả người dùng kiểm tra thủ công — 26/10/2026
+
+Nguồn: người dùng trực tiếp thao tác trên bản local và xác nhận trong cuộc trò chuyện; đây không phải kết quả bộ kiểm thử tự động.
+
+- Đạt: thêm và xóa tài khoản thử, tải lại trang không xuất hiện lại.
+- Đạt: chặn xóa An Nguyễn đang được giao công việc; tài khoản được giữ nguyên.
+- Đạt: lọc vai trò/trạng thái, kết hợp bộ lọc và xóa bộ lọc.
+- Đạt: sắp xếp tên, chuyển trang Trước/Sau và khóa nút ở hai đầu danh sách người dùng.
+- Đạt sau sửa: ô tìm kiếm người dùng giữ chữ khi nhập @; bản sửa đã tích hợp dev tại a38d1f7.
+- Đạt: tạo việc thử, hủy có lý do, xóa việc đã hủy; tải lại trang không xuất hiện lại.
+- Chờ phản hồi: tìm kiếm và chèn ký tự giữa chuỗi trên Bảng công việc.
+- Chưa kết luận: toàn bộ kế hoạch P1, tích hợp các phân hệ và các mục còn lại của kế hoạch tổng thể.
+
+## Tự kiểm tra SV3 P1 — 26/10/2026
+
+- Người dùng đã cho phép Codex chủ động chạy kiểm tra thay vì chờ xác nhận từng thao tác.
+- Local: 10/10 tệp kiểm thử Node đạt; store.test.cjs có 17 nhóm nghiệp vụ. Đã sửa các kỳ vọng lỗi thời về số task/Lead theo seed và thêm ca kiểm tra hủy/xóa có guard.
+- Kiểm tra gói check_bundle.py đạt.
+- Edge headless với phiên LocalStorage mới riêng: 6 nhóm đạt, gồm phân trang 15 user, tạo/xóa/guard, focus modal, gõ @, tìm kiếm/chèn giữa chuỗi, lọc kết hợp, sắp xếp và phân trang bảng công việc, hủy/xóa qua tải lại, không tràn ngang tại các kích thước đã thử.
+- Khi xem ảnh 320px phát hiện nhãn bộ lọc bị ép quá hẹp; đã sửa local để các ô lọc xếp dọc, chạy lại đạt và xem lại ảnh.
+- Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/qa-sv3-p1/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
+- Phạm vi này chưa chứng minh toàn bộ kế hoạch tổng thể hoàn tất; chưa quay OBS.
+
+## P1 mẫu brief và AI-1 — 26/10/2026
+
+- Quản trị: chỉ xóa mẫu Inactive, xác nhận trước khi xóa/tắt mẫu; chặn xóa mẫu còn được brief tham chiếu; hiển thị trạng thái rỗng khi hết mẫu và vẫn tạo lại mẫu được.
+- Validation dữ liệu: trạng thái mẫu hợp lệ, giới hạn tên/prompt, prompt có biến {raw_input}.
+- Khách hàng: danh sách mẫu chỉ có Active Template; AI-1 mô phỏng dùng ngành hàng/các mục của mẫu đã chọn, lưu ID/tên/ngành hàng cùng brief. Không thực thi prompt bằng LLM và không gọi API ngoài.
+- Mô tả tối đa 20 ký tự bị từ chối có hướng dẫn; khi không còn mẫu Active có thông báo phục hồi và vẫn viết thủ công được. Bố cục thử mẫu trên mobile đã sửa sau khi xem ảnh.
+- Kiểm tra local: 11/11 tệp Node, check_bundle.py đạt; 6 nhóm Edge trong browser-ai1-template.cjs đạt, không pageerror. Ảnh 390px đã được xem, không tràn ngang.
+- Kết quả: docs/qa-ai1-template/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.
+
+## Tích hợp tài khoản, hồ sơ và bốn vai trò — 26/10/2026
+
+- Đăng ký: lỗi hiển thị tại từng trường, aria-invalid/aria-describedby, đưa focus vào trường sai và khóa gửi lặp trong lúc tạo tài khoản.
+- Sửa refresh khung SV2 còn truy cập user-chip cũ: đổi tên hồ sơ nay cập nhật đúng UI, không bị ghi đè lại khi đổi mật khẩu tiếp.
+- Xử lý Promise ready của View Transition khi hiệu ứng bị bỏ qua; kiểm tra điều hướng thông báo giữ cùng document và mở đúng dự án.
+- Sửa thông báo mobile: tab lọc xuống hàng, ngày nằm dưới tiêu đề. Sửa thanh tài khoản khách hàng và chiều rộng nội dung/select ở 320px.
+- Cập nhật browser-final-v5.cjs và browser-task27.cjs cho đường dẫn chia theo sinh viên, chọn tài khoản demo theo ID, và bỏ chế độ single-process cũ.
+- Kiểm tra local đạt: 11/11 tệp Node; check_bundle.py; 24 lượt tài khoản; 57 lượt tích hợp/hiển thị ở 320/390/1440px; chạy lại 6 nhóm AI-1 và 6 nhóm SV3 đạt. Không pageerror trong các bộ này.
+- Phạm vi luồng phiên bản trong browser-task27: tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi thao tác duyệt Lead/Client qua giao diện; không ghi đây là minh chứng thao tác UI Designer đầy đủ.
+- Kết quả hiện hành: docs/qa-integration-current/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.
+
+
+## Đối chiếu tài liệu hiện hành — 26/10/2026
+
+- Khôi phục có chọn lọc tài liệu gatekeeper/quy trình/AI từ bản sao lưu, giữ nguyên các stash và tài liệu QA cũ.
+- README gốc 15 phần; sửa hướng dẫn chạy theo html/sv1, chỉ mục tài liệu và bằng chứng QA thật.
+- Kiểm kê 18 màn giữ đúng 12 cột; sửa sort/phân trang/hủy task, confirm tắt mẫu và seed theo bản hiện hành.
+- Thay chỉ mục minh chứng cũ bằng phạm vi kiểm tra cụ thể; bỏ các khẳng định chưa xác minh về PR/Figma/deploy và điểm đạt tổng thể.
+- Deploy/Trello là checklist chuẩn bị, không coi đã xuất bản/đã tạo board. Hoãn OBS theo yêu cầu người dùng.
+
+
+## Audit web, tương phản và Moodboard — 26/10/2026
+
+- Tăng độ đậm chữ phụ, nhãn và trạng thái tại các khai báo màu gây thiếu tương phản; giữ nền/bảng màu thương hiệu.
+- Bổ sung tên truy cập cho 7 ô tìm kiếm/bộ lọc SV2. Thêm favicon ở các trang thiếu để tránh yêu cầu favicon mặc định lỗi.
+- Cho hàng nút và thanh trạng thái Moodboard xuống dòng, sửa tràn ngang 768px.
+- Khôi phục/cập nhật tests/audit-web.cjs: đường dẫn hiện hành, 19 lượt/8 độ rộng, trả mã lỗi khi audit phát hiện vấn đề; chụp ảnh tùy chọn.
+- Audit đạt trong phạm vi đo được: 0 lỗi tràn, 0 lỗi tương phản nền đơn sắc, 0 thiếu tên/alt/ID trùng và 0 console/pageerror/HTTP lỗi. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa chạy axe/W3C/Lighthouse.
+- Chạy hồi quy 11 tệp Node, bundle, 24 kiểm tra tài khoản và 57 kiểm tra vai trò đều đạt. Đã xem ảnh Moodboard 768px và đăng nhập 375px sau sửa.
+- Bằng chứng và 39 ảnh: [qa-web-current](qa-web-current/README.md). Chưa quay video.
+
+
+## Axe và cấu trúc truy cập — 26/10/2026
+
+- Sửa cấp tiêu đề theo cấu trúc h1/h2/h3, cập nhật CSS tương ứng; đặt tên riêng hai vùng sidebar/feedback.
+- Checkbox hoàn thành có aria-label chứa tên task; nhãn avatar chứa chữ viết tắt nhìn thấy.
+- Sửa tương phản select task và bỏ opacity toàn thẻ mẫu Inactive, giữ trạng thái bằng badge.
+- Axe-core 4.14.0: 44 lượt trang/modal ở 1440/375px, 0 vi phạm tự động và 0 HTTP/pageerror; còn 118 lượt phần tử incomplete cần xem thủ công. preload=false do lỗi @import của bước tải CSSOM engine; không tắt rule hay loại DOM.
+- Hồi quy: 11/11 tệp Node, check_bundle.py, browser-task27 57 kiểm tra đạt. Đã xem ảnh mẫu Inactive và modal user 375px.
+- Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](qa-axe-current/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.

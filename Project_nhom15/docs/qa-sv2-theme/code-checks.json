@@ -1,0 +1,172 @@
+[
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\admin-brief-template-management.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\api.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\app-sv2.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\designer-dashboard.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\designer-moodboard.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\designer-version-management.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\notifications.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\profile.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "--check",
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\js\\sv2\\share.js"
+    ],
+    "exitCode": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\board-assignee-move.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS inactive assignee requires explicit selection; mobile column follows successful move and retains previous state after failed save (DOM stub).\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\brief-regression.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS task dialog retains status; brief approval states Todo and has no ignored dropdown. Stub DOM only.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\brief-template.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS template permissions, Inactive-only deletion, invalid data rollback, persistence and referenced brief preservation.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\focus-regression.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS focus helper 6 cases: id, data identity, removed, disabled, text selection, outside. Stub DOM only.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\multi-user.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS multiple accounts, explicit identity, version ownership and independent Lead notifications.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\navigation.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS 4 vai trò: chọn tài khoản hoạt động, lưu currentUser và URL đích tồn tại\nPASS khôi phục vai trò qua phiên mới\nPASS bảo vệ điều hướng đúng vai trò và tài khoản hoạt động\nPASS vai trò thiếu/tài khoản bị khóa và trang chờ ghép\nPASS cấu hình ghép phân hệ (URL thật chỉ bật khi ready)\n5 nhóm kiểm thử điều hướng đạt. Không thay thế test DOM/trình duyệt.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\review-status.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS review HTML render states: Internal Review, Client Review, Changes Requested, Approved. Stub DOM only, not browser.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\startup.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS: healthy startup has no warning; missing files are deduplicated and rendered as text.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\store.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS Hủy và xóa task: lý do, quyền, trạng thái và lưu qua tải lại\nPASS Xóa user giữ nguyên dữ liệu khi bị chặn và xóa được user mới chưa liên kết\nPASS Tạo, sửa, chuyển cột và tải lại vẫn giữ dữ liệu\nPASS Validation và phân quyền chặn ghi sai\nPASS Duyệt brief tạo đúng một việc; không duyệt lặp\nPASS Yêu cầu bổ sung có lý do và không tự tạo việc\nPASS Thao tác brief không hợp lệ giữ nguyên brief, công việc và lịch sử\nPASS Duyệt chỉ qua khi checklist xong và mọi ghi chú đã xử lý\nPASS Tọa độ ghim giữ số 0 ở mép ảnh, giới hạn biên và mặc định giá trị không hợp lệ\nPASS Công việc có người phụ trách đã khóa phải chọn lại rõ ràng\nPASS Tạo, sửa, giải quyết ghi chú và yêu cầu sửa phiên bản\nPASS Người dùng: tạo, sửa, email trùng, khóa/mở khóa, tự khóa\nPASS Quy tắc studio và CRUD nhãn bảo toàn dự án\nPASS Lưu trữ chặn dự án đang mở và khóa mọi sửa liên quan\nPASS Không giả lưu khi LocalStorage đầy\nPASS AI → sửa → tạo task, chặn mơ hồ và trùng, từ chối giữ nguồn, lưu qua tải lại\nPASS AI thiếu dữ liệu và lỗi mô phỏng\n\n17 nhóm kiểm thử nghiệp vụ đạt.\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\sv2-linked.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS SV2 and SV3 share one canonical data key\nPASS Designer creates Draft; Client cannot see unsubmitted version\nPASS Checklist blocks submission and leaves persisted data unchanged\nPASS Submission reaches every active Lead, with exact project/version URL\nPASS Lead receives after reload, resolves deep-link project, requests changes back to author\nPASS Different Designer cannot edit or submit another author version\nPASS Author resubmits, Lead passes, Client sees same version\nPASS Moodboard preserves cards and full existing AI details through reload\nPASS Stale page refuses to erase data saved by another role\nPASS Notification actions are scoped to the current account\nPASS Write failure and corrupt data do not produce success or reset data\nPASS Six pages load external JS after shared data and link to existing files\n12 SV2 linked groups passed\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\task16.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS TASK16: pending default, scoped selector, retained selection, project switch, selected action target, read-only controls, invalid action rollback (DOM stub).\n"
+  },
+  {
+    "command": [
+      "C:\\BTCK_SV2\\tmp\\sv2-ui-work\\Project_nhom15\\tests\\task17-page.test.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS TASK17 page: scoped version labels/header/options, required explicit assignee, correct saved version, invalid version rollback, project selection reset, single-version fallback (DOM stub).\n"
+  },
+  {
+    "command": [
+      "tests/task27-integration.cjs"
+    ],
+    "exitCode": 0,
+    "output": "PASS Client creates project and submits brief to canonical store\nPASS Lead accepts same brief and assigns Designer\nPASS Designer submits real version; draft invisible to Client\nPASS Lead passes version; Client sees same ID and image\nPASS Client feedback preserves other versions and becomes Lead input\nPASS Designer resubmits, Lead passes, Client approves and reload persists\nPASS Role homes resolve to actual files\nPASS Concurrent update does not erase unrelated tasks\nPASS Storage failure is atomic\nPASS Linked project deletion rejected\nPASS Review history and previous-version display remain correct after reload\n11 integration groups passed\n"
+  },
+  {
+    "command": [
+      "check_bundle.py"
+    ],
+    "exitCode": 0,
+    "output": "DU FILE: HTML, CSS, JavaScript va anh da co day du.\nKiem tra nay khong thay the chay giao dien tren trinh duyet.\n"
+  }
+]

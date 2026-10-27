@@ -1,0 +1,30 @@
+{
+  "browser": "156.0.4314.42",
+  "checks": [
+    "Registration inline validation and focus",
+    "Register rejects mismatch",
+    "Registered account logs in under its own identity",
+    "Profile and password change persist through logout/login",
+    "Duplicate email rejected",
+    "Locked account cannot sign in",
+    "Quick demo Client",
+    "Quick demo Designer",
+    "Quick demo Creative Lead",
+    "Quick demo Admin",
+    "Search keeps keyboard focus",
+    "Notification opens correct project and marks read",
+    "index 320px",
+    "login 320px",
+    "register 320px",
+    "profile 320px",
+    "index 390px",
+    "login 390px",
+    "register 390px",
+    "profile 390px",
+    "index 1440px",
+    "login 1440px",
+    "register 1440px",
+    "profile 1440px"
+  ],
+  "errors": []
+}

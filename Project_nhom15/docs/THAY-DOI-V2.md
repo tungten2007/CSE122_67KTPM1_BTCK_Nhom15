@@ -36,3 +36,169 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm: `tests/brief-regression.test.cjs`
 - Thêm: `tests/focus-regression.test.cjs`
 - Thêm: `tests/review-status.test.cjs`
+
+## Tích hợp phần hủy công việc — 26/10/2026
+
+- Đưa luồng hủy công việc từ `feature/sv3` vào cấu trúc đã sắp xếp của `dev`: `js/shared/store.js`, `js/sv3/app.js`, `js/sv3/pages/lead-task-board.js`, `css/sv3/pages/lead.css`.
+- Yêu cầu lý do, hiển thị cột Đã hủy, chặn chuyển/chỉnh sửa công việc đã hủy và tính trạng thái hủy là trạng thái kết thúc khi lưu trữ dự án.
+- Không chạy kiểm thử; người dùng sẽ kiểm tra thủ công.
+
+## Bổ sung ngày 26/10/2026 — hủy công việc
+
+- Thêm trạng thái `Đã hủy` cho bảng công việc SV3 và thao tác hủy riêng yêu cầu nhập lý do.
+- Chặn chuyển công việc thường sang trạng thái hủy, chặn chuyển lại hoặc sửa công việc đã hủy; cho phép lưu trữ dự án khi các việc còn lại đều đã hoàn thành hoặc đã hủy.
+- Cập nhật các tệp `js/store.js`, `js/app.js`, `js/pages/lead-task-board.js` và `css/pages/lead.css`.
+- Chưa chạy ứng dụng/kiểm thử; để người dùng kiểm tra theo yêu cầu.
+
+- Sửa bộ chọn sự kiện cho nút hủy để gắn đúng trên mọi thẻ công việc.
+
+## Bổ sung ngày 26/10/2026 — xóa có kiểm soát
+
+- Thêm thao tác xóa công việc đã hủy; chặn xóa task chưa hủy hoặc còn liên kết đề xuất.
+- Thêm thao tác xóa người dùng; chặn tự xóa, xóa Admin hoạt động cuối cùng và xóa người dùng còn liên kết với task, phiên bản, phản hồi, brief hoặc dự án.
+- Ghi nhận thao tác vào activity log; cập nhật `js/store.js`, `js/pages/lead-task-board.js` và `js/pages/admin-user-management.js`.
+- Chưa chạy kiểm thử; chờ người dùng kiểm tra trước khi gộp vào `dev`.
+
+- Điều chỉnh thẻ đã hủy: giữ chỉ đọc, tắt kéo thả, đồng thời hiện nút xóa khi dự án còn mở.
+
+## Bổ sung ngày 26/10/2026 — lọc và phân trang bảng công việc
+
+- Thêm sắp xếp theo hạn, tên hoặc ưu tiên; xóa bộ lọc; tìm kiếm debounce; đếm kết quả và phân trang.
+- Tiến độ không tính các công việc đã hủy.
+- Sửa selector gắn sự kiện chỉnh sửa để áp dụng cho mọi thẻ công việc.
+- Chưa chạy kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — quản lý danh sách người dùng
+
+- Thêm sắp xếp theo tên, vai trò, trạng thái; tìm kiếm debounce; nút xóa bộ lọc; bộ đếm có thông báo cập nhật; giữ phân trang.
+- Chưa chạy kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — dữ liệu demo SV3
+
+- Mở rộng seed từ 6 lên 15 người dùng và từ 7 lên 15 công việc; có 2 công việc đã hủy để trình bày các trạng thái, lọc và phân trang.
+- Dữ liệu là tài khoản demo giả lập; không chứa thông tin đăng nhập thật.
+- Chưa chạy ứng dụng/kiểm thử.
+
+## Bổ sung ngày 26/10/2026 — trạng thái gửi và focus của modal
+
+- Đưa focus vào trường đầu tiên khi mở form; modal chỉ xem đưa focus vào nút đóng.
+- Khóa nút gửi, hiển thị Đang lưu và ngăn gửi lặp trong lúc xử lý; hỗ trợ callback trả Promise.
+- Khi lưu thất bại, giữ nội dung form, đưa focus đến thông báo lỗi và bật lại nút gửi để thử lại.
+- Tệp sửa: `js/app.js`. Chỉ đối chiếu mã đã lưu trên GitHub; chưa chạy trình duyệt/kiểm thử, theo yêu cầu người dùng tự kiểm tra.
+
+## Tích hợp SV3 vào dev — 26/10/2026
+
+- Hợp nhất feature/sv3: xóa công việc đã hủy, xóa người dùng có guard và hộp xác nhận; lọc/sắp xếp/phân trang; seed 15 người dùng và 15 công việc (2 việc đã hủy); trạng thái gửi và focus modal.
+- Chuyển mã sang js/shared, js/sv3 và css/sv3; giữ cấu trúc HTML, điều hướng, khóa dữ liệu dùng chung và API SV1/SV2 trên dev.
+- Nút Xóa người dùng nằm tại html/sv3/admin-user-management.html sau khi tải bản dev mới. File JavaScript tương ứng: js/sv3/pages/admin-user-management.js.
+- Chưa chạy trình duyệt hoặc bộ kiểm thử, theo yêu cầu người dùng tự kiểm tra. Seed mới áp dụng khi nạp dữ liệu mẫu mới; không tự đặt lại LocalStorage hiện có.
+
+## Sửa lỗi nhập tìm kiếm người dùng — 26/10/2026
+
+- Giữ nguyên ô tìm kiếm khi debounce lọc danh sách; chỉ cập nhật bảng kết quả và phân trang, tránh dựng lại ô nhập làm gián đoạn con trỏ/vùng chọn khi gõ @.
+- Lưu truy vấn ngay khi nhập và chờ bộ gõ kết thúc composition trước khi lọc.
+- Đã sửa local trước. Kiểm tra Edge headless đạt: gõ chậm, Shift+2 (@), gõ tiếp email, chèn ký tự giữa chuỗi và giữ vị trí con trỏ, lọc email, xóa bộ lọc và sự kiện composition. Không có pageerror trong lượt kiểm tra.
+- Đã sửa local, cập nhật feature/sv3, kiểm tra Edge đạt và được người dùng xác nhận hoạt động. Nhập bản sửa vào dev sau xác nhận.
+
+## Tự kiểm tra SV3 P1 — 26/10/2026
+
+- Người dùng đã cho phép Codex chủ động chạy kiểm tra thay vì chờ xác nhận từng thao tác.
+- Local: 10/10 tệp kiểm thử Node đạt; store.test.cjs có 17 nhóm nghiệp vụ. Đã sửa các kỳ vọng lỗi thời về số task/Lead theo seed và thêm ca kiểm tra hủy/xóa có guard.
+- Kiểm tra gói check_bundle.py đạt.
+- Edge headless với phiên LocalStorage mới riêng: 6 nhóm đạt, gồm phân trang 15 user, tạo/xóa/guard, focus modal, gõ @, tìm kiếm/chèn giữa chuỗi, lọc kết hợp, sắp xếp và phân trang bảng công việc, hủy/xóa qua tải lại, không tràn ngang tại các kích thước đã thử.
+- Khi xem ảnh 320px phát hiện nhãn bộ lọc bị ép quá hẹp; đã sửa local để các ô lọc xếp dọc, chạy lại đạt và xem lại ảnh.
+- Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/qa-sv3-p1/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
+- Phạm vi này chưa chứng minh toàn bộ kế hoạch tổng thể hoàn tất; chưa quay OBS.
+
+## P1 mẫu brief và AI-1 — 26/10/2026
+
+- Quản trị: chỉ xóa mẫu Inactive, xác nhận trước khi xóa/tắt mẫu; chặn xóa mẫu còn được brief tham chiếu; hiển thị trạng thái rỗng khi hết mẫu và vẫn tạo lại mẫu được.
+- Validation dữ liệu: trạng thái mẫu hợp lệ, giới hạn tên/prompt, prompt có biến {raw_input}.
+- Khách hàng: danh sách mẫu chỉ có Active Template; AI-1 mô phỏng dùng ngành hàng/các mục của mẫu đã chọn, lưu ID/tên/ngành hàng cùng brief. Không thực thi prompt bằng LLM và không gọi API ngoài.
+- Mô tả tối đa 20 ký tự bị từ chối có hướng dẫn; khi không còn mẫu Active có thông báo phục hồi và vẫn viết thủ công được. Bố cục thử mẫu trên mobile đã sửa sau khi xem ảnh.
+- Kiểm tra local: 11/11 tệp Node, check_bundle.py đạt; 6 nhóm Edge trong browser-ai1-template.cjs đạt, không pageerror. Ảnh 390px đã được xem, không tràn ngang.
+- Kết quả: docs/qa-ai1-template/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.
+
+## Tích hợp tài khoản, hồ sơ và bốn vai trò — 26/10/2026
+
+- Đăng ký: lỗi hiển thị tại từng trường, aria-invalid/aria-describedby, đưa focus vào trường sai và khóa gửi lặp trong lúc tạo tài khoản.
+- Sửa refresh khung SV2 còn truy cập user-chip cũ: đổi tên hồ sơ nay cập nhật đúng UI, không bị ghi đè lại khi đổi mật khẩu tiếp.
+- Xử lý Promise ready của View Transition khi hiệu ứng bị bỏ qua; kiểm tra điều hướng thông báo giữ cùng document và mở đúng dự án.
+- Sửa thông báo mobile: tab lọc xuống hàng, ngày nằm dưới tiêu đề. Sửa thanh tài khoản khách hàng và chiều rộng nội dung/select ở 320px.
+- Cập nhật browser-final-v5.cjs và browser-task27.cjs cho đường dẫn chia theo sinh viên, chọn tài khoản demo theo ID, và bỏ chế độ single-process cũ.
+- Kiểm tra local đạt: 11/11 tệp Node; check_bundle.py; 24 lượt tài khoản; 57 lượt tích hợp/hiển thị ở 320/390/1440px; chạy lại 6 nhóm AI-1 và 6 nhóm SV3 đạt. Không pageerror trong các bộ này.
+- Phạm vi luồng phiên bản trong browser-task27: tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi thao tác duyệt Lead/Client qua giao diện; không ghi đây là minh chứng thao tác UI Designer đầy đủ.
+- Kết quả hiện hành: docs/qa-integration-current/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.
+
+
+## Đối chiếu tài liệu hiện hành — 26/10/2026
+
+- Khôi phục có chọn lọc tài liệu gatekeeper/quy trình/AI từ bản sao lưu, giữ nguyên các stash và tài liệu QA cũ.
+- README gốc 15 phần; sửa hướng dẫn chạy theo html/sv1, chỉ mục tài liệu và bằng chứng QA thật.
+- Kiểm kê 18 màn giữ đúng 12 cột; sửa sort/phân trang/hủy task, confirm tắt mẫu và seed theo bản hiện hành.
+- Thay chỉ mục minh chứng cũ bằng phạm vi kiểm tra cụ thể; bỏ các khẳng định chưa xác minh về PR/Figma/deploy và điểm đạt tổng thể.
+- Deploy/Trello là checklist chuẩn bị, không coi đã xuất bản/đã tạo board. Hoãn OBS theo yêu cầu người dùng.
+
+- Kiểm chứng đợt tài liệu: 22 Markdown, 134 liên kết tương đối không hỏng; README 15 phần; bảng 18 màn x 12 cột; 21 HTML; số lượt QA 24/57/6/6 khớp JSON; check_bundle.py đạt. Đây là kiểm tra tài liệu, không thay thế kiểm thử chức năng.
+
+
+## Audit web, tương phản và Moodboard — 26/10/2026
+
+- Tăng độ đậm chữ phụ, nhãn và trạng thái tại các khai báo màu gây thiếu tương phản; giữ nền/bảng màu thương hiệu.
+- Bổ sung tên truy cập cho 7 ô tìm kiếm/bộ lọc SV2. Thêm favicon ở các trang thiếu để tránh yêu cầu favicon mặc định lỗi.
+- Cho hàng nút và thanh trạng thái Moodboard xuống dòng, sửa tràn ngang 768px.
+- Khôi phục/cập nhật tests/audit-web.cjs: đường dẫn hiện hành, 19 lượt/8 độ rộng, trả mã lỗi khi audit phát hiện vấn đề; chụp ảnh tùy chọn.
+- Audit đạt trong phạm vi đo được: 0 lỗi tràn, 0 lỗi tương phản nền đơn sắc, 0 thiếu tên/alt/ID trùng và 0 console/pageerror/HTTP lỗi. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa chạy axe/W3C/Lighthouse.
+- Chạy hồi quy 11 tệp Node, bundle, 24 kiểm tra tài khoản và 57 kiểm tra vai trò đều đạt. Đã xem ảnh Moodboard 768px và đăng nhập 375px sau sửa.
+- Bằng chứng và 39 ảnh: [qa-web-current](qa-web-current/README.md). Chưa quay video.
+
+
+## Axe và cấu trúc truy cập — 26/10/2026
+
+- Sửa cấp tiêu đề theo cấu trúc h1/h2/h3, cập nhật CSS tương ứng; đặt tên riêng hai vùng sidebar/feedback.
+- Checkbox hoàn thành có aria-label chứa tên task; nhãn avatar chứa chữ viết tắt nhìn thấy.
+- Sửa tương phản select task và bỏ opacity toàn thẻ mẫu Inactive, giữ trạng thái bằng badge.
+- Axe-core 4.14.0: 44 lượt trang/modal ở 1440/375px, 0 vi phạm tự động và 0 HTTP/pageerror; còn 118 lượt phần tử incomplete cần xem thủ công. preload=false do lỗi @import của bước tải CSSOM engine; không tắt rule hay loại DOM.
+- Hồi quy: 11/11 tệp Node, check_bundle.py, browser-task27 57 kiểm tra đạt. Đã xem ảnh mẫu Inactive và modal user 375px.
+- Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](qa-axe-current/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.
+
+
+## Định dạng code riêng SV3 — 26/10/2026
+
+- Sắp xếp 7 HTML, 6 CSS và 9 JavaScript trong html/sv3, css/sv3, js/sv3: thụt lề 2 khoảng trắng, tách khai báo/quy tắc/khối lệnh, xuống dòng biểu thức dài.
+- Prettier 3.6.2, printWidth 100, HTML whitespace strict; kiểm tra AST/debug-check của formatter đạt trên 22 bản mã trước định dạng. Nội dung chuỗi dữ liệu và nghiệp vụ được giữ nguyên.
+- Commit chỉ định dạng từ mã đã commit. Các sửa HTML/validation đang làm dở ở working tree được giữ riêng và không đưa vào commit định dạng; không sửa code SV1/SV2/shared trong đợt này.
+- Theo yêu cầu mới nhất của người dùng: chỉ định dạng, không chạy thêm kiểm thử. Các kiểm tra đã thực hiện trước yêu cầu dừng được giữ ngoài commit này; đợt này không tuyên bố thay đổi chức năng.
+
+
+## Khôi phục nội dung Tổng hợp phản hồi — 27/10/2026
+
+- Bản local bị mất thao tác lấy phần tử main, thành gán innerHTML cho chuỗi "#main", nên vùng nội dung trống trong khi khung điều hướng vẫn hiện.
+- Lấy phần tử bằng document.getElementById("main") trước khi gán nội dung. Giữ bố cục, dữ liệu, quy tắc tổng hợp và định dạng code SV3 hiện có.
+- Chỉ sửa js/sv3/pages/lead-feedback-summary.js và ghi chú này; giữ riêng các thay đổi đang làm dở. Không chạy thêm kiểm thử theo yêu cầu người dùng.
+
+
+## Giữ thống nhất màu xanh khi đổi tài khoản — 27/10/2026
+
+- Giữ thứ tự stylesheet theo trang đích khi điều hướng, kể cả CSS dùng lại; tránh CSS nền tím ghi đè CSS xanh sau nhiều lượt chuyển tài khoản/trang.
+- Thêm css/shared/workspace-theme.css dùng chung, lấy bảng màu xanh của Bảng công việc; dùng cho cả trang tải trực tiếp và điều hướng trong cùng document.
+- Giữ stylesheet màu trong lúc thay trang, thống nhất màu ô tài khoản/dự án, danh sách lựa chọn, nút chính và focus.
+- Giữ nguyên dữ liệu và phân quyền; không chạy thêm kiểm thử theo yêu cầu người dùng.
+
+
+## Mục Phản hồi khách hàng và tiếp nhận của trưởng nhóm — 27/10/2026
+
+- Thêm mục Phản hồi riêng trong menu khách hàng; dùng chế độ view=feedback của trang phiên bản, cùng dữ liệu dự án/phiên bản hiện có.
+- Có nút Gửi phản hồi, danh sách lịch sử và thông báo trạng thái chỉ đọc khi phiên bản đã kết thúc. Phản hồi chung không tạo ghim giả trên ảnh.
+- Giữ chế độ Phản hồi khi đổi dự án/phiên bản. Duyệt phiên bản vẫn có mục riêng để xem thiết kế và quyết định.
+- Thông báo phản hồi của Lead mở Tổng hợp phản hồi đúng dự án/phiên bản; dữ liệu vẫn nằm trong Store chung, không tạo kho phản hồi thứ hai.
+- Trang Tổng hợp phản hồi làm mới khi Store thay đổi ở tab khác. Giữ quy tắc chỉ gửi khi phiên bản đang Client Review và dự án chưa lưu trữ.
+- Không chạy thêm kiểm thử theo yêu cầu người dùng; giữ riêng các thay đổi đang làm dở.
+
+
+## Mở nút gửi phản hồi chung của khách hàng — 27/10/2026
+
+- Tách điều kiện gửi phản hồi chung khỏi điều kiện duyệt/sửa quyết định phiên bản; khách hàng có thể gửi bổ sung trên phiên bản đã được chia sẻ, kể cả Approved, Changes Requested hoặc Rejected.
+- Thêm TeamClient.sendFeedback để ghi phản hồi chung vào Store mà không thay trạng thái duyệt hoặc sửa lịch sử cũ. Giữ kiểm tra tài khoản Client đang hoạt động, dự án chưa lưu trữ, phiên bản thuộc đúng dự án và đã chia sẻ; nội dung từ 3–1.000 ký tự.
+- Giữ nguyên khóa thao tác duyệt và sửa/xóa các phản hồi cũ khi phiên bản đã kết thúc. Phản hồi mới vẫn gửi thông báo tới trưởng nhóm như luồng hiện có.
+- Không chạy thêm kiểm thử theo yêu cầu người dùng; các thay đổi đang làm dở khác được giữ riêng.

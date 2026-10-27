@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-26T06:54:49.800Z",
+  "browser": "156.0.4314.42",
+  "status": "PASS",
+  "checks": [
+    "User pagination covers 15 unique accounts without missing/duplicate rows",
+    "User filters/reset, modal focus/error, create/delete confirmation and persistence",
+    "User search keeps prefix when typing @ and continuing email",
+    "Board pagination, title sorting, combined filters/reset and caret-aware search",
+    "Task cancel reason validation, terminal-state card, deletion and reload persistence",
+    "Board layout at 320/390/768px and users at 390px without horizontal overflow"
+  ],
+  "errors": [],
+  "note": "Fresh isolated browser context; no user LocalStorage reset."
+}

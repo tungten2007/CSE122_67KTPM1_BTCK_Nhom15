@@ -11,10 +11,10 @@ window.WorkspaceNavigation = (() => {
   let controller = new AbortController(), busy = false, queued;
   const cache = new Map();
   const file = url => url.pathname.split('/').at(-1);
+  const route = url => url.pathname.match(/(?:^|\/)(html\/(?:sv1|sv2|sv3)\/[^/]+\.html)$/)?.[1] || '';
   const appRoot = (doc, url) => new URL(doc.querySelector('base[href]')?.getAttribute('href') || '/', url);
   const supported = /^https?:$/.test(location.protocol);
-  const canOpen = url => supported && url.origin === location.origin &&
-    url.pathname.startsWith('/html/') && pages.has(url.pathname.slice(1));
+  const canOpen = url => supported && url.origin === location.origin && pages.has(route(url)) && !route(url).startsWith('html/sv2/');
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true, signal:controller.signal});
@@ -37,6 +37,8 @@ window.WorkspaceNavigation = (() => {
     const base = appRoot(doc, url);
     const styles = [...doc.querySelectorAll('link[rel="stylesheet"]')].map(link => new URL(link.getAttribute('href'), base).href);
     if (window.CS?.session()?.role === 'Client' && ['profile.html','notifications.html'].includes(file(url))) styles.push(new URL('css/sv2/client-account.css', base).href);
+    const theme = document.getElementById('creatorstudio-workspace-theme');
+    if (theme && !styles.includes(theme.href)) styles.push(theme.href);
     // Fetch scripts before changing the visible document. Only repository scripts are accepted.
     const scripts = await Promise.all([...doc.querySelectorAll('script')].map(async source => {
       if (!source.src) return /WorkspaceNavigation\.ready\s*\(/.test(source.textContent) ? {text:source.textContent} : null;
@@ -58,7 +60,11 @@ window.WorkspaceNavigation = (() => {
         document.head.append(link); added.push(link);
       });
     })).catch(error => {added.forEach(link => link.remove()); throw error;});
-    return {doc, scripts:scripts.filter(Boolean), styles, added, oldStyles};
+    const orderedStyles = styles.map(href =>
+      oldStyles.find(link => !link.disabled && link.href === href) ||
+      added.find(link => link.href === href)
+    );
+    return {doc, scripts:scripts.filter(Boolean), styles, added, oldStyles, orderedStyles};
   }
 
   async function navigate(url, push = true) {
@@ -71,7 +77,12 @@ window.WorkspaceNavigation = (() => {
         controller.abort(); controller = new AbortController();
         if (push) history.pushState({workspace:true}, '', url.href);
         page.oldStyles.forEach(link => {if (!page.styles.includes(link.href) || link.disabled) link.remove();});
-        page.added.forEach(link => {link.media = 'all';});
+        // Reused styles must follow the destination page order as well.
+        // Otherwise a newly loaded base sheet can override the shared theme.
+        page.orderedStyles.forEach(link => {
+          link.media = 'all';
+          document.head.append(link);
+        });
         document.title = page.doc.title;
         document.body.className = '';
         document.body.replaceChildren(...[...page.doc.body.childNodes].filter(node => node.nodeName !== 'SCRIPT').map(node => document.importNode(node, true)));
@@ -87,6 +98,7 @@ window.WorkspaceNavigation = (() => {
       };
       if (document.startViewTransition && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
         const transition = document.startViewTransition(update);
+        transition.ready.catch(() => {}); // Skipped visual transitions must not reject globally.
         transition.finished.catch(() => {});
         await transition.updateCallbackDone;
         await transition.finished.catch(() => {});
@@ -103,7 +115,7 @@ window.WorkspaceNavigation = (() => {
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || link.target || link.hasAttribute('download')) return;
-    if (!link.closest('.sidebar nav') && !link.matches('#activity-bell,.top-actions > a.avatar')) return;
+    if (!link.closest('.app-shell,.team-shell')) return;
     const url = new URL(link.href);
     if (!canOpen(url)) return;
     event.preventDefault();
@@ -120,5 +132,5 @@ window.WorkspaceNavigation = (() => {
     else location.reload();
   });
   if (supported && pages.has(file(new URL(location.href)))) history.replaceState({workspace:true}, '');
-  return {ready, get signal() {return controller.signal;}};
+  return {ready, navigate, canOpen, get signal() {return controller.signal;}};
 })();
