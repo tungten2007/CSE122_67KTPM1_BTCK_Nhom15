@@ -25,7 +25,7 @@ Chi tiết: [user-flow](Project_nhom15/docs/01-gatekeeper/user-flow.md).
 
 Có **21 tệp HTML: 18 màn chính và 3 trang tiện ích** (BAT-DAU, api-demo, role-preview). Trang 404 dùng cho cả 403 và 404.
 
-[Bảng kiểm kê](Project_nhom15/docs/01-gatekeeper/screen-inventory.md) gồm 12 cột nghiệp vụ, phân công theo SV1/SV2/SV3. Giao diện đã chạy được không thay thế bằng chứng thiết kế Figma được duyệt.
+[Bảng kiểm kê](Project_nhom15/docs/screen-inventory.md) gồm 12 cột nghiệp vụ, phân công theo SV1/SV2/SV3. Giao diện đã chạy được không thay thế bằng chứng thiết kế Figma được duyệt.
 
 ## 5. Chức năng
 
@@ -104,20 +104,20 @@ Không giả commit, review hay đóng góp của sinh viên khác. main/PR/revi
 
 [Design system](Project_nhom15/docs/01-gatekeeper/design-system.md) hỗ trợ đối chiếu code. [Figma audit](Project_nhom15/docs/01-gatekeeper/figma-audit.md) là bản ghi lịch sử được khôi phục, chưa xác minh lại file Figma hiện tại.
 
-Trello/Figma và danh tính/MSSV cần nhóm cung cấp link và thông tin thật. [Phân công hiện có](Project_nhom15/docs/team-assignment.md); [hướng dẫn Trello](Project_nhom15/docs/02-quy-trinh/trello-setup.md).
+Trello/Figma và danh tính/MSSV cần nhóm cung cấp link và thông tin thật. [Phân công hiện có](Project_nhom15/docs/05-nhom/team-assignment.md); [hướng dẫn Trello](Project_nhom15/docs/02-quy-trinh/trello-setup.md).
 
 ## 14. Deploy và minh chứng
 
 Chưa xác nhận URL deploy public hiện hành trong đợt kiểm tra này. [Hướng dẫn deploy](Project_nhom15/docs/02-quy-trinh/deploy.md) là checklist chuẩn bị, không phải bằng chứng đã xuất bản.
 
-Kết quả kiểm thử và [39 ảnh web hiện hành](Project_nhom15/docs/qa-web-current/README.md) có trong repo. Các ảnh QA cũ khác có thể chỉ lưu local. Figma, Trello, phê duyệt và link public chỉ đánh dấu hoàn thành khi có nguồn thật. OBS đang hoãn theo yêu cầu người dùng; các kịch bản khôi phục chỉ là tài liệu chuẩn bị.
+Kết quả kiểm thử và [39 ảnh web hiện hành](Project_nhom15/docs/04-qa/web/README.md) có trong repo. Các ảnh QA cũ khác có thể chỉ lưu local. Figma, Trello, phê duyệt và link public chỉ đánh dấu hoàn thành khi có nguồn thật. OBS đang hoãn theo yêu cầu người dùng; các kịch bản khôi phục chỉ là tài liệu chuẩn bị.
 
 ## 15. Giới hạn và việc tiếp theo
 
 Còn cần kiểm tra các mục chưa đủ bằng chứng: module danh sách dùng chung và kiểm thử theo kế hoạch, W3C/axe/Lighthouse và tương phản vùng nền ảnh/gradient, bộ ảnh theo URL mới, link Figma/Trello, quy trình review và deploy. Chưa coi toàn bộ bài tập lớn hoàn tất.
 
-Đọc [chỉ mục tài liệu](Project_nhom15/docs/README.md), [tiến độ](Project_nhom15/docs/TIEN-DO-SV3.md) và [khai báo AI](Project_nhom15/docs/03-ai/ai-usage-report.md). Sinh viên tự bổ sung phần đã tự làm, cách hiểu code và thông tin thật; không tạo bằng chứng thay người khác.
+Đọc [chỉ mục tài liệu](Project_nhom15/docs/README.md), [tiến độ](Project_nhom15/docs/05-nhom/sv3/progress.md) và [khai báo AI](Project_nhom15/docs/03-ai/ai-usage-report.md). Sinh viên tự bổ sung phần đã tự làm, cách hiểu code và thông tin thật; không tạo bằng chứng thay người khác.
 
-Audit tự viết hiện hành: [19 lượt/8 độ rộng](Project_nhom15/docs/qa-web-current/README.md); 0 phát hiện trong phạm vi đo được, còn 26 lượt phần tử nền ảnh/gradient chưa đo.
+Audit tự viết hiện hành: [19 lượt/8 độ rộng](Project_nhom15/docs/04-qa/web/README.md); 0 phát hiện trong phạm vi đo được, còn 26 lượt phần tử nền ảnh/gradient chưa đo.
 
-Axe-core 4.14.0 đã chạy [44 lượt trang/modal](Project_nhom15/docs/qa-axe-current/README.md): 0 vi phạm tự động, 118 lượt phần tử incomplete cần xem thủ công.
+Axe-core 4.14.0 đã chạy [44 lượt trang/modal](Project_nhom15/docs/04-qa/accessibility/README.md): 0 vi phạm tự động, 118 lượt phần tử incomplete cần xem thủ công.

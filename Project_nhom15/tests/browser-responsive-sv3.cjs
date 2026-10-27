@@ -3,7 +3,7 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/qa-responsive-sv3');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'docs/04-qa/web/responsive');
 const checks=[],errors=[];
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.ttf':'font/ttf'};
 const server=http.createServer((req,res)=>{

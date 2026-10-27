@@ -7,7 +7,7 @@
 | # | Mục | Cách kiểm | Minh chứng | Người | Hiện trạng |
 |---|---|---|---|---|---|
 | 1 | 5 gatekeeper đã ánh xạ | Mở [evidence-index.md](../01-gatekeeper/evidence-index.md), đối chiếu từng dòng | Evidence index + link thật | Nhóm | 🟡 2 mục ❌ (deploy, OBS), 3 mục 🟡 (Figma, Git, prompt log) |
-| 2 | Kiểm kê 18 màn đủ 12 cột + user flow | Mở [screen-inventory.md](../01-gatekeeper/screen-inventory.md), [user-flow.md](../01-gatekeeper/user-flow.md); đếm 18 dòng | Hai tài liệu + sitemap Mermaid | Nhóm | ✅ tài liệu có; chờ nhóm duyệt |
+| 2 | Kiểm kê 18 màn đủ 12 cột + user flow | Mở [screen-inventory.md](../screen-inventory.md), [user-flow.md](../01-gatekeeper/user-flow.md); đếm 18 dòng | Hai tài liệu + sitemap Mermaid | Nhóm | ✅ tài liệu có; chờ nhóm duyệt |
 | 3 | Figma đủ 18 màn desktop/mobile + trạng thái + prototype + export | Mở file Figma; đếm frame; xem prototype; mở thư mục export | [figma-audit.md](../01-gatekeeper/figma-audit.md) + link public | Nhóm (SV3 6 màn) | ❌ 6/18, 0 prototype/export |
 | 4 | Git: `main`, `dev`, nhánh feature; commit/PR cả 3 SV; review/merge/tag | `git ls-remote`, GitHub PR/Insights; kiểm tra tác giả | Repo + PR #1–#8 | SV1/SV2/SV3 | 🟡 #2/#3/#8 còn mở, chưa tag |
 | 5 | Deploy public, mở ẩn danh | Mở URL trên điện thoại/ẩn danh; hard reload | URL + ảnh có thanh địa chỉ | Nhóm | ❌ chưa bật Pages |

@@ -39,6 +39,6 @@ Các frame có text chỉnh sửa được, SVG native và instance component. �
 
 Chưa tạo wireframe SV3 riêng, trạng thái AI đầy đủ, prototype hay bản xuất SVG/PNG. Không có tệp export để dẫn link. Chưa có nhóm/giảng viên duyệt.
 
-Xem `../docs/SV3-DESIGN-QA.md` và `../docs/TIEN-DO-SV3.md`. QA Figma không thay kiểm thử website bằng trình duyệt.
+Xem `../docs/SV3-DESIGN-QA.md` và `../docs/05-nhom/sv3/progress.md`. QA Figma không thay kiểm thử website bằng trình duyệt.
 
 Cập nhật 12/10/2026: đọc Figma hoạt động nhưng lệnh chỉnh sửa vẫn bị rate limit. Chưa có sửa Figma mới hoặc export; các lỗi/giới hạn QA nêu trên vẫn còn.

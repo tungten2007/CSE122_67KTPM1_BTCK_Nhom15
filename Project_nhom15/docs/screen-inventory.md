@@ -71,14 +71,14 @@ Phản hồi chung không đổi quyết định duyệt trước đó. Dự án
 
 | Phần việc | HTML | CSS | JavaScript |
 |---|---|---|---|
-| SV1 | [html/sv1](../html/sv1/) | [css/sv1](../css/sv1/) | [js/sv1](../js/sv1/) |
-| SV2 | [html/sv2](../html/sv2/) | [css/sv2](../css/sv2/) | [js/sv2](../js/sv2/) |
-| SV3 | [html/sv3](../html/sv3/) | [css/sv3](../css/sv3/) | [js/sv3](../js/sv3/) |
-| Dùng chung | [html/shared](../html/shared/) | [css/shared](../css/shared/) | [js/shared](../js/shared/) |
+| SV1 | [html/sv1](../html/sv1) | [css/sv1](../css/sv1) | [js/sv1](../js/sv1) |
+| SV2 | [html/sv2](../html/sv2) | [css/sv2](../css/sv2) | [js/sv2](../js/sv2) |
+| SV3 | [html/sv3](../html/sv3) | [css/sv3](../css/sv3) | [js/sv3](../js/sv3) |
+| Dùng chung | [html/shared](../html/shared) | [css/shared](../css/shared) | [js/shared](../js/shared) |
 
 ## Tài liệu liên quan
 
-- [Chỉ mục docs](README.md), [phân công](team-assignment.md), [cấu trúc mã nguồn](FILE-STRUCTURE.md).
+- [Chỉ mục docs](README.md), [phân công](05-nhom/team-assignment.md), [cấu trúc mã nguồn](06-tham-khao/file-structure.md).
 - [User flow](01-gatekeeper/user-flow.md), [design system](01-gatekeeper/design-system.md), [chỉ mục minh chứng](01-gatekeeper/evidence-index.md).
-- [Tài liệu SV1](submission-sv1/), [tài liệu SV2](submission-sv2/), [tiến độ SV3](TIEN-DO-SV3.md).
+- [Tài liệu SV1](05-nhom/sv1), [tài liệu SV2](05-nhom/sv2), [tiến độ SV3](05-nhom/sv3/progress.md).
 - [Nhật ký thay đổi](THAY-DOI-V2.md). Link Figma được duyệt và link OBS thật phải cập nhật theo minh chứng của nhóm; không suy ra từ việc có code.

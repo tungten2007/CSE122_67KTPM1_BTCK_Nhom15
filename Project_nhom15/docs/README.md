@@ -1,37 +1,18 @@
 # Tài liệu CreatorStudio — Nhóm 15
 
-**Bắt đầu tại [Screen Inventory chung của cả 3 sinh viên](screen-inventory.md).** Bảng được chia theo SV1/SV2/SV3, đủ 12 cột và dùng tên nhánh hiện tại.
+Bắt đầu với **[Screen Inventory của cả 3 sinh viên](screen-inventory.md)**.
 
-## Tài liệu được sắp theo mục đích
-
-| Nhóm | Nơi lưu / tài liệu | Nội dung |
-|---|---|---|
-| Kiểm kê màn hình | [screen-inventory.md](screen-inventory.md) | Bản chính duy nhất: role, mục tiêu, thao tác, màn hình, file, CRUD, trạng thái, AI, phân công, task, nhánh, OBS |
-| Phân tích và thiết kế | [01-gatekeeper](01-gatekeeper/README.md) | Luồng người dùng, design system, Figma và chỉ mục minh chứng |
-| Hướng dẫn và quy trình | [02-quy-trinh](02-quy-trinh/) | Demo, bảo vệ, triển khai, Trello; kịch bản OBS chỉ để chuẩn bị, chưa quay |
-| Khai báo AI | [03-ai](03-ai/) | Báo cáo và nhật ký dùng AI; từng sinh viên xác nhận phần sử dụng thật |
-| Phân công và tiến độ | [team-assignment](team-assignment.md), [TIEN-DO-SV3](TIEN-DO-SV3.md) | Phần việc của nhóm và tiến độ ghi nhận |
-| Hồ sơ sinh viên | [submission-sv1](submission-sv1/), [submission-sv2](submission-sv2/) | Tài liệu bàn giao riêng; phần SV3 xem tiến độ và tài liệu nhiệm vụ tại docs |
-| Cấu trúc / cách chạy | [FILE-STRUCTURE](FILE-STRUCTURE.md), [README gốc](../../README.md) | Tổ chức mã nguồn và chạy website |
-| Nhật ký thay đổi | [THAY-DOI-V2](THAY-DOI-V2.md) | Ghi chú theo từng đợt cập nhật |
-| Nguồn yêu cầu | [reference](reference/) | Tài liệu tham khảo gốc |
-
-## Báo cáo và ảnh QA
-
-| Bộ minh chứng | Đường dẫn |
+| Nhóm | Nội dung |
 |---|---|
-| Audit giao diện và bộ ảnh web | [qa-web-current](qa-web-current/README.md) |
-| Accessibility bằng axe | [qa-axe-current](qa-axe-current/README.md) |
-| Tài khoản / hồ sơ | [Kết quả](qa-integration-current/accounts/result.json) |
-| Luồng vai trò / bố cục | [Kết quả](qa-integration-current/roles/result.json) |
-| SV3: danh sách, tìm kiếm, hủy/xóa | [Kết quả](qa-sv3-p1/result.json) |
-| Mẫu brief / AI-1 | [Kết quả](qa-ai1-template/result.json) |
+| [01-gatekeeper](01-gatekeeper/README.md) | User flow, design system, Figma và chỉ mục minh chứng |
+| [02-quy-trinh](02-quy-trinh/) | Cách sử dụng, demo, bảo vệ, Trello, deploy và kế hoạch OBS |
+| [03-ai](03-ai/) | Báo cáo dùng AI và nhật ký prompt |
+| [04-qa](04-qa/README.md) | Báo cáo/ảnh được giữ lại; minh chứng lịch sử tách riêng |
+| [05-nhom](05-nhom/README.md) | Phân công và hồ sơ SV1/SV2/SV3 |
+| [06-tham-khao](06-tham-khao/README.md) | Yêu cầu gốc, cấu trúc code và hướng dẫn API demo |
 
-Giữ nguyên vị trí các thư mục qa-* và các báo cáo TASK-*.md để không làm hỏng đường dẫn trong ảnh, script hoặc tài liệu lịch sử. Mỗi báo cáo chỉ có giá trị trong phạm vi và phiên bản được ghi tại đó; không đồng nghĩa bản mới nhất đã chạy lại.
+[Nhật ký thay đổi](THAY-DOI-V2.md) ghi các cập nhật. Chỉ duy trì một bản screen-inventory.md và một hướng dẫn sử dụng trong 02-quy-trinh; các bản trùng đã bỏ.
 
-## Quy tắc cập nhật
+Hai tài liệu Word về đặt lịch tư vấn/đặt sân bóng, bản bàn giao/Trello cũ và các bộ QA đã có bản thay thế không còn nằm trong docs. Bản sao trước khi dọn được lưu ngoài repo; lịch sử Git vẫn giữ các bản đã commit.
 
-- Chỉ sửa bảng màn hình ở **screen-inventory.md**. Các tệp screen-list.md và 01-gatekeeper/screen-inventory.md giữ liên kết về bản chính để tránh lệch số liệu.
-- Phản hồi khách hàng dùng cùng HTML với Duyệt phiên bản qua view=feedback; không đếm thành một tệp HTML mới.
-- Nhánh hiện tại: feature/sv1-client, feature/sv2-designer, feature/sv3-admin. Tên nhánh trong báo cáo lịch sử có thể là tên cũ.
-- Tài liệu dự thảo/lịch sử không thay thế link Figma, phê duyệt hoặc video thật. OBS tiếp tục hoãn theo yêu cầu.
+Các báo cáo chỉ chứng minh phạm vi/phiên bản ghi tại từng lần chạy. Việc dọn tài liệu không phải lần chạy kiểm thử mới. Chưa quay OBS; link Figma/Trello/phê duyệt chỉ điền theo nguồn thật.
