@@ -549,3 +549,23 @@
 }
 
 .compare-empty{padding:24px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+
+
+/* Dedicated feedback entry, sharing the same project/version comments. */
+.client-feedback-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 24px;
+}
+.client-feedback-entry > div:first-child { flex: 1 1 320px; min-width: 0; }
+.client-feedback-entry h2 { margin: 0 0 10px; font-size: 20px; }
+.client-feedback-entry p { color: var(--muted); line-height: 1.7; }
+.client-feedback-entry .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.client-feedback-view .review-layout { grid-template-columns: minmax(0, 1fr); }
+.client-feedback-view .design-panel,
+.client-feedback-view .decision-panel { display: none; }
+.client-feedback-view .feedback-panel { max-height: none; }

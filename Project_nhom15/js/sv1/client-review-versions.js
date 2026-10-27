@@ -2,7 +2,14 @@
 (async () => {
   const { $, $$, escape, toast, pill, update, confirmAction } = CS;
   if (!(await CS.init())) return;
-  if (!CS.shell("review", "Duyệt phiên bản")) return;
+  const feedbackView = new URLSearchParams(location.search).get("view") === "feedback";
+  if (!CS.shell(feedbackView ? "feedback" : "review", feedbackView ? "Phản hồi" : "Duyệt phiên bản")) return;
+  if (feedbackView) {
+    document.title = "Phản hồi khách hàng · CreatorStudio";
+    $("#main").classList.add("client-feedback-view");
+    $(".page-title").textContent = "Phản hồi của bạn";
+    $(".page-heading p").textContent = "Gửi yêu cầu chỉnh sửa theo dự án và phiên bản để trưởng nhóm tiếp nhận.";
+  }
   let p = CS.selectProject("#project-select", "client-review-versions");
   if (!p || !p.versionStatus) {
     $("#review-workspace").hidden = true;
@@ -20,7 +27,17 @@
   }
   const versionLabel=document.createElement('label');versionLabel.textContent='Phiên bản ';const chooser=document.createElement('select');chooser.setAttribute('aria-label','Phiên bản khách hàng');
   for(const v of p.availableVersions){const o=document.createElement('option');o.value=v.id;o.textContent=v.name+' · '+v.status;o.selected=v.id===p.versionId;chooser.append(o);}
-  chooser.onchange=()=>{const target=new URL(CS.url('client-review-versions',p.id)+'&version='+encodeURIComponent(chooser.value));if(window.WorkspaceNavigation?.canOpen(target))window.WorkspaceNavigation.navigate(target);else location.assign(target.href)};versionLabel.append(chooser);$('#review-workspace').prepend(versionLabel);
+  chooser.onchange=()=>{const target=new URL(CS.url('client-review-versions',p.id)+'&version='+encodeURIComponent(chooser.value));if(feedbackView)target.searchParams.set('view','feedback');if(window.WorkspaceNavigation?.canOpen(target))window.WorkspaceNavigation.navigate(target);else location.assign(target.href)};versionLabel.append(chooser);$('#review-workspace').prepend(versionLabel);
+  if (feedbackView) {
+    const entry = document.createElement("section");
+    entry.className = "panel client-feedback-entry";
+    const reviewLink = CS.url("client-review-versions", p.id) + "&version=" + encodeURIComponent(p.versionId);
+    entry.innerHTML = '<div><h2>Gửi phản hồi cho trưởng nhóm</h2><p>Nêu rõ điều cần thay đổi và lý do. Phản hồi được lưu theo phiên bản đã chọn và xuất hiện trong Tổng hợp phản hồi của trưởng nhóm.</p><p id="feedback-availability" role="status"></p></div><div class="actions"><button class="btn primary" id="send-feedback" type="button">＋ Gửi phản hồi</button><a class="btn" href="' + escape(reviewLink) + '">Xem thiết kế</a></div>';
+    versionLabel.insertAdjacentElement("afterend", entry);
+    $("#send-feedback").onclick = () => {
+      if (!locked()) openComment(0.5, 0.5, true);
+    };
+  }
   const dialog = $("#comment-dialog");
   let mode = "side",
     filter = "all",
@@ -62,10 +79,17 @@
       p.status === "Archived" ? "Archived" : p.versionStatus,
     );
     $("#comment-count").textContent = comments.length;
+    if (feedbackView) {
+      $("#send-feedback").disabled = locked();
+      $("#feedback-availability").textContent = locked()
+        ? "Phiên bản này đã kết thúc nhận phản hồi hoặc dự án đã lưu trữ. Bạn vẫn có thể xem lịch sử; hãy chọn phiên bản đang chờ khách hàng duyệt để gửi mới."
+        : "Trưởng nhóm sẽ nhận thông báo khi bạn gửi phản hồi.";
+    }
     $("#pins").innerHTML = comments
+      .filter((comment) => comment.kind !== "general")
       .map(
         (c, i) =>
-          `<button class="pin ${c.resolved ? "resolved" : ""} ${focused === c.id ? "highlight" : ""}" style="left:${c.x * 100}%;top:${c.y * 100}%" data-pin="${escape(c.id)}" aria-label="Phản hồi ${i + 1}: ${escape(c.text)}">${i + 1}</button>`,
+          `<button class="pin ${c.resolved ? "resolved" : ""} ${focused === c.id ? "highlight" : ""}" style="left:${c.x * 100}%;top:${c.y * 100}%" data-pin="${escape(c.id)}" aria-label="Phản hồi ${comments.indexOf(c) + 1}: ${escape(c.text)}">${comments.indexOf(c) + 1}</button>`,
       )
       .join("");
     const visible = comments.filter(
@@ -76,7 +100,7 @@
       ? visible
           .map(
             (c) =>
-              `<article class="comment-card ${c.resolved ? "resolved" : ""} ${focused === c.id ? "focused" : ""}" id="comment-${escape(c.id)}"><div class="comment-head"><button class="comment-number" data-focus="${escape(c.id)}" aria-label="Xem vị trí phản hồi ${comments.indexOf(c) + 1}">${comments.indexOf(c) + 1}</button><strong>${escape(c.author||'Khách hàng')}</strong><time>${escape(new Date(c.createdAt).toLocaleDateString("vi-VN"))}</time></div><p>${escape(c.text)}</p><div class="comment-actions">${locked() ? `<span class="pill">${c.resolved ? "Đã xử lý" : "Đã ghi nhận"}</span>` : `<button data-action="resolve" data-id="${escape(c.id)}">${c.resolved ? "↶ Mở lại" : "✓ Đánh dấu đã xử lý"}</button><button data-action="edit" data-id="${escape(c.id)}">Sửa</button><button data-action="delete" data-id="${escape(c.id)}">Xóa</button>`}</div></article>`,
+              `<article class="comment-card ${c.resolved ? "resolved" : ""} ${focused === c.id ? "focused" : ""}" id="comment-${escape(c.id)}"><div class="comment-head"><button class="comment-number" data-focus="${escape(c.id)}" aria-label="${c.kind === "general" ? "Phản hồi chung" : "Xem vị trí phản hồi"} ${comments.indexOf(c) + 1}">${comments.indexOf(c) + 1}</button><strong>${escape(c.author||'Khách hàng')}</strong><time>${escape(new Date(c.createdAt).toLocaleDateString("vi-VN"))}</time></div><p>${escape(c.text)}</p><div class="comment-actions">${locked() ? `<span class="pill">${c.resolved ? "Đã xử lý" : "Đã ghi nhận"}</span>` : `<button data-action="resolve" data-id="${escape(c.id)}">${c.resolved ? "↶ Mở lại" : "✓ Đánh dấu đã xử lý"}</button><button data-action="edit" data-id="${escape(c.id)}">Sửa</button><button data-action="delete" data-id="${escape(c.id)}">Xóa</button>`}</div></article>`,
           )
           .join("")
       : `<div class="feedback-empty"><span>⊕</span><h3>${comments.length ? "Không có phản hồi ở bộ lọc này" : "Chưa có phản hồi nào"}</h3><p>${locked() ? "Phiên bản này đang ở chế độ chỉ đọc." : "Nhấn vào ảnh đang chọn để ghim<br>góc nhìn đầu tiên của bạn."}</p></div>`;
@@ -160,16 +184,17 @@
     $('[data-mode="side"]').click();
     openComment(0.5, 0.5);
   };
-  function openComment(x, y) {
+  function openComment(x, y, general = false) {
     pending = {
+      kind: general ? "general" : "pin",
       x: Math.min(0.98, Math.max(0.02, x)),
       y: Math.min(0.98, Math.max(0.02, y)),
     };
     editing = null;
     $("#comment-form").reset();
-    $("#comment-title").textContent = "Ghim phản hồi";
+    $("#comment-title").textContent = general ? "Gửi phản hồi cho trưởng nhóm" : "Ghim phản hồi";
     $("#pin-location").textContent =
-      `Phiên bản đang chọn · Vị trí ${Math.round(x * 100)}%, ${Math.round(y * 100)}%`;
+      general ? p.name + " · " + (p.availableVersions.find((version) => version.id === p.versionId)?.name || "Phiên bản đang chọn") : `Phiên bản đang chọn · Vị trí ${Math.round(x * 100)}%, ${Math.round(y * 100)}%`;
     $("#comment-error").textContent = "";
     dialog.showModal();
   }
@@ -204,8 +229,8 @@
     ) {
       dialog.close();
       refresh();
-      CS.notify(`Có phản hồi mới cho ${p.name}.`, p.id, "comment");
-      toast("Đã lưu phản hồi tại vị trí đã chọn.");
+      CS.notify(`Có phản hồi mới cho ${p.name}.`, p.id, "comment", p.versionId);
+      toast("Đã gửi phản hồi. Trưởng nhóm có thể xem trong Tổng hợp phản hồi.");
     }
   };
   $("#comment-list").onclick = (e) => {

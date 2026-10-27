@@ -253,5 +253,15 @@
     const u = A.data.users.find((u) => u.id === a.assignee);
     return `<article class="proposal ${a.ambiguous ? "ambiguous" : ""}"><div class="row between">${a.taskId ? '<span class="badge green">Đã tạo công việc</span>' : `<label class="check"><input type="checkbox" data-proposal="${a.id}" ${selectedProposals.has(a.id) ? "checked" : ""} ${readonly || a.ambiguous ? "disabled" : ""}>${a.ambiguous ? "Cần làm rõ" : "Chọn tạo việc"}</label>`}${A.priority(a.priority)}</div><h3>${A.esc(a.title)}</h3><p class="reason">${A.esc(a.description)}</p><span class="source">Nguồn: ${a.sourceIds.map(A.esc).join(", ")}</span><p class="reason"><strong>Vì sao:</strong> ${A.esc(a.reason)}</p><small class="muted">${A.esc(u?.name || "Chưa phân công")} · Hạn ${A.date(a.due)}</small>${a.taskId ? '<div class="proposal-actions"><a href="html/sv3/lead-task-board.html">Xem trên bảng công việc →</a></div>' : `<div class="proposal-actions"><button class="link-button" data-edit-proposal="${a.id}" ${readonly ? "disabled" : ""}>${a.ambiguous ? "Làm rõ & chỉnh sửa" : "Sửa đề xuất"}</button><button class="link-button" data-remove-proposal="${a.id}" ${readonly ? "disabled" : ""}>Bỏ</button></div>`}</article>`;
   }
+  // Receive feedback saved in another tab without resetting demo data.
+  window.addEventListener?.("storage", (event) => {
+    if (event.key !== Store.KEY) return;
+    try {
+      Store.load();
+      A.refresh();
+    } catch (error) {
+      A.toast(error.message);
+    }
+  }, { signal: window.WorkspaceNavigation?.signal });
   A.init("feedback", render);
 })();

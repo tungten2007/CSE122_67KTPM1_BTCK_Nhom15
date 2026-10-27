@@ -184,3 +184,13 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Thêm css/shared/workspace-theme.css dùng chung, lấy bảng màu xanh của Bảng công việc; dùng cho cả trang tải trực tiếp và điều hướng trong cùng document.
 - Giữ stylesheet màu trong lúc thay trang, thống nhất màu ô tài khoản/dự án, danh sách lựa chọn, nút chính và focus.
 - Giữ nguyên dữ liệu và phân quyền; không chạy thêm kiểm thử theo yêu cầu người dùng.
+
+
+## Mục Phản hồi khách hàng và tiếp nhận của trưởng nhóm — 27/10/2026
+
+- Thêm mục Phản hồi riêng trong menu khách hàng; dùng chế độ view=feedback của trang phiên bản, cùng dữ liệu dự án/phiên bản hiện có.
+- Có nút Gửi phản hồi, danh sách lịch sử và thông báo trạng thái chỉ đọc khi phiên bản đã kết thúc. Phản hồi chung không tạo ghim giả trên ảnh.
+- Giữ chế độ Phản hồi khi đổi dự án/phiên bản. Duyệt phiên bản vẫn có mục riêng để xem thiết kế và quyết định.
+- Thông báo phản hồi của Lead mở Tổng hợp phản hồi đúng dự án/phiên bản; dữ liệu vẫn nằm trong Store chung, không tạo kho phản hồi thứ hai.
+- Trang Tổng hợp phản hồi làm mới khi Store thay đổi ở tab khác. Giữ quy tắc chỉ gửi khi phiên bản đang Client Review và dự án chưa lưu trữ.
+- Không chạy thêm kiểm thử theo yêu cầu người dùng; giữ riêng các thay đổi đang làm dở.

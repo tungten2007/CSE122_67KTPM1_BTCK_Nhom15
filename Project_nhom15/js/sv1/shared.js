@@ -93,7 +93,7 @@ window.CS = (() => {
     fn(p);
     return write(data);
   }
-  function notify(message,projectId,type){return TeamClient.notify(message,projectId,type);}
+  function notify(message,projectId,type,versionId){return TeamClient.notify(message,projectId,type,versionId);}
   function renderNotifications() {
     const list = $("#activity-list");
     if (!list) return;
@@ -132,10 +132,11 @@ window.CS = (() => {
       ["projects", "▦", "Dự án của tôi", "client-project-overview"],
       ["brief", "▤", "Creative Brief", "client-creative-brief"],
       ["review", "◫", "Duyệt phiên bản", "client-review-versions"],
+      ["feedback", "✉", "Phản hồi", "client-review-versions"],
     ]
       .map(
         ([id, icon, label, page]) =>
-          `<a class="nav-link ${active === id ? "active" : ""}" ${active === id ? 'aria-current="page"' : ""} href="${url(page, project()?.id || contextProject?.id)}"><span aria-hidden="true">${icon}</span>${label}</a>`,
+          `<a class="nav-link ${active === id ? "active" : ""}" ${active === id ? 'aria-current="page"' : ""} href="${url(page, project()?.id || contextProject?.id)}${id === "feedback" ? (project()?.id || contextProject?.id ? "&" : "?") + "view=feedback" : ""}"><span aria-hidden="true">${icon}</span>${label}</a>`,
       )
       .join(
         "",
@@ -152,6 +153,7 @@ window.CS = (() => {
         ? page
         : "client-project-overview";
       const target = new URL(url(route, e.target.value));
+      if (route === "client-review-versions" && new URLSearchParams(location.search).get("view") === "feedback") target.searchParams.set("view", "feedback");
       if (window.WorkspaceNavigation?.canOpen(target)) window.WorkspaceNavigation.navigate(target);
       else location.assign(target.href);
     };
@@ -264,7 +266,9 @@ window.CS = (() => {
     $(container).innerHTML =
       `<option value="">Chọn dự án…</option>${data.map((p) => `<option value="${escape(p.id)}" ${current?.id === p.id ? "selected" : ""}>${escape(p.name)}${p.status === "Archived" ? " — Đã lưu trữ" : ""}</option>`).join("")}`;
     $(container).onchange = (e) => {
-      location.href = url(page, e.target.value);
+        const target = new URL(url(page, e.target.value));
+        if (page === "client-review-versions" && new URLSearchParams(location.search).get("view") === "feedback") target.searchParams.set("view", "feedback");
+        location.href = target.href;
     };
     return current;
   }

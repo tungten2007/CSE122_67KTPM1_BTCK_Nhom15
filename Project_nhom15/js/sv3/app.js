@@ -78,6 +78,10 @@ window.App = (() => {
     try {
       Store.load();
       Navigation.applyContext(Store.get());
+      const linkedProject = new URLSearchParams(location.search).get("project");
+      if (linkedProject && Store.get().projects.some((item) => item.id === linkedProject)) {
+        session("cs-project", linkedProject);
+      }
       sync();
     } catch (e) {
       document.body.innerHTML =

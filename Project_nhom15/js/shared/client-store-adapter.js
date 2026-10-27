@@ -44,6 +44,30 @@ window.TeamClient=(()=>{
  }
  for(const n of value.notifications){const prev=old.notifications.find(x=>x.id===n.id);if(prev&&n.read!==prev.read){const target=d.notifications.find(x=>x.id===n.id&&x.userId===user.id);if(target)target.read=n.read}}
  });baseline=clone(value);return true}catch(e){window.CS?.toast(e.message);return false}}
- function notify(message,projectId,type){try{const user=session();Store.transaction(d=>{check(user?.role==='Client','Phiên Client không hợp lệ.');for(const u of d.users.filter(u=>u.active&&(u.role==='Lead'||u.id===user.id)))d.notifications.unshift({id:Store.id('notif'),userId:u.id,projectId,type,title:message,message,read:false,time:new Date().toISOString(),link:u.role==='Lead'?'html/sv3/lead-task-board.html':'html/sv1/client-project-overview.html?project='+encodeURIComponent(projectId)})});return true}catch(e){window.CS?.toast(e.message);return false}}
+ function notify(message, projectId, type, versionId) {
+  try {
+   const user = session();
+   Store.transaction(d => {
+    check(user?.role === 'Client', 'Phiên Client không hợp lệ.');
+    const isFeedback = ['comment', 'feedback'].includes(type);
+    const context = '?project=' + encodeURIComponent(projectId) + (versionId ? '&version=' + encodeURIComponent(versionId) : '');
+    for (const recipient of d.users.filter(u => u.active && (u.role === 'Lead' || u.id === user.id))) {
+     const page = recipient.role === 'Lead'
+      ? (isFeedback ? 'html/sv3/lead-feedback-summary.html' : 'html/sv3/lead-task-board.html')
+      : (isFeedback ? 'html/sv1/client-review-versions.html' : 'html/sv1/client-project-overview.html');
+     d.notifications.unshift({
+      id: Store.id('notif'), userId: recipient.id, projectId, versionId, type,
+      title: message, message, read: false, time: new Date().toISOString(),
+      link: page + context + (isFeedback && recipient.role === 'Client' ? '&view=feedback' : ''),
+     });
+    }
+   });
+   return true;
+  } catch (error) {
+   window.CS?.toast(error.message);
+   return false;
+  }
+ }
+
  return {read,write,session,login,authenticate,home,notify};
 })();
