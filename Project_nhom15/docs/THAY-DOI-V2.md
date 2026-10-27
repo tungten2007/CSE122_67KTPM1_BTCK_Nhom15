@@ -218,3 +218,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Gom tài liệu thành 6 nhóm; gom QA về 04-qa, hồ sơ sinh viên về 05-nhom và tham khảo về 06-tham-khao. Giữ nguyên thông tin/giới hạn các bộ QA có phạm vi riêng, bỏ các bộ cũ đã có bản thay thế và ảnh thừa.
 - Bổ sung tài liệu SV2 đang có trên dev trước khi dọn để không bỏ sót đóng góp của nhóm. Sửa các liên kết và đường dẫn xuất báo cáo liên quan; không đổi nghiệp vụ website.
 - Sao lưu toàn bộ docs trước khi dọn ra ngoài repo, đối chiếu bản sao trước khi xóa. Không chạy lại các kiểm thử ứng dụng theo yêu cầu người dùng; việc dọn không phải một lần QA mới.
+
+
+## GitHub Pages — 27/10/2026
+
+- Thêm workflow deploy-pages.yml tự xuất bản Project_nhom15 khi cập nhật main; có chạy thủ công trên main.
+- Dùng lối vào index.html đã có để chuyển tới html/sv1/index.html. Thêm .nojekyll; không xuất bản toàn bộ gốc repo.
+- Pages phục vụ website tĩnh; API Python demo vẫn chạy local. URL và trạng thái triển khai cần đối chiếu Actions sau khi workflow chạy.
+
