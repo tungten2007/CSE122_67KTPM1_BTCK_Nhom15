@@ -1,11 +1,18 @@
-# Tài liệu CreatorStudio
+# Tài liệu CreatorStudio — Nhóm 15
 
-- [README dự án](../../README.md): 15 phần, cách chạy và phạm vi hiện hành.
-- [Kiểm kê màn hình](01-gatekeeper/screen-inventory.md), [luồng](01-gatekeeper/user-flow.md), [thiết kế](01-gatekeeper/design-system.md), [minh chứng](01-gatekeeper/evidence-index.md).
-- [Figma lịch sử](01-gatekeeper/figma-audit.md): cần xác minh lại nguồn ngoài.
-- [Quy trình chuẩn bị](02-quy-trinh/): deploy, Trello, hướng dẫn demo/bảo vệ. Các bản khôi phục có banner dự thảo/lịch sử; ưu tiên số liệu trong README và evidence-index.
-- [Khai báo AI](03-ai/): mỗi sinh viên xác nhận phần sử dụng thật.
-- [Thay đổi](THAY-DOI-V2.md), [tiến độ SV3](TIEN-DO-SV3.md), [phân công](team-assignment.md).
-- Kết quả hiện hành: [tài khoản](qa-integration-current/accounts/result.json), [vai trò](qa-integration-current/roles/result.json), [SV3](qa-sv3-p1/result.json), [AI-1](qa-ai1-template/result.json).
+Bắt đầu với **[Screen Inventory của cả 3 sinh viên](screen-inventory.md)**.
 
-Các tệp docs phẳng/qa-* cũ được giữ nguyên để đối chiếu lịch sử. Chưa gom ảnh local vào bộ minh chứng public. Chưa quay video theo yêu cầu hiện tại.
+| Nhóm | Nội dung |
+|---|---|
+| [01-gatekeeper](01-gatekeeper/README.md) | User flow, design system, Figma và chỉ mục minh chứng |
+| [02-quy-trinh](02-quy-trinh/) | Cách sử dụng, demo, bảo vệ, Trello, deploy và kế hoạch OBS |
+| [03-ai](03-ai/) | Báo cáo dùng AI và nhật ký prompt |
+| [04-qa](04-qa/README.md) | Báo cáo/ảnh được giữ lại; minh chứng lịch sử tách riêng |
+| [05-nhom](05-nhom/README.md) | Phân công và hồ sơ SV1/SV2/SV3 |
+| [06-tham-khao](06-tham-khao/README.md) | Yêu cầu gốc, cấu trúc code và hướng dẫn API demo |
+
+[Nhật ký thay đổi](THAY-DOI-V2.md) ghi các cập nhật. Chỉ duy trì một bản screen-inventory.md và một hướng dẫn sử dụng trong 02-quy-trinh; các bản trùng đã bỏ.
+
+Hai tài liệu Word về đặt lịch tư vấn/đặt sân bóng, bản bàn giao/Trello cũ và các bộ QA đã có bản thay thế không còn nằm trong docs. Bản sao trước khi dọn được lưu ngoài repo; lịch sử Git vẫn giữ các bản đã commit.
+
+Các báo cáo chỉ chứng minh phạm vi/phiên bản ghi tại từng lần chạy. Việc dọn tài liệu không phải lần chạy kiểm thử mới. Chưa quay OBS; link Figma/Trello/phê duyệt chỉ điền theo nguồn thật.

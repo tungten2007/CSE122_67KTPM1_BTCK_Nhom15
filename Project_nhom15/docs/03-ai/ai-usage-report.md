@@ -1,5 +1,3 @@
-> Khôi phục từ bản sao lưu ngày 25/10/2026. Nội dung dự thảo/lịch sử cần đối chiếu; số liệu hiện hành ưu tiên README gốc và evidence-index. Chưa xác nhận link Figma/Trello/deploy hoặc kết quả chưa chạy lại.
-
 # Khai báo sử dụng AI — CreatorStudio dùng chung
 
 ## AI trong website
@@ -20,6 +18,6 @@ Ví dụ yêu cầu chính: “làm tiếp phần SV3”, “xem sản phẩm SV
 
 Lỗi được phát hiện và sửa khi kiểm chứng: phân công người bị khóa, feedback nhầm phiên bản, route/Store riêng không liên thông, ảnh review cố định, responsive tràn ngang, mất focus khi tìm kiếm, cập nhật hồ sơ bị chặn do kiểm tra vai trò và thông báo mở sai dự án.
 
-Kiểm chứng: đối chiếu mã nguồn, test Store/DOM, Chromium qua giao diện, ảnh desktop/mobile và kiểm tra phụ thuộc file. Kết quả trong docs/04-qa/ket-qua/qa-task27-v1, qa-final-v5; lịch sử yêu cầu/checklist trong TASK-27-INTEGRATION-v1.md.
+Kiểm chứng được ghi theo từng đợt trong [chỉ mục QA](../04-qa/README.md) và [nhật ký thay đổi](../THAY-DOI-V2.md). Không coi việc có code hoặc báo cáo cũ là bằng chứng đã hiểu code hay đã được giảng viên duyệt.
 
 Nhóm cần tự bổ sung phần thay đổi đã tự làm, điều từng sinh viên học được và video giải thích theo thực tế. Không coi code/tài liệu do AI hỗ trợ là bằng chứng sinh viên đã tự hiểu hoặc đã được giảng viên duyệt.

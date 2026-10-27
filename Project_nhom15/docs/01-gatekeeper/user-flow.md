@@ -283,7 +283,7 @@ Các mục trên sẽ được cập nhật lại trong tài liệu này sau khi
 
 ## 8. Liên kết
 
-- [Kiểm kê màn hình 12 cột](screen-inventory.md)
+- [Kiểm kê màn hình 12 cột](../screen-inventory.md)
 - [Design system](design-system.md)
 - [Đối chiếu Figma](figma-audit.md)
 - [Kịch bản demo](../02-quy-trinh/demo-script.md)

@@ -247,7 +247,7 @@ Audit tự động ngày **25/10/2026** đo 18 màn × 1440/375: **0 vi phạm t
 
 ## 7. Liên kết
 
-- [Kiểm kê màn hình](screen-inventory.md)
+- [Kiểm kê màn hình](../screen-inventory.md)
 - [User flow](user-flow.md)
 - [Đối chiếu Figma](figma-audit.md)
 - Báo cáo QA responsive (nguồn chưa có trong bản hiện hành: ../04-qa/ket-qua/qa-responsive-sv3) (thư mục ảnh hiện có)

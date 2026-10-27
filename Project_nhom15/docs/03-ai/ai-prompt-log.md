@@ -85,4 +85,4 @@ Chỉ đánh dấu ✅ khi từng SV đã tự điền và có ít nhất một 
 
 - [Báo cáo AI](ai-usage-report.md)
 - [Minh chứng/gatekeeper](../01-gatekeeper/evidence-index.md)
-- [Phân công](../team-assignment.md)
+- [Phân công](../05-nhom/team-assignment.md)
