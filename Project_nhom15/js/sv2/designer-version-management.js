@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function hienPhienBan() {
+    giuTieuDiem(vePhienBan);
+  }
+  function vePhienBan() {
     const tatCa = duLieu.versions.filter(function (v) { return v.projectId === duAn.id; });
     tatCa.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
     const danhSach = tatCa.filter(function (v) { return boLoc.value === 'all' || v.status === boLoc.value; });
@@ -58,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const nutXoa = dong.querySelector('.delete-version-btn');
       const nutNop = dong.querySelector('.submit-review-btn');
       const nutLuuTru = dong.querySelector('.archive-version-btn');
+      [nutSua, nutXoa, nutNop, nutLuuTru].forEach(function (nut, i) { nut.dataset.focusKey = 'version-' + v.id + '-' + i; });
       nutSua.hidden = !['Draft', 'Changes Requested'].includes(v.status) || v.author !== nguoiDung.id;
       nutXoa.hidden = v.status !== 'Draft' || v.author !== nguoiDung.id;
       nutNop.hidden = !['Draft', 'Changes Requested'].includes(v.status) || v.author !== nguoiDung.id;

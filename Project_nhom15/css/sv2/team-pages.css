@@ -1,0 +1,149 @@
+/* SV2 content uses the same workspace shell, tokens and Inter as SV1/SV3. */
+.sv2-page.team-shell { color-scheme: light; }
+.sv2-page.team-shell main,
+.sv2-page .page-heading > *,
+.sv2-page .panel,
+.sv2-page .split-layout > *,
+.sv2-page .toolbar > * { min-width: 0; }
+.sv2-page .page-heading,
+.sv2-page .heading-actions,
+.sv2-page .toolbar { flex-wrap: wrap; }
+.sv2-page .page-heading h1 { overflow-wrap: anywhere; }
+.sv2-page .button { white-space: normal; text-align: center; min-height: 40px; }
+.sv2-page button,
+.sv2-page a,
+.sv2-page input,
+.sv2-page select,
+.sv2-page textarea { scroll-margin-block: 90px; }
+.sv2-page .sidebar .brand { gap: 9px; }
+.sv2-page .sidebar .brand-mark { font-size: 28px; }
+.sv2-page .sidebar .side-tag { margin-top: 10px; color: var(--ink); border-color: #b9cbb6; background: #edf2e6; }
+.sv2-page .sidebar .profile { line-height: 1.5; }
+.sv2-page .sidebar .text-light:focus-visible,
+.sv2-page :is(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+.sv2-page main:focus-visible { outline: 3px solid var(--primary); outline-offset: -6px; }
+.sv2-page .top-actions select { min-width: 0; min-height: 40px; text-overflow: ellipsis; }
+.sv2-page .top-actions .notification-button { min-height: 40px; min-width: 40px; }
+.sv2-page .top-actions .avatar { align-self: center; }
+.sv2-page .icon-button { min-height: 40px; min-width: 40px; }
+.sv2-page .page-footer { flex-wrap: wrap; }
+.sv2-page .avatar,
+.sv2-page .avatar-large { background: #e8d9c3; color: var(--ink); }
+.sv2-page .notification-time,
+.sv2-page .designer-version-management-metadata,
+.sv2-page .template-sections-label,
+.sv2-page .swatch-role { color: var(--muted); }
+.sv2-page .inactive-card { opacity: 1; }
+.sv2-page .inactive-card .badge { background: #edf0e8; color: #43513f; }
+.sv2-page .field :is(input:not([type="checkbox"]):not([type="color"]), select, textarea),
+.sv2-page .toolbar :is(input, select),
+.sv2-page .notification-filter-bar select,
+.sv2-page .task-status-select { border-color: #788575; color: var(--ink); background-color: #ffffff; }
+.sv2-page .field input::placeholder,
+.sv2-page .field textarea::placeholder,
+.sv2-page .toolbar input::placeholder { color: #5e6b5b; opacity: 1; }
+.sv2-page .field-error,
+.sv2-page .form-error { color: #a51d32; }
+.sv2-page .task-title-done { opacity: 1; color: var(--muted); }
+.sv2-page .task-item-desc { white-space: normal; overflow-wrap: anywhere; }
+.sv2-page .notification-content,
+.sv2-page .notification-msg,
+.sv2-page .version-name-tag,
+.sv2-page .template-desc { overflow-wrap: anywhere; }
+.sv2-page .filter-tabs { flex-wrap: wrap; overflow: visible; max-width: 100%; background: #e6eddf; }
+.sv2-page .filter-tab { min-height: 40px; }
+.sv2-page .filter-tab.active { color: var(--ink); }
+.sv2-page .palette-container,
+.sv2-page .canvas-grid { min-width: 0; }
+.sv2-page .ai-insight-panel { background: #edf2e6; border-color: var(--line); }
+.sv2-page .ai-insight-header,
+.sv2-page .ai-insight-body,
+.sv2-page .ai-insight-body strong { color: var(--ink); }
+.sv2-page .ai-dialog-eyebrow { opacity: 1; color: #ffffff; }
+.sv2-page .ai-dialog-header button:focus-visible { outline-color: #ffffff; box-shadow: none; }
+.sv2-page .ai-dialog-close { width: 40px; height: 40px; }
+.sv2-page .ai-success p { color: #405c43; }
+.sv2-page #ai-dialog .ai-submit { background: var(--primary); border-color: var(--primary); }
+.sv2-page #ai-dialog .ai-submit:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.sv2-page #ai-dialog :is(button, input, textarea):focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.sv2-page #ai-dialog .ai-dialog-close:focus-visible { outline-color: #ffffff; }
+.sv2-page dialog { max-width: calc(100% - 24px); max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; }
+.sv2-page .modal-head h2 { overflow-wrap: anywhere; }
+.sv2-page .modal-head .icon-button { flex-shrink: 0; }
+.sv2-page .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sv2-page .ai-spinner { border-top-color: var(--primary); }
+.sv2-page .breadcrumb span { color: var(--muted); }
+.sv2-page .notification-badge { background: #b91c1c; color: #ffffff; }
+.sv2-page .button.danger,
+.sv2-page .notifications-delete-button { color: #a51d32; }
+.sv2-page .status-step.completed,
+.sv2-page .status-step.completed .step-num { color: #166534; }
+.sv2-page .keyword-cloud button { color: var(--ink); min-width: 28px; min-height: 28px; opacity: 1; }
+.sv2-page .copy-hex-btn { opacity: 1; color: var(--ink); background: #ffffff; min-height: 32px; padding: 6px 8px; }
+.sv2-page .kpi-icon.green { color: #166534; }
+.sv2-page .urgent-banner { background: #fff5f5; }
+.sv2-page .prompt-config-card { background: #ffffff; }
+.sv2-page .search-box input { padding-left: 36px; }
+.sv2-page .remove-color-btn { color: #a51d32; min-width: 32px; min-height: 32px; }
+.sv2-page .remove-card-btn { color: #a51d32; background: #ffffff; min-width: 32px; min-height: 32px; }
+.sv2-page .ai-dialog-header { background: var(--primary-dark); }
+.sv2-page .notice { flex-wrap: wrap; overflow-wrap: anywhere; }
+.sv2-page .notice > * { min-width: 0; max-width: 100%; }
+.sv2-page .notice h2 { font-size: 18px; }
+
+@media (max-width: 1050px) {
+  .sv2-page .page-heading { gap: 18px; }
+  .sv2-page .heading-actions { max-width: 100%; }
+  .sv2-page .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .sv2-page.team-shell .topbar { gap: 8px; }
+  .sv2-page.team-shell .top-actions { gap: 6px; }
+  .sv2-page.team-shell .top-actions select { font-size: 12px; padding: 6px; }
+  .sv2-page.team-shell .top-actions #project-select { max-width: 92px; }
+  .sv2-page.team-shell .top-actions #role-switch { max-width: 112px; }
+  .sv2-page.team-shell .mobile-close { width: 40px; height: 40px; }
+  .sv2-page .sidebar .brand { margin-bottom: 28px; }
+  .sv2-page .skip-link { left: 12px; max-width: calc(100% - 24px); }
+  .sv2-page .toolbar :is(select, input),
+  .sv2-page .notification-filter-bar select { max-width: 100%; }
+  .sv2-page .notification-title-row { flex-wrap: wrap; align-items: flex-start; }
+  .sv2-page .version-timeline { padding-left: 0; }
+  .sv2-page .filter-tabs { gap: 4px; }
+}
+@media (max-width: 540px) {
+  .sv2-page .form-grid,
+  .sv2-page .kpi-grid { grid-template-columns: minmax(0, 1fr); }
+  .sv2-page .heading-actions { width: 100%; }
+  .sv2-page .heading-actions > .button { flex: none; width: 100%; }
+  .sv2-page .toolbar .search-box { flex: 1 0 100%; width: 100%; }
+  .sv2-page .toolbar > select { flex: 1 1 140px; }
+  .sv2-page .notification-filter-bar { align-items: stretch; }
+  .sv2-page .filter-tabs { width: 100%; }
+  .sv2-page .filter-tab { flex: 1 1 auto; }
+  .sv2-page .notice { flex-direction: column; }
+  .sv2-page .notice .button { margin-left: 0; }
+  .sv2-page .notification-card { padding: 16px; gap: 10px; }
+  .sv2-page .modal-head { gap: 10px; padding: 18px 16px; }
+  .sv2-page .modal-body { padding: 18px 16px; }
+}
+@media (max-width: 360px) {
+  .sv2-page.team-shell .topbar { padding-inline: 10px; gap: 6px; }
+  .sv2-page.team-shell .top-actions { gap: 4px; }
+  .sv2-page.team-shell .top-actions #project-select { max-width: 76px; }
+  .sv2-page.team-shell .top-actions #role-switch { max-width: 90px; }
+  .sv2-page.team-shell main { padding-inline: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv2-page .skeleton,
+  .sv2-page .ai-spinner,
+  .sv2-page .ai-skeleton { animation: none; }
+  .sv2-page .button,
+  .sv2-page .kpi-card,
+  .sv2-page .notification-card { transition: none; }
+  .sv2-page .kpi-card:hover { transform: none; }
+}

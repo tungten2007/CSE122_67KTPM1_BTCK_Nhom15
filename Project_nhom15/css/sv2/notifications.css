@@ -65,8 +65,8 @@
 }
 
 .notification-card.unread {
-  background: #faf9ff;
-  border-color: #ddd6fe;
+  background: #f0f5e9;
+  border-color: var(--line);
   border-left: 4px solid var(--primary);
 }
 
@@ -80,7 +80,7 @@
 }
 
 .notification-icon-wrap.version {
-  background: #eeecff;
+  background: var(--primary-light);
   color: var(--primary-dark);
 }
 

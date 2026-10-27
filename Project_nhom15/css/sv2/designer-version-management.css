@@ -19,7 +19,7 @@
 
 .version-card.current {
   border-color: #a5b4fc;
-  box-shadow: 0 4px 20px rgba(99, 91, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(57, 118, 90, 0.12);
 }
 
 .version-thumb {
@@ -59,7 +59,7 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--primary-dark);
-  background: #efedff;
+  background: var(--primary-light);
   padding: 3px 8px;
   border-radius: 6px;
 }

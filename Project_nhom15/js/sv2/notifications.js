@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
   locDuAn.replaceChildren(new Option('Tất cả dự án', 'all'));
   duLieu.projects.forEach(function (p) { locDuAn.add(new Option(p.name, p.id)); });
   function hienDanhSach() {
+    giuTieuDiem(veDanhSach);
+  }
+  function veDanhSach() {
     const cuaToi = duLieu.notifications.filter(function (n) { return n.userId === nguoiDung.id; });
     const danhSach = cuaToi.filter(function (n) {
       return (tab === 'all' || tab === 'unread' && !n.read || n.type === tab || tab === 'comment' && n.type === 'feedback') && (locDuAn.value === 'all' || n.projectId === locDuAn.value);
@@ -25,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
       dong.querySelector('.notification-msg').textContent = n.message;
       dong.querySelector('.notification-icon-wrap').className = 'notification-icon-wrap ' + (n.type === 'feedback' ? 'comment' : n.type || 'system');
       const nutDoc = dong.querySelector('.toggle-read-btn');
+      nutDoc.dataset.focusKey = 'notification-read-' + n.id;
+      dong.querySelector('.delete-notif-btn').dataset.focusKey = 'notification-delete-' + n.id;
       nutDoc.textContent = n.read ? 'Đánh dấu chưa đọc' : 'Đánh dấu đã đọc';
       nutDoc.onclick = function () { thuThaoTac(function () { thucHienDuLieu('markNotification', n.id, !n.read); hienDanhSach(); }); };
       dong.querySelector('.delete-notif-btn').onclick = function () {
@@ -32,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
       };
       const lienKet = dong.querySelector('.view-notif-link');
       lienKet.dataset.id = n.id;
+      lienKet.setAttribute('aria-label', 'Xem chi tiết → ' + n.title);
+      dong.querySelector('.toggle-read-btn').setAttribute('aria-label', (n.read ? 'Đánh dấu chưa đọc: ' : 'Đánh dấu đã đọc: ') + n.title);
+      dong.querySelector('.delete-notif-btn').setAttribute('aria-label', 'Xóa thông báo: ' + n.title);
       lienKet.hidden = !n.link;
       lienKet.href = lienKetThongBao(n);
       lienKet.onclick = function (e) { if (!thuThaoTac(function () { thucHienDuLieu('markNotification', n.id, true); })) e.preventDefault(); };
@@ -40,9 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
     capNhatThongBao();
   }
   document.querySelectorAll('.filter-tab').forEach(function (nut) {
+    nut.setAttribute('aria-pressed', String(nut.dataset.tab === tab));
     nut.onclick = function () {
       tab = nut.dataset.tab;
-      document.querySelectorAll('.filter-tab').forEach(function (b) { b.classList.toggle('active', b === nut); });
+      document.querySelectorAll('.filter-tab').forEach(function (b) { b.classList.toggle('active', b === nut); b.setAttribute('aria-pressed', String(b === nut)); });
       hienDanhSach();
     };
   });

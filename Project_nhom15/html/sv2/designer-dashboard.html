@@ -9,21 +9,18 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/sv2/share.css">
   <link rel="stylesheet" href="css/sv2/designer-dashboard.css">
+  <link rel="stylesheet" href="css/sv3/team-shell.css">
+  <link rel="stylesheet" href="css/sv2/team-pages.css">
+  <link rel="preload" href="assets/fonts/Inter-Variable.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 
-<body class="page-designer-dashboard">
+<body class="team-shell sv2-page page-designer-dashboard">
   <a class="skip-link" href="html/sv2/designer-dashboard.html#main">Chuyển đến nội dung chính</a>
   <div class="sidebar-shade" hidden></div>
   <aside class="sidebar" aria-label="Điều hướng chính">
     <a class="brand" href="html/sv2/designer-dashboard.html">
-      <span class="brand-mark">
-        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="m5 12 4 4L19 6"></path>
-        </svg>
-      </span>
+      <span class="brand-mark" aria-hidden="true">✳</span>
       <span>CreatorStudio</span>
-      <span class="brand-dot">®</span>
     </a>
     <button class="icon-button mobile-close" aria-label="Đóng menu">
       <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -31,14 +28,6 @@
         <path d="m6 6 12 12M6 18 18 6"></path>
       </svg>
     </button>
-    <div class="studio">
-      <span class="studio-avatar">M</span>
-      <div>
-        <strong>Studio Mộc</strong>
-        <small>Không gian sáng tạo</small>
-      </div>
-      <span class="studio-arrow">⌄</span>
-    </div>
     <p class="nav-caption">KHÔNG GIAN LÀM VIỆC</p>
     <nav>
       <a class="nav-link active" href="html/sv2/designer-dashboard.html" data-role="Designer" aria-current="page">
@@ -83,9 +72,7 @@
           <strong data-user-name="">An Nguyễn</strong>
           <small data-user-role="">Nhà thiết kế</small>
         </div>
-        <span class="online" title="Đang trực tuyến"></span>
       </a>
-      <small class="demo-caption">PHÂN HỆ SV2 · CREATORSTUDIO</small>
     </div>
   </aside>
   <div class="workspace">
@@ -97,7 +84,7 @@
         </svg>
       </button>
       <div class="breadcrumb">
-        Studio Mộc <span>/</span>
+        Không gian làm việc <span>/</span>
         <strong>Bảng điều khiển</strong>
       </div>
       <div class="top-actions">
@@ -167,10 +154,10 @@
       <!-- Thanh điều khiển mô phỏng trạng thái (Phù hợp CRUD R: Normal, Loading, Empty, Urgent) -->
       <div class="state-controls">
         <strong>Trạng thái hiển thị (Mục 8):</strong>
-        <button class="state-btn active" data-mode="normal">Bình thường (Normal)</button>
+        <button class="state-btn active" aria-pressed="true" data-mode="normal">Bình thường (Normal)</button>
         <button class="state-btn " data-mode="loading">Đang tải (Loading)</button>
         <button class="state-btn " data-mode="empty">Rỗng (Empty)</button>
-        <button class="state-btn" data-mode="error">Lỗi dữ liệu (Error)</button>
+        <button class="state-btn" aria-pressed="false" data-mode="error">Lỗi dữ liệu (Error)</button>
         <button class="state-btn " data-mode="urgent">Cảnh báo gấp (Urgent)</button>
       </div>
       <!-- Lưới thống kê KPI -->
@@ -358,18 +345,15 @@
           </div>
         </div>
         <div id="task-error" class="notice danger" role="alert" hidden><p>Không tải được danh sách công việc trong tình huống mô phỏng.</p><button type="button" class="button small" id="task-retry-btn">Thử lại</button></div>
-        <p id="task-loading" class="empty-state" hidden>Đang tải dữ liệu mô phỏng…</p>
+        <p id="task-loading" role="status" aria-label="Đang tải danh sách công việc" class="empty-state" hidden>Đang tải dữ liệu mô phỏng…</p>
         <div id="task-empty" class="empty-state" hidden><p>Không có công việc phù hợp.</p><button type="button" class="button small" id="task-reset-btn">Xóa bộ lọc</button></div>
       </section>
     </main>
-    <footer class="page-footer">
-      <span>CreatorStudio · Nền tảng quản lý dự án sáng tạo và phản hồi phiên bản.</span>
-      <span>Bản thực hành Sinh viên 2 (SV2) · Dữ liệu lưu LocalStorage trình duyệt</span>
-    </footer>
+    <footer class="page-footer">CreatorStudio · Nhóm 15 · Dữ liệu minh họa lưu trên trình duyệt</footer>
   </div>
-  <dialog id="dialog">
+  <dialog id="dialog" aria-labelledby="dialog-title">
     <div class="modal-head dialog-head">
-      <h2>Biểu mẫu</h2>
+      <h2 id="dialog-title">Biểu mẫu</h2>
       <button type="button" class="icon-button" data-close="" aria-label="Đóng">×</button>
     </div>
     <div class="modal-body dialog-body"></div>

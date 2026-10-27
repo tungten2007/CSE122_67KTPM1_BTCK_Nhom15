@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
   soanPrompt.oninput = function () { document.getElementById('prompt-error').textContent = ''; soanPrompt.setAttribute('aria-invalid', 'false'); };
   function mauDangChon() { return duLieu.briefTemplates.find(function (m) { return m.id === maDangChon; }); }
   function hienMau() {
+    giuTieuDiem(veMau);
+  }
+  function veMau() {
     const danhSach = duLieu.briefTemplates.filter(function (m) {
       return (m.name + ' ' + m.description).toLowerCase().includes(timKiem.value.toLowerCase()) && (locTrangThai.value === 'all' || m.status === locTrangThai.value) && (locNganh.value === 'all' || m.category === locNganh.value);
     });
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     danhSach.forEach(function (m) {
       const dong = saoChepMau('brief-row');
       dong.classList.toggle('selected-card', m.id === maDangChon);
+      dong.querySelector('.select-template-btn').setAttribute('aria-pressed', String(m.id === maDangChon));
       dong.classList.toggle('active-card', m.status === 'Active Template');
       dong.classList.toggle('inactive-card', m.status === 'Inactive');
       dong.classList.toggle('custom-card', m.status === 'Custom');
@@ -43,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const nhan = document.createElement('span'); nhan.className = 'section-pill'; nhan.textContent = ten; cacMuc.append(nhan);
       });
       const nutChon = dong.querySelector('.select-template-btn');
+      nutChon.dataset.focusKey = 'template-select-' + m.id;
       nutChon.textContent = m.id === maDangChon ? 'Đang cấu hình AI' : 'Xem cấu hình Prompt';
       nutChon.classList.toggle('primary', m.id === maDangChon);
       nutChon.onclick = function () { maDangChon = m.id; hienMau(); };
       const nutBatTat = dong.querySelector('.toggle-status-btn');
+      nutBatTat.dataset.focusKey = 'template-status-' + m.id;
       nutBatTat.textContent = m.status === 'Active Template' ? 'Tắt mẫu' : 'Bật mẫu';
       nutBatTat.onclick = function () { thuThaoTac(function () { thucHienDuLieu('toggleBriefTemplate', m.id); hienMau(); }); };
       vung.append(dong);

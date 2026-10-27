@@ -33,6 +33,18 @@ function thuThaoTac(khiThucHien) {
   catch (loi) { hienThongBao(loi.message); return false; }
 }
 
+// Giữ vị trí bàn phím khi danh sách được vẽ lại sau một thao tác.
+function giuTieuDiem(veLai) {
+  const truoc = document.activeElement;
+  const khoa = truoc?.getAttribute('data-focus-key');
+  veLai();
+  if (!khoa || truoc.isConnected) return;
+  const thayThe = Array.from(document.querySelectorAll('[data-focus-key]')).find(function (nut) {
+    return nut.getAttribute('data-focus-key') === khoa && !nut.disabled && nut.getClientRects().length;
+  });
+  (thayThe || document.getElementById('main')).focus();
+}
+
 // 3. Một số hàm nhỏ để tránh viết lại cùng thao tác nhiều lần.
 function hienThongBao(noiDung) {
   const hop = document.getElementById('toast');
@@ -64,11 +76,25 @@ function lienKetThongBao(thongBao) {
 }
 
 function hienDieuHuong() {
+  document.querySelector('.sidebar .nav-caption').textContent = 'KHÔNG GIAN ' + tenVaiTro[nguoiDung.role].toUpperCase();
   const vung = document.querySelector('.sidebar nav');
+  vung.setAttribute('aria-label', 'Điều hướng chính');
   vung.replaceChildren();
   Object.values(Navigation.routes).filter(r => r[3] === '*' || r[3] === nguoiDung.role).forEach(function (r) {
     const a = document.createElement('a'); a.href = r[0]; a.className = 'nav-link';
-    const span = document.createElement('span'); span.textContent = r[1]; a.append(span);
+    const bieuTuong = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    bieuTuong.setAttribute('viewBox', '0 0 24 24'); bieuTuong.setAttribute('fill', 'none');
+    bieuTuong.setAttribute('stroke', 'currentColor'); bieuTuong.setAttribute('stroke-width', '1.8');
+    bieuTuong.setAttribute('aria-hidden', 'true'); bieuTuong.classList.add('icon');
+    const net = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const netVe = { grid: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+      spark: 'm12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z',
+      file: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5',
+      users: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3a4 4 0 0 1 0 8M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
+      settings: 'M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6',
+      check: 'm5 12 4 4L19 6', bell: 'M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4' };
+    net.setAttribute('d', netVe[r[2]] || netVe.file); bieuTuong.append(net);
+    const span = document.createElement('span'); span.textContent = r[1]; a.append(bieuTuong, span);
     if (new URL(r[0], document.baseURI).pathname === location.pathname) {
       a.classList.add('active'); a.setAttribute('aria-current', 'page');
     }
@@ -107,6 +133,9 @@ function khoiTaoKiemTraForm(form) {
   const cacTruong = Array.from(form.querySelectorAll('input')).concat(Array.from(form.querySelectorAll('select')), Array.from(form.querySelectorAll('textarea')));
   cacTruong.forEach(function (truong, i) {
     if (truong.getAttribute('type') === 'hidden' || truong.loiHienThi) return;
+    if (!truong.id) truong.id = (form.id || 'modal-form') + '-control-' + i;
+    const nhan = truong.closest('label');
+    if (nhan) nhan.setAttribute('for', truong.id);
     const loi = document.createElement('span');
     loi.className = 'field-error';
     const ma = (form.getAttribute('id') || 'modal-form') + '-field-error-' + i;
@@ -167,7 +196,11 @@ function loiTruong(ten, noiDung) {
 
 function moBieuMau(idMau, tieuDe, khiLuu) {
   const hop = document.getElementById('dialog');
+  const nutMo = document.activeElement;
   hop.querySelector('h2').textContent = tieuDe;
+  hop.addEventListener('close', function () {
+    if (nutMo?.isConnected) nutMo.focus(); else document.getElementById('main').focus();
+  }, { once: true });
   const form = saoChepMau(idMau);
   khoiTaoKiemTraForm(form);
   hop.querySelector('.modal-body').replaceChildren(form);
@@ -209,6 +242,8 @@ function capNhatTaiKhoan() {
     anh.hidden = !nguoiDung.avatarUrl;
     chu.hidden = !!nguoiDung.avatarUrl;
     if (nguoiDung.avatarUrl) anh.src = nguoiDung.avatarUrl;
+    anh.alt = 'Ảnh đại diện của ' + nguoiDung.name;
+    if (e.tagName === 'A') e.setAttribute('aria-label', chu.textContent + ' — Hồ sơ cá nhân ' + nguoiDung.name);
     anh.onerror = function () { anh.hidden = true; chu.hidden = false; };
   });
 }
@@ -263,22 +298,24 @@ function khoiTaoChung() {
     const thanhBen = document.querySelector('.sidebar');
     const manHinhNho = matchMedia('(max-width: 760px)');
     thanhBen.inert = manHinhNho.matches;
+    thanhBen.setAttribute('aria-hidden', String(manHinhNho.matches));
     thanhBen.id = 'global-sidebar'; menu.setAttribute('aria-controls', 'global-sidebar'); menu.setAttribute('aria-expanded', 'false');
     function dongMenu() {
       const dangMo = document.body.classList.contains('menu-open');
       document.body.classList.remove('menu-open'); manChe.hidden = true; menu.setAttribute('aria-expanded', 'false');
       noiDung.inert = false; thanhBen.inert = manHinhNho.matches;
-      if (dangMo) menu.focus();
+      thanhBen.setAttribute('aria-hidden', String(manHinhNho.matches));
+      if (dangMo) { if (manHinhNho.matches) menu.focus(); else document.getElementById('main').focus(); }
     }
     menu.onclick = function () {
       document.body.classList.add('menu-open'); manChe.hidden = false; menu.setAttribute('aria-expanded', 'true');
-      noiDung.inert = true; thanhBen.inert = false;
+      noiDung.inert = true; thanhBen.inert = false; thanhBen.setAttribute('aria-hidden', 'false');
       document.querySelector('.mobile-close').focus();
     };
     document.querySelector('.mobile-close').onclick = dongMenu;
     manChe.onclick = dongMenu;
     document.addEventListener('keydown', function (e) {
-      if (!document.body.classList.contains('menu-open')) return;
+      if (!document.body.classList.contains('menu-open') || document.querySelector('dialog[open]')) return;
       if (e.key === 'Escape') { e.preventDefault(); dongMenu(); }
       if (e.key === 'Tab') {
         const nut = Array.from(thanhBen.querySelectorAll('a[href], button:not(:disabled), select')).filter(n => n.getClientRects().length);
@@ -287,7 +324,7 @@ function khoiTaoChung() {
       }
     });
     if (typeof matchMedia === 'function') {
-      matchMedia('(max-width: 760px)').addEventListener('change', function (e) { if (!e.matches) dongMenu(); });
+      manHinhNho.addEventListener('change', dongMenu);
     }
     document.getElementById('demo-tools-btn').onclick = function () {
       const form = moBieuMau('tools-form', 'Công cụ dữ liệu demo', function () { });

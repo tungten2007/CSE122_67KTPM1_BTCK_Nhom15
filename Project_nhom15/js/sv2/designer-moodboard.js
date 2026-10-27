@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
       oMau.querySelector('.swatch-name').textContent = mau.name;
       oMau.querySelector('.swatch-role').textContent = mau.role || 'Màu phối';
       oMau.querySelector('.copy-hex-btn').title = 'Sao chép ' + mau.hex.toUpperCase();
+      oMau.querySelector('.copy-hex-btn').setAttribute('aria-label', 'Copy HEX ' + mau.hex.toUpperCase());
+      oMau.querySelector('.remove-color-btn').setAttribute('aria-label', 'Xóa màu ' + mau.hex.toUpperCase());
       oMau.querySelector('.copy-hex-btn').onclick = function () {
         navigator.clipboard.writeText(mau.hex).then(function () { hienThongBao('Đã sao chép ' + mau.hex); }).catch(function () { hienThongBao('Mã màu: ' + mau.hex); });
       };
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const vungTuKhoa = document.querySelector('.keyword-cloud'); vungTuKhoa.replaceChildren();
     bangCamHung.keywords.forEach(function (tu, i) {
       const nhan = saoChepMau('keyword-row'); nhan.querySelector('span').textContent = tu;
+      nhan.querySelector('button').setAttribute('aria-label', 'Xóa từ khóa: ' + tu);
       nhan.querySelector('button').onclick = function () { if (coTheSuaDuAn()) { bangCamHung.keywords.splice(i, 1); thuThaoTac(luuBangCamHung); } };
       vungTuKhoa.append(nhan);
     });
@@ -53,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const anh = dong.querySelector('img'); anh.src = the.image; anh.alt = the.title;
       anh.onerror = function () { anh.onerror = null; anh.src = 'assets/moodboard.svg'; };
       dong.querySelector('.badge').textContent = the.category;
+      dong.querySelector('.remove-card-btn').setAttribute('aria-label', 'Xóa thẻ: ' + the.title);
       dong.querySelector('h3').textContent = the.title; dong.querySelector('p').textContent = the.notes;
       dong.querySelector('.remove-card-btn').onclick = function () { if (coTheSuaDuAn()) { bangCamHung.cards.splice(i, 1); thuThaoTac(luuBangCamHung); } };
       vungAnh.append(dong);
@@ -150,6 +154,10 @@ document.addEventListener('DOMContentLoaded', function () {
     hopAI.querySelectorAll('[data-ai-step]').forEach(function (e) { e.hidden = e.dataset.aiStep !== ten; });
     hopAI.querySelectorAll('[data-ai-footer]').forEach(function (e) { e.hidden = e.dataset.aiFooter !== ten; });
     hopAI.querySelector('.ai-dialog-body').scrollTop = 0;
+    hopAI.querySelector('[data-ai-step="processing"]').setAttribute('aria-busy', String(ten === 'processing'));
+    const vung = hopAI.querySelector('[data-ai-step="' + ten + '"]');
+    const tieuDe = vung.querySelector('h3') || (ten === 'processing' && document.getElementById('ai-progress-text'));
+    if (hopAI.open && tieuDe) { tieuDe.tabIndex = -1; tieuDe.focus(); }
   }
   hopAI.onclose = huyXuLyAI;
   hopAI.oncancel = huyXuLyAI;
@@ -161,17 +169,20 @@ document.addEventListener('DOMContentLoaded', function () {
     nhapAI.value = 'Dự án ' + duAn.name + ': Cà phê mộc nguyên bản, bao bì giấy kraft tự nhiên, phong cách Bắc Âu tối giản, tinh tế, gần gũi thiên nhiên.';
     document.getElementById('ai-fail-checkbox').checked = false;
     document.getElementById('ai-input-error').textContent = '';
+    nhapAI.removeAttribute('aria-invalid');
     document.getElementById('ai-save-error').textContent = '';
     chuyenBuocAI('input');
-    hopAI.showModal();
+    hopAI.showModal(); nhapAI.focus();
   };
 
   document.getElementById('ai-generate-btn').onclick = function () {
     if (nhapAI.value.trim().length < 5) {
       document.getElementById('ai-input-error').textContent = 'Vui lòng nhập mô tả ít nhất 5 ký tự.';
+      nhapAI.setAttribute('aria-invalid', 'true');
       nhapAI.focus();
       return;
     }
+    nhapAI.removeAttribute('aria-invalid');
     huyXuLyAI();
     ketQuaAI = null;
     const lanHienTai = lanXuLyAI;

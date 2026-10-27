@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function hienCongViec() {
+    giuTieuDiem(veCongViec);
+  }
+  function veCongViec() {
     const cuaToi = duLieu.tasks.filter(function (t) { return t.projectId === duAn.id && t.assignee === nguoiDung.id; });
     const danhSach = cuaToi.filter(function (t) {
       const dungTen = (t.title + ' ' + t.description).toLowerCase().includes(timKiem.value.trim().toLowerCase());
@@ -40,8 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
       dong.querySelector('.due-badge').textContent = t.due ? new Date(t.due + 'T00:00:00').toLocaleDateString('vi-VN') : 'Chưa có hạn';
       const trangThai = dong.querySelector('.task-status-select');
       const hoanThanh = dong.querySelector('.task-item-check');
+      trangThai.dataset.focusKey = 'task-status-' + t.id;
+      hoanThanh.dataset.focusKey = 'task-check-' + t.id;
       trangThai.value = t.status;
       hoanThanh.checked = t.status === 'done';
+      hoanThanh.setAttribute('aria-label', 'Đánh dấu hoàn thành: ' + t.title);
+      trangThai.setAttribute('aria-label', 'Đổi trạng thái: ' + t.title);
       trangThai.disabled = hoanThanh.disabled = !!duAn.archived || t.status === 'cancelled';
       if (t.status === 'cancelled') { trangThai.add(new Option('Đã hủy', 'cancelled')); trangThai.value = 'cancelled'; }
       function doiTrangThai(giaTri) {
@@ -74,9 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   document.getElementById('task-retry-btn').onclick = function () { document.querySelector('[data-mode="normal"]').onclick(); };
   document.querySelectorAll('.state-btn').forEach(function (nut) {
+    nut.setAttribute('aria-pressed', String(nut.classList.contains('active')));
     nut.onclick = function () {
       cheDo = nut.dataset.mode;
-      document.querySelectorAll('.state-btn').forEach(function (b) { b.classList.toggle('active', b === nut); });
+      document.querySelectorAll('.state-btn').forEach(function (b) { b.classList.toggle('active', b === nut); b.setAttribute('aria-pressed', String(b === nut)); });
       hienCongViec();
     };
   });
@@ -95,3 +103,4 @@ document.addEventListener('DOMContentLoaded', function () {
   hienCongViec();
 
 });
+

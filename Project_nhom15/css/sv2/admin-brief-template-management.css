@@ -30,7 +30,7 @@
 }
 
 .template-card.custom-card {
-  border-top: 4px solid #8b5cf6;
+  border-top: 4px solid var(--primary);
 }
 
 .template-card.inactive-card {
@@ -123,12 +123,12 @@
   font-family: monospace;
   font-size: 12px;
   font-weight: 600;
-  background: #efedff;
+  background: var(--primary-light);
   color: var(--primary-dark);
   padding: 3px 8px;
   border-radius: 6px;
   cursor: pointer;
-  border: 1px solid #ddd6fe;
+  border: 1px solid var(--line);
   transition: background 0.15s;
 }
 
