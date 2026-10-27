@@ -7,7 +7,7 @@ Tài liệu kiểm tra mức độ hoàn thiện thiết kế so với 18 màn h
 - File Figma chung: [CreatorStudio UI/UX](https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=1-2) (file key `fQMvcuxxBcwUYAUv1D4YlT`).
 - UI Kit SV3: [node 70-15](https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=70-15) (root `70:15`, các component `70:32`, `70:36`, `70:40`, `70:44`, `70:48`, `70:52`, `70:56`).
 - Wireframe dùng chung: [desktop 3-109](https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=3-109), [mobile 3-157](https://www.figma.com/design/fQMvcuxxBcwUYAUv1D4YlT/CreatorStudio-UI-UX?node-id=3-157).
-- Nguồn trạng thái gốc: [figma-canva/README.md](../../figma-canva/README.md), [docs/04-qa/lich-su/SV3-DESIGN-QA.md](../SV3-DESIGN-QA.md).
+- Nguồn trạng thái gốc: [figma-canva/README.md](../../figma-canva/README.md), docs/04-qa/lich-su/SV3-DESIGN-QA.md (tài liệu cũ đã bỏ; xem [chỉ mục hiện hành](../04-qa/README.md)).
 - Ngày rà soát: 2026-10-25.
 
 ## 1. Tổng quan trung thực
@@ -83,7 +83,7 @@ Quy ước: `Có` = có frame được ghi nhận kèm link; `Chưa có` = chưa
 
 ## 6. Liên kết
 
-- [Kiểm kê màn hình](screen-inventory.md)
+- [Kiểm kê màn hình](../screen-inventory.md)
 - [Design system](design-system.md)
-- [Báo cáo QA thiết kế SV3](../SV3-DESIGN-QA.md)
-- [Tiến độ SV3](../TIEN-DO-SV3.md)
+- Báo cáo QA thiết kế SV3 (tài liệu cũ đã bỏ; xem [chỉ mục hiện hành](../04-qa/README.md))
+- [Tiến độ SV3](../05-nhom/sv3/progress.md)

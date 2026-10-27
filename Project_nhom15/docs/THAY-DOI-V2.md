@@ -25,7 +25,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Sửa: `README.md`
 - Sửa: `css/pages/lead.css`
 - Thêm: `docs/QA-SV3-2026-10-06.md`
-- Thêm: `docs/TIEN-DO-SV3.md`
+- Thêm: `docs/05-nhom/sv3/progress.md`
 - Sửa: `docs/ai-usage-report.md`
 - Sửa: `js/app.js`
 - Sửa: `js/pages/admin-project-settings.js`
@@ -107,7 +107,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Kiểm tra gói check_bundle.py đạt.
 - Edge headless với phiên LocalStorage mới riêng: 6 nhóm đạt, gồm phân trang 15 user, tạo/xóa/guard, focus modal, gõ @, tìm kiếm/chèn giữa chuỗi, lọc kết hợp, sắp xếp và phân trang bảng công việc, hủy/xóa qua tải lại, không tràn ngang tại các kích thước đã thử.
 - Khi xem ảnh 320px phát hiện nhãn bộ lọc bị ép quá hẹp; đã sửa local để các ô lọc xếp dọc, chạy lại đạt và xem lại ảnh.
-- Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/qa-sv3-p1/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
+- Bộ kiểm tra trình duyệt: tests/browser-sv3-p1.cjs. Kết quả máy đọc được: docs/04-qa/sv3/result.json. Ảnh kiểm tra được lưu trong cùng thư mục local.
 - Phạm vi này chưa chứng minh toàn bộ kế hoạch tổng thể hoàn tất; chưa quay OBS.
 
 ## P1 mẫu brief và AI-1 — 26/10/2026
@@ -117,7 +117,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Khách hàng: danh sách mẫu chỉ có Active Template; AI-1 mô phỏng dùng ngành hàng/các mục của mẫu đã chọn, lưu ID/tên/ngành hàng cùng brief. Không thực thi prompt bằng LLM và không gọi API ngoài.
 - Mô tả tối đa 20 ký tự bị từ chối có hướng dẫn; khi không còn mẫu Active có thông báo phục hồi và vẫn viết thủ công được. Bố cục thử mẫu trên mobile đã sửa sau khi xem ảnh.
 - Kiểm tra local: 11/11 tệp Node, check_bundle.py đạt; 6 nhóm Edge trong browser-ai1-template.cjs đạt, không pageerror. Ảnh 390px đã được xem, không tràn ngang.
-- Kết quả: docs/qa-ai1-template/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.
+- Kết quả: docs/04-qa/ai1/result.json. Ảnh lưu cùng thư mục local. Đây là bằng chứng cho phần mẫu/AI-1, chưa xác nhận toàn bộ kế hoạch hoàn tất.
 
 ## Tích hợp tài khoản, hồ sơ và bốn vai trò — 26/10/2026
 
@@ -128,7 +128,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Cập nhật browser-final-v5.cjs và browser-task27.cjs cho đường dẫn chia theo sinh viên, chọn tài khoản demo theo ID, và bỏ chế độ single-process cũ.
 - Kiểm tra local đạt: 11/11 tệp Node; check_bundle.py; 24 lượt tài khoản; 57 lượt tích hợp/hiển thị ở 320/390/1440px; chạy lại 6 nhóm AI-1 và 6 nhóm SV3 đạt. Không pageerror trong các bộ này.
 - Phạm vi luồng phiên bản trong browser-task27: tạo/nộp phiên bản qua Store để dựng dữ liệu Designer, rồi thao tác duyệt Lead/Client qua giao diện; không ghi đây là minh chứng thao tác UI Designer đầy đủ.
-- Kết quả hiện hành: docs/qa-integration-current/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.
+- Kết quả hiện hành: docs/04-qa/integration/accounts/result.json và roles/result.json. Ảnh local cùng các thư mục kết quả. Tài liệu Figma/Trello/deploy và các mục còn lại vẫn cần hoàn thiện; chưa quay OBS.
 
 
 ## Đối chiếu tài liệu hiện hành — 26/10/2026
@@ -150,7 +150,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Khôi phục/cập nhật tests/audit-web.cjs: đường dẫn hiện hành, 19 lượt/8 độ rộng, trả mã lỗi khi audit phát hiện vấn đề; chụp ảnh tùy chọn.
 - Audit đạt trong phạm vi đo được: 0 lỗi tràn, 0 lỗi tương phản nền đơn sắc, 0 thiếu tên/alt/ID trùng và 0 console/pageerror/HTTP lỗi. Còn 26 lượt phần tử nền ảnh/gradient chưa đo; chưa chạy axe/W3C/Lighthouse.
 - Chạy hồi quy 11 tệp Node, bundle, 24 kiểm tra tài khoản và 57 kiểm tra vai trò đều đạt. Đã xem ảnh Moodboard 768px và đăng nhập 375px sau sửa.
-- Bằng chứng và 39 ảnh: [qa-web-current](qa-web-current/README.md). Chưa quay video.
+- Bằng chứng và 39 ảnh: [qa-web-current](04-qa/web/README.md). Chưa quay video.
 
 
 ## Axe và cấu trúc truy cập — 26/10/2026
@@ -160,7 +160,7 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Sửa tương phản select task và bỏ opacity toàn thẻ mẫu Inactive, giữ trạng thái bằng badge.
 - Axe-core 4.14.0: 44 lượt trang/modal ở 1440/375px, 0 vi phạm tự động và 0 HTTP/pageerror; còn 118 lượt phần tử incomplete cần xem thủ công. preload=false do lỗi @import của bước tải CSSOM engine; không tắt rule hay loại DOM.
 - Hồi quy: 11/11 tệp Node, check_bundle.py, browser-task27 57 kiểm tra đạt. Đã xem ảnh mẫu Inactive và modal user 375px.
-- Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](qa-axe-current/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.
+- Mã chạy: tests/browser-axe.cjs. [Báo cáo và ảnh](04-qa/accessibility/README.md). Chưa coi toàn bộ WCAG/W3C/Lighthouse đạt; chưa quay video.
 
 
 ## Định dạng code riêng SV3 — 26/10/2026
@@ -210,3 +210,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Phân biệt 18 HTML chính, 3 tiện ích và chế độ Phản hồi khách hàng dùng chung tệp phiên bản; tổng 19 dòng nghiệp vụ nhưng vẫn 21 HTML.
 - Sắp xếp README docs theo nhóm mục đích; bổ sung chỉ mục thư mục 01-gatekeeper. Hai bảng cũ chuyển thành liên kết về bản chính, tránh duy trì nội dung trùng lặp.
 - Giữ nguyên tệp code, ảnh/kết quả QA và tài liệu lịch sử. Không chạy thêm kiểm thử theo yêu cầu người dùng; không đánh dấu đã quay OBS hay đã duyệt Figma.
+
+
+## Dọn toàn bộ docs — 27/10/2026
+
+- Xóa các bảng kiểm kê/hướng dẫn trùng, tệp rỗng, Word thuộc đề tài khác và bản bàn giao/Trello cũ; giữ một Screen Inventory và một hướng dẫn sử dụng.
+- Gom tài liệu thành 6 nhóm; gom QA về 04-qa, hồ sơ sinh viên về 05-nhom và tham khảo về 06-tham-khao. Giữ nguyên thông tin/giới hạn các bộ QA có phạm vi riêng, bỏ các bộ cũ đã có bản thay thế và ảnh thừa.
+- Bổ sung tài liệu SV2 đang có trên dev trước khi dọn để không bỏ sót đóng góp của nhóm. Sửa các liên kết và đường dẫn xuất báo cáo liên quan; không đổi nghiệp vụ website.
+- Sao lưu toàn bộ docs trước khi dọn ra ngoài repo, đối chiếu bản sao trước khi xóa. Không chạy lại các kiểm thử ứng dụng theo yêu cầu người dùng; việc dọn không phải một lần QA mới.
