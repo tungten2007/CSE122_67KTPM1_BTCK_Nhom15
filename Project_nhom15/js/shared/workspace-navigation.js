@@ -37,6 +37,8 @@ window.WorkspaceNavigation = (() => {
     const base = appRoot(doc, url);
     const styles = [...doc.querySelectorAll('link[rel="stylesheet"]')].map(link => new URL(link.getAttribute('href'), base).href);
     if (window.CS?.session()?.role === 'Client' && ['profile.html','notifications.html'].includes(file(url))) styles.push(new URL('css/sv2/client-account.css', base).href);
+    const theme = document.getElementById('creatorstudio-workspace-theme');
+    if (theme && !styles.includes(theme.href)) styles.push(theme.href);
     // Fetch scripts before changing the visible document. Only repository scripts are accepted.
     const scripts = await Promise.all([...doc.querySelectorAll('script')].map(async source => {
       if (!source.src) return /WorkspaceNavigation\.ready\s*\(/.test(source.textContent) ? {text:source.textContent} : null;
@@ -58,7 +60,11 @@ window.WorkspaceNavigation = (() => {
         document.head.append(link); added.push(link);
       });
     })).catch(error => {added.forEach(link => link.remove()); throw error;});
-    return {doc, scripts:scripts.filter(Boolean), styles, added, oldStyles};
+    const orderedStyles = styles.map(href =>
+      oldStyles.find(link => !link.disabled && link.href === href) ||
+      added.find(link => link.href === href)
+    );
+    return {doc, scripts:scripts.filter(Boolean), styles, added, oldStyles, orderedStyles};
   }
 
   async function navigate(url, push = true) {
@@ -71,7 +77,12 @@ window.WorkspaceNavigation = (() => {
         controller.abort(); controller = new AbortController();
         if (push) history.pushState({workspace:true}, '', url.href);
         page.oldStyles.forEach(link => {if (!page.styles.includes(link.href) || link.disabled) link.remove();});
-        page.added.forEach(link => {link.media = 'all';});
+        // Reused styles must follow the destination page order as well.
+        // Otherwise a newly loaded base sheet can override the shared theme.
+        page.orderedStyles.forEach(link => {
+          link.media = 'all';
+          document.head.append(link);
+        });
         document.title = page.doc.title;
         document.body.className = '';
         document.body.replaceChildren(...[...page.doc.body.childNodes].filter(node => node.nodeName !== 'SCRIPT').map(node => document.importNode(node, true)));
