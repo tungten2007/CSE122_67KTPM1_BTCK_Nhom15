@@ -44,8 +44,14 @@
     editing = null,
     pending = null,
     focused = null;
-  if(p.previousImage)$('#old-image').src=p.previousImage;
-  else{$('.old-design').innerHTML='<p class="compare-empty">Chưa có phiên bản trước được gửi cho bạn.</p>'; $('[data-mode="slider"]').disabled=true;}
+  const sliderButton = $('[data-mode="slider"]');
+  const canCompare = Boolean(p.previousImage && p.versionImage);
+  sliderButton.disabled = !canCompare;
+  sliderButton.title = canCompare ? "So sánh hai phiên bản" : "Cần hai ảnh phiên bản đã chia sẻ để dùng thanh trượt.";
+  $(".compare-toolbar .pill").textContent = canCompare ? "2 phiên bản để so sánh" : "1 phiên bản để xem";
+  $(".version-caption span small").textContent = p.previousVersionName || "Chưa có bản đối chiếu";
+  if (p.previousImage) $("#old-image").src = p.previousImage;
+  else $(".old-design").innerHTML = '<p class="compare-empty">Chưa có phiên bản trước được gửi cho bạn. Cần hai ảnh phiên bản để dùng thanh trượt.</p>';
   $("#new-image").src = p.versionImage;
   $("#brief-link").href = CS.url("client-creative-brief", p.id);
   function locked() {
@@ -141,6 +147,7 @@
   $$("[data-mode]").forEach(
     (b) =>
       (b.onclick = () => {
+        if (b.dataset.mode === "slider" && !canCompare) return;
         mode = b.dataset.mode;
         $$("[data-mode]").forEach((btn) => {
           btn.classList.toggle("active", btn === b);
