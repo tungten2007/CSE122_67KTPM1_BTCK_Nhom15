@@ -121,7 +121,9 @@
       $("#add-comment").disabled =
         locked();
     $("#pin-instruction").textContent = locked()
-      ? "Phiên bản đã kết thúc hoặc được lưu trữ · Chỉ đọc."
+      ? (p.versionStatus === "Changes Requested" && p.status !== "Archived"
+        ? "Đã gửi yêu cầu chỉnh sửa · Chờ đội ngũ gửi bản mới. Để tập lại, mở Công cụ tập demo phía trên."
+        : "Phiên bản đã kết thúc hoặc được lưu trữ · Chỉ đọc. Để tập lại, mở Công cụ tập demo phía trên.")
       : "Nhấn vào ảnh đang chọn để ghim phản hồi tại đúng vị trí.";
     $("#decision-title").textContent =
       p.status === "Archived"
