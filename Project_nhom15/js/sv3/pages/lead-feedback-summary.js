@@ -140,7 +140,8 @@
       ),
     );
     const readonly = p.archived;
-    A.$("#main").innerHTML =
+    const main = document.getElementById("main");
+    main.innerHTML =
       A.header(
         "TỪ PHẢN HỒI ĐẾN HÀNH ĐỘNG",
         "Tổng hợp phản hồi",
