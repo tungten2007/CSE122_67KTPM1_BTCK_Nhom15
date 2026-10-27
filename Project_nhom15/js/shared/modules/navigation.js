@@ -3,6 +3,15 @@
  * Hai phân hệ Client/Designer chỉ bật URL thật khi đã ghép đủ file.
  */
 window.Navigation = (() => {
+  // Apply the same brand palette on standalone pages and account changes.
+  if (typeof document !== 'undefined' && document.head && document.createElement &&
+      !document.getElementById('creatorstudio-workspace-theme')) {
+    const theme = document.createElement('link');
+    theme.id = 'creatorstudio-workspace-theme';
+    theme.rel = 'stylesheet';
+    theme.href = new URL('css/shared/workspace-theme.css', document.baseURI).href;
+    document.head.append(theme);
+  }
   const appUrl=path=>new URL(path,document.baseURI).href;
   const roles={Lead:'Trưởng nhóm',Admin:'Quản trị viên',Designer:'Nhà thiết kế',Client:'Khách hàng'};
   const routes = {

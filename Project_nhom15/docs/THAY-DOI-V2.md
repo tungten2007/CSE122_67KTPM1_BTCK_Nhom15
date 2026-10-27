@@ -176,3 +176,11 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Bản local bị mất thao tác lấy phần tử main, thành gán innerHTML cho chuỗi "#main", nên vùng nội dung trống trong khi khung điều hướng vẫn hiện.
 - Lấy phần tử bằng document.getElementById("main") trước khi gán nội dung. Giữ bố cục, dữ liệu, quy tắc tổng hợp và định dạng code SV3 hiện có.
 - Chỉ sửa js/sv3/pages/lead-feedback-summary.js và ghi chú này; giữ riêng các thay đổi đang làm dở. Không chạy thêm kiểm thử theo yêu cầu người dùng.
+
+
+## Giữ thống nhất màu xanh khi đổi tài khoản — 27/10/2026
+
+- Giữ thứ tự stylesheet theo trang đích khi điều hướng, kể cả CSS dùng lại; tránh CSS nền tím ghi đè CSS xanh sau nhiều lượt chuyển tài khoản/trang.
+- Thêm css/shared/workspace-theme.css dùng chung, lấy bảng màu xanh của Bảng công việc; dùng cho cả trang tải trực tiếp và điều hướng trong cùng document.
+- Giữ stylesheet màu trong lúc thay trang, thống nhất màu ô tài khoản/dự án, danh sách lựa chọn, nút chính và focus.
+- Giữ nguyên dữ liệu và phân quyền; không chạy thêm kiểm thử theo yêu cầu người dùng.
