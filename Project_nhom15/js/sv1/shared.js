@@ -270,6 +270,60 @@ window.CS = (() => {
         if (page === "client-review-versions" && new URLSearchParams(location.search).get("view") === "feedback") target.searchParams.set("view", "feedback");
         location.href = target.href;
     };
+    // Explicit rehearsal control; keep normal review transitions unchanged.
+    if (current && ["client-creative-brief", "client-review-versions"].includes(page)) {
+      const tools = document.createElement("details");
+      tools.className = "panel";
+      tools.style.padding = "12px 16px";
+      tools.style.marginBottom = "16px";
+      const summary = document.createElement("summary");
+      summary.textContent = "Công cụ tập demo";
+      const note = document.createElement("p");
+      note.textContent = "Đưa riêng dự án đang chọn về chờ duyệt để tập lại. Giữ nội dung brief, ảnh, phản hồi và các dự án khác; brief trở về nháp. Đây là đặt lại dữ liệu demo, không phải bước duyệt nghiệp vụ.";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn small";
+      button.id = "prepare-client-demo";
+      button.textContent = "Chuẩn bị lại demo";
+      tools.append(summary, note, button);
+      const heading = document.querySelector(".page-heading");
+      if (heading) heading.insertAdjacentElement("afterend", tools);
+      else $(container).closest(".panel").insertAdjacentElement("afterend", tools);
+      button.onclick = () => confirmAction("Chuẩn bị lại demo cho " + current.name + "?", note.textContent + " Một bản sao dữ liệu hiện tại sẽ được lưu trong trình duyệt trước khi thay đổi.", () => {
+        try {
+          Store.load();
+          const user = session();
+          if (user?.role !== "Client") throw Error("Hãy đăng nhập vai trò khách hàng để tập demo.");
+          localStorage.setItem("creatorstudio.demo-backup." + current.id, JSON.stringify(Store.get()));
+          Store.transaction(d => {
+            if (!d.users.some(u => u.id === user.id && u.active && u.role === "Client")) throw Error("Tài khoản không còn quyền thao tác.");
+            const target = d.projects.find(item => item.id === current.id);
+            if (!target) throw Error("Dự án không còn tồn tại.");
+            target.archived = false;
+            target.status = current.versionId ? "In Review" : "Active";
+            target.progress = Math.min(Number(target.progress) || 0, 75);
+            if (current.versionId) {
+              const version = d.versions.find(item => item.id === current.versionId && item.projectId === target.id);
+              if (!version) throw Error("Phiên bản không còn tồn tại.");
+              version.status = "Client Review";
+              version.reviewedAt = null;
+              version.history = version.history || [];
+              version.history.push({action: "Demo reset", by: user.id, time: new Date().toISOString(), reason: "Đặt lại để tập trình diễn, không phải phê duyệt nghiệp vụ."});
+            }
+            const brief = d.briefs.filter(item => item.projectId === target.id).at(-1);
+            if (brief) {
+              brief.status = "draft";
+              if (brief.clientData) {
+                brief.clientData.submitted = false;
+                brief.clientData.accepted = false;
+              }
+            }
+            d.activity.unshift({id: Store.id("a"), text: "Chuẩn bị lại demo: " + target.name, time: new Date().toISOString()});
+          });
+          location.reload();
+        } catch (error) { toast(error.message); }
+      });
+    }
     return current;
   }
   function confirmAction(title, description, onConfirm) {
