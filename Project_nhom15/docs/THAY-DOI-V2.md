@@ -169,3 +169,10 @@ Dữ liệu LocalStorage không đi cùng ZIP. Cùng origin vẫn dùng khóa d�
 - Prettier 3.6.2, printWidth 100, HTML whitespace strict; kiểm tra AST/debug-check của formatter đạt trên 22 bản mã trước định dạng. Nội dung chuỗi dữ liệu và nghiệp vụ được giữ nguyên.
 - Commit chỉ định dạng từ mã đã commit. Các sửa HTML/validation đang làm dở ở working tree được giữ riêng và không đưa vào commit định dạng; không sửa code SV1/SV2/shared trong đợt này.
 - Theo yêu cầu mới nhất của người dùng: chỉ định dạng, không chạy thêm kiểm thử. Các kiểm tra đã thực hiện trước yêu cầu dừng được giữ ngoài commit này; đợt này không tuyên bố thay đổi chức năng.
+
+
+## Khôi phục nội dung Tổng hợp phản hồi — 27/10/2026
+
+- Bản local bị mất thao tác lấy phần tử main, thành gán innerHTML cho chuỗi "#main", nên vùng nội dung trống trong khi khung điều hướng vẫn hiện.
+- Lấy phần tử bằng document.getElementById("main") trước khi gán nội dung. Giữ bố cục, dữ liệu, quy tắc tổng hợp và định dạng code SV3 hiện có.
+- Chỉ sửa js/sv3/pages/lead-feedback-summary.js và ghi chú này; giữ riêng các thay đổi đang làm dở. Không chạy thêm kiểm thử theo yêu cầu người dùng.
